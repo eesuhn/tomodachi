@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/petanimation.css">
@@ -61,7 +61,7 @@
 
     <div class="row px-4 py-2">
       <div class="col-md-6">
-        <div style="height:550px; width:auto; border: 5px solid black; display:flex; justify-content: center; align-items: center; position: relative; background-image: url('../assets/background/meadow.png'); background-size: cover; background-position: center;">
+        <div style="height:550px; width:auto; border: 5px solid black; display:flex; justify-content: center; align-items: center; position: relative; background-image: url('../assets/backgrounds/meadow.png'); background-size: cover; background-position: center;">
           <div style="position: absolute; bottom: 0; left: 0; display: flex; align-items: center; margin: 5px; background: rgba(0, 0, 0, 0.5); padding:5px;">
             <img src="../assets/images/inventory.png" style="width: auto; height: 25px;">
             <span style="margin-left: 10px; color:white;">Inventory</span>

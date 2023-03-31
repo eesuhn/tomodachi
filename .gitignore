@@ -1,0 +1,6 @@
+# database connection
+back/connection.back.php
+
+
+# outliers
+.DS_Store

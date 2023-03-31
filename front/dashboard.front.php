@@ -37,15 +37,15 @@
           </div>
           <div class="card-block px-3 col-4">
             <h5>Jerry</h5>
-            <img src="uploads/level.png" style="height:13px; width:13px; margin:5px;"></i>Level: 100
+            <img src="../assets/images/level.png" style="height:13px; width:13px; margin:5px;"></i>Level: 100
             <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px">
               <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <img src="uploads/health.png" style="height:13px; width:13px; margin:5px;">Health: 25/100
+            <img src="../assets/images/health.png" style="height:13px; width:13px; margin:5px;">Health: 25/100
             <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px;">
               <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <img src="uploads/level.png" style="height:13px; width:13px; margin:5px;"></i>Hunger: 100
+            <img src="../assets/images/hunger.png" style="height:13px; width:13px; margin:5px;"></i>Hunger: 100
             <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px">
               <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>

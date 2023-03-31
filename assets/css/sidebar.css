@@ -1,0 +1,73 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #000;
+  position: fixed;
+  height: 100%;
+  font-size: 20px;
+  overflow: auto;
+}
+.sidebar a {
+  display: block;
+  color: #fff;
+  padding: 16px;
+  text-decoration: none;
+}
+.sidebar a.active {
+  background-color: #004aad;
+  color: white;
+}
+.sidebar .logo {
+  padding: 16px;
+  text-align: center;
+}
+.sidebar .logo img {
+  width: 100px;
+}
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+.sidebar .logout {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+.counter {
+  padding: 10px;
+}
+.counter .count {
+  font-weight: 800;
+  color: #20247b;
+}
+.counter p {
+  font-weight: 600;
+  margin: 0;
+}
+@media screen and (max-width: 1400px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {
+    float: left;
+  }
+  .sidebar .logout {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    text-align: right;
+  }
+  div.content {
+    margin-left: 0;
+  }
+}

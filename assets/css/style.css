@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'nine';
+    src: url('../fonts/nine0.ttf') format('truetype');
+  }
+
+  body{
+    font-family: 'nine', sans-serif;
+  }

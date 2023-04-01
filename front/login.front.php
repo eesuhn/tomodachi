@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
-                <form>
+              <form id="login_user" method="POST" action="../include/login.inc.php">
                   <div class="d-flex align-items-center mb-3 pb-1 justify-content-center">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                     <span class="h1 fw-bold mb-0"><img src="../assets/images/logo1.png" width="120"></span>
@@ -43,17 +43,17 @@
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example17">Email address</label>
+                    <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                    <label class="form-label" for="email">Email address</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example27">Password</label>
+                    <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                    <label class="form-label" for="password">Password</label>
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                   </div>
 
                   <a class="small text-muted" href="#!">Forgot password?</a>
@@ -118,7 +118,7 @@
         <h1 class="modal-title fs-5" id="registerTitle">Account Creation</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="register_user" method="POST" action="">
+      <form id="register_user" method="POST" action="../include/register.inc.php">
         <div class="modal-body">
           <div class="row">
             <div class="col-6" style="background-image: url(../assets/images/registerbg.png);background-size: cover; background-position: center;">            </div>
@@ -138,7 +138,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Proceed</button>
+          <button type="submit" name="subnmit" class="btn btn-dark">Proceed</button>
         </div>
       </form>
     </div>

@@ -29,8 +29,8 @@
         <div class="card" style="border-radius: 1rem;">
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
-            <img src="../assets/images/loginbg.png"
-          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+              <img src="../assets/images/loginbg.png" alt="Login image" 
+              class="w-100 vh-100" style="object-fit: cover; object-position: left;">
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
@@ -121,7 +121,7 @@
       <form id="register_user" method="POST" action="../include/register.inc.php">
         <div class="modal-body">
           <div class="row">
-            <div class="col-6" style="background-image: url(../assets/images/registerbg.png);background-size: cover; background-position: center;">            </div>
+            <div class="col-6" style="background-image: url(../assets/images/registerbg.png);background-size: cover; background-position: center;"></div>
             <div class="col-6">
               <label for="text">Username</label>
               <input type="text" class="form-control" id="name" name="name" placeholder="e.g. John Doe" required>
@@ -138,7 +138,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" name="subnmit" class="btn btn-dark">Proceed</button>
+          <button type="submit" name="submit" class="btn btn-dark">Proceed</button>
         </div>
       </form>
     </div>
@@ -150,6 +150,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
   
 </body>
-
 
 </html>

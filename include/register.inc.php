@@ -10,6 +10,6 @@
 
     $user = new User();
     $user->setAccountDetails($userName, $userEmail, $userPwd, $userPwd2);
-    $user->registerUser();
+    $user->checkEmail();
 
 ?>

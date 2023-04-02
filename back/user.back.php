@@ -19,6 +19,36 @@
             $this->userPwd2 = $userPwd2;
         }
 
+        public function checkEmail() {
+            $sql = "SELECT userEmail FROM user WHERE userEmail = :email";
+
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->bindParam(':email', $this->userEmail);
+
+            $stmt->execute(array(
+                ':email' => $this->userEmail
+            ));
+
+            if ($stmt->rowCount()>0) {
+                echo 
+                "<script>alert('Email is already in use'); 
+                window.location.href='../front/login.front.php';</script>";
+            } else {
+                $this->checkPwd();
+            }
+        }
+        
+        public function checkPwd() {
+            if ($this->userPwd !== $this->userPwd2) {
+                echo 
+                "<script>alert('Password does not match'); 
+                window.location.href='../front/login.front.php';</script>";
+            } else {
+                $this->registerUser();
+            }
+        }
+
         public function registerUser() {
             $sql = "INSERT INTO user (userName, userEmail, userPwd) VALUES (:value1, :value2, :value3)";
 

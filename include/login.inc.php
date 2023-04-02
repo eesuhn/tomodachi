@@ -4,4 +4,5 @@
 
     $user = new User();
     $user->loginUser( $_POST['email'], $_POST['password']);
+    
 ?>

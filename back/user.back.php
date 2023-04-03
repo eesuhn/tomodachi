@@ -3,20 +3,17 @@
         private $userName;
         private $userEmail;
         private $userPwd;
-        private $userPwd2;
 
         public function __construct() {
             $this->userName = "";
             $this->userEmail = "";
             $this->userPwd = "";
-            $this->userPwd2 = "";
         }
         
-        public function setAccountDetails($userName, $userEmail, $userPwd, $userPwd2) {
+        public function setAccountDetails($userName, $userEmail, $userPwd) {
             $this->userName = $userName;
             $this->userEmail = $userEmail;
             $this->userPwd = $userPwd;
-            $this->userPwd2 = $userPwd2;
         }
 
         public function checkEmail() {

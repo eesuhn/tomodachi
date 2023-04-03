@@ -1,5 +1,5 @@
 <?php
-    class User extends Database {
+    class User {
         private $userName;
         private $userEmail;
         private $userPwd;
@@ -22,7 +22,9 @@
         public function checkEmail() {
             $sql = "SELECT userEmail FROM user WHERE userEmail = :email";
 
-            $stmt = $this->connect()->prepare($sql);
+            $db = new Database();
+
+            $stmt = $db->connect()->prepare($sql);
 
             $stmt->bindParam(':email', $this->userEmail);
 
@@ -42,7 +44,9 @@
         public function registerUser() {
             $sql = "INSERT INTO user (userName, userEmail, userPwd) VALUES (:value1, :value2, :value3)";
 
-            $stmt = $this->connect()->prepare($sql);
+            $db = new Database();
+
+            $stmt = $db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $this->userName);
             $stmt->bindParam(':value2', $this->userEmail);
@@ -66,7 +70,9 @@
         public function loginUser($userEmail, $userPwd) {
             $sql = "SELECT * FROM user WHERE userEmail = :email AND userPwd = :pwd";
 
-            $stmt = $this->connect()->prepare($sql);
+            $db = new Database();
+
+            $stmt = $db->connect()->prepare($sql);
 
             $stmt->bindParam(':email', $userEmail);
             $stmt->bindParam(':pwd', $userPwd);

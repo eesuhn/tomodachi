@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../assets/css/navbar.css">
 </head>
 
-<body style="background-color:#f1f1f1;">
+<body style="background-image: url(../assets/images/bg.png); background-size: cover;">
 
   <nav class="navbar">
     <ul>

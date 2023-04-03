@@ -35,16 +35,6 @@
                 "<script>alert('Email is already in use'); 
                 window.location.href='../front/login.front.php';</script>";
             } else {
-                $this->checkPwd();
-            }
-        }
-        
-        public function checkPwd() {
-            if ($this->userPwd !== $this->userPwd2) {
-                echo 
-                "<script>alert('Password does not match'); 
-                window.location.href='../front/login.front.php';</script>";
-            } else {
                 $this->registerUser();
             }
         }

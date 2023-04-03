@@ -81,10 +81,9 @@
 
             if ($stmt->rowCount()>0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $_SESSION['userId'] = $row['userId'];
+                    $_SESSION['userID'] = $row['userID'];
                     $_SESSION['userName'] = $row['userName'];
                     $_SESSION['userEmail'] = $row['userEmail'];
-                    $_SESSION['userPwd'] = $row['userPwd'];
 
                     echo 
                     "<script>alert('You are now logged in'); 

@@ -104,37 +104,6 @@
   </div>
 </footer>
 
-<div class="modal fade modal-lg" id="loginModal" aria-hidden="true" aria-labelledby="loginTitle" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="loginTitle">Log in to your Account</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form id="login_user" method="POST" action="">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-6" style="background-image: url(uploads/registerpic.png);background-size: cover; height:100%; background-position: center;">
-            </div>
-            <div class="col-6">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="e.g. john@gmail.com" required>
-              <div id="emailHelp" class="form-text">Please enter a valid email address</div>
-              <label for="text">Password</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Enter a secure password" required>
-              <a href="#registerModal" data-bs-target="#registerModal" data-bs-toggle="modal">Don't have an account?</a>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Proceed</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
   <script src="assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>

@@ -10,15 +10,16 @@ $userID = $_SESSION['userID'];
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/sidebar.css">
-  <link rel="stylesheet" href="../assets/css/petanimation.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/petanimation.css">
 </head>
 
 
@@ -75,63 +76,62 @@ $userID = $_SESSION['userID'];
         </div>
 
         <div style="padding:50px;"></div>
-        
+
     </div>
 
 
-    <div class="modal fade modal-lg" id="foodShop" aria-hidden="true" aria-labelledby="foodShop" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Foods</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade modal-lg" id="foodShop" aria-hidden="true" aria-labelledby="foodShop" tabindex="-1" style="color:black">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Foods</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Foods
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="submit" class="btn btn-dark">Done</button>
+                </div>
+                </form>
+            </div>
         </div>
-          <div class="modal-body" style="color:black">
-Foods
-          </div>
-          <div class="modal-footer">
-            <button type="submit" name="submit" class="btn btn-dark">Done</button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
-  <div class="modal fade modal-lg" id="petShop" aria-hidden="true" aria-labelledby="petShop" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Foods</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade modal-lg" id="petShop" aria-hidden="true" aria-labelledby="petShop" tabindex="-1" style="color:black">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="foodShopTitle">Pet Scout</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="color:black">
+                    Pets
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="submit" class="btn btn-dark">Done</button>
+                </div>
+                </form>
+            </div>
         </div>
-          <div class="modal-body" style="color:black">
-Pets
-          </div>
-          <div class="modal-footer">
-            <button type="submit" name="submit" class="btn btn-dark">Done</button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
-  <div class="modal fade modal-lg" id="wallpaperShop" aria-hidden="true" aria-labelledby="foodShop" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Foods</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade modal-lg" id="wallpaperShop" aria-hidden="true" aria-labelledby="foodShop" tabindex="-1" style="color:black">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Wallpapers</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="color:black">
+                    Wallpaper
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="submit" class="btn btn-dark">Done</button>
+                </div>
+                </form>
+            </div>
         </div>
-          <div class="modal-body" style="color:black">
-Wallpaper
-          </div>
-          <div class="modal-footer">
-            <button type="submit" name="submit" class="btn btn-dark">Done</button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
 
     <script src="assets/js/bootstrap-js/bootstrap.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
-  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>

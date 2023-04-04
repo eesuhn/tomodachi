@@ -41,7 +41,7 @@ $petHunger = $pet['petHunger'];
       <img src="../assets/images/logo2.png" alt="My Website Logo">
     </div>
     <a class="active" href="#home">Home</a>
-    <a href="#news">Shop</a>
+    <a href="../front/shop.front.php">Shop</a>
     <a href="#contact">Study</a>
     <a href="#about">Schedule</a>
     <div class="logout">

@@ -28,7 +28,7 @@ $pet = new Pets();
 <body>
     <section class="hidden">
         <div class="row d-flex py-4 px-4 justify-content-center">
-        <div class="col-3">
+            <div class="col-3">
             </div>
             <div class="col-6 justify-content-center d-flex">
                 <img src="../assets/images/logo2.png" width="200" alt="logo">
@@ -61,18 +61,18 @@ $pet = new Pets();
             </div>
             <div class="col-3">
             </div>
-            </div>
-            <div class="col-3">
-            </div>
-            <div class="col-6 justify-content-center d-flex">
+        </div>
+        <div class="col-3">
+        </div>
+        <div class="col-6 justify-content-center d-flex">
             <h5>Choose carefully, you can only select one of them, however, don't worry as you can always collect more companions as you progress!</h5>
-            </div>
-            <div class="col-3">
-            </div>
-            </div>
-            <?php
-            $pet->startingPet();
-            ?>
+        </div>
+        <div class="col-3">
+        </div>
+        </div>
+        <?php
+        $pet->startingPet();
+        ?>
     </section>
 
     <script src="js/bootstap.js"></script>

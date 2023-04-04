@@ -84,7 +84,6 @@
                     $_SESSION['userID'] = $row['userID'];
                     $_SESSION['userName'] = $row['userName'];
                     
-                    // Check if userID exists in petInventory table
                     $petInventorySql = "SELECT * FROM petInventory WHERE userID = :userID";
                     $petInventoryStmt = $db->connect()->prepare($petInventorySql);
                     $petInventoryStmt->bindParam(':userID', $_SESSION['userID']);
@@ -107,4 +106,3 @@
         }
         
     }
-?>

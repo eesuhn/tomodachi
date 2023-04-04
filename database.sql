@@ -27,6 +27,9 @@ CREATE TABLE `pet` (
   `petImage` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `pet`
+  ADD CONSTRAINT `pet_ibfk_1` FOREIGN KEY (`petRarity`) REFERENCES `petRarity` (`rarity`);
+
 INSERT INTO `pet` (`petID`, `petName`, `petDesc`, `petRarity`, `petImage`) VALUES
 (1, 'Dog', 'This loyal pup loves nothing more than playing fetch and cuddling up with their owner. With their wagging tail, friendly bark and immense bravery, they\'re sure to be your new best friend forever!', 'Common', '../assets/pets/dog.png'),
 (2, 'Cat ', 'This sassy feline may seem aloof, but they secretly love getting attention from their humans. With their sleek fur and piercing eyes, they\'re sure to make a stylish addition to your pet collection.', 'Common', '../assets/pets/cat.png'),
@@ -44,7 +47,11 @@ CREATE TABLE `petInventory` (
   `petXP` int(3) NOT NULL,
   `petHealth` int(3) NOT NULL,
   `petHunger` int(3) NOT NULL
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `petInventory`
+  ADD PRIMARY KEY (`userID`,`petID`);
 
 //petIDisFKofpettable 
 ALTER TABLE `petInventory`

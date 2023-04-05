@@ -56,7 +56,22 @@ ALTER TABLE `currency`
     ADD CONSTRAINT `currency_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 ALTER TABLE `food_inventory`
-    ADD CONSTRAINT `food_inventory_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
-
-ALTER TABLE `food_inventory`
+    ADD CONSTRAINT `food_inventory_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
     ADD CONSTRAINT `food_inventory_ibfk_2` FOREIGN KEY (`foodID`) REFERENCES `food` (`foodID`);
+
+
+
+-- Dump data for table `food`
+INSERT INTO `food` (`foodImg`, `foodName`, `foodDesc`, `foodPrice`, `foodHunger`, `foodXP`) VALUES 
+('../assets/foods/donut.png', 'Donut', 
+'A sweet and circular pastry with a hole in the middle, perfect for satisfying your sweet tooth cravings.',
+'6', '10', '10'),
+('../assets/foods/ramen.png', 'Ramen',
+'A Japanese dish consisting of noodles in a meat or fish-based broth, often flavored with soy sauce or miso.',
+'10', '20', '20'),
+('../assets/foods/squid.png', 'Squid',
+'A marine mollusk with a soft body and eight tentacles, often served as a delicacy.',
+'15', '30', '30'),
+('../assets/foods/strawberry.png', 'Strawberry',
+'A sweet and juicy red fruit, perfect for satisfying your sweet tooth cravings.',
+'5', '10', '10');

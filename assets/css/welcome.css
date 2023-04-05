@@ -1,0 +1,49 @@
+body {
+  background-image: url("../images/bg2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+section {
+  display: grid;
+  place-items: center;
+  height: 110vh;
+  align-content: center;
+}
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 2s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateX(0);
+}
+
+.pets {
+  display: flex;
+}
+.pets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.pet-item {
+  text-align: center;
+  margin: 10px;
+}
+
+.pets:nth-child(2) {
+  transition-delay: 200ms;
+}
+.pets:nth-child(3) {
+  transition-delay: 400ms;
+}

@@ -1,3 +1,25 @@
+<?php
+session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$userID = $_SESSION['userID'];
+
+include '../back/connection.back.php';
+include '../back/pets.back.php';
+$petData = new Pets();
+// Call the function and store the returned pet data in $petData
+$pet = $petData->getEquippedPet($userID);
+// Retrieve and store the individual values from $pet
+$petName = $pet['petName'];
+$petImage = $pet['petImage'];
+$petHealth = $pet['petHealth'];
+$petXP = $pet['petXP'];
+$petLevel = $pet['petLevel'];
+$petHunger = $pet['petHunger'];
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -19,9 +41,9 @@
       <img src="../assets/images/logo2.png" alt="My Website Logo">
     </div>
     <a class="active" href="#home">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
+    <a href="../front/shop.front.php">Shop</a>
+    <a href="#contact">Study</a>
+    <a href="#about">Schedule</a>
     <div class="logout">
       <a href="#">Logout</a>
     </div>
@@ -33,22 +55,13 @@
       <div class="row px-4 py-4">
         <div class="card flex-row flex-wrap" style="padding:10px; background-color: white; color:black;">
           <div class="card-header border-0">
-            <img src="../assets/pets/raccoon.png" width="100px" style="margin-top: 30px">
+            <img src="<?=$petImage?>" width="100px" style="margin-top: 30px">
           </div>
           <div class="card-block px-3 col-4">
-            <h5>Jerry</h5>
-            <img src="../assets/images/level.png" style="height:13px; width:13px; margin:5px;"></i>Level: 100
-            <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px">
-              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <img src="../assets/images/health.png" style="height:13px; width:13px; margin:5px;">Health: 25/100
-            <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px;">
-              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <img src="../assets/images/hunger.png" style="height:13px; width:13px; margin:5px;"></i>Hunger: 100
-            <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px">
-              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+            <h5><?=$petName?></h5>
+            <img src="../assets/images/level.png" style="height:13px; width:13px; margin:5px;"></i>Level: <?=$petLevel?><br>
+            <img src="../assets/images/health.png" style="height:13px; width:13px; margin:5px;">Health: <?=$petHealth?><br>
+            <img src="../assets/images/hunger.png" style="height:13px; width:13px; margin:5px;"></i>Hunger: <?=$petHunger?><br>
           </div>
           <div class="card-block px-3 col-4">
             <img src="../assets/images/coin.png" style="height:19px; width:19px; margin:10px;">87.30
@@ -67,7 +80,7 @@
             <span style="margin-left: 10px; color:white;">Inventory</span>
           </div>
           <div class="pet">
-            <img src="../assets/pets/raccoon.png" style="width: auto; height: 250px;">
+            <img src="<?=$petImage?>" style="width: auto; height: 250px;">
           </div>
         </div>
       </div>

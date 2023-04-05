@@ -72,33 +72,43 @@
 
         public function loginUser($userEmail, $userPwd) {
             $sql = "SELECT * FROM user WHERE userEmail = :email AND userPwd = :pwd";
-
+        
             $db = new Database();
-
+        
             $stmt = $db->connect()->prepare($sql);
-
+        
             $stmt->bindParam(':email', $userEmail);
             $stmt->bindParam(':pwd', $userPwd);
-
+        
             $stmt->execute(array(
                 ':email' => $userEmail,
                 ':pwd' => $userPwd
             ));
-
+        
             if ($stmt->rowCount()>0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    session_start();
                     $_SESSION['userID'] = $row['userID'];
                     $_SESSION['userName'] = $row['userName'];
-                    $_SESSION['userEmail'] = $row['userEmail'];
-
-                    echo 
-                    "<script>alert('You are now logged in'); 
-                    window.location.href='../front/dashboard.front.php'</script>";
+                    
+                    $petInventorySql = "SELECT * FROM petInventory WHERE userID = :userID";
+                    $petInventoryStmt = $db->connect()->prepare($petInventorySql);
+                    $petInventoryStmt->bindParam(':userID', $_SESSION['userID']);
+                    $petInventoryStmt->execute();
+                    
+                    if ($petInventoryStmt->rowCount()>0) {
+                        // Redirect to dashboard
+                        echo "<script>alert('You are now logged in'); 
+                              window.location.href='../front/dashboard.front.php'</script>";
+                    } else {
+                        // Redirect to welcome page
+                        echo "<script>alert('You are now logged in'); 
+                              window.location.href='../front/welcome.front.php'</script>";
+                    }
                 }
             } else {
-                echo 
-                "<script>alert('No account has been found'); 
-                window.location.href='../front/login.front.php'</script>";
+                echo "<script>alert('No account has been found'); 
+                      window.location.href='../front/login.front.php'</script>";
             }
         }
         
@@ -121,4 +131,3 @@
             return $result['userID'];
         }
     }
-?>

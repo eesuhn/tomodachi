@@ -16,7 +16,6 @@ INSERT INTO `food` (`foodName`, `foodDesc`, `foodPrice`, `foodHunger`, `foodXP`,
 -- Dump data for table `pet_rarity`
 INSERT INTO `pet_rarity` (`petRarity`, `petHealthIn`, `petHungerIn`) VALUES 
 ('Common', '100', '100'),
-('Uncommon', '150', '150'),
 ('Rare', '200', '200'),
 ('Legendary', '250', '250');
 
@@ -25,7 +24,7 @@ INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES
 ('Bird', 'Common', 
 'This avian is a real chatterbox! They love showing off their beautiful feathers and mimicking human speech. With their sweet singing and playful antics, they\'re sure to brighten up your day.', 
 '../assets/pets/bird.png'), 
-('Capybara', 'Uncommon', 
+('Capybara', 'Rare', 
 'This gentle giant is the king of chill! They love lounging in the sun and taking dips in the water. With their large size and friendly nature, they\'re sure to make a unique and lovable addition to your pet collection.', 
 '../assets/pets/capybara.png'), 
 ('Cat', 'Common', 

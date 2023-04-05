@@ -8,7 +8,16 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
 
+  include '../back/connection.back.php';
+  include '../back/pet.back.php';
+
   $userID = $_SESSION['userID'];
+
+  $petData = new Pet();
+
+  $petData_legendary = $petData->showPetDetails_rarity('Legendary');
+  $petData_rare = $petData->showPetDetails_rarity('Rare');
+  $petData_common = $petData->showPetDetails_rarity('Common');
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +95,7 @@
         <div class="col-md-4 d-flex justify-content-center py-2 px-2">
           <div>
             <a href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
-              <img src="../assets/images/wallpapershop.png" width="150">
+              <img src="../assets/images/shop.png" width="150">
               <div style="text-align:center;">Wallpaper Shop</div>
             </a>
           </div>
@@ -94,7 +103,6 @@
 
         <div style="padding:50px;"></div>
     </div>
-
 
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -107,7 +115,7 @@
             Foods
           </div>
           <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-dismiss="#registerHotel">Close</button>
+            <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -133,6 +141,10 @@
               <div class="col-12 d-flex justify-content-center">
                 <h1>100<img src="../assets/images/coin.png" width="15"></h1>
               </div>
+
+              <div class="col-12 d-flex justify-content-center">
+                <button type="button" style="width: 15%;" class="btn btn-primary">Go!</button>
+              </div>
             </div>
           </div>
 
@@ -145,15 +157,91 @@
     </div>
 
     <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
-          <div class="modal-body">
+          <div class="modal-body" style="color: black">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                  <img src="../assets/images/legendary.png" width="150">
+              </div>
+
+              <?php foreach ($petData_legendary as $pet_legendary) { ?>
+                <div class="col-12 d-flex justify-content-center">
+                    <img src="<?= $pet_legendary['petImg'] ?>" width="150">
+                </div>
+
+                <div class="col-12 d-flex justify-content-center">
+                    <h2><?= $pet_legendary['petName'] ?></h2>
+                </div>
+
+                <div class="col-3"></div>
+                <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+                    <h6><?= $pet_legendary['petDesc'] ?></h6>
+                </div>
+
+                <div class="col-3"></div>
+              <?php } ?>
+            </div>
+
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <img src="../assets/images/rare.png" width="150">
+              </div>
+
+              <?php foreach ($petData_rare as $pet_rare) { ?>
+                <div class="col-12 d-flex justify-content-center">
+                  <img src="<?= $pet_rare['petImg'] ?>" width="150">
+                </div>
+
+                <div class="col-12 d-flex justify-content-center">
+                  <h2><?= $pet_rare['petName'] ?></h2>
+                </div>
+
+                <div class="col-3"></div>
+                <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+                  <h6><?= $pet_rare['petDesc'] ?></h6>
+                </div>
+
+                <div class="col-3"></div>
+              <?php } ?>
+            </div>
+
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <img src="../assets/images/common.png" width="150">
+              </div>
+
+              <?php foreach ($petData_common as $pet_common) { ?>
+                <div class="col-12 d-flex justify-content-center">
+                  <img src="<?= $pet_common['petImg'] ?>" width="150">
+                </div>
+
+                <div class="col-12 d-flex justify-content-center">
+                  <h2><?= $pet_common['petName'] ?></h2>
+                </div>
+
+                <div class="col-3"></div>
+                <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+                  <h6><?= $pet_common['petDesc'] ?></h6>
+                </div>
+
+                <div class="col-3"></div>
+              <?php } ?>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-2"></div>
+                <div class="col-8 d-flex justify-content-center">
+                    <p class="text-muted" style="text-align: center;">Looking for that special pet to add to your collection? Take a chance and try our gacha system, where legendaries appear with a 5% chance, rares with a 35% chance, and commons with a 60% chance. With a variety of pets to collect, each with their own unique rarity and value, you'll never know what you might get! So why not try your luck today and see if you can obtain the pet of your dreams?</p>
+                </div>
+                <div class="col-2"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#petShop" data-bs-toggle="modal">Back</button>
+              <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-target="#petShop" data-bs-toggle="modal">Back</button>
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
       </div>
     </div>
 

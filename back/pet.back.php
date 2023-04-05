@@ -71,5 +71,19 @@
         public function equipPet() {
 
         }
+
+        // show all pets based on pet rarity
+        public function showPetDetails_rarity($petRarity) {
+            $sql = "SELECT petName, petDesc, petImg from pet WHERE petRarity = :petRarity";
+            $db = new Database();
+
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->bindParam(':petRarity', $petRarity);
+
+            $stmt->execute();
+            $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $pets;
+        }
     }
 ?>

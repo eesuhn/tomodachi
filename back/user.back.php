@@ -34,7 +34,9 @@
                 "<script>alert('Email is already in use'); 
                 window.location.href='../front/login.front.php';</script>";
             } else {
-                $this->registerUser();
+
+                // return userID based on userEmail
+                return $this->registerUser();
             }
         }
 
@@ -54,15 +56,19 @@
                     ':value1' => $this->userName,
                     ':value2' => $this->userEmail,
                     ':value3' => $this->userPwd))) {
+
                         echo 
                         "<script>alert('Account Created'); 
                         window.location.href='../front/login.front.php';</script>";
+
+                        return $this->getUserID($this->userEmail);
                 } else {
+
+                    // not reachable because of the checkEmail() function
                     $error = $stmt->errorInfo();
                     echo "Error: " . $error[2];
                 }
         }
-            
 
         public function loginUser($userEmail, $userPwd) {
             $sql = "SELECT * FROM user WHERE userEmail = :email AND userPwd = :pwd";
@@ -94,6 +100,25 @@
                 "<script>alert('No account has been found'); 
                 window.location.href='../front/login.front.php'</script>";
             }
+        }
+        
+        // get userID based on userEmail
+        public function getUserID($userEmail) {
+            $sql = "SELECT userID FROM user WHERE userEmail = :email";
+
+            $db = new Database();
+
+            $stmt = $db->connect()->prepare($sql);
+
+            $stmt->bindParam(':email', $userEmail);
+
+            $stmt->execute(array(
+                ':email' => $userEmail
+            ));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['userID'];
         }
     }
 ?>

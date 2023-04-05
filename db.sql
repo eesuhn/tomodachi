@@ -56,7 +56,8 @@ CREATE TABLE `pet_inventory` (
     `petHealthTol` int(11) NOT NULL,
     `petHungerTol` int(11) NOT NULL,
     `petHealthCur` int(11) NOT NULL,
-    `petHungerCur` int(11) NOT NULL
+    `petHungerCur` int(11) NOT NULL,
+    `petStatus` varchar(255) NOT NULL DEFAULT 'Kept'
 );
 
 

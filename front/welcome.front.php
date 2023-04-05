@@ -7,7 +7,7 @@
   $userID = $_SESSION['userID'];
 
   include '../back/connection.back.php';
-  include '../back/pets.back.php';
+  include '../back/pet.back.php';
 
   $pet = new Pets();
 ?>

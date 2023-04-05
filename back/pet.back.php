@@ -20,7 +20,7 @@
                                 <br>
                                 <strong>' . $row["petName"] . '</strong>
                                 <p>' . $row["petDesc"] . '</p>
-                                <a href="../include/petselection.inc.php?petID=' . $row["petID"] . '" class="btn btn-light">Select</a>
+                                <a href="../include/pet_selection.inc.php?petID=' . $row["petID"] . '" class="btn btn-light">Select</a>
                             </div>
                         </div>';
                 }

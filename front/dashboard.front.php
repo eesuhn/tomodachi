@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 $userID = $_SESSION['userID'];
 
 include '../back/connection.back.php';
-include '../back/pets.back.php';
+include '../back/pet.back.php';
 $petData = new Pets();
 // Call the function and store the returned pet data in $petData
 $pet = $petData->getEquippedPet($userID);

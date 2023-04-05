@@ -39,7 +39,7 @@ $userID = $_SESSION['userID'];
 <body style="background-image:url('../assets/images/bg2.png');  background-size: cover; background-repeat: no-repeat; background-position: center;background-attachment: fixed;color:#fff;">
     <div class="content vh-100">
         <div class="row">
-            <div class="col-2">
+            <div class="col-2 py-4 px-4">
                 <img src="../assets/images/wizard.png" style="margin: 10px;" width="120">
             </div>
             <div class="col-9"></div>
@@ -80,58 +80,61 @@ $userID = $_SESSION['userID'];
     </div>
 
 
-    <div class="modal fade modal-lg" id="foodShop" aria-hidden="true" aria-labelledby="foodShop" tabindex="-1" style="color:black">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Foods</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Foods
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" name="submit" class="btn btn-dark">Done</button>
-                </div>
-                </form>
+    <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="foodShopTitle">Purchase Foods</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+                Foods
             </div>
-        </div>
-    </div>
-    <div class="modal fade modal-lg" id="petShop" aria-hidden="true" aria-labelledby="petShop" tabindex="-1" style="color:black">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="foodShopTitle">Pet Scout</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="color:black">
-                    Pets
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" name="submit" class="btn btn-dark">Done</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade modal-lg" id="wallpaperShop" aria-hidden="true" aria-labelledby="foodShop" tabindex="-1" style="color:black">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Wallpapers</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="color:black">
-                    Wallpaper
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" name="submit" class="btn btn-dark">Done</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-bs-dismiss="#registerHotel">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 
+<div class="modal fade" id="petShop" aria-hidden="true" aria-labelledby="petShopTitle" tabindex="-1" style="color:black">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="petShopTitle">Pet Scout</h1>
+			</div>
+			<div class="modal-body">
+            <div class="text-muted">Partner up with new pets from different rarities using your earned coins!</div>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-6 d-flex justify-content-center">
+                        <img src="../assets/images/petscout.png" width="150">
+                        </div>
+                        <div class="col-3"></div>
+                        <div class="col-12 d-flex justify-content-center">
+                        <h1>100<img src="../assets/images/coin.png" width="15"></h1>
+                        </div>
+                     </div>
+            </div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-bs-target="#offeringRates" data-bs-toggle="modal">Offering Rates</button>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body">
+            </div>
+            <div class="modal-footer">
+				<button class="btn btn-primary" data-bs-target="#petShop" data-bs-toggle="modal">Back</button>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+			</div>
+        </div>
+    </div>
+</div>
     <script src="assets/js/bootstrap-js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>

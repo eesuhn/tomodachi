@@ -88,7 +88,7 @@ $petHunger = $pet['petHunger'];
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" 
-            aria-controls="nav-home" aria-selected="true"><img src="../assets/images/habits.png" style="height:19px; width:19px; margin:5px;">Habits</button>
+            aria-controls="nav-home" aria-selected="true"><img src="../assets/images/habit.png" style="height:19px; width:19px; margin:5px;">Habits</button>
             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" 
             aria-controls="nav-profile" aria-selected="false"><img src="../assets/images/todo.png" style="height:19px; width:19px; margin:5px;">To-do</button>
           </div>

@@ -5,6 +5,7 @@
   transform: translate(-50%, -50%);
   animation: moveUpDown 3s infinite ease-in-out;
 }
+
 @keyframes moveUpDown {
   0% {
     transform: translate(-50%, -50%);

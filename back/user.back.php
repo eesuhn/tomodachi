@@ -91,7 +91,7 @@
                     $_SESSION['userID'] = $row['userID'];
                     $_SESSION['userName'] = $row['userName'];
                     
-                    $petInventorySql = "SELECT * FROM petInventory WHERE userID = :userID";
+                    $petInventorySql = "SELECT * FROM pet_inventory WHERE userID = :userID";
                     $petInventoryStmt = $db->connect()->prepare($petInventorySql);
                     $petInventoryStmt->bindParam(':userID', $_SESSION['userID']);
                     $petInventoryStmt->execute();
@@ -131,3 +131,4 @@
             return $result['userID'];
         }
     }
+?>

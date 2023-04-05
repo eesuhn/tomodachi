@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/petanimation.css">
+    <link rel="stylesheet" href="../assets/css/pet_animation.css">
   </head>
 
 

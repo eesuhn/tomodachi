@@ -9,7 +9,7 @@
   include '../back/connection.back.php';
   include '../back/pet.back.php';
 
-  $pet = new Pets();
+  $pet = new Pet();
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +73,7 @@
         <h5>Choose carefully, you can only select one of them, however, don't worry as you can always collect more companions as you progress!</h5>
       </div>
 
-      <div class="col-3">=</div>
+      <div class="col-3"></div>
       <?php
         $pet->startingPet();
       ?>

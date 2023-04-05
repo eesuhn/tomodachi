@@ -10,6 +10,6 @@
     include '../back/connection.back.php';
     include '../back/pet.back.php';
 
-    $pet = new Pets();
+    $pet = new Pet();
     $pet->ownPet($userID, $petID);
 ?>

@@ -1,5 +1,5 @@
 <?php
-    class Pets {
+    class Pet {
 
         public function startingPet() {
             $sql = "SELECT * FROM pet WHERE petRarity = 'Common';";
@@ -56,8 +56,8 @@
         public function getEquippedPet($userID) {
             $sql = "SELECT pet.*, pet_inventory.* 
                     FROM pet
-                    INNER JOIN pey_inventory ON pet.petID = pey_inventory.petID
-                    WHERE pey_inventory.userID = ? AND pey_inventory.petStatus = 'Equipped'";
+                    INNER JOIN pet_inventory ON pet.petID = pet_inventory.petID
+                    WHERE pet_inventory.userID = ? AND pet_inventory.petStatus = 'Equipped'";
 
             $db = new Database();
             $stmt = $db->connect()->prepare($sql);
@@ -68,7 +68,7 @@
             return $pet;
         }
 
-        public function equipPets() {
+        public function equipPet() {
 
         }
     }

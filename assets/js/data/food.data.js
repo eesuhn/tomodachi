@@ -18,13 +18,14 @@ function refreshFood() {
 }
 
 // decrease food by one
-function decreaseFood_one(foodInID) {
+function decreaseFood_one(userID, foodID) {
 
     $.ajax({
         url: "../back/data/food.data.php?action=decreaseFood_one",
         type: "GET",
         data: {
-            foodInID: foodInID
+            userID: userID,
+            foodID: foodID
         }
     });
     refreshFood();

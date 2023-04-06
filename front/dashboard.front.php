@@ -19,7 +19,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../assets/js/food.js"></script>
+    <script src="../assets/js/data/food.data.js"></script>
   </head>
 
   <body style="background-color:#f1f1f1;">

@@ -145,18 +145,19 @@
         }
 
         // decrease foodNum by 1
-        public function decreaseFood_one ($foodInID) {
-
-            $sql = "UPDATE food_inventory SET foodNum = foodNum - 1 WHERE foodInID = :value1";
+        public function decreaseFood_one ($userID, $foodID) {
+            $sql = "UPDATE food_inventory SET foodNum = foodNum - 1 WHERE userID = :value1 AND foodID = :value2";
 
             $db = new Database();
 
             $stmt = $db->connect()->prepare($sql);
 
-            $stmt->bindParam(':value1', $foodInID);
+            $stmt->bindParam(':value1', $userID);
+            $stmt->bindParam(':value2', $foodID);
 
             $stmt->execute(array(
-                    ':value1' => $foodInID));
+                    ':value1' => $userID,
+                    ':value2' => $foodID));
         }
     }
 ?>

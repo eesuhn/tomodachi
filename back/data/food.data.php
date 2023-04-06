@@ -19,7 +19,7 @@
         join with foodID from food and food_inventory table
     */
     $sql = 
-    "SELECT food.foodName, food.foodImg, food_inventory.foodInID, food_inventory.foodNum FROM food 
+    "SELECT food.foodName, food.foodImg, food_inventory.userID, food_inventory.foodID, food_inventory.foodNum FROM food 
     INNER JOIN food_inventory ON food.foodID = food_inventory.foodID WHERE food_inventory.userID = :userID";
 
     $stmt = $db->connect()->prepare($sql);
@@ -30,37 +30,39 @@
             ':userID' => $userID));
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo 
-        "<div class='col-3 col-lg-3'>
-            <a href='#food' data-bs-target='#food<?=" 
-            . $row['foodInID'] .
-            "?>' data-bs-toggle='modal' style='text-decoration: none; color: white'>
-            <div class='count-data text-center'>
-                <img src='"
-                .$row['foodImg'] . 
-                "' width='30px'>
-                <p class='m-0px font-w-300'>"
-                .$row['foodName']. 
-                " x"
-                .$row['foodNum'] .
-                "</p>
-            </div>
-            </a>
-        </div>
-        <div class='modal fade' id='food<?=" .$row['foodInID']. "?>' aria-hidden='true' aria-labelledby='foodTitle' tabindex='-1' style='color:black'>
-            <div class='modal-dialog modal-dialog-centered'>
-                <div class='modal-content'>
-                <div class='modal-header'>
-                    <h1 class='modal-title fs-5' id='foodTitle'>Feed ".$row['foodName']."?</h1>
+        if ($row['foodNum'] != 0) {
+            echo 
+            "<div class='col-3 col-lg-3'>
+                <a href='#food' data-bs-target='#food<?=". $row['foodID'] ."?>' 
+                data-bs-toggle='modal' style='text-decoration: none; color: white'>
+                <div class='count-data text-center'>
+                    <img src='"
+                    .$row['foodImg'] . 
+                    "' width='30px'>
+                    <p class='m-0px font-w-300'>"
+                    .$row['foodName']. 
+                    " x"
+                    .$row['foodNum'] .
+                    "</p>
                 </div>
+                </a>
+            </div>
 
-                <div class='modal-footer'>
-                    <button class='btn btn-primary' onclick='decreaseFood_one(".$row['foodInID'].")' data-bs-dismiss='modal'>Yes</button>
-                    <button type='button' class='btn btn-dark' data-bs-dismiss='modal'>No</button>
+            <div class='modal fade' id='food<?=" .$row['foodID']. "?>' aria-hidden='true' aria-labelledby='foodTitle' tabindex='-1' style='color:black'>
+                <div class='modal-dialog modal-dialog-centered'>
+                    <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h1 class='modal-title fs-5' id='foodTitle'>Feed ".$row['foodName']."?</h1>
+                    </div>
+
+                    <div class='modal-footer'>
+                        <button class='btn btn-primary' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].")' data-bs-dismiss='modal'>Yes</button>
+                        <button type='button' class='btn btn-dark' data-bs-dismiss='modal'>No</button>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-        </div>";
+            </div>";
+        }
     }
 
     if (isset($_GET['action'])) {
@@ -76,10 +78,11 @@
     }
 
     function decreaseFood_one () {
-        $foodInID = $_GET['foodInID'];
+        $userID = $_GET['userID'];
+        $foodID = $_GET['foodID'];
 
         $foodData = new Food();
 
-        $foodData->decreaseFood_one($foodInID);
+        $foodData->decreaseFood_one($userID, $foodID);
     }
 ?>

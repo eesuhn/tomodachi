@@ -13,7 +13,7 @@
 
     if ($userID != null) {
         $currency = new Currency();
-        $currency->setCurrencyDetails($userID);
+        $currency->setCurrencyDetails_in($userID);
         $currency->registerCurrency();
     }
 ?>

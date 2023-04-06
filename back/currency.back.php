@@ -3,13 +3,8 @@
         private $userID;
         private $currencyNum;
 
-        public function __construct() {
-            $this->userID = "";
-            $this->currencyNum = "";
-        }
-
         // initial currency amount
-        public function setCurrencyDetails ($userID) {
+        public function setCurrencyDetails_in ($userID) {
             $this->userID = $userID;
             $this->currencyNum = 0;
         }
@@ -31,17 +26,17 @@
         }
 
         // get currencyNum and store it in $this->currencyNum
-        public function getCurrency () {
+        public function getCurrency ($userID) {
             $sql = "SELECT currencyNum FROM currency WHERE userID = :value1";
 
             $db = new Database();
 
             $stmt = $db->connect()->prepare($sql);
 
-            $stmt->bindParam(':value1', $this->userID);
+            $stmt->bindParam(':value1', $userID);
 
             $stmt->execute(array(
-                    ':value1' => $this->userID));
+                    ':value1' => $userID));
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -50,7 +45,7 @@
             return $this->currencyNum;
         }
 
-        public function increaseCurrency ($currencyNum) {
+        public function increaseCurrency ($currencyNum, $userID) {
             $sql = "UPDATE currency SET currencyNum = currencyNum + :value1 WHERE userID = :value2";
 
             $db = new Database();
@@ -58,16 +53,17 @@
             $stmt = $db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $currencyNum);
-            $stmt->bindParam(':value2', $this->userID);
+            $stmt->bindParam(':value2', $userID);
 
             $stmt->execute(array(
                     ':value1' => $currencyNum,
-                    ':value2' => $this->userID));
+                    ':value2' => $userID));
 
-            $this->getCurrency();
+            // return currencyNum after increasing
+            $this->getCurrency($userID);
         }
 
-        public function decreaseCurrency ($currencyNum) {
+        public function decreaseCurrency ($currencyNum, $userID) {
             $sql = "UPDATE currency SET currencyNum = currencyNum - :value1 WHERE userID = :value2";
 
             $db = new Database();
@@ -75,13 +71,14 @@
             $stmt = $db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $currencyNum);
-            $stmt->bindParam(':value2', $this->userID);
+            $stmt->bindParam(':value2', $userID);
 
             $stmt->execute(array(
                     ':value1' => $currencyNum,
-                    ':value2' => $this->userID));
+                    ':value2' => $userID));
 
-            $this->getCurrency();
+            // return currencyNum after decreasing
+            $this->getCurrency($userID);
         }
     }
 ?>

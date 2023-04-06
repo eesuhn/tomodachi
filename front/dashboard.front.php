@@ -19,7 +19,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="../assets/js/data/food.data.js"></script>
+    <script src="../assets/js/data/dashboard.data.js"></script>
   </head>
 
   <body style="background-color:#f1f1f1;">
@@ -52,7 +54,9 @@
               <img src="../assets/images/hunger.png" style="height: 13px; width: 13px; margin: 5px;"></i>Hunger: <?=$petHungerTol?><br>
             </div>
             <div class="card-block px-3 col-4">
-              <img src="../assets/images/coin.png" style="height: 19px; width: 19px; margin: 10px;"><?=$userCurrency;?>
+              <div id="currencyData">
+                <!-- display currency with AJAX -->
+              </div>
               <h4><?=date("l, j F Y");?></h4>
               <p>0 Tasks Today</p>
             </div>

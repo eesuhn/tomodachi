@@ -129,38 +129,35 @@
             return $result['foodNum'];
         }
 
-        public function increaseFood ($foodID, $userID, $foodNum) {
-            $sql = "UPDATE food_inventory SET foodNum = foodNum + :value1 WHERE foodID = :value2 AND userID = :value3";
+        public function increaseFood ($foodInID, $foodNum) {
+            $sql = "UPDATE food_inventory SET foodNum = foodNum + :value1 WHERE foodInID = :value2";
 
             $db = new Database();
 
             $stmt = $db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodNum);
-            $stmt->bindParam(':value2', $foodID);
-            $stmt->bindParam(':value3', $userID);
+            $stmt->bindParam(':value2', $foodInID);
 
             $stmt->execute(array(
                     ':value1' => $foodNum,
-                    ':value2' => $foodID,
-                    ':value3' => $userID));
+                    ':value2' => $foodInID));
         }
 
-        public function decreaseFood ($foodID, $userID, $foodNum) {
-            $sql = "UPDATE food_inventory SET foodNum = foodNum - :value1 WHERE foodID = :value2 AND userID = :value3";
+        // decrease foodNum by 1
+        public function decreaseFood_one ($userID, $foodID) {
+            $sql = "UPDATE food_inventory SET foodNum = foodNum - 1 WHERE userID = :value1 AND foodID = :value2";
 
             $db = new Database();
 
             $stmt = $db->connect()->prepare($sql);
 
-            $stmt->bindParam(':value1', $foodNum);
+            $stmt->bindParam(':value1', $userID);
             $stmt->bindParam(':value2', $foodID);
-            $stmt->bindParam(':value3', $userID);
 
             $stmt->execute(array(
-                    ':value1' => $foodNum,
-                    ':value2' => $foodID,
-                    ':value3' => $userID));
+                    ':value1' => $userID,
+                    ':value2' => $foodID));
         }
     }
 ?>

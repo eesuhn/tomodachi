@@ -72,11 +72,17 @@ ALTER TABLE `currency`
 ALTER TABLE `food`
     ADD PRIMARY KEY (`foodID`);
 
+ALTER TABLE `food_inventory`
+    ADD PRIMARY KEY (`userID`,`foodID`);
+
 ALTER TABLE `pet`
     ADD PRIMARY KEY (`petID`);
 
 ALTER TABLE `pet_rarity`
     ADD PRIMARY KEY (`petRarity`);
+
+ALTER TABLE `pet_inventory`
+    ADD PRIMARY KEY (`userID`,`petID`);
 
 
 
@@ -103,9 +109,9 @@ ALTER TABLE `food_inventory`
     ADD CONSTRAINT `food_inventory_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
     ADD CONSTRAINT `food_inventory_ibfk_2` FOREIGN KEY (`foodID`) REFERENCES `food` (`foodID`);
 
+ALTER TABLE `pet`
+    ADD CONSTRAINT `pet_ibfk_1` FOREIGN KEY (`petRarity`) REFERENCES `pet_rarity` (`petRarity`);
+
 ALTER TABLE `pet_inventory`
     ADD CONSTRAINT `pet_inventory_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
     ADD CONSTRAINT `pet_inventory_ibfk_2` FOREIGN KEY (`petID`) REFERENCES `pet` (`petID`);
-
-ALTER TABLE `pet`
-    ADD CONSTRAINT `pet_ibfk_1` FOREIGN KEY (`petRarity`) REFERENCES `pet_rarity` (`petRarity`);

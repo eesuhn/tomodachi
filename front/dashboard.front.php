@@ -1,31 +1,7 @@
 <?php
-  // start session if not started
-  if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-  }
-
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-
-  $userID = $_SESSION['userID'];
-
-  include '../back/connection.back.php';
-  include '../back/pet.back.php';
-  $petData = new Pet();
-
-  // call the function and store the returned pet data in $petData
-  $pet = $petData->getEquippedPet($userID);
-
-  // retrieve and store the individual values from $petData
-  $petName = $pet['petName'];
-  $petImg = $pet['petImg'];
-  $petHealthTol = $pet['petHealthTol'];
-  $petHungerTol = $pet['petHungerTol'];
-  $petXP = $pet['petXP'];
-  $petLevel = $pet['petLevel'];
-
+  include '../include/dashboard.inc.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,6 +18,10 @@
     <link rel="stylesheet" href="../assets/css/pet_animation.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="../assets/js/data/food.data.js"></script>
+    <script src="../assets/js/data/dashboard.data.js"></script>
   </head>
 
   <body style="background-color:#f1f1f1;">
@@ -74,8 +54,10 @@
               <img src="../assets/images/hunger.png" style="height: 13px; width: 13px; margin: 5px;"></i>Hunger: <?=$petHungerTol?><br>
             </div>
             <div class="card-block px-3 col-4">
-              <img src="../assets/images/coin.png" style="height: 19px; width: 19px; margin: 10px;">87.30
-              <h4>Friday, 31 March 2023</h4>
+              <div id="currencyData">
+                <!-- display currency with AJAX -->
+              </div>
+              <h4><?=date("l, j F Y");?></h4>
               <p>0 Tasks Today</p>
             </div>
           </div>
@@ -147,34 +129,8 @@
           <div class="row no-gutters">
             <div class="col-md-12"></div>
             <div class="counter">
-              <div class="row">
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/strawberry.png" width="30px">
-                    <p class="m-0px font-w-300">Strawberry x0</p>
-                  </div>
-                </div>
-
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/donut.png" width="30px">
-                    <p class="m-0px font-w-300">Donut x0</p>
-                  </div>
-                </div>
-
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/squid.png"width="30px">
-                    <p class="m-0px font-w-300">Squid x0</p>
-                  </div>
-                </div>
-
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/ramen.png" width="30px">
-                    <p class="m-0px font-w-300">Ramen x0</p>
-                  </div>
-                </div>
+              <div class="row" id="foodCounter">
+                <!-- display food with AJAX -->
               </div>
             </div>
           </div>

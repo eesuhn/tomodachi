@@ -3,12 +3,6 @@
         private $userName;
         private $userEmail;
         private $userPwd;
-
-        public function __construct() {
-            $this->userName = "";
-            $this->userEmail = "";
-            $this->userPwd = "";
-        }
         
         public function setAccountDetails($userName, $userEmail, $userPwd) {
             $this->userName = $userName;
@@ -33,6 +27,8 @@
                 echo 
                 "<script>alert('Email is already in use'); 
                 window.location.href='../front/login.front.php';</script>";
+
+                return null;
             } else {
 
                 // return userID based on userEmail

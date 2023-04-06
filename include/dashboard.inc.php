@@ -13,8 +13,11 @@
   include '../back/connection.back.php';
   include '../back/pet.back.php';
   include '../back/currency.back.php';
-  $petData = new Pet();
+  include '../back/food.back.php';
 
+  $petData = new Pet();
+  $currencyData = new Currency();
+  
   // call the function and store the returned pet data in $petData
   $pet = $petData->getEquippedPet($userID);
 
@@ -27,8 +30,6 @@
   $petLevel = $pet['petLevel'];
 
   date_default_timezone_set('Asia/Kuala_Lumpur');
-
-  $currencyData = new Currency();
 
   $userCurrency = $currencyData->getCurrency($userID);
 ?>

@@ -42,3 +42,10 @@ INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES
 ('Raccoon', 'Rare', 
 'This mischievous critter is always up to something! Whether they\'re raiding your garbage can or snuggling up in a cozy spot, they\'re sure to keep you entertained. With their masked face and bushy tail, they\'re the perfect pet for anyone.', 
 '../assets/pets/raccoon.png');
+
+-- Dump data for table `food_inventory`
+INSERT INTO `food_inventory` (`userID`, `foodID`, `foodNum`) VALUES 
+('1', '1', '2'), 
+('1', '2', '3'), 
+('1', '3', '4'),
+('1', '4', '5');

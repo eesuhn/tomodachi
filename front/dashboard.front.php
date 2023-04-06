@@ -1,6 +1,7 @@
 <?php
   include '../include/dashboard.inc.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -17,6 +18,8 @@
     <link rel="stylesheet" href="../assets/css/pet_animation.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../assets/js/food.js"></script>
   </head>
 
   <body style="background-color:#f1f1f1;">
@@ -122,34 +125,8 @@
           <div class="row no-gutters">
             <div class="col-md-12"></div>
             <div class="counter">
-              <div class="row">
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/strawberry.png" width="30px">
-                    <p class="m-0px font-w-300">Strawberry x0</p>
-                  </div>
-                </div>
-
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/donut.png" width="30px">
-                    <p class="m-0px font-w-300">Donut x0</p>
-                  </div>
-                </div>
-
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/squid.png"width="30px">
-                    <p class="m-0px font-w-300">Squid x0</p>
-                  </div>
-                </div>
-
-                <div class="col-3 col-lg-3">
-                  <div class="count-data text-center">
-                    <img src="../assets/foods/ramen.png" width="30px">
-                    <p class="m-0px font-w-300">Ramen x0</p>
-                  </div>
-                </div>
+              <div class="row" id="foodCounter">
+                <!-- display food with AJAX -->
               </div>
             </div>
           </div>

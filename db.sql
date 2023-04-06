@@ -26,6 +26,7 @@ CREATE TABLE `food` (
 
 -- food_inventory table
 CREATE TABLE `food_inventory` (
+    `foodInID` int(11) NOT NULL,
     `userID` int(11) NOT NULL,
     `foodID` int(11) NOT NULL,
     `foodNum` int(11) NOT NULL
@@ -72,6 +73,9 @@ ALTER TABLE `currency`
 ALTER TABLE `food`
     ADD PRIMARY KEY (`foodID`);
 
+ALTER TABLE `food_inventory`
+    ADD PRIMARY KEY (`foodInID`);
+
 ALTER TABLE `pet`
     ADD PRIMARY KEY (`petID`);
 
@@ -89,6 +93,9 @@ ALTER TABLE `currency`
 
 ALTER TABLE `food`
     MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `food_inventory`
+    MODIFY `foodInID` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `pet`
     MODIFY `petID` int(11) NOT NULL AUTO_INCREMENT;

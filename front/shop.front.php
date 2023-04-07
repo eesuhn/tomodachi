@@ -17,17 +17,8 @@ include '../include/shop.inc.php';
   <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
-  <link rel="stylesheet" href="../assets/css/pet_animation.css">
-  <link rel="stylesheet" href="../assets/css/shop.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <style>
-    .shopItems:hover {
-      transform: scale(1.1);
-    }
-
-  </style>
   
 </head>
 

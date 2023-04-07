@@ -1,6 +1,6 @@
 <?php
 
-include '../include/dashboard.inc.php';
+include '../include/shop.inc.php';
 
 ?>
 

@@ -71,75 +71,111 @@
         public function equipPet() {
 
         }
-            public function petScout($userID) {
-                // Set rarity chances
-                $chances = [
-                    "Legendary" => 5,
-                    "Rare" => 35,
-                    "Common" => 60
-                ];
+
+        public function checkOwnedPets($userID) {
+            $db = new Database();
+            
+            // Check if the user owns all available pets
+            $sql = "SELECT COUNT(*) as total FROM `pet` WHERE `petID` NOT IN (SELECT `petID` FROM `pet_inventory` WHERE `userID` = ?)";
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->execute([$userID]);
+            $result = $stmt->fetch();
         
-                // Determine the pet rarity
-                $rand = mt_rand(1, 100);
-                $rarity = null;
+            $allPetsOwned = ($result["total"] == 0);
         
-                if ($rand <= $chances["Legendary"]) {
-                    $rarity = "Legendary";
-                } elseif ($rand <= $chances["Legendary"] + $chances["Rare"]) {
+            return $allPetsOwned;
+        }
+        
+        public function petScout($userID) {
+            
+            // Set rarity chances
+            $chances = [
+                "Legendary" => 5,
+                "Rare" => 35,
+                "Common" => 60
+            ];
+    
+            // Determine the pet rarity
+            $rand = mt_rand(1, 100);
+            $rarity = null;
+    
+            if ($rand <= $chances["Legendary"]) {
+                $rarity = "Legendary";
+            } elseif ($rand <= $chances["Legendary"] + $chances["Rare"]) {
+                $rarity = "Rare";
+            } else {
+                $rarity = "Common";
+            }
+    
+            $db = new Database();
+            $pet = $this->getAvailablePet($rarity, $userID, $db);
+    
+            // Try the next rarity tier if no available pets in the current tier
+            if (!$pet) {
+                if ($rarity === "Legendary") {
                     $rarity = "Rare";
-                } else {
+                } elseif ($rarity === "Rare") {
                     $rarity = "Common";
-                }
-        
-                $db = new Database();
-                $pet = $this->getAvailablePet($rarity, $userID, $db);
-        
-                // Try the next rarity tier if no available pets in the current tier
-                if (!$pet) {
-                    if ($rarity === "Legendary") {
-                        $rarity = "Rare";
-                    } elseif ($rarity === "Rare") {
-                        $rarity = "Common";
-                    } else {
-                        // No pets available in any tier
-                        return false;
-                    }
-                    $pet = $this->getAvailablePet($rarity, $userID, $db);
-                }
-        
-                if (!$pet) {
+                } else {
                     // No pets available in any tier
                     return false;
                 }
-        
-                // Get pet rarity attributes
-                $sql = "SELECT * FROM `pet_rarity` WHERE `petRarity` = ?";
-                $stmt = $db->connect()->prepare($sql);
-                $stmt->execute([$rarity]);
-                $pet_rarity = $stmt->fetch();
-        
-                // Insert the new pet into the pet_inventory table
-                $sql = "INSERT INTO `pet_inventory` (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHungerTol`, `petHealthCur`, `petHungerCur`, `petStatus`)
-                          VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Kept')";
-                $stmt = $db->connect()->prepare($sql);
-                $stmt->execute([$userID, $pet['petID'], $pet_rarity['petHealthIn'], $pet_rarity['petHungerIn'], $pet_rarity['petHealthIn'], $pet_rarity['petHungerIn']]);
-        
-                return $pet;
+                $pet = $this->getAvailablePet($rarity, $userID, $db);
             }
-        
-            private function getAvailablePet($rarity, $userID, $db) {
+    
+            if (!$pet) {
+                // No pets available in any tier
+                return false;
+            }
+    
+            // Get pet rarity attributes
+            $sql = "SELECT * FROM `pet_rarity` WHERE `petRarity` = ?";
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->execute([$rarity]);
+            $pet_rarity = $stmt->fetch();
+    
+            // Insert the new pet into the pet_inventory table
+            $sql = "INSERT INTO `pet_inventory` (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHungerTol`, `petHealthCur`, `petHungerCur`, `petStatus`)
+                        VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Kept')";
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->execute([$userID, $pet['petID'], $pet_rarity['petHealthIn'], $pet_rarity['petHungerIn'], $pet_rarity['petHealthIn'], $pet_rarity['petHungerIn']]);
+    
+            return $pet;
+        }
+        private function getAvailablePet($rarity, $userID, $db) {
+            // Keep trying to select a pet of the same or higher rarity tier, excluding owned pets
+            while (true) {
                 // Select a random pet with the determined rarity, excluding owned pets
                 $sql = "SELECT * FROM `pet` 
                         WHERE `petRarity` = ? 
                         AND `petID` NOT IN (
                             SELECT `petID` FROM `pet_inventory` WHERE `userID` = ?
-                        )
-                        ORDER BY RAND() LIMIT 1";
+                        )";
+                // Modify the SQL query to exclude all owned pets, not just same rarity pets
                 $stmt = $db->connect()->prepare($sql);
                 $stmt->execute([$rarity, $userID]);
-                return $stmt->fetch();
+                $pets = $stmt->fetchAll();
+            
+                if (count($pets) > 0) {
+                    // Select a random available pet
+                    $randIndex = mt_rand(0, count($pets) - 1);
+                    return $pets[$randIndex];
+                } else {
+                    // No available pets of the same rarity tier
+                    if ($rarity === "Legendary") {
+                        // No more pets available in any tier
+                        return false;
+                    } elseif ($rarity === "Rare") {
+                        // Try to select a pet of the Legendary rarity tier
+                        $rarity = "Legendary";
+                    } elseif ($rarity === "Common") {
+                        // Try to select a pet of the Rare rarity tier
+                        $rarity = "Rare";
+                    }
+                }
             }
-
+        }
+        
         // show all pets based on pet rarity
         public function showPetDetails_rarity($petRarity) {
             $sql = "SELECT petName, petDesc, petImg from pet WHERE petRarity = :petRarity";

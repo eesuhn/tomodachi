@@ -1,29 +1,5 @@
 <?php
-// start session if not started
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-include '../back/connection.back.php';
-include '../back/pet.back.php';
-include '../back/currency.back.php';
-
-$userID = $_SESSION['userID'];
-
-$petData = new Pet();
-
-$petData_legendary = $petData->showPetDetails_rarity('Legendary');
-$petData_rare = $petData->showPetDetails_rarity('Rare');
-$petData_common = $petData->showPetDetails_rarity('Common');
-
-$currencyData = new Currency();
-
-$userCurrency = $currencyData->getCurrency($userID);
-
+include '../include/dashboard.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +49,7 @@ $userCurrency = $currencyData->getCurrency($userID);
         <img src="../assets/images/wizard.png" style="margin: 10px;" width="120">
       </div>
       <div class="col-9"></div>
-      <div class="col-1 py-2 px-2">
+      <div class="col-1 py-2 px-2" style="font-size:x-large;">
         <img src="../assets/images/coin.png" style="height: 19px; width: 19px; margin: 10px;"><?= $userCurrency ?>
       </div>
     </div>
@@ -150,7 +126,10 @@ $userCurrency = $currencyData->getCurrency($userID);
               </div>
 
               <div class="col-12 d-flex justify-content-center">
-                <button type="button" style="width: 15%;" class="btn btn-primary" data-bs-target="#petScout" data-bs-toggle="modal">Go!</button>
+                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($allPetsOwned) echo 'disabled'; ?>" data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($allPetsOwned) echo 'disabled'; ?>>Go!</button>
+              </div>
+              <div class="col-12 d-flex justify-content-center <?php if ($allPetsOwned) echo 'text-danger'; ?>">
+                <?php if ($allPetsOwned) echo 'You have owned all available pets'; ?>
               </div>
             </div>
           </div>
@@ -201,8 +180,7 @@ $userCurrency = $currencyData->getCurrency($userID);
             ?>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-target="#petShop" data-bs-toggle="modal">Back</button>
-            <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="location.reload();">Close</button>
           </div>
         </div>
       </div>
@@ -291,7 +269,6 @@ $userCurrency = $currencyData->getCurrency($userID);
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-target="#petShop" data-bs-toggle="modal">Back</button>
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
           </div>
         </div>

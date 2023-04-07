@@ -40,7 +40,6 @@
       </div>
     </div>
 
-
     <div class="content">
       <div class="container">
         <div class="row px-2 py-4">
@@ -48,7 +47,7 @@
             <div class="card-header border-0">
               <img src="<?=$petImg?>" width="100px" style="margin-top: 30px">
             </div>
-            <div class="card-block px-3 col-4">
+            <div class="card-block px-3 col-4" id="petStats">
               <h5><?=$petName?></h5>
               <img src="../assets/images/level.png" style="height: 13px; width: 13px; margin: 5px;"></i>Level: <?=$petLevel?><br>
               <div class="progress" style="height:3px;">
@@ -63,6 +62,7 @@
                 <div class="progress-bar bg-warning" role="progressbar" style="width: <?=$petHungerCur?>%" aria-valuemin="0" aria-valuemax="<?=$petHungerTol?>"></div>
               </div>
             </div>
+
             <div class="card-block px-3 col-4">
               <div id="currencyData">
                 <!-- display currency with AJAX -->

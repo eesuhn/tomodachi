@@ -1,5 +1,7 @@
 <?php
+
 include '../include/dashboard.inc.php';
+
 ?>
 
 <!DOCTYPE html>

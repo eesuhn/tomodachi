@@ -32,4 +32,6 @@
   date_default_timezone_set('Asia/Kuala_Lumpur');
 
   $userCurrency = $currencyData->getCurrency($userID);
+
+  $allPetsOwned = $petData->checkOwnedPets($userID);
 ?>

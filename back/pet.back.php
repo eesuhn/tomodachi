@@ -1,5 +1,11 @@
 <?php
+    // start session if not started
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
     class Pet {
+        
 
         public function startingPet() {
             $sql = "SELECT * FROM pet WHERE petRarity = 'Common';";
@@ -148,7 +154,9 @@
                     $userID, $pet['petID'], $pet_rarity['petHealthIn'], 
                     $pet_rarity['petHungerIn'], $pet_rarity['petHealthIn'], 
                     $pet_rarity['petHungerIn']]);
-    
+            
+            $_SESSION['petScoutID'] = $pet['petID'];
+
             return $pet;
         }
 
@@ -205,4 +213,20 @@
 
             return $pets;
         }
+
+        // show pets info based on petID 
+        public function showPetDetails($petID) {
+            $sql = "SELECT * from pet WHERE petID = :petID";
+            $db = new Database();
+
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':petID' => $petID
+            ));
+
+            return $stmt;
+        }
     }
+?>

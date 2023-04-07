@@ -20,6 +20,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script src="../assets/js/data/shop.data.js"></script>
+  <script src="../assets/js/action/shop.action.js"></script>
   
 </head>
 
@@ -52,8 +53,8 @@
         <img src="../assets/images/wizard.png" style="margin: 10px;" width="160">
       </div>
       <div class="col-9"></div>
-      <div class="col-1 py-2 px-2" style="font-size:x-large;">
-        <img src="../assets/images/coin.png" style="height: 30px; margin: 10px;"><?= $userCurrency ?>
+      <div class="col-1 py-2 px-2" style="font-size:x-large;" id="currencyData">
+        <!-- display currency with AJAX -->
       </div>
     </div>
 
@@ -125,12 +126,20 @@
               </div>
 
               <div class="col-12 d-flex justify-content-center">
-                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($ownedPets) {echo 'disabled'; }?>" 
-                data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($ownedPets) {echo 'disabled'; }?>>Go!</button>
+                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($ownedPets || $userCurrency < 100) {echo 'disabled'; }?>" 
+                data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($ownedPets || $userCurrency < 100) {echo 'disabled'; }?>
+                onclick="petScout(<?php echo $userID ?>)">Go!</button>
               </div>
 
-              <div class="col-12 d-flex justify-content-center <?php if ($ownedPets) echo 'text-danger'; ?>">
-                <?php if ($ownedPets) {echo 'You have owned all available pets'; }?>
+              <div class="col-12 d-flex justify-content-center <?php if ($ownedPets || $userCurrency < 100) echo 'text-danger'; ?>">
+                <?php 
+                  if ($ownedPets) {
+                    echo 'You have owned all available pets'; 
+
+                  } else if ($userCurrency < 100) {
+                    echo 'You do not have enough coins'; 
+                  }
+                ?>
               </div>
             </div>
           </div>
@@ -147,39 +156,12 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
-          <div class="modal-body" style="color:black">
-            <?php
-            if ($userCurrency < 100) {
-            ?>
-              <div class="text-center" style="color:#333">
-                <h1>Not enough coins!</h1>
-              </div>
-
-              <?php
-            } else {
-              $newPet = $petData->petScout($userID);
-
-              if ($newPet) {
-              ?>
-
-                <div class="text-center">
-                  <h2>Congratulations!</h2>
-                  <p>You have successfully partnered up with a new pet!</p>
-                  <h3>You got a <?php echo $newPet["petRarity"]; ?> pet:</h3>
-                  <h4><?php echo $newPet["petName"]; ?></h4>
-
-                  <img src="<?php echo $newPet["petImg"]; ?>" alt="<?php echo $newPet["petName"]; ?>" style="width: 150px;">
-                  <p><?php echo $newPet["petDesc"]; ?></p>
-                  <p>Check your inventory to see your new pet!</p>
-                </div>
-            <?php
-              }
-            }
-            ?>
+          <div class="modal-body" style="color:black" id="petScoutData">
+            <!-- display new pet with AJAX -->
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="location.reload();">Close</button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

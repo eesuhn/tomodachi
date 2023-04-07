@@ -18,8 +18,17 @@ include '../include/shop.inc.php';
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
+  <link rel="stylesheet" href="../assets/css/shop.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    .shopItems:hover {
+      transform: scale(1.1);
+    }
+
+  </style>
+  
 </head>
 
 
@@ -59,31 +68,26 @@ include '../include/shop.inc.php';
     <h3 style="margin: 10px;">Welcome, great to have you here in my shop. Anything you have eyes on today?</h3>
 
     <div class="row d-flex justify-content-center py-5 px-4" style="margin-top: 120px;">
+
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <div>
-          <a href="#foodShop" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
-            <img src="../assets/foods/squid.png" width="200">
-            <h4 style="text-align:center;">Purchase Foods</h4>
-          </a>
-        </div>
+        <a class="shopItems" href="#foodShop" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
+          <img src="../assets/foods/squid.png" width="200">
+          <h4 style="text-align:center;">Purchase Foods</h4>
+        </a>
       </div>
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <div>
-          <a href="#petShop" data-bs-target="#petShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
-            <img src="../assets/images/petscout.png" width="200">
-            <h4 style="text-align:center;">Pet Scout</h4>
-          </a>
-        </div>
+        <a class="shopItems" href="#petShop" data-bs-target="#petShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
+          <img src="../assets/images/petscout.png" width="200">
+          <h4 style="text-align:center;">Pet Scout</h4>
+        </a>
       </div>
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <div>
-          <a href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
-            <img src="../assets/images/shop.png" width="200">
-            <h4 style="text-align:center;">Wallpaper Shop</h4>
-          </a>
-        </div>
+        <a class="shopItems" href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
+          <img src="../assets/images/shop.png" width="200">
+          <h4 style="text-align:center;">Wallpaper Shop</h4>
+        </a>
       </div>
 
       <div style="padding:50px;"></div>
@@ -165,16 +169,16 @@ include '../include/shop.inc.php';
               if ($newPet) {
               ?>
 
-              <div class="text-center">
-                <h2>Congratulations!</h2>
-                <p>You have successfully partnered up with a new pet!</p>
-                <h3>You got a <?php echo $newPet["petRarity"]; ?> pet:</h3>
-                <h4><?php echo $newPet["petName"]; ?></h4>
+                <div class="text-center">
+                  <h2>Congratulations!</h2>
+                  <p>You have successfully partnered up with a new pet!</p>
+                  <h3>You got a <?php echo $newPet["petRarity"]; ?> pet:</h3>
+                  <h4><?php echo $newPet["petName"]; ?></h4>
 
-                <img src="<?php echo $newPet["petImg"]; ?>" alt="<?php echo $newPet["petName"]; ?>" style="width: 150px;">
-                <p><?php echo $newPet["petDesc"]; ?></p>
-                <p>Check your inventory to see your new pet!</p>
-              </div>
+                  <img src="<?php echo $newPet["petImg"]; ?>" alt="<?php echo $newPet["petName"]; ?>" style="width: 150px;">
+                  <p><?php echo $newPet["petDesc"]; ?></p>
+                  <p>Check your inventory to see your new pet!</p>
+                </div>
             <?php
               }
             }

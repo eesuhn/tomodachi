@@ -28,6 +28,9 @@
   $petHungerTol = $pet['petHungerTol'];
   $petXP = $pet['petXP'];
   $petLevel = $pet['petLevel'];
+  $petHealthCur = $pet['petHealthCur'];
+  $petHungerCur = $pet['petHungerCur'];
+
 
   date_default_timezone_set('Asia/Kuala_Lumpur');
 

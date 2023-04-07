@@ -34,6 +34,7 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  font-size: large;
 }
 
 .pet-item {

@@ -1,5 +1,5 @@
 <?php
-include '../include/dashboard.inc.php';
+  include '../include/dashboard.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +17,12 @@ include '../include/dashboard.inc.php';
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
-  <script src="../assets/js/data/food.data.js"></script>
   <script src="../assets/js/data/dashboard.data.js"></script>
+  <script src="../assets/js/action/dashboard.action.js"></script>
 
 </head>
 

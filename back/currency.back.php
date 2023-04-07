@@ -45,7 +45,7 @@
             return $this->currencyNum;
         }
 
-        public function increaseCurrency ($currencyNum, $userID) {
+        public function increaseCurrency ($userID, $currencyNum) {
             $sql = "UPDATE currency SET currencyNum = currencyNum + :value1 WHERE userID = :value2";
 
             $db = new Database();
@@ -63,7 +63,7 @@
             $this->getCurrency($userID);
         }
 
-        public function decreaseCurrency ($currencyNum, $userID) {
+        public function decreaseCurrency ($userID, $currencyNum) {
             $sql = "UPDATE currency SET currencyNum = currencyNum - :value1 WHERE userID = :value2";
 
             $db = new Database();

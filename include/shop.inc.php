@@ -16,13 +16,13 @@
 
     $petData = new Pet();
 
+    $currency = new Currency();
+
+    $userCurrency = $currency->getCurrency($userID);
+
     $petData_legendary = $petData->showPetDetails_rarity('Legendary');
     $petData_rare = $petData->showPetDetails_rarity('Rare');
     $petData_common = $petData->showPetDetails_rarity('Common');
-
-    $currencyData = new Currency();
-
-    $userCurrency = $currencyData->getCurrency($userID);
 
     $ownedPets = $petData->checkOwnedPets($userID);
 ?>

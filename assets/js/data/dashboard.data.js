@@ -6,18 +6,32 @@ $(document).ready(function() {
 function refreshDashboard() {
     setTimeout(function() {
         refreshStatsHeader();
+        refreshFood();
     }, 100);
 }
 
-// refresf stats header 
+// refresh stats header 
 function refreshStatsHeader() {
     $.ajax({
-        url: "../back/data/stats_header.data.php",
+        url: "../back/data/dashboard.data.php?action=refreshStatsHeader",
         type: "POST",
         dataType: "html",
 
         success: function(data) {
             $("#statsHeader").html(data);
+        }
+    })
+}
+
+// refresh food data
+function refreshFood() {
+    $.ajax({
+        url: "../back/data/dashboard.data.php?action=refreshFood",
+        type: "POST",
+        dataType: "html",
+
+        success: function(data) {
+            $("#foodCounter").html(data);
         }
     })
 }

@@ -68,10 +68,128 @@
             return $pet;
         }
 
-        public function equipPet() {
+        public function checkOwnedPets($userID) {
+            $db = new Database();
+            
+            // check if the user owns all available pets
+            $sql = "SELECT COUNT(*) as total FROM `pet` WHERE `petID` NOT IN (SELECT `petID` FROM `pet_inventory` WHERE `userID` = ?)";
 
+            $stmt = $db->connect()->prepare($sql);
+
+            $stmt->execute([$userID]);
+            $result = $stmt->fetch();
+        
+            $ownedPets = ($result["total"] == 0);
+        
+            return $ownedPets;
+        }
+        
+        public function petScout($userID) {
+            
+            // set rarity chances
+            $chances = [
+                "Legendary" => 5,
+                "Rare" => 35,
+                "Common" => 60
+            ];
+    
+            // determine the pet rarity
+            $rand = mt_rand(1, 100);
+            $petRarity = null;
+    
+            if ($rand <= $chances["Legendary"]) {
+                $petRarity = "Legendary";
+
+            } elseif ($rand <= $chances["Legendary"] + $chances["Rare"]) {
+                $petRarity = "Rare";
+
+            } else {
+                $petRarity = "Common";
+            }
+    
+            $db = new Database();
+            $pet = $this->getAvailablePet($petRarity, $userID, $db);
+    
+            // next rarity tier if no available pets in the current tier
+            if (!$pet) {
+                if ($petRarity === "Legendary") {
+                    $petRarity = "Rare";
+
+                } elseif ($petRarity === "Rare") {
+                    $petRarity = "Common";
+
+                } else {
+                    // no pets available in any tier
+                    return false;
+                }
+                $pet = $this->getAvailablePet($petRarity, $userID, $db);
+            }
+    
+            if (!$pet) {
+                // no pets available in any tier
+                return false;
+            }
+    
+            // Get pet rarity attributes
+            $sql = "SELECT * FROM `pet_rarity` WHERE `petRarity` = ?";
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->execute([$petRarity]);
+            $pet_rarity = $stmt->fetch();
+    
+            // Insert the new pet into the pet_inventory table
+            $sql = "INSERT INTO `pet_inventory` 
+                    (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHungerTol`, `petHealthCur`, `petHungerCur`, `petStatus`)
+                    VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Kept')";
+
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->execute([
+                    $userID, $pet['petID'], $pet_rarity['petHealthIn'], 
+                    $pet_rarity['petHungerIn'], $pet_rarity['petHealthIn'], 
+                    $pet_rarity['petHungerIn']]);
+    
+            return $pet;
         }
 
+        private function getAvailablePet($petRarity, $userID, $db) {
+
+            // select a pet of the same or higher rarity tier, excluding owned pets
+            while (true) {
+
+                // select a random pet with the determined rarity, excluding owned pets
+                $sql = "SELECT * FROM `pet` 
+                        WHERE `petRarity` = ? 
+                        AND `petID` NOT IN (
+                            SELECT `petID` FROM `pet_inventory` WHERE `userID` = ?)";
+                            
+                $stmt = $db->connect()->prepare($sql);
+                $stmt->execute([$petRarity, $userID]);
+
+                $pets = $stmt->fetchAll();
+            
+                if (count($pets) > 0) {
+                    // select a random available pet
+                    $randIndex = mt_rand(0, count($pets) - 1);
+                    return $pets[$randIndex];
+
+                } else {
+                    // no available pets of the same tier
+
+                    if ($petRarity === "Legendary") {
+                        // no more pets available in any tier
+                        return false;
+
+                    } elseif ($petRarity === "Rare") {
+                        // select a pet from Legendary rarity
+                        $petRarity = "Legendary";
+
+                    } elseif ($petRarity === "Common") {
+                        // select a pet from Rare rarity
+                        $petRarity = "Rare";
+                    }
+                }
+            }
+        }
+        
         // show all pets based on pet rarity
         public function showPetDetails_rarity($petRarity) {
             $sql = "SELECT petName, petDesc, petImg from pet WHERE petRarity = :petRarity";
@@ -86,4 +204,3 @@
             return $pets;
         }
     }
-?>

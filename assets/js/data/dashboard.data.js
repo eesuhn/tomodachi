@@ -6,10 +6,11 @@ $(document).ready(function() {
 function refreshDashboard() {
     setTimeout(function() {
         refreshStatsHeader();
+        refreshFood();
     }, 100);
 }
 
-// refresf stats header 
+// refresh stats header 
 function refreshStatsHeader() {
     $.ajax({
         url: "../back/data/stats_header.data.php",
@@ -20,4 +21,31 @@ function refreshStatsHeader() {
             $("#statsHeader").html(data);
         }
     })
+}
+
+// refresh food data
+function refreshFood() {
+    $.ajax({
+        url: "../back/data/food.data.php",
+        type: "POST",
+        dataType: "html",
+
+        success: function(data) {
+            $("#foodCounter").html(data);
+        }
+    })
+}
+
+// decrease food by one
+function decreaseFood_one(userID, foodID) {
+
+    $.ajax({
+        url: "../back/data/food.data.php?action=decreaseFood_one",
+        type: "GET",
+        data: {
+            userID: userID,
+            foodID: foodID
+        }
+    });
+    refreshDashboard();
 }

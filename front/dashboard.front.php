@@ -42,7 +42,7 @@
 
     <div class="content">
       <div class="container">
-        <div class="row px-4 py-4">
+        <div class="row px-2 py-4">
           <div class="card flex-row flex-wrap" style="padding: 10px; background-color: white; color: black;">
             <div class="card-header border-0">
               <img src="<?=$petImg?>" width="100px" style="margin-top: 30px">
@@ -50,8 +50,17 @@
             <div class="card-block px-3 col-4">
               <h5><?=$petName?></h5>
               <img src="../assets/images/level.png" style="height: 13px; width: 13px; margin: 5px;"></i>Level: <?=$petLevel?><br>
-              <img src="../assets/images/health.png" style="height: 13px; width: 13px; margin: 5px;">Health: <?=$petHealthTol?><br>
-              <img src="../assets/images/hunger.png" style="height: 13px; width: 13px; margin: 5px;"></i>Hunger: <?=$petHungerTol?><br>
+              <div class="progress" style="height:3px;">
+                <div class="progress-bar bg-info" role="progressbar" style="width: <?=$petXP?>%" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <img src="../assets/images/health.png" style="height: 13px; width: 13px; margin: 5px;">Health: <?=$petHealthCur?>/<?=$petHealthTol?><br>
+              <div class="progress" style="height:3px;">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: <?=$petHealthCur?>%" aria-valuemin="0" aria-valuemax="<?=$petHealthTol?>"></div>
+              </div>
+              <img src="../assets/images/hunger.png" style="height: 13px; width: 13px; margin: 5px;">Hunger: <?=$petHungerCur?>/<?=$petHungerTol?><br>
+              <div class="progress" style="height:3px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: <?=$petHungerCur?>%" aria-valuemin="0" aria-valuemax="<?=$petHungerTol?>"></div>
+              </div>
             </div>
             <div class="card-block px-3 col-4">
               <div id="currencyData">

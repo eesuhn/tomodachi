@@ -49,30 +49,28 @@
                         </span>
                       </div>
 
-                      <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                      <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 2px; font-size:x-large;">Sign into your account</h5>
 
                       <div class="form-outline mb-4">
                         <input type="email" id="email" name="email" class="form-control form-control-lg" />
-                        <label class="form-label" for="email">Email address</label>
+                        <label class="form-label" for="email" style="font-size:large;">Email address</label>
                       </div>
 
                       <div class="form-outline mb-4">
                         <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                        <label class="form-label" for="password">Password</label>
+                        <label class="form-label" for="password" style="font-size:large;">Password</label>
                       </div>
 
                       <div class="pt-1 mb-4">
                         <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                       </div>
 
-                      <a class="small text-muted" href="#!">Forgot password?</a>
+                      <a class="text-muted" style="font-size:large;" href="#!">Forgot password?</a>
 
-                      <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account?
+                      <p style="color: #393f81; font-size:large;">Don't have an account?
                         <a href="#registerModal" data-bs-target="#registerModal" data-bs-toggle="modal" style="color: #393f81;">Register here</a>
                       </p>
 
-                      <a href="#!" class="small text-muted">Terms of use.</a>
-                      <a href="#!" class="small text-muted">Privacy policy</a>
                     </form>
 
                   </div>
@@ -136,7 +134,7 @@
           </div>
 
           <form id="register_user" method="POST" action="../include/register.inc.php">
-            <div class="modal-body">
+            <div class="modal-body" style="font-size:larger;">
               <div class="row">
 
                 <div class="col-6" style="background-image: url(../assets/images/registerbg.png);background-size: cover; background-position: center;"></div>

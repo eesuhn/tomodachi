@@ -130,13 +130,15 @@
                 return false;
             }
     
-            // Get pet rarity attributes
-            $sql = "SELECT * FROM `pet_rarity` WHERE `petRarity` = ?";
+            // get pet_rarity stats based on $pet['petID'] from $pet created above
+            $sql = "SELECT * FROM `pet_rarity` WHERE `petRarity` = (SELECT `petRarity` FROM `pet` WHERE `petID` = ?)";
+
             $stmt = $db->connect()->prepare($sql);
-            $stmt->execute([$petRarity]);
+            $stmt->execute([$pet['petID']]);
+
             $pet_rarity = $stmt->fetch();
     
-            // Insert the new pet into the pet_inventory table
+            // insert the new pet into the pet_inventory table
             $sql = "INSERT INTO `pet_inventory` 
                     (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHungerTol`, `petHealthCur`, `petHungerCur`, `petStatus`)
                     VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Kept')";

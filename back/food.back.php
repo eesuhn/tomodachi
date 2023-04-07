@@ -129,6 +129,23 @@
             return $result['foodNum'];
         }
 
+        public function getFoodDetails ($userID) {
+            $sql = 
+            "SELECT food.foodName, food.foodImg, food_inventory.userID, food_inventory.foodID, food_inventory.foodNum FROM food 
+            INNER JOIN food_inventory ON food.foodID = food_inventory.foodID WHERE food_inventory.userID = :userID";
+
+            $db = new Database();
+
+            $stmt = $db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+
+            $stmt->execute(array(
+                    ':userID' => $userID));
+
+            return $stmt;
+        }
+
         public function increaseFood ($foodInID, $foodNum) {
             $sql = "UPDATE food_inventory SET foodNum = foodNum + :value1 WHERE foodInID = :value2";
 

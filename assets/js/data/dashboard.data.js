@@ -13,7 +13,7 @@ function refreshDashboard() {
 // refresh stats header 
 function refreshStatsHeader() {
     $.ajax({
-        url: "../back/data/stats_header.data.php",
+        url: "../back/data/dashboard.data.php?action=refreshStatsHeader",
         type: "POST",
         dataType: "html",
 
@@ -26,7 +26,7 @@ function refreshStatsHeader() {
 // refresh food data
 function refreshFood() {
     $.ajax({
-        url: "../back/data/food.data.php",
+        url: "../back/data/dashboard.data.php?action=refreshFood",
         type: "POST",
         dataType: "html",
 
@@ -34,18 +34,4 @@ function refreshFood() {
             $("#foodCounter").html(data);
         }
     })
-}
-
-// decrease food by one
-function decreaseFood_one(userID, foodID) {
-
-    $.ajax({
-        url: "../back/data/food.data.php?action=decreaseFood_one",
-        type: "GET",
-        data: {
-            userID: userID,
-            foodID: foodID
-        }
-    });
-    refreshDashboard();
 }

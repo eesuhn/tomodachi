@@ -22,6 +22,7 @@
   <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
   <script src="../assets/js/data/dashboard.data.js"></script>
+  <script src="../assets/js/action/dashboard.action.js"></script>
 
 </head>
 

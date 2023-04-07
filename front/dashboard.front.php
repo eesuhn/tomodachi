@@ -19,6 +19,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
     <script src="../assets/js/data/food.data.js"></script>
     <script src="../assets/js/data/dashboard.data.js"></script>
@@ -119,6 +120,22 @@
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: gainsboro;">
                   <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add a new habit" style="margin-top: 10px;">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                          <i class="fa-sharp fa-solid fa-circle-plus fa-xl" style="color: #097724;"></i>
+                        </div>
+                        <div class="col-8">
+                          <h5 class="card-title">Habit Name</h5>
+                          <p class="card-text">Habit Description</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                          <i class="fa-solid fa-circle-minus fa-xl" style="color: #aa0808;"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

@@ -112,6 +112,7 @@ include '../include/shop.inc.php';
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="petShopTitle">Pet Scout</h1>
           </div>
+
           <div class="modal-body">
             <div class="text-muted">Partner up with new pets from different rarities using your earned coins!</div>
 
@@ -128,10 +129,11 @@ include '../include/shop.inc.php';
               </div>
 
               <div class="col-12 d-flex justify-content-center">
-                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($allPetsOwned) echo 'disabled'; ?>" data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($allPetsOwned) echo 'disabled'; ?>>Go!</button>
+                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($ownedPets) echo 'disabled'; ?>" data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($ownedPets) echo 'disabled'; ?>>Go!</button>
               </div>
-              <div class="col-12 d-flex justify-content-center <?php if ($allPetsOwned) echo 'text-danger'; ?>">
-                <?php if ($allPetsOwned) echo 'You have owned all available pets'; ?>
+
+              <div class="col-12 d-flex justify-content-center <?php if ($ownedPets) echo 'text-danger'; ?>">
+                <?php if ($ownedPets) echo 'You have owned all available pets'; ?>
               </div>
             </div>
           </div>
@@ -147,6 +149,7 @@ include '../include/shop.inc.php';
     <div class="modal fade" id="petScout" aria-hidden="true" aria-labelledby="petScoutTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+
           <div class="modal-body" style="color:black">
             <?php
             if ($userCurrency < 100) {
@@ -154,33 +157,30 @@ include '../include/shop.inc.php';
               <div class="text-center" style="color:#333">
                 <h1>Not enough coins!</h1>
               </div>
+
               <?php
             } else {
               $newPet = $petData->petScout($userID);
-              if (!$newPet) {
+
+              if ($newPet) {
               ?>
-                <div class="text-center">
-                  <h2>Oops!</h2>
-                  <p>No more pets of the rarity available that you don't already own.</p>
-                </div>
-              <?php
-              } else {
-                // Display the new pet's information
-              ?>
-                <div class="text-center">
-                  <h2>Congratulations!</h2>
-                  <p>You have successfully partnered up with a new pet!</p>
-                  <h3>You got a <?php echo $newPet["petRarity"]; ?> pet:</h3>
-                  <h4><?php echo $newPet["petName"]; ?></h4>
-                  <img src="<?php echo $newPet["petImg"]; ?>" alt="<?php echo $newPet["petName"]; ?>" style="width: 150px;">
-                  <p><?php echo $newPet["petDesc"]; ?></p>
-                  <p>Check your inventory to see your new pet!</p>
-                </div>
+
+              <div class="text-center">
+                <h2>Congratulations!</h2>
+                <p>You have successfully partnered up with a new pet!</p>
+                <h3>You got a <?php echo $newPet["petRarity"]; ?> pet:</h3>
+                <h4><?php echo $newPet["petName"]; ?></h4>
+
+                <img src="<?php echo $newPet["petImg"]; ?>" alt="<?php echo $newPet["petName"]; ?>" style="width: 150px;">
+                <p><?php echo $newPet["petDesc"]; ?></p>
+                <p>Check your inventory to see your new pet!</p>
+              </div>
             <?php
               }
             }
             ?>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="location.reload();">Close</button>
           </div>
@@ -192,6 +192,7 @@ include '../include/shop.inc.php';
     <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
+
           <div class="modal-body" style="color: black">
             <div class="row">
               <div class="col-12 d-flex justify-content-center">
@@ -270,15 +271,17 @@ include '../include/shop.inc.php';
               <div class="col-2"></div>
             </div>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 
 </body>
 

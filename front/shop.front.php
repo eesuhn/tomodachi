@@ -1,6 +1,6 @@
 <?php
 
-include '../include/shop.inc.php';
+  include '../include/shop.inc.php';
 
 ?>
 
@@ -124,11 +124,12 @@ include '../include/shop.inc.php';
               </div>
 
               <div class="col-12 d-flex justify-content-center">
-                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($ownedPets) echo 'disabled'; ?>" data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($ownedPets) echo 'disabled'; ?>>Go!</button>
+                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($ownedPets) {echo 'disabled'; }?>" 
+                data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($ownedPets) {echo 'disabled'; }?>>Go!</button>
               </div>
 
               <div class="col-12 d-flex justify-content-center <?php if ($ownedPets) echo 'text-danger'; ?>">
-                <?php if ($ownedPets) echo 'You have owned all available pets'; ?>
+                <?php if ($ownedPets) {echo 'You have owned all available pets'; }?>
               </div>
             </div>
           </div>

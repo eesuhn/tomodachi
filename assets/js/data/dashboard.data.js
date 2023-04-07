@@ -5,19 +5,19 @@ $(document).ready(function() {
 // refresh dashboard data
 function refreshDashboard() {
     setTimeout(function() {
-        refreshCurrency();
+        refreshStatsHeader();
     }, 100);
 }
 
-// refresh currency data
-function refreshCurrency() {
+// refresf stats header 
+function refreshStatsHeader() {
     $.ajax({
-        url: "../back/data/currency.data.php",
+        url: "../back/data/stats_header.data.php",
         type: "POST",
         dataType: "html",
 
         success: function(data) {
-            $("#currencyData").html(data);
+            $("#statsHeader").html(data);
         }
     })
 }

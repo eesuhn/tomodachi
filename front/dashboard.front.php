@@ -17,8 +17,9 @@ include '../include/dashboard.inc.php';
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
   <script src="../assets/js/data/food.data.js"></script>
   <script src="../assets/js/data/dashboard.data.js"></script>
@@ -41,36 +42,8 @@ include '../include/dashboard.inc.php';
   </div>
 
   <div class="content">
-    <div class="container">
-      <div class="row px-2 py-4">
-        <div class="card flex-row flex-wrap" style="padding: 10px; background-color: white; color: black;">
-          <div class="card-header border-0">
-            <img src="<?= $petImg ?>" width="100px" style="margin-top: 30px">
-          </div>
-          <div class="card-block px-3 col-4">
-            <h5><?= $petName ?></h5>
-            <img src="../assets/images/level.png" style="height: 13px; width: 13px; margin: 5px;"></i>Level: <?= $petLevel ?><br>
-            <div class="progress" style="height:3px;">
-              <div class="progress-bar bg-info" role="progressbar" style="width: <?= $petXP ?>%" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <img src="../assets/images/health.png" style="height: 13px; width: 13px; margin: 5px;">Health: <?= $petHealthCur ?>/<?= $petHealthTol ?><br>
-            <div class="progress" style="height:3px;">
-              <div class="progress-bar bg-danger" role="progressbar" style="width: <?= $petHealthCur ?>%" aria-valuemin="0" aria-valuemax="<?= $petHealthTol ?>"></div>
-            </div>
-            <img src="../assets/images/hunger.png" style="height: 13px; width: 13px; margin: 5px;">Hunger: <?= $petHungerCur ?>/<?= $petHungerTol ?><br>
-            <div class="progress" style="height:3px;">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $petHungerCur ?>%" aria-valuemin="0" aria-valuemax="<?= $petHungerTol ?>"></div>
-            </div>
-          </div>
-          <div class="card-block px-3 col-4">
-            <div id="currencyData">
-              <!-- display currency with AJAX -->
-            </div>
-            <h4><?= date("l, j F Y"); ?></h4>
-            <p>0 Tasks Today</p>
-          </div>
-        </div>
-      </div>
+    <div class="container" id="statsHeader">
+      <!-- display stats header with AJAX -->
     </div>
 
     <div class="row px-4 py-2">

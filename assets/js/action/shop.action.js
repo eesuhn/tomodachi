@@ -22,26 +22,49 @@ function petScout(userID) {
     refreshShop();
 }
 
-// food shop 
 function foodShop(userID) {
     $.ajax({
         url: "../back/action/shop.action.php?action=foodShop",
         type: "GET",
         data: {
             userID: userID
+        },
+        success: function() {
+            $.ajax({
+                url: "../back/data/shop.data.php?action=showFoodShop",
+                type: "POST",
+                dataType: "html",
+                success: function(data) {
+                    $("#foodShopData").html(data);
+                }
+            });
         }
     });
-    setTimeout(function() {
-        $.ajax({
-            url: "../back/data/shop.data.php?action=showFoodShop",
-            type: "POST",
-            dataType: "html",
-
-            success: function(data) {
-                $("#foodShopData").html(data);
-            }
-        })
-    }, 100);
     
     refreshShop();
 }
+
+function purchaseFood(userID, foodID, foodPrice) {
+    $.ajax({
+        url: "../back/action/shop.action.php?action=purchaseFood",
+        type: "GET",
+        data: {
+            userID: userID,
+            foodID: foodID,
+            foodPrice: foodPrice
+        },
+        success: function() {
+            $.ajax({
+                url: "../back/data/shop.data.php?action=showFoodShop",
+                type: "POST",
+                dataType: "html",
+                success: function(data) {
+                    $("#foodShopData").html(data);
+                }
+            });
+        }
+    });
+    
+    refreshShop();
+}
+

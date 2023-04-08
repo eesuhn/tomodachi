@@ -178,6 +178,7 @@
         }
 
         public function getShopFoods($userID) {
+            // get data on foods sold and quantity owned by users
             $sql = "SELECT food.*, food_inventory.foodNum
             FROM food
             LEFT JOIN food_inventory ON food.foodID = food_inventory.foodID AND food_inventory.userID = ?
@@ -191,5 +192,36 @@
             return $foods;
         }
 
+        public function purchaseFood($userID, $foodID) {
+            // set the quantity to purchase to 1 by default
+            $quantity = 1;
+        
+            // check if the food exists in the food table
+            $sql = "SELECT * FROM food WHERE foodID = ?";
+            $db = new Database();
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->execute([$foodID]);
+            $food = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            // check if the user already has this food in their inventory
+            $sql = "SELECT * FROM food_inventory WHERE userID = ? AND foodID = ?";
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->execute([$userID, $foodID]);
+            $inventory = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            if ($inventory) {
+                // user already has this food in their inventory, increase the quantity by 1
+                $quantity = $inventory['foodNum'] + 1;
+                $sql = "UPDATE food_inventory SET foodNum = ? WHERE userID = ? AND foodID = ?";
+                $stmt = $db->connect()->prepare($sql);
+                $stmt->execute([$quantity, $userID, $foodID]);
+            } else {
+                // user does not have this food in their inventory, insert a new row
+                $sql = "INSERT INTO food_inventory (userID, foodID, foodNum) VALUES (?, ?, ?)";
+                $stmt = $db->connect()->prepare($sql);
+                $stmt->execute([$userID, $foodID, $quantity]);
+            }
+        }
+        
     }
 ?>

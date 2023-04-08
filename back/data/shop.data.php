@@ -92,7 +92,7 @@
                         <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: 2px;'>{$foodShopData["foodPrice"]}</h4>
                         <p class='card-text'>{$foodShopData["foodDesc"]}</p>
                         <div class='mt-auto'>
-                            <button class='btn btn-primary'>Purchase</button>
+                            <button class='btn btn-primary' onclick='purchaseFood({$userID["userID"]}, {$foodShopData["foodID"]}, {$foodShopData["foodPrice"]})'>Purchase</button>
                         </div>
                     </div>
                 </div>

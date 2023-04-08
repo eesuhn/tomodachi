@@ -63,7 +63,7 @@
     <div class="row d-flex justify-content-center py-5 px-4" style="margin-top: 120px;">
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-      <a class="shopItems" href="#foodShop" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="foodShop(<?php echo $userID ?>)">
+      <a class="shopItems" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="foodShop(<?php echo $userID ?>)">
           <img src="../assets/foods/squid.png" width="200">
           <h4 style="text-align:center;">Purchase Foods</h4>
       </a>

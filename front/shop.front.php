@@ -63,10 +63,10 @@
     <div class="row d-flex justify-content-center py-5 px-4" style="margin-top: 120px;">
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <a class="shopItems" href="#foodShop" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
+      <a class="shopItems" href="#foodShop" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="foodShop(<?php echo $userID ?>)">
           <img src="../assets/foods/squid.png" width="200">
           <h4 style="text-align:center;">Purchase Foods</h4>
-        </a>
+      </a>
       </div>
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
@@ -89,12 +89,8 @@
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="foodShopTitle">Purchase Foods</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Foods
+          <div class="modal-body" id="foodShopData">
+            <!-- display food shop with AJAX -->
           </div>
           <div class="modal-footer">
             <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>

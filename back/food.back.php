@@ -176,5 +176,20 @@
                     ':value1' => $userID,
                     ':value2' => $foodID));
         }
+
+        public function getShopFoods($userID) {
+            $sql = "SELECT food.*, food_inventory.foodNum
+            FROM food
+            LEFT JOIN food_inventory ON food.foodID = food_inventory.foodID AND food_inventory.userID = ?
+            ORDER BY food.foodPrice ASC";
+            $db = new Database();
+            $stmt = $db->connect()->prepare($sql);
+            
+            $stmt->execute([$userID]);
+            $foods = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $foods;
+        }
+
     }
 ?>

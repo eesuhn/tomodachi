@@ -73,6 +73,8 @@
         $foodData = new Food();
         $userID = $_SESSION['userID'];
         $foodShop = $foodData->getShopFoods($userID);
+        $currency = new Currency();
+        $currencyNum = $currency->getCurrency($userID);
 
         echo '<div class="row">';
         $count = 0;
@@ -80,7 +82,10 @@
             if ($count % 2 == 0) {
                 echo '</div><div class="row">';
             }
-
+            $disableButton = '';
+            if ($currencyNum < $foodShopData['foodPrice']) {
+                $disableButton = 'disabled';
+            }
             echo
             "<div class='col-6 px-2 py-2'>
                 <div class='card h-100'>
@@ -92,7 +97,7 @@
                         <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: 2px;'>{$foodShopData["foodPrice"]}</h4>
                         <p class='card-text'>{$foodShopData["foodDesc"]}</p>
                         <div class='mt-auto'>
-                            <button class='btn btn-primary' onclick='purchaseFood({$userID["userID"]}, {$foodShopData["foodID"]}, {$foodShopData["foodPrice"]})'>Purchase</button>
+                        <button class='btn btn-primary' $disableButton onclick='purchaseFood({$userID}, {$foodShopData['foodID']}, {$foodShopData['foodPrice']})'>Purchase</button>
                         </div>
                     </div>
                 </div>

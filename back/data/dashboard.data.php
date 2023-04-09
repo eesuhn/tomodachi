@@ -33,6 +33,10 @@
         case 'refreshPetImg':
             refreshPetImg();
             break;
+        
+        case 'refreshWallpaper':
+            refreshWallpaper();
+            break;
     }
 
     function refreshStatsHeader () {
@@ -194,6 +198,14 @@
         $petData = $pet->getEquippedPet($userID);
         $petImg = $petData['petImg'];
         echo ' <img src="' . $petImg . '" style="width: auto; height: 200px;">';
+    }
+    
+    function refreshWallpaper() {
+        $userID = $_SESSION['userID'];
+        $wallpaper = new Wallpaper();
+        $wallpaperData = $wallpaper->getEquippedWallpaper($userID);
+        $imageUrl = $wallpaperData['wallpaperImg'];
+        echo json_encode(array('imageUrl' => $imageUrl));
     }
     
 ?>

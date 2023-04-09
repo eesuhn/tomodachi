@@ -9,6 +9,7 @@ function refreshDashboard() {
         refreshFood();
         refreshInventory();
         refreshPetImg();
+        refreshWallpaper();
     }, 100);
 }
 
@@ -58,6 +59,18 @@ function refreshPetImg() {
 
         success: function (data) {
             $("#petImg").html(data);
+        }
+    });
+}
+
+function refreshWallpaper() {
+    $.ajax({
+        url: '../back/data/dashboard.data.php?action=refreshWallpaper',
+        dataType: 'json',
+        success: function(data) {
+          console.log(data.imageUrl);
+          // set the background image of the div
+          $('#wallpaper').css('background-image', 'url(' + data.imageUrl + ')');
         }
     });
 }

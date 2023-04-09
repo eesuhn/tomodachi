@@ -76,6 +76,27 @@ class Wallpaper{
                 $stmt->execute();
         }
                         
+        public function getEquippedWallpaper($userID) {
+                $sql = "SELECT wallpaper.*, wallpaper_inventory.* 
+                        FROM wallpaper
+                        INNER JOIN wallpaper_inventory ON wallpaper.wallpaperID = wallpaper_inventory.wallpaperID
+                        WHERE wallpaper_inventory.userID = ? AND wallpaper_inventory.wallpaperStatus = 'Equipped'";
+            
+                $db = new Database();
+                $stmt = $db->connect()->prepare($sql);
+            
+                $stmt->execute([$userID]);
+                $wallpaper = $stmt->fetch();
+                            
+                return $wallpaper;
+        }
+        
+        public function startingWallpaper($userID) {
+                $sql = "INSERT INTO wallpaper_inventory (userID, wallpaperID, wallpaperStatus) VALUES (?, 1, 'Equipped')";
+                $db = new Database();
+                $stmt = $db->connect()->prepare($sql);
+                $stmt->execute([$userID]);
+        }
             
 }
 

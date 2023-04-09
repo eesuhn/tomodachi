@@ -3,6 +3,7 @@
     include '../pet.back.php';
     include '../currency.back.php';
     include '../food.back.php';
+    include '../wallpaper.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -22,6 +23,9 @@
             break;
         case 'purchaseFood':
             purchaseFood();
+            break;
+        case 'purchaseWallpaper':
+            purchaseWallpaper();
             break;
     }
 
@@ -47,4 +51,17 @@
         $buyFood->purchaseFood($userID, $foodID);
         $currencyData->decreaseCurrency($userID, $foodPrice);
     }
+
+    function purchaseWallpaper(){
+        $userID = $_GET['userID'];
+        $wallpaperID = $_GET['wallpaperID'];
+        $wallpaperPrice = $_GET['wallpaperPrice'];    
+        
+        $buyWallpaper = new Wallpaper();
+        $currencyData = new Currency();
+
+        $buyWallpaper->purchaseWallpaper($userID,$wallpaperID);
+        $currencyData->decreaseCurrency($userID, $wallpaperPrice);
+    }
+    
 ?>

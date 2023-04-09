@@ -3,6 +3,7 @@
     include '../pet.back.php';
     include '../food.back.php';
     include '../currency.back.php';
+    include '../wallpaper.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -31,6 +32,10 @@
 
         case 'refreshGachaButton':
             refreshGachaButton();
+            break;
+        
+        case 'refreshWallpaperShop':
+            refreshWallpaperShop();
             break;
     }
 
@@ -182,4 +187,61 @@
           "</div>
         </div>";
     }
+
+    function refreshWallpaperShop(){
+        $userID = $_SESSION['userID'];
+
+        $wallpaperData = new Wallpaper();
+
+        $userCurrency = new Currency();
+
+        $currencyNum = $userCurrency->getCurrency($userID);
+
+        $wallpaperShop = $wallpaperData->getAllWallpapers();
+
+        echo '<div class="row">';
+        
+        foreach ($wallpaperShop as $wallpaperShopData) {
+
+            $disableButton = '';
+
+            if ($currencyNum < $wallpaperShopData['wallpaperPrice']) {
+                $disableButton = 'disabled';
+
+            } 
+            $isOwned = $wallpaperData->checkWallpaper($userID, $wallpaperShopData['wallpaperID']);
+            if ($isOwned) {
+                $disableButton = ' disabled';
+            } 
+
+            echo
+            "<div class='col-md-4 px-3 py-3'>
+                <div class='card h-100'>
+                    <center><img src='{$wallpaperShopData["wallpaperImg"]}' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                    <div class='card-body d-flex flex-column'>
+                        <h5 class='card-title'>{$wallpaperShopData["wallpaperName"]}</h5>
+                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>{$wallpaperShopData["wallpaperPrice"]}</h4>
+                        <p class='card-text'>{$wallpaperShopData["wallpaperDesc"]}</p>
+
+                        <div class='mt-auto'>
+                            <button class='btn btn-primary' $disableButton onclick='purchaseWallpaper({$userID}, {$wallpaperShopData['wallpaperID']}, {$wallpaperShopData['wallpaperPrice']})' 
+                            style='margin: -6px 0px 0px; border: none; ";
+                            
+                            if ($disableButton == 'disabled') {
+                                echo "background-color: red;'>Not Enough Coins!";
+                            } elseif ($disableButton == ' disabled'){
+                                echo "background-color: black;'>Owned";
+                            } else{
+                                echo "'>Purchase";
+                            }
+            echo
+                            "</button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+        }
+        echo '</div>';
+    }
+
 ?>

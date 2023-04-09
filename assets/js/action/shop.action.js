@@ -30,3 +30,20 @@ function purchaseFood(userID, foodID, foodPrice) {
     
     refreshShop();
 }
+
+function purchaseWallpaper(userID, wallpaperID, wallpaperPrice) {
+    $.ajax({
+        url: "../back/action/shop.action.php?action=purchaseWallpaper",
+        type: "GET",
+        data: {
+            userID: userID,
+            wallpaperID: wallpaperID,
+            wallpaperPrice: wallpaperPrice
+        },
+        success: function() {
+            refreshWallpaperShop();
+        }
+    });
+    
+    refreshShop();
+}

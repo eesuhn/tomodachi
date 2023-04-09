@@ -77,7 +77,7 @@
       </div>
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <a class="shopItems" href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
+        <a class="shopItems" href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="refreshWallpaperShop()">
           <img src="../assets/images/shop.png" width="200">
           <h4 style="text-align:center;">Wallpaper Shop</h4>
         </a>
@@ -134,6 +134,20 @@
       </div>
     </div>
 
+    <div class="modal fade" id="wallpaperShop" aria-hidden="true" aria-labelledby="wallpaperShopTitle" tabindex="-1">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+          <div class="modal-body" style="color:black" id="wallpaperShopData">
+            <!-- display wallpaper shop with AJAX -->
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-scrollable">

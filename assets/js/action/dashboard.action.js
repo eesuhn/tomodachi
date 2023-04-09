@@ -11,7 +11,7 @@ function decreaseFood_one(userID, foodID) {
     });
     refreshDashboard();
 }
-// decrease food by one
+// equip pet
 function equipPet(userID, petID) {
 
     $.ajax({
@@ -24,5 +24,21 @@ function equipPet(userID, petID) {
     });
     refreshDashboard();
 }
+
+// equip wallpaper
+function equipWallpaper(userID, wallpaperID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=equipWallpaper",
+        type: "GET",
+        data: {
+            userID: userID,
+            wallpaperID: wallpaperID
+        }
+    });
+    refreshDashboard();
+}
+
+
+
 
 

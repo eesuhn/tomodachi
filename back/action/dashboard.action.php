@@ -3,6 +3,7 @@
     include '../pet.back.php';
     include '../currency.back.php';
     include '../food.back.php';
+    include '../wallpaper.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -22,6 +23,9 @@
         case 'equipPet':
             equipPet();
             break;
+        case 'equipWallpaper':
+            equipWallpaper();
+            break;
     }
 
     function decreaseFood_one () {
@@ -40,5 +44,14 @@
         $petData = new Pet();
 
         $petData->equipPet($userID,$petID);
+    }
+
+    function equipWallpaper(){
+        $userID = $_GET['userID'];
+        $wallpaperID = $_GET['wallpaperID'];
+
+        $wallpaperData = new Wallpaper();
+
+        $wallpaperData->equipWallpaper($userID,$wallpaperID);
     }
 ?>

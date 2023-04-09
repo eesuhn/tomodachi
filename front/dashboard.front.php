@@ -50,7 +50,7 @@
 
     <div class="row px-4 py-2">
       <div class="col-md-4">
-        <div style="
+        <div id="wallpaper" style="
             height: 550px; 
             width: auto; 
             border: 5px solid black; 
@@ -58,7 +58,6 @@
             justify-content: center; 
             align-items: center; 
             position: relative; 
-            background-image: url('../assets/backgrounds/meadow.png'); 
             background-size: cover; 
             background-position: center;">
           <div style="

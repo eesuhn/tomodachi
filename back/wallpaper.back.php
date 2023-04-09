@@ -33,13 +33,49 @@ class Wallpaper{
         }
 
         public function checkWallpaper($userID, $wallpaperID) {
+
                 $db = new Database();
                 $stmt = $db->connect()->prepare("SELECT * FROM wallpaper_inventory WHERE userID = ? AND wallpaperID = ?");
                 $stmt->execute([$userID, $wallpaperID]);
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
             
                 return $result ? true : false;
+
         }
+
+        public function getUserWallpapers($userID) {
+
+                $sql = "SELECT w.wallpaperName, wi.wallpaperStatus, w.wallpaperImg, w.wallpaperID
+                        FROM wallpaper w
+                        INNER JOIN wallpaper_inventory wi ON w.wallpaperID = wi.wallpaperID
+                        WHERE wi.userID = ?
+                        ";
+                $db = new Database();
+                $stmt = $db->connect()->prepare($sql);
+                $stmt->execute([$userID]);
+                $userWallpapers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $userWallpapers;
+
+        }
+
+        public function equipWallpaper($userID, $wallpaperID) {
+                $db = new Database();
+
+                // Set all wallpapers of the user to "Kept" status except for the wallpaper to be equipped
+                $sql = "UPDATE wallpaper_inventory SET wallpaperStatus = 'Kept' WHERE userID = :userID AND wallpaperID != :wallpaperID";
+                $stmt = $db->connect()->prepare($sql);
+                $stmt->bindParam(':userID', $userID);
+                $stmt->bindParam(':wallpaperID', $wallpaperID);
+                $stmt->execute();
+            
+                // Set the selected wallpaper to "Equipped" status
+                $sql = "UPDATE wallpaper_inventory SET wallpaperStatus = 'Equipped' WHERE userID = :userID AND wallpaperID = :wallpaperID";
+                $stmt = $db->connect()->prepare($sql);
+                $stmt->bindParam(':userID', $userID);
+                $stmt->bindParam(':wallpaperID', $wallpaperID);
+                $stmt->execute();
+        }
+                        
             
 }
 

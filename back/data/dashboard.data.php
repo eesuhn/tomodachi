@@ -90,32 +90,30 @@
             if ($row['foodNum'] != 0) {
                 echo 
                 "<div class='col-3 col-lg-3'>
-                    <a href='#food' data-bs-target='#food<?=". $row['foodID'] ."?>' 
-                    data-bs-toggle='modal' style='text-decoration: none; color: white'>
-                    <div class='count-data text-center'>
-                        <img src='"
-                        .$row['foodImg'] . 
-                        "' width='30px'>
-                        <p class='m-0px font-w-300'>"
-                        .$row['foodName']. 
-                        " x"
-                        .$row['foodNum'] .
-                        "</p>
+                    <div class='count-data text-center' style='font-size: 20px;'>
+                        <button href='#food' data-bs-target='#food<?=". $row['foodID'] ."?>' 
+                        data-bs-toggle='modal' style='text-decoration: none; color: white; background-color: #212529; border: none;'>
+                            <img src='"
+                            .$row['foodImg'] . 
+                            "' width='30px'>
+                            <p class='m-0px font-w-300'>".$row['foodName']. 
+                            " x "
+                            .$row['foodNum']."</p>
+                        </button>
                     </div>
-                    </a>
                 </div>
 
                 <div class='modal fade' id='food<?=" .$row['foodID']. "?>' aria-hidden='true' aria-labelledby='foodTitle' tabindex='-1' style='color:black'>
                     <div class='modal-dialog modal-dialog-centered'>
                         <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h1 class='modal-title fs-5' id='foodTitle'>Feed ".$row['foodName']."?</h1>
-                        </div>
+                            <div class='modal-header'>
+                                <h1 class='modal-title fs-5' id='foodTitle'>Feed ".$row['foodName']."?</h1>
+                            </div>
 
-                        <div class='modal-footer'>
-                            <button class='btn btn-primary' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].")' data-bs-dismiss='modal'>Yes</button>
-                            <button type='button' class='btn btn-dark' data-bs-dismiss='modal'>No</button>
-                        </div>
+                            <div class='modal-footer'>
+                                <button class='btn btn-primary' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].")' data-bs-dismiss='modal'>Yes</button>
+                                <button type='button' class='btn btn-dark' data-bs-dismiss='modal'>No</button>
+                            </div>
                         </div>
                     </div>
                 </div>";

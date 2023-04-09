@@ -20,3 +20,26 @@ function refreshCurrency() {
         }
     })
 }
+
+function showPetScout() {
+    $.ajax({
+        url: "../back/data/shop.data.php?action=showPetScout",
+        type: "POST",
+        dataType: "html",
+
+        success: function(data) {
+            $("#petScoutData").html(data);
+        }
+    });
+}
+
+function refreshFoodShop() {
+    $.ajax({
+        url: "../back/data/shop.data.php?action=refreshFoodShop",
+        type: "POST",
+        dataType: "html",
+        success: function(data) {
+            $("#foodShopData").html(data);
+        }
+    });
+}

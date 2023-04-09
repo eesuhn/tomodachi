@@ -83,19 +83,16 @@
         $currencyNum = $userCurrency->getCurrency($userID);
 
         echo '<div class="row">';
-        $count = 0;
         
         foreach ($foodShop as $foodShopData) {
-            if ($count % 2 == 0) {
-                echo '</div><div class="row">';
-            }
+
             $disableButton = '';
 
             if ($currencyNum < $foodShopData['foodPrice']) {
                 $disableButton = 'disabled';
             }
             echo
-            "<div class='col-6 px-2 py-2'>
+            "<div class='col-md-3 px-3 py-3'>
                 <div class='card h-100'>
                     <center><img src='{$foodShopData["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
                     <div class='card-body d-flex flex-column'>
@@ -121,7 +118,6 @@
                     </div>
                 </div>
             </div>";
-            $count++;
         }
         echo '</div>';
     }

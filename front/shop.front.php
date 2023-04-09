@@ -87,7 +87,7 @@
     </div>
 
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-body" id="foodShopData">
             <!-- display food shop with AJAX -->

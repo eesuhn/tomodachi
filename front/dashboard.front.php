@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -67,15 +68,15 @@
               align-items: center; 
               margin: 5px; 
               background: rgba(0, 0, 0, 0.5); 
-              padding: 5px;">
-            <img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
-            <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span>
+              padding: 5px;" class="inventory">
+            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
+            <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
           </div>
           <div class="pet">
             <img src="<?= $petImg ?>" style="width: auto; height: 200px;">
           </div>
         </div>
-      </div>
+      </div></a>
 
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px";>Habits</h3>
@@ -107,6 +108,21 @@
 
     </div>
   </div>
+
+
+  <div class="modal fade" id="inventory" aria-hidden="true" aria-labelledby="inventoryTitle" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body" style="color:black" id="inventoryData">
+                <!-- Display inventory with AJAX -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

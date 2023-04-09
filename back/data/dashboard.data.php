@@ -24,6 +24,10 @@
         case 'refreshFood':
             refreshFood();
             break;
+
+        case 'refreshInventory':
+            refreshInventory();
+            break;
     }
 
     function refreshStatsHeader () {
@@ -120,4 +124,37 @@
             }
         }
     }
+    function refreshInventory(){
+        $userID = $_SESSION['userID'];
+    
+        $petData = new Pet();
+    
+        $stmt = $petData->showPetInventory($userID);
+        echo "<div class='row'>
+                <div clas='col-12 d-flex justify content center'>
+                    <h3>Owned Pets</h3>
+                </div>";
+        foreach ($stmt as $row) {            
+            // Check if the pet is equipped
+            $isEquipped = ($row['petStatus'] == 'Equipped');
+    
+            // Print the pet information and the "Equip" button
+            echo "
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card'>
+                        <img src='{$row['petImg']}' class='card-img-top' width='120'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>{$row['petName']}</h5>
+                            <p class='card-text'>Status: {$row['petStatus']}</p>
+                            <button class='btn btn-primary' " . ($isEquipped ? "disabled" : "") . ">Equip</button>
+                        </div>
+                    </div>
+                </div>
+            ";
+        }
+        echo "</div>";
+    }
+    
+   
+    
 ?>

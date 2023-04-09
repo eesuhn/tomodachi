@@ -11,3 +11,4 @@ function decreaseFood_one(userID, foodID) {
     });
     refreshDashboard();
 }
+

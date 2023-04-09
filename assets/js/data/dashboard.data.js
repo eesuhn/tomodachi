@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
     refreshDashboard();
 });
 
 // refresh dashboard data
 function refreshDashboard() {
-    setTimeout(function() {
+    setTimeout(function () {
         refreshStatsHeader();
         refreshFood();
     }, 100);
@@ -17,7 +17,7 @@ function refreshStatsHeader() {
         type: "POST",
         dataType: "html",
 
-        success: function(data) {
+        success: function (data) {
             $("#statsHeader").html(data);
         }
     })
@@ -30,8 +30,20 @@ function refreshFood() {
         type: "POST",
         dataType: "html",
 
-        success: function(data) {
+        success: function (data) {
             $("#foodCounter").html(data);
         }
     })
+}
+
+function refreshInventory() {
+    $.ajax({
+        url: "../back/data/dashboard.data.php?action=refreshInventory",
+        type: "POST",
+        dataType: "html",
+
+        success: function (data) {
+            $("#inventoryData").html(data);
+        }
+    });
 }

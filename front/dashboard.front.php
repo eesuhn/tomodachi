@@ -6,6 +6,7 @@
 <html>
 
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,7 +74,7 @@
             <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
           </div>
           <div class="pet" id="petImg">
-            <img src="<?= $petImg ?>" style="width: auto; height: 200px;">
+            <!-- display petImage with AJAX -->
           </div>
         </div>
       </div></a>
@@ -114,7 +115,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body" style="color:black" id="inventoryData">
-                <!-- Display inventory with AJAX -->
+                <!-- display inventory with AJAX -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>

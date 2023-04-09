@@ -28,6 +28,9 @@
         case 'refreshInventory':
             refreshInventory();
             break;
+        case 'refreshPetImg':
+            refreshPetImg();
+            break;
     }
 
     function refreshStatsHeader () {
@@ -138,7 +141,7 @@
             // Check if the pet is equipped
             $isEquipped = ($row['petStatus'] == 'Equipped');
     
-            // Print the pet information and the "Equip" button
+            // print the pet information and the "Equip" button
             echo "
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card'>
@@ -153,6 +156,13 @@
             ";
         }
         echo "</div>";
+    }
+    function refreshPetImg(){
+        $userID = $_SESSION['userID'];
+        $pet = new Pet();
+        $petData = $pet->getEquippedPet($userID);
+        $petImg = $petData['petImg'];
+        echo ' <img src="' . $petImg . '" style="width: auto; height: 200px;">';
     }
     
 ?>

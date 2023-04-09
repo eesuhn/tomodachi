@@ -8,6 +8,7 @@ function refreshDashboard() {
         refreshStatsHeader();
         refreshFood();
         refreshInventory();
+        refreshPetImg();
     }, 100);
 }
 
@@ -48,3 +49,16 @@ function refreshInventory() {
         }
     });
 }
+
+function refreshPetImg() {
+    $.ajax({
+        url: "../back/data/dashboard.data.php?action=refreshPetImg",
+        type: "POST",
+        dataType: "html",
+
+        success: function (data) {
+            $("#petImg").html(data);
+        }
+    });
+}
+

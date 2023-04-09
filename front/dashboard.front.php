@@ -37,7 +37,7 @@
     <a href="#contact">Study</a>
     <a href="#about">Schedule</a>
     <div class="logout">
-      <a href="#">Logout</a>
+      <a href="../include/logout.inc.php">Logout</a>
     </div>
   </div>
 
@@ -67,9 +67,9 @@
               align-items: center; 
               margin: 5px; 
               background: rgba(0, 0, 0, 0.5); 
-              padding:5px;">
-            <img src="../assets/images/inventory.png" style="width: auto; height: 25px;">
-            <span style="margin-left: 10px; color:white;">Inventory</span>
+              padding: 5px;">
+            <img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
+            <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span>
           </div>
           <div class="pet">
             <img src="<?= $petImg ?>" style="width: auto; height: 200px;">
@@ -79,14 +79,14 @@
 
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px";>Habits</h3>
-        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 20px;">
+        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
           <input type="text" class="form-control" id="habit" placeholder="Add a new habit" style="margin-top: 10px;">
         </div>
       </div>
 
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/todo.png" width="30" style="margin-right: 10px";>To-Do</h3>
-        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 20px;">
+        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
           <input type="text" class="form-control" id="todo" placeholder="Add a new task" style="margin-top: 10px;">
         </div>
       </div>

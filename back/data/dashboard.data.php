@@ -146,15 +146,13 @@
                         <div class='card-body'>
                             <h5 class='card-title'>{$row['petName']}</h5>
                             <p class='card-text'>Status: {$row['petStatus']}</p>
-                            <button class='btn btn-primary' " . ($isEquipped ? "disabled" : "") . ">Equip</button>
-                        </div>
+                            <button class='btn btn-primary' onclick='equipPet({$userID},{$row['petID']})' " . ($isEquipped ? "disabled" : "") . ">Equip</button>
+                            </div>
                     </div>
                 </div>
             ";
         }
         echo "</div>";
     }
-    
-   
     
 ?>

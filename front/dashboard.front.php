@@ -72,7 +72,7 @@
             <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
             <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
           </div>
-          <div class="pet">
+          <div class="pet" id="petImg">
             <img src="<?= $petImg ?>" style="width: auto; height: 200px;">
           </div>
         </div>

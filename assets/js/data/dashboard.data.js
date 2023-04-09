@@ -7,6 +7,7 @@ function refreshDashboard() {
     setTimeout(function () {
         refreshStatsHeader();
         refreshFood();
+        refreshInventory();
     }, 100);
 }
 

@@ -11,4 +11,18 @@ function decreaseFood_one(userID, foodID) {
     });
     refreshDashboard();
 }
+// decrease food by one
+function equipPet(userID, petID) {
+
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=equipPet",
+        type: "GET",
+        data: {
+            userID: userID,
+            petID: petID
+        }
+    });
+    refreshDashboard();
+}
+
 

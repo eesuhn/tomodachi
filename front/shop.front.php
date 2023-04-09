@@ -107,38 +107,8 @@
             <h1 class="modal-title fs-5" id="petShopTitle">Pet Scout</h1>
           </div>
 
-          <div class="modal-body">
-            <div class="text-muted">Partner up with new pets from different rarities using your earned coins!</div>
-
-            <div class="row">
-              <div class="col-3"></div>
-
-              <div class="col-6 d-flex justify-content-center">
-                <img src="../assets/images/petscout.png" width="150">
-              </div>
-              <div class="col-3"></div>
-
-              <div class="col-12 d-flex justify-content-center">
-                <h1>100<img src="../assets/images/coin.png" width="15"></h1>
-              </div>
-
-              <div class="col-12 d-flex justify-content-center">
-                <button type="button" style="width: 15%;" class="btn btn-primary <?php if ($ownedPets || $userCurrency < 100) {echo 'disabled'; }?>" 
-                data-bs-target="#petScout" data-bs-toggle="modal" <?php if ($ownedPets || $userCurrency < 100) {echo 'disabled'; }?>
-                onclick="petScout(<?php echo $userID ?>)">Go!</button>
-              </div>
-
-              <div class="col-12 d-flex justify-content-center <?php if ($ownedPets || $userCurrency < 100) echo 'text-danger'; ?>">
-                <?php 
-                  if ($ownedPets) {
-                    echo 'You have owned all available pets'; 
-
-                  } else if ($userCurrency < 100) {
-                    echo 'You do not have enough coins'; 
-                  }
-                ?>
-              </div>
-            </div>
+          <div class="modal-body" id="gachaButton">
+            <!-- display Gacha button with AJAX -->
           </div>
 
           <div class="modal-footer">

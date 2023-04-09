@@ -6,6 +6,7 @@ $(document).ready(function() {
 function refreshShop() {
     setTimeout(function() {
         refreshCurrency();
+        refreshGachaButton();
     }, 100);
 }
 
@@ -19,6 +20,18 @@ function refreshCurrency() {
             $("#currencyData").html(data);
         }
     })
+}
+
+function refreshGachaButton() {
+    $.ajax({
+        url: "../back/data/shop.data.php?action=refreshGachaButton",
+        type: "POST",
+        dataType: "html",
+
+        success: function(data) {
+            $("#gachaButton").html(data);
+        }
+    });
 }
 
 function showPetScout() {

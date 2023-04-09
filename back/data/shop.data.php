@@ -25,8 +25,8 @@
             showPetScout();
             break;
 
-        case 'showFoodShop':
-            showFoodShop();
+        case 'refreshFoodShop':
+            refreshFoodShop();
             break;
     }
 
@@ -68,21 +68,25 @@
         </div>";
     }
 
-    function showFoodShop(){
+    function refreshFoodShop(){
+        
+        $userID = $_SESSION['userID'];
         
         $foodData = new Food();
-        $userID = $_SESSION['userID'];
         $foodShop = $foodData->getShopFoods($userID);
-        $currency = new Currency();
-        $currencyNum = $currency->getCurrency($userID);
+
+        $currencyNum = new Currency();
+        $currencyNum = $currencyNum->getCurrency($userID);
 
         echo '<div class="row">';
         $count = 0;
+        
         foreach ($foodShop as $foodShopData) {
             if ($count % 2 == 0) {
                 echo '</div><div class="row">';
             }
             $disableButton = '';
+
             if ($currencyNum < $foodShopData['foodPrice']) {
                 $disableButton = 'disabled';
             }
@@ -93,11 +97,22 @@
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$foodShopData["foodName"]}</h5>
                         <p class='card-text'><img src='../assets/images/hunger.png' width='20' style='margin: 2px;'>{$foodShopData["foodHunger"]}<img src='../assets/images/level.png' width='20' style='margin: 2px;'>{$foodShopData["foodXP"]}</p>
-                        <p class='card-text'>In Inventory: {$foodShopData["foodNum"]}</p>
-                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: 2px;'>{$foodShopData["foodPrice"]}</h4>
+                        <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: {$foodShopData["foodNum"]}</p>
+                        
+                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>{$foodShopData["foodPrice"]}</h4>
                         <p class='card-text'>{$foodShopData["foodDesc"]}</p>
+
                         <div class='mt-auto'>
-                        <button class='btn btn-primary' $disableButton onclick='purchaseFood({$userID}, {$foodShopData['foodID']}, {$foodShopData['foodPrice']})'>Purchase</button>
+                            <button class='btn btn-primary' $disableButton onclick='purchaseFood({$userID}, {$foodShopData['foodID']}, {$foodShopData['foodPrice']})' 
+                            style='margin: -6px 0px 0px; border: none; ";
+                            
+                            if ($disableButton == 'disabled') {
+                                echo "background-color: red;'>Not Enough Coins!";
+                            } else {
+                                echo "'>Purchase";
+                            }
+            echo
+                            "</button>
                         </div>
                     </div>
                 </div>
@@ -105,7 +120,5 @@
             $count++;
         }
         echo '</div>';
-
     }
-
 ?>

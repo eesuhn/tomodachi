@@ -44,7 +44,7 @@
         $buyFood = new Food();
         $currencyData = new Currency();
 
-        $buyFood->purchaseFood($userID,$foodID);
+        $buyFood->purchaseFood($userID, $foodID);
         $currencyData->decreaseCurrency($userID, $foodPrice);
     }
 ?>

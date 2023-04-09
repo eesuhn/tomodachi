@@ -5,39 +5,9 @@ function petScout(userID) {
         type: "GET",
         data: {
             userID: userID
-        }
-    });
-    setTimeout(function() {
-        $.ajax({
-            url: "../back/data/shop.data.php?action=showPetScout",
-            type: "POST",
-            dataType: "html",
-
-            success: function(data) {
-                $("#petScoutData").html(data);
-            }
-        })
-    }, 100);
-    
-    refreshShop();
-}
-
-function foodShop(userID) {
-    $.ajax({
-        url: "../back/action/shop.action.php?action=foodShop",
-        type: "GET",
-        data: {
-            userID: userID
         },
         success: function() {
-            $.ajax({
-                url: "../back/data/shop.data.php?action=showFoodShop",
-                type: "POST",
-                dataType: "html",
-                success: function(data) {
-                    $("#foodShopData").html(data);
-                }
-            });
+            showPetScout();
         }
     });
     
@@ -54,17 +24,9 @@ function purchaseFood(userID, foodID, foodPrice) {
             foodPrice: foodPrice
         },
         success: function() {
-            $.ajax({
-                url: "../back/data/shop.data.php?action=showFoodShop",
-                type: "POST",
-                dataType: "html",
-                success: function(data) {
-                    $("#foodShopData").html(data);
-                }
-            });
+            refreshFoodShop();
         }
     });
     
     refreshShop();
 }
-

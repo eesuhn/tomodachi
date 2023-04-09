@@ -28,14 +28,18 @@
         case 'refreshFoodShop':
             refreshFoodShop();
             break;
+
+        case 'refreshGachaButton':
+            refreshGachaButton();
+            break;
     }
 
     function refreshCurrency () {
         $userID = $_SESSION['userID'];
 
-        $currency = new Currency();
+        $userCurrency = new Currency();
 
-        $currencyNum = $currency->getCurrency($userID);
+        $currencyNum = $userCurrency->getCurrency($userID);
 
         echo 
         "<img src='../assets/images/coin.png' style='height: 30px; margin: 10px;'>$currencyNum";
@@ -75,8 +79,8 @@
         $foodData = new Food();
         $foodShop = $foodData->getShopFoods($userID);
 
-        $currencyNum = new Currency();
-        $currencyNum = $currencyNum->getCurrency($userID);
+        $userCurrency = new Currency();
+        $currencyNum = $userCurrency->getCurrency($userID);
 
         echo '<div class="row">';
         $count = 0;
@@ -120,5 +124,66 @@
             $count++;
         }
         echo '</div>';
+    }
+
+    function refreshGachaButton() {
+        $userID = $_SESSION['userID'];
+
+        $petData = new Pet();
+
+        $userCurrency = new Currency();
+
+        $currencyNum = $userCurrency->getCurrency($userID);
+
+        $ownedPets = $petData->checkOwnedPets($userID);
+
+        echo 
+        "<div class='text-muted'>Partner up with new pets from different rarities using your earned coins!</div>
+
+        <div class='row'>
+          <div class='col-3'></div>
+
+          <div class='col-6 d-flex justify-content-center'>
+            <img src='../assets/images/petscout.png' width='150'>
+          </div>
+          <div class='col-3'></div>
+
+          <div class='col-12 d-flex justify-content-center'>
+            <h1>100<img src='../assets/images/coin.png' width='15'></h1>
+          </div>
+
+          <div class='col-12 d-flex justify-content-center'>
+            <button type='button' style='width: 15%;' class='btn btn-primary "; 
+
+            if ($ownedPets || $currencyNum < 100) {
+                echo "disabled"; 
+            };
+            
+        echo 
+            "' data-bs-target='#petScout' data-bs-toggle='modal' ";
+            
+            if ($ownedPets || $currencyNum < 100) {
+                echo "disabled"; 
+            };
+
+        echo
+            " onclick='petScout($userID)'>Go!</button>
+          </div>
+
+          <div class='col-12 d-flex justify-content-center ";
+          
+            if ($ownedPets || $currencyNum < 100) {
+                echo "text-danger"; 
+            };
+              if ($ownedPets) {
+                echo "'>You have owned all available pets"; 
+
+              } else if ($currencyNum < 100) {
+                echo "'>You do not have enough coins"; 
+              }
+
+        echo 
+          "</div>
+        </div>";
     }
 ?>

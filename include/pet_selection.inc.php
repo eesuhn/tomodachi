@@ -9,7 +9,11 @@
 
     include '../back/connection.back.php';
     include '../back/pet.back.php';
+    include '../back/wallpaper.back.php';
 
+    $wallpaper = new Wallpaper();
+    $wallpaper->startingWallpaper($userID);
+    
     $pet = new Pet();
     $pet->ownPet($userID, $petID);
 ?>

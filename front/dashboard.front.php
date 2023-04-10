@@ -6,6 +6,7 @@
 <html>
 
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +17,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -37,7 +39,7 @@
     <a href="#contact">Study</a>
     <a href="#about">Schedule</a>
     <div class="logout">
-      <a href="../include/logout.inc.php">Logout</a>
+      <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
     </div>
   </div>
 
@@ -48,7 +50,7 @@
 
     <div class="row px-4 py-2">
       <div class="col-md-4">
-        <div style="
+        <div id="wallpaper" style="
             height: 550px; 
             width: auto; 
             border: 5px solid black; 
@@ -56,7 +58,6 @@
             justify-content: center; 
             align-items: center; 
             position: relative; 
-            background-image: url('../assets/backgrounds/meadow.png'); 
             background-size: cover; 
             background-position: center;">
           <div style="
@@ -67,15 +68,15 @@
               align-items: center; 
               margin: 5px; 
               background: rgba(0, 0, 0, 0.5); 
-              padding: 5px;">
-            <img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
-            <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span>
+              padding: 5px;" class="inventory">
+            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
+            <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
           </div>
-          <div class="pet">
-            <img src="<?= $petImg ?>" style="width: auto; height: 200px;">
+          <div class="pet" id="petImg">
+            <!-- display petImage with AJAX -->
           </div>
         </div>
-      </div>
+      </div></a>
 
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px";>Habits</h3>
@@ -105,6 +106,34 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="inventory" aria-hidden="true" aria-labelledby="inventoryTitle" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+            <!-- display inventory with AJAX -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black">
+          <h4>Are you sure you want to log out?</h4>
+        </div>
+        <div class="modal-footer">
+          <a href="../include/logout.inc.php" class="btn btn-primary" role="button" aria-pressed="true">Confirm</a>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
 

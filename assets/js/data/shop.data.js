@@ -56,3 +56,14 @@ function refreshFoodShop() {
         }
     });
 }
+
+function refreshWallpaperShop(){
+    $.ajax({
+        url: "../back/data/shop.data.php?action=refreshWallpaperShop",
+        type: "POST",
+        dataType: "html",
+        success: function(data) {
+            $("#wallpaperShopData").html(data);
+        }
+    });
+}

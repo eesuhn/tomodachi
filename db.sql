@@ -60,6 +60,21 @@ CREATE TABLE `pet_inventory` (
     `petStatus` varchar(255) NOT NULL DEFAULT 'Kept'
 );
 
+-- wallpaper table
+CREATE TABLE `wallpaper` (
+  `wallpaperID` int(11) NOT NULL,
+  `wallpaperName` varchar(255) NOT NULL,
+  `wallpaperImg` varchar(255) NOT NULL,
+  `wallpaperDesc` varchar(255) NOT NULL,
+  `wallpaperPrice` int(11) NOT NULL
+);
+
+-- wallpaper_inventory table
+CREATE TABLE `wallpaper_inventory` (
+  `userID` int(11) NOT NULL,
+  `wallpaperID` int(11) NOT NULL,
+  `wallpaperStatus` varchar(11) NOT NULL
+);
 
 
 -- Primary key
@@ -84,6 +99,12 @@ ALTER TABLE `pet_rarity`
 ALTER TABLE `pet_inventory`
     ADD PRIMARY KEY (`userID`,`petID`);
 
+ALTER TABLE `wallpaper`
+    ADD PRIMARY KEY (`wallpaperID`);
+
+ALTER TABLE `wallpaper_inventory`
+    ADD PRIMARY KEY (`userID`,`wallpaperID`);
+
 
 
 -- Auto increment
@@ -98,6 +119,9 @@ ALTER TABLE `food`
 
 ALTER TABLE `pet`
     MODIFY `petID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `wallpaper`
+    MODIFY `wallpaperID` int(11) NOT NULL AUTO_INCREMENT;
 
 
 
@@ -115,3 +139,7 @@ ALTER TABLE `pet`
 ALTER TABLE `pet_inventory`
     ADD CONSTRAINT `pet_inventory_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
     ADD CONSTRAINT `pet_inventory_ibfk_2` FOREIGN KEY (`petID`) REFERENCES `pet` (`petID`);
+
+ALTER TABLE `wallpaper_inventory`
+    ADD CONSTRAINT `wallpaper_inventory_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+    ADD CONSTRAINT `wallpaper_inventory_ibfk_2` FOREIGN KEY (`wallpaperID`) REFERENCES `wallpaper` (`wallpaperID`);

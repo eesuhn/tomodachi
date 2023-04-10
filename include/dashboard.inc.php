@@ -14,6 +14,7 @@
   include '../back/pet.back.php';
   include '../back/currency.back.php';
   include '../back/food.back.php';
+  include '../back/wallpaper.back.php';
 
   date_default_timezone_set('Asia/Kuala_Lumpur');
 

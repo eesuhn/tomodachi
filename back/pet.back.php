@@ -6,7 +6,6 @@
 
     class Pet {
         
-
         public function startingPet() {
             $sql = "SELECT * FROM pet WHERE petRarity = 'Common';";
             $db = new Database();
@@ -227,6 +226,45 @@
             ));
 
             return $stmt;
+        }
+
+        public function showPetInventory($userID){
+            $db = new Database();
+
+            $sql = "SELECT pi.petID, p.petName, pi.petStatus, p.petImg
+                    FROM pet_inventory pi
+                    JOIN pet p ON pi.petID = p.petID
+                    WHERE pi.userID = :userID";
+
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+
+            $stmt->execute();
+            $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $pets;
+        }
+
+        public function equipPet($userID, $petID) {
+            $db = new Database();
+        
+            // Set all pets of the user to "Kept" status except for the pet to be equipped
+            $sql = "UPDATE pet_inventory SET petStatus = 'Kept' WHERE userID = :userID AND petID != :petID";
+
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            
+            // Set the selected pet to "Equipped" status
+            $sql = "UPDATE pet_inventory SET petStatus = 'Equipped' WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
         }
     }
 ?>

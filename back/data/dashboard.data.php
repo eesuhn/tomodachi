@@ -3,6 +3,7 @@
     include '../pet.back.php';
     include '../currency.back.php';
     include '../food.back.php';
+    include '../wallpaper.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -23,6 +24,18 @@
 
         case 'refreshFood':
             refreshFood();
+            break;
+
+        case 'refreshInventory':
+            refreshInventory();
+            break;
+            
+        case 'refreshPetImg':
+            refreshPetImg();
+            break;
+        
+        case 'refreshWallpaper':
+            refreshWallpaper();
             break;
     }
 
@@ -119,5 +132,83 @@
                 </div>";
             }
         }
+    }
+
+    function refreshInventory() {
+        $userID = $_SESSION['userID'];
+        
+        $petData = new Pet();
+        $wallpaperData = new Wallpaper();
+
+        $stmt = $petData->showPetInventory($userID);
+        $stmt2 = $wallpaperData->getUserWallpapers($userID);
+
+        echo "<div class='row'>
+                <div clas='col-12 d-flex justify content center'>
+                    <h3>Owned Pets</h3>
+                </div>";
+        foreach ($stmt as $row) { 
+
+            // check if the pet is equipped
+            $isEquipped = ($row['petStatus'] == 'Equipped');
+
+            // print the pet information and the "Equip" button
+            echo "
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card'>
+                        <img src='{$row['petImg']}' class='card-img-top' width='120'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>{$row['petName']}</h5>
+                            <button class='btn btn-primary' onclick='equipPet({$userID}, {$row['petID']})' style='border: none; " .($isEquipped ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
+                        </div>
+                    </div>
+                </div>
+            ";
+        }
+        echo "</div>";
+
+        echo "<div class='row'>
+                <div clas='col-12 d-flex justify content center'>
+                    <h3>Owned Wallpapers</h3>
+                </div>";
+        foreach ($stmt2 as $row2) {
+
+            // check if the wallpaper is equipped
+            $isEquipped2 = ($row2['wallpaperStatus'] == 'Equipped');
+
+            // print the wallpaper information and the "Equip" button
+            echo "
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card'>
+                        <img src='{$row2['wallpaperImg']}' class='card-img-top' width='120'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>{$row2['wallpaperName']}</h5>
+                            <button class='btn btn-primary' onclick='equipWallpaper({$userID}, {$row2['wallpaperID']})' style='border: none; " .($isEquipped2 ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
+                        </div>
+                    </div>
+                </div>
+            ";
+        }
+        echo "</div>";
+    }
+
+    function refreshPetImg(){
+        $userID = $_SESSION['userID'];
+
+        $pet = new Pet();
+        $petData = $pet->getEquippedPet($userID);
+        $petImg = $petData['petImg'];
+
+        echo ' <img src="' . $petImg . '" style="width: auto; height: 200px;">';
+    }
+    
+    function refreshWallpaper() {
+        $userID = $_SESSION['userID'];
+
+        $wallpaper = new Wallpaper();
+        $wallpaperData = $wallpaper->getEquippedWallpaper($userID);
+        $imageUrl = $wallpaperData['wallpaperImg'];
+        
+        echo json_encode(array('imageUrl' => $imageUrl));
     }
 ?>

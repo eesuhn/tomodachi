@@ -34,9 +34,8 @@
   <a class="active" href="../front/shop.front.php">Shop</a>
   <a href="#contact">Study</a>
   <a href="#about">Schedule</a>
-
   <div class="logout">
-    <a href="#">Logout</a>
+    <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
   </div>
 </div>
 
@@ -77,7 +76,7 @@
       </div>
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <a class="shopItems" href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
+        <a class="shopItems" href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="refreshWallpaperShop()">
           <img src="../assets/images/shop.png" width="200">
           <h4 style="text-align:center;">Wallpaper Shop</h4>
         </a>
@@ -87,7 +86,7 @@
     </div>
 
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-body" id="foodShopData">
             <!-- display food shop with AJAX -->
@@ -134,6 +133,20 @@
       </div>
     </div>
 
+    <div class="modal fade" id="wallpaperShop" aria-hidden="true" aria-labelledby="wallpaperShopTitle" tabindex="-1">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+          <div class="modal-body" style="color:black" id="wallpaperShopData">
+            <!-- display wallpaper shop with AJAX -->
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-scrollable">
@@ -221,6 +234,20 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black">
+          <h4>Are you sure you want to log out?</h4>
+        </div>
+        <div class="modal-footer">
+          <a href="../include/logout.inc.php" class="btn btn-primary" role="button" aria-pressed="true">Confirm</a>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

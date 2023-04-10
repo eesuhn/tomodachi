@@ -5,7 +5,5 @@
     }
     session_destroy();
 
-    echo 
-        "<script>alert('You are now logged out.');
-        window.location.href = '../front/login.front.php';</script>";
+    header('Location: ../index.php');
 ?>

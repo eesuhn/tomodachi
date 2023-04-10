@@ -33,6 +33,7 @@
 
 			$db = new Database();
 			$stmt = $db->connect()->prepare("SELECT * FROM wallpaper_inventory WHERE userID = ? AND wallpaperID = ?");
+			
 			$stmt->execute([$userID, $wallpaperID]);
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 

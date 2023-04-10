@@ -159,8 +159,7 @@
                         <img src='{$row['petImg']}' class='card-img-top' width='120'>
                         <div class='card-body'>
                             <h5 class='card-title'>{$row['petName']}</h5>
-                            <p class='card-text'>Status: {$row['petStatus']}</p>
-                            <button class='btn btn-primary' onclick='equipPet({$userID}, {$row['petID']})' " .($isEquipped ? 'disabled' : ''). ">Equip</button>
+                            <button class='btn btn-primary' onclick='equipPet({$userID}, {$row['petID']})' style='border: none; " .($isEquipped ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
                         </div>
                     </div>
                 </div>
@@ -173,6 +172,7 @@
                     <h3>Owned Wallpapers</h3>
                 </div>";
         foreach ($stmt2 as $row2) {
+
             // check if the wallpaper is equipped
             $isEquipped2 = ($row2['wallpaperStatus'] == 'Equipped');
 
@@ -183,8 +183,7 @@
                         <img src='{$row2['wallpaperImg']}' class='card-img-top' width='120'>
                         <div class='card-body'>
                             <h5 class='card-title'>{$row2['wallpaperName']}</h5>
-                            <p class='card-text'>Status: {$row2['wallpaperStatus']}</p>
-                            <button class='btn btn-primary' onclick='equipWallpaper({$userID}, {$row2['wallpaperID']})' " .($isEquipped2 ? 'disabled' : ''). ">Equip</button>
+                            <button class='btn btn-primary' onclick='equipWallpaper({$userID}, {$row2['wallpaperID']})' style='border: none; " .($isEquipped2 ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
                         </div>
                     </div>
                 </div>

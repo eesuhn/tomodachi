@@ -97,7 +97,7 @@
                 $disableButton = 'disabled';
             }
             echo
-            "<div class='col-md-3 px-3 py-3'>
+            "<div class='col-md-4 px-3 py-3'>
                 <div class='card h-100'>
                     <center><img src='{$foodShopData["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
                     <div class='card-body d-flex flex-column'>
@@ -204,16 +204,19 @@
         foreach ($wallpaperShop as $wallpaperShopData) {
 
             $disableButton = '';
+            $flag ='';
 
             if ($currencyNum < $wallpaperShopData['wallpaperPrice']) {
                 $disableButton = 'disabled';
+                $flag = 'notEnough';
+            }
 
-            } 
             $isOwned = $wallpaperData->checkWallpaper($userID, $wallpaperShopData['wallpaperID']);
 
             if ($isOwned) {
                 $disableButton = 'disabled';
-            } 
+                $flag = 'owned';
+            }
 
             echo
             "<div class='col-md-4 px-3 py-3'>
@@ -228,10 +231,10 @@
                             <button class='btn btn-primary' $disableButton onclick='purchaseWallpaper({$userID}, {$wallpaperShopData['wallpaperID']}, {$wallpaperShopData['wallpaperPrice']})' 
                             style='margin: -6px 0px 0px; border: none; ";
                             
-                            if ($disableButton == 'disabled') {
+                            if ($flag == 'notEnough') {
                                 echo "background-color: red;'>Not Enough Coins!";
 
-                            } elseif ($disableButton == ' disabled'){
+                            } else if ($flag == 'owned'){
                                 echo "background-color: black;'>Owned";
 
                             } else {

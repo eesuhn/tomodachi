@@ -60,7 +60,7 @@
         $buyWallpaper = new Wallpaper();
         $currencyData = new Currency();
 
-        $buyWallpaper->purchaseWallpaper($userID,$wallpaperID);
+        $buyWallpaper->purchaseWallpaper($userID, $wallpaperID);
         $currencyData->decreaseCurrency($userID, $wallpaperPrice);
     }
     

@@ -147,8 +147,9 @@
                 <div clas='col-12 d-flex justify content center'>
                     <h3>Owned Pets</h3>
                 </div>";
-        foreach ($stmt as $row) {            
-            // Check if the pet is equipped
+        foreach ($stmt as $row) { 
+
+            // check if the pet is equipped
             $isEquipped = ($row['petStatus'] == 'Equipped');
 
             // print the pet information and the "Equip" button
@@ -159,7 +160,7 @@
                         <div class='card-body'>
                             <h5 class='card-title'>{$row['petName']}</h5>
                             <p class='card-text'>Status: {$row['petStatus']}</p>
-                            <button class='btn btn-primary' onclick='equipPet({$userID},{$row['petID']})' " . ($isEquipped ? "disabled" : "") . ">Equip</button>
+                            <button class='btn btn-primary' onclick='equipPet({$userID}, {$row['petID']})' " .($isEquipped ? 'disabled' : ''). ">Equip</button>
                         </div>
                     </div>
                 </div>
@@ -172,7 +173,7 @@
                     <h3>Owned Wallpapers</h3>
                 </div>";
         foreach ($stmt2 as $row2) {
-            // Check if the wallpaper is equipped
+            // check if the wallpaper is equipped
             $isEquipped2 = ($row2['wallpaperStatus'] == 'Equipped');
 
             // print the wallpaper information and the "Equip" button
@@ -183,8 +184,8 @@
                         <div class='card-body'>
                             <h5 class='card-title'>{$row2['wallpaperName']}</h5>
                             <p class='card-text'>Status: {$row2['wallpaperStatus']}</p>
-                            <button class='btn btn-primary' onclick='equipWallpaper({$userID},{$row2['wallpaperID']})' " . ($isEquipped2 ? "disabled" : "") . ">Equip</button>
-                            </div>
+                            <button class='btn btn-primary' onclick='equipWallpaper({$userID}, {$row2['wallpaperID']})' " .($isEquipped2 ? 'disabled' : ''). ">Equip</button>
+                        </div>
                     </div>
                 </div>
             ";
@@ -194,18 +195,21 @@
 
     function refreshPetImg(){
         $userID = $_SESSION['userID'];
+
         $pet = new Pet();
         $petData = $pet->getEquippedPet($userID);
         $petImg = $petData['petImg'];
+
         echo ' <img src="' . $petImg . '" style="width: auto; height: 200px;">';
     }
     
     function refreshWallpaper() {
         $userID = $_SESSION['userID'];
+
         $wallpaper = new Wallpaper();
         $wallpaperData = $wallpaper->getEquippedWallpaper($userID);
         $imageUrl = $wallpaperData['wallpaperImg'];
+        
         echo json_encode(array('imageUrl' => $imageUrl));
     }
-    
 ?>

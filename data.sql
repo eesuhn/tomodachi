@@ -51,10 +51,10 @@ INSERT INTO `food_inventory` (`userID`, `foodID`, `foodNum`) VALUES
 ('1', '4', '5');
 
 -- Dump data for table `wallpaper`
-INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperImg`, `wallpaperDesc`,`wallpaperPrice`) VALUES 
-('Sky', '../assets/wallpapers/sky.png', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.','50'), 
-('Meadow', '../assets/wallpapers/meadow.png', 'A calming and refreshing wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers','50'), 
-('Folklore', '../assets/wallpapers/folklore.png', 'A rustic wallpaper design, , inspired by traditional tales and legends from around the world, featuring intricate patterns and symbols','50'), 
-('Mars', '../assets/wallpapers/mars.png', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.','50'), 
-('Campfire', '../assets/wallpapers/campfire.png', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.','50'), 
-('Starry Nights', '../assets/wallpapers/starrynight.png', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars','50');
+INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperImg`, `wallpaperDesc`, `wallpaperPrice`) VALUES 
+('Sky', '../assets/wallpapers/sky.png', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.', '50'), 
+('Meadow', '../assets/wallpapers/meadow.png', 'A calming and refreshing wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers', '50'), 
+('Folklore', '../assets/wallpapers/folklore.png', 'A rustic wallpaper design, , inspired by traditional tales and legends from around the world, featuring intricate patterns and symbols', '50'), 
+('Mars', '../assets/wallpapers/mars.png', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.', '50'), 
+('Campfire', '../assets/wallpapers/campfire.png', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.', '50'), 
+('Starry Nights', '../assets/wallpapers/starrynight.png', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', '50');

@@ -11,6 +11,7 @@ function decreaseFood_one(userID, foodID) {
     });
     refreshDashboard();
 }
+
 // equip pet
 function equipPet(userID, petID) {
 
@@ -37,8 +38,3 @@ function equipWallpaper(userID, wallpaperID) {
     });
     refreshDashboard();
 }
-
-
-
-
-

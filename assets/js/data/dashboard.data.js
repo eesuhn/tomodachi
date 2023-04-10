@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function() {
     refreshDashboard();
 });
 
 // refresh dashboard data
 function refreshDashboard() {
-    setTimeout(function () {
+    setTimeout(function() {
         refreshStatsHeader();
         refreshFood();
         refreshInventory();
@@ -67,11 +67,11 @@ function refreshWallpaper() {
     $.ajax({
         url: '../back/data/dashboard.data.php?action=refreshWallpaper',
         dataType: 'json',
+
         success: function(data) {
-          console.log(data.imageUrl);
+          
           // set the background image of the div
           $('#wallpaper').css('background-image', 'url(' + data.imageUrl + ')');
         }
     });
 }
-

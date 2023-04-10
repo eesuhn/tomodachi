@@ -110,31 +110,31 @@
   </div>
 
 
-    <div class="modal fade" id="inventory" aria-hidden="true" aria-labelledby="inventoryTitle" tabindex="-1">
-      <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-              <div class="modal-body" style="color:black" id="inventoryData">
-                  <!-- display inventory with AJAX -->
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-              </div>
-          </div>
+  <div class="modal fade" id="inventory" aria-hidden="true" aria-labelledby="inventoryTitle" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+            <!-- display inventory with AJAX -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-body" style="color:black">
-                  <h4>Are you sure you want to log out?</h4>
-              </div>
-              <div class="modal-footer">
-                  <a href="../include/logout.inc.php" class="btn btn-primary" role="button" aria-pressed="true">Confirm</a>
-                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-              </div>
-          </div>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black">
+          <h4>Are you sure you want to log out?</h4>
+        </div>
+        <div class="modal-footer">
+          <a href="../include/logout.inc.php" class="btn btn-primary" role="button" aria-pressed="true">Confirm</a>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
+    </div>
   </div>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>

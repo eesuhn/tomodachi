@@ -210,8 +210,9 @@
 
             } 
             $isOwned = $wallpaperData->checkWallpaper($userID, $wallpaperShopData['wallpaperID']);
+
             if ($isOwned) {
-                $disableButton = ' disabled';
+                $disableButton = 'disabled';
             } 
 
             echo
@@ -229,9 +230,11 @@
                             
                             if ($disableButton == 'disabled') {
                                 echo "background-color: red;'>Not Enough Coins!";
+
                             } elseif ($disableButton == ' disabled'){
                                 echo "background-color: black;'>Owned";
-                            } else{
+
+                            } else {
                                 echo "'>Purchase";
                             }
             echo
@@ -243,5 +246,4 @@
         }
         echo '</div>';
     }
-
 ?>

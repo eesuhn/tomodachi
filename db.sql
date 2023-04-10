@@ -60,21 +60,21 @@ CREATE TABLE `pet_inventory` (
     `petStatus` varchar(255) NOT NULL DEFAULT 'Kept'
 );
 
---wallpaper table
+-- wallpaper table
 CREATE TABLE `wallpaper` (
   `wallpaperID` int(11) NOT NULL,
-  `wallpaperName` varchar(25) NOT NULL,
+  `wallpaperName` varchar(255) NOT NULL,
   `wallpaperImg` varchar(255) NOT NULL,
   `wallpaperDesc` varchar(255) NOT NULL,
   `wallpaperPrice` int(11) NOT NULL
-)
+);
 
 -- wallpaper_inventory table
 CREATE TABLE `wallpaper_inventory` (
   `userID` int(11) NOT NULL,
   `wallpaperID` int(11) NOT NULL,
   `wallpaperStatus` varchar(11) NOT NULL
-)
+);
 
 
 -- Primary key

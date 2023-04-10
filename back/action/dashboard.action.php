@@ -52,6 +52,6 @@
 
         $wallpaperData = new Wallpaper();
 
-        $wallpaperData->equipWallpaper($userID,$wallpaperID);
+        $wallpaperData->equipWallpaper($userID, $wallpaperID);
     }
 ?>

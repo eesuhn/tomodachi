@@ -13,6 +13,7 @@
 
     $wallpaper = new Wallpaper();
     $wallpaper->startingWallpaper($userID);
+    
     $pet = new Pet();
     $pet->ownPet($userID, $petID);
 ?>

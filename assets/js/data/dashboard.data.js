@@ -1,6 +1,9 @@
 $(document).ready(function () {
+    $("#active-btn").trigger("click");
     refreshDashboard();
 });
+
+var state = "Active";
 
 // refresh dashboard data
 function refreshDashboard() {

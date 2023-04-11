@@ -38,7 +38,7 @@ class Todo{
 
     public function addTask($userID, $title, $dueDate){
         $db = new Database();
-        $sql = "INSERT INTO todo (userID, taskTitle, taskDesc, taskDue) VALUES (:userID, :title, '', :dueDate)";
+        $sql = "INSERT INTO todo (userID, taskTitle, taskDesc, taskDue, status) VALUES (:userID, :title, '', :dueDate, 'Active')";
         $stmt = $db->connect()->prepare($sql);
         $stmt->bindParam(':userID', $userID);
         $stmt->bindParam(':title', $title);

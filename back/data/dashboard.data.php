@@ -4,6 +4,7 @@
     include '../currency.back.php';
     include '../food.back.php';
     include '../wallpaper.back.php';
+    include '../todo.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -36,6 +37,10 @@
         
         case 'refreshWallpaper':
             refreshWallpaper();
+            break;
+
+        case 'refreshTodo':
+            refreshTodo();
             break;
     }
 
@@ -211,4 +216,71 @@
         
         echo json_encode(array('imageUrl' => $imageUrl));
     }
+
+    function refreshTodo() {
+        $userID = $_SESSION['userID'];
+        
+        $taskData = new Todo();
+        $currentState = $_POST['currentState'];
+
+        $stmt = $taskData->getUserTasks($userID,$currentState);
+    
+        foreach ($stmt as $row) {            
+    
+            echo "
+            <div class='card' style='margin-top:10px;'>
+            <div class='card-body'>
+                <div class='row align-items-center'>
+                <div class='col-2 d-flex justify-content-center align-items-center'>
+                    <div class='form-check'>
+                    <input class='form-check-input' type='checkbox' value='' id='todo1' style='padding:10px;'>
+                    <label class='form-check-label' for='todo1'></label>
+                    </div>
+                </div>
+                <div class='col-8 flex-grow-1'>
+                    <h5 class='card-title'>{$row['taskTitle']}</h5>
+                    <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
+                    <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
+                </div>
+                <div class='col-2 text-right'>
+                    <a href='#' class='text-muted mr-3' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'><i class='fas fa-edit'></i></a>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class='modal fade' id='editTask{$row['taskID']}' tabindex='-1' aria-hidden='true'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title' id='editToDo'>Update Task</h5>
+                        </div>
+                        <div class='modal-body'>
+                            <form id='task-form-{$row['taskID']}'>
+                                <div class='form-group'>
+                                    <label for='editTaskTitle{$row['taskID']}'>Task Title</label>
+                                    <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>                                
+                                </div>
+                                <div class='form-group'>
+                                    <label for='editTaskDesc{$row['taskID']}'>Task Description</label>
+                                    <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='3'>{$row['taskDesc']}</textarea>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='editTaskDue{$row['taskID']}'>Due Date</label>
+                                    <input type='date' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>                                
+                                </div>
+                            </form>
+                        </div>
+                        <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                            <button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='saveTask({$row['taskID']})'>Save</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            ";
+        }
+    }
+
 ?>

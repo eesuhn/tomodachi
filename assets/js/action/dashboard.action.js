@@ -38,3 +38,49 @@ function equipWallpaper(userID, wallpaperID) {
     });
     refreshDashboard();
 }
+
+function saveTask(taskID){    
+    let taskTitle = document.getElementById('editTaskTitle'+taskID).value;
+    let taskDesc = document.getElementById('editTaskDesc'+taskID).value;
+    let taskDue = document.getElementById('editTaskDue'+taskID).value;
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=saveTask",
+        type: "GET",
+        data: {
+            taskID: taskID,
+            taskTitle: taskTitle,
+            taskDesc: taskDesc,
+            taskDue: taskDue
+        }
+    });
+    refreshDashboard();
+}
+
+function addTask() {
+    var todoInput = document.getElementById("todo");
+    var todo = todoInput.value.trim();
+    if(todo !== ''){
+        $.ajax({
+            url: "../back/action/dashboard.action.php?action=addTask",
+            type: "POST",
+            data: {
+                todo: todo
+            },
+            success: function(){
+                refreshDashboard();
+                todoInput.value = '';
+            }
+        });
+    }
+}
+
+function deleteTask(taskID){    
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=deleteTask",
+        type: "GET",
+        data: {
+            taskID: taskID,
+        }
+    });
+    refreshDashboard();
+}

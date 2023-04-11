@@ -4,6 +4,7 @@
     include '../currency.back.php';
     include '../food.back.php';
     include '../wallpaper.back.php';
+    include '../todo.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -25,6 +26,15 @@
             break;
         case 'equipWallpaper':
             equipWallpaper();
+            break;
+        case 'saveTask':
+            saveTask();
+            break;
+        case 'addTask':
+            addTask();
+            break;
+        case 'deleteTask':
+            deleteTask();
             break;
     }
 
@@ -54,4 +64,29 @@
 
         $wallpaperData->equipWallpaper($userID, $wallpaperID);
     }
+    function saveTask(){
+        $taskID = $_GET['taskID'];
+        $taskTitle = $_GET['taskTitle'];
+        $taskDesc = $_GET['taskDesc'];
+        $taskDue = $_GET['taskDue'];
+
+        $taskData = new Todo();
+        $taskData->updateTask($taskID,$taskTitle,$taskDue,$taskDesc);
+    }
+
+    function addTask(){
+        $userID = $_SESSION['userID'];
+        $todo = $_POST['todo'];
+        $taskDue = date("Y-m-d");
+        
+        $taskData = new Todo();
+        $taskData->addTask($userID,$todo,$taskDue);
+    }
+
+    function deleteTask(){
+        $taskID = $_GET['taskID'];
+        $taskData = new Todo();
+        $taskData->deleteTask($taskID);
+    }
+    
 ?>

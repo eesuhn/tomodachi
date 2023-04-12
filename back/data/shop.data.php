@@ -102,9 +102,10 @@
                     <center><img src='{$foodShopData["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$foodShopData["foodName"]}</h5>
-                        <p class='card-text'>
-                            <img src='../assets/images/level.png' width='20' style='margin: 2px;'>{$foodShopData["foodXP"]}
-                            <img src='../assets/images/hunger.png' width='20' style='margin: 2px;'>{$foodShopData["foodHapp"]}
+                        <p class='card-text food-stats'>
+                            <img src='../assets/images/level.png' width='20'>{$foodShopData["foodXP"]}
+                            <img src='../assets/images/health.png' width='20'>{$foodShopData["foodHealth"]}
+                            <img src='../assets/images/hunger.png' width='20'>{$foodShopData["foodHapp"]}
                         </p>
                         <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: {$foodShopData["foodNum"]}</p>
                         
@@ -116,7 +117,7 @@
                             style='margin: -6px 0px 0px; border: none; ";
                             
                             if ($disableButton == 'disabled') {
-                                echo "background-color: red;'>Not Enough Coins!";
+                                echo "background-color: red;'>Not enough coins!";
                             } else {
                                 echo "'>Purchase";
                             }
@@ -141,6 +142,12 @@
 
         $ownedPets = $petData->checkOwnedPets($userID);
 
+        $flag = "";
+
+        if ($ownedPets || $currencyNum < 1000) {
+            $flag = "disabled"; 
+        };
+
         echo 
         "<div class='text-muted'>Partner up with new pets from different rarities using your earned coins!</div>
 
@@ -157,38 +164,23 @@
           </div>
 
           <div class='col-12 d-flex justify-content-center'>
-            <button type='button' style='width: 15%;' class='btn btn-primary "; 
-
-            if ($ownedPets || $currencyNum < 1000) {
-                echo "disabled"; 
-            };
+            <button type='button' onclick='petScout($userID)' class='btn btn-primary ".$flag; 
             
         echo 
-            "' data-bs-target='#petScout' data-bs-toggle='modal' ";
+            "' data-bs-target='#petScout' data-bs-toggle='modal' style='border: none;";
             
-            if ($ownedPets || $currencyNum < 1000) {
-                echo "disabled"; 
-            };
-
-        echo
-            " onclick='petScout($userID)'>Go!</button>
-          </div>
-
-          <div class='col-12 d-flex justify-content-center ";
-          
-            if ($ownedPets || $currencyNum < 1000) {
-                echo "text-danger"; 
-            }
-
             if ($ownedPets) {
-                echo "'>You have owned all available pets"; 
+                echo " background-color: black;' disabled>You owned all the pets!"; 
 
             } else if ($currencyNum < 1000) {
-                echo "'>You do not have enough coins"; 
+                echo " background-color: red;' disabled>Not enough coins!";
+                
+            } else {
+                echo " width: 15%;'>Go!";
             }
-
-        echo 
-          "</div>
+        echo
+            "</button>
+          </div>
         </div>";
     }
 
@@ -244,7 +236,7 @@
                             style='margin: -6px 0px 0px; border: none; ";
                             
                             if ($flag == 'notEnough') {
-                                echo "background-color: red;'>Not Enough Coins!";
+                                echo "background-color: red;'>Not enough coins!";
 
                             } else if ($flag == 'owned'){
                                 echo "background-color: black;'>Owned";

@@ -107,13 +107,15 @@
 
         $stmt = $foodData->getFoodDetails($userID);
 
+        $foodCount = 0;
+
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             if ($row['foodNum'] != 0) {
                 echo 
                 "<div class='col-3 col-lg-3'>
                     <div class='count-data text-center' style='font-size: 20px;'>
                         <button href='#food' data-bs-target='#food<?=". $row['foodID'] ."?>' 
-                        data-bs-toggle='modal' style='text-decoration: none; color: white; background-color: #212529; border: none;'>
+                        data-bs-toggle='modal' class='foodCounter'>
                             <img src='"
                             .$row['foodImg'] . 
                             "' width='30px'>
@@ -139,6 +141,10 @@
                     </div>
                 </div>";
             }
+            $foodCount += $row['foodNum'];
+        }
+        if ($foodCount == 0) {
+            echo "<p style='font-size: 22px; margin-left: 20px; font-weight: 400;'>Your food storage is empty :(</p>";
         }
     }
 

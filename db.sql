@@ -64,9 +64,9 @@ CREATE TABLE `pet_inventory` (
 CREATE TABLE `wallpaper` (
   `wallpaperID` int(11) NOT NULL,
   `wallpaperName` varchar(255) NOT NULL,
-  `wallpaperImg` varchar(255) NOT NULL,
   `wallpaperDesc` varchar(255) NOT NULL,
-  `wallpaperPrice` int(11) NOT NULL
+  `wallpaperPrice` int(11) NOT NULL,
+  `wallpaperImg` varchar(255) NOT NULL
 );
 
 -- wallpaper_inventory table

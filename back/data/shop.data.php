@@ -102,7 +102,10 @@
                     <center><img src='{$foodShopData["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$foodShopData["foodName"]}</h5>
-                        <p class='card-text'><img src='../assets/images/hunger.png' width='20' style='margin: 2px;'>{$foodShopData["foodHunger"]}<img src='../assets/images/level.png' width='20' style='margin: 2px;'>{$foodShopData["foodXP"]}</p>
+                        <p class='card-text'>
+                            <img src='../assets/images/level.png' width='20' style='margin: 2px;'>{$foodShopData["foodXP"]}
+                            <img src='../assets/images/hunger.png' width='20' style='margin: 2px;'>{$foodShopData["foodHapp"]}
+                        </p>
                         <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: {$foodShopData["foodNum"]}</p>
                         
                         <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>{$foodShopData["foodPrice"]}</h4>
@@ -150,20 +153,20 @@
           <div class='col-3'></div>
 
           <div class='col-12 d-flex justify-content-center'>
-            <h1>100<img src='../assets/images/coin.png' width='15'></h1>
+            <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
           </div>
 
           <div class='col-12 d-flex justify-content-center'>
             <button type='button' style='width: 15%;' class='btn btn-primary "; 
 
-            if ($ownedPets || $currencyNum < 100) {
+            if ($ownedPets || $currencyNum < 1000) {
                 echo "disabled"; 
             };
             
         echo 
             "' data-bs-target='#petScout' data-bs-toggle='modal' ";
             
-            if ($ownedPets || $currencyNum < 100) {
+            if ($ownedPets || $currencyNum < 1000) {
                 echo "disabled"; 
             };
 
@@ -173,15 +176,16 @@
 
           <div class='col-12 d-flex justify-content-center ";
           
-            if ($ownedPets || $currencyNum < 100) {
+            if ($ownedPets || $currencyNum < 1000) {
                 echo "text-danger"; 
-            };
-              if ($ownedPets) {
+            }
+
+            if ($ownedPets) {
                 echo "'>You have owned all available pets"; 
 
-              } else if ($currencyNum < 100) {
+            } else if ($currencyNum < 1000) {
                 echo "'>You do not have enough coins"; 
-              }
+            }
 
         echo 
           "</div>
@@ -224,7 +228,15 @@
                     <center><img src='{$wallpaperShopData["wallpaperImg"]}' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$wallpaperShopData["wallpaperName"]}</h5>
-                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>{$wallpaperShopData["wallpaperPrice"]}</h4>
+                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>";
+                        if ($wallpaperShopData['wallpaperPrice'] == 0) {
+                            echo "Free!";
+
+                        } else {
+                            echo $wallpaperShopData['wallpaperPrice'];
+                        }
+            echo
+                        "</h4>
                         <p class='card-text'>{$wallpaperShopData["wallpaperDesc"]}</p>
 
                         <div class='mt-auto'>

@@ -70,9 +70,9 @@
             return $result['foodPrice'];
         }
 
-        // get foodHunger based on foodID
-        public function getHunger ($foodID) {
-            $sql = "SELECT foodHunger FROM food WHERE foodID = :value1";
+        // get foodHapp based on foodID
+        public function getHapp ($foodID) {
+            $sql = "SELECT foodHapp FROM food WHERE foodID = :value1";
 
             $stmt = $this->db->connect()->prepare($sql);
 
@@ -83,7 +83,7 @@
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $result['foodHunger'];
+            return $result['foodHapp'];
         }
 
         // get foodXP based on foodID

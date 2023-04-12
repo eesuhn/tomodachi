@@ -19,8 +19,9 @@ CREATE TABLE `food` (
     `foodName` varchar(255) NOT NULL,
     `foodDesc` varchar(255) NOT NULL,
     `foodPrice` int(11) NOT NULL,
-    `foodHunger` int(11) NOT NULL,
     `foodXP` int(11) NOT NULL,
+    `foodHealth` int(11) NOT NULL,
+    `foodHapp` int(11) NOT NULL,
     `foodImg` varchar(255) NOT NULL
 );
 
@@ -44,7 +45,7 @@ CREATE TABLE `pet` (
 CREATE TABLE `pet_rarity` (
     `petRarity` varchar(255) NOT NULL,
     `petHealthIn` int(11) NOT NULL,
-    `petHungerIn` int(11) NOT NULL
+    `petHappIn` int(11) NOT NULL
 );
 
 -- pet_inventory table
@@ -54,26 +55,26 @@ CREATE TABLE `pet_inventory` (
     `petLevel` int(11) NOT NULL,
     `petXP` int(11) NOT NULL,
     `petHealthTol` int(11) NOT NULL,
-    `petHungerTol` int(11) NOT NULL,
+    `petHappTol` int(11) NOT NULL,
     `petHealthCur` int(11) NOT NULL,
-    `petHungerCur` int(11) NOT NULL,
+    `petHappCur` int(11) NOT NULL,
     `petStatus` varchar(255) NOT NULL DEFAULT 'Kept'
 );
 
 -- wallpaper table
 CREATE TABLE `wallpaper` (
-  `wallpaperID` int(11) NOT NULL,
-  `wallpaperName` varchar(255) NOT NULL,
-  `wallpaperDesc` varchar(255) NOT NULL,
-  `wallpaperPrice` int(11) NOT NULL,
-  `wallpaperImg` varchar(255) NOT NULL
+    `wallpaperID` int(11) NOT NULL,
+    `wallpaperName` varchar(255) NOT NULL,
+    `wallpaperDesc` varchar(255) NOT NULL,
+    `wallpaperPrice` int(11) NOT NULL,
+    `wallpaperImg` varchar(255) NOT NULL
 );
 
 -- wallpaper_inventory table
 CREATE TABLE `wallpaper_inventory` (
-  `userID` int(11) NOT NULL,
-  `wallpaperID` int(11) NOT NULL,
-  `wallpaperStatus` varchar(11) NOT NULL
+    `userID` int(11) NOT NULL,
+    `wallpaperID` int(11) NOT NULL,
+    `wallpaperStatus` varchar(11) NOT NULL
 );
 
 -- task table

@@ -2,20 +2,23 @@
     class Currency {
         private $userID;
         private $currencyNum;
+        private $db;
+
+        public function __construct() {
+            $this->db = new Database();
+        }
 
         // initial currency amount
         public function setCurrencyDetails_in ($userID) {
             $this->userID = $userID;
-            $this->currencyNum = 0;
+            $this->currencyNum = 100;
         }
 
         // register currency info
         public function registerCurrency () {
             $sql = "INSERT INTO currency (userID, currencyNum) VALUES (:value1, :value2)";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $this->userID);
             $stmt->bindParam(':value2', $this->currencyNum);
@@ -29,9 +32,7 @@
         public function getCurrency ($userID) {
             $sql = "SELECT currencyNum FROM currency WHERE userID = :value1";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $userID);
 
@@ -48,9 +49,7 @@
         public function increaseCurrency ($userID, $currencyNum) {
             $sql = "UPDATE currency SET currencyNum = currencyNum + :value1 WHERE userID = :value2";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $currencyNum);
             $stmt->bindParam(':value2', $userID);
@@ -66,9 +65,7 @@
         public function decreaseCurrency ($userID, $currencyNum) {
             $sql = "UPDATE currency SET currencyNum = currencyNum - :value1 WHERE userID = :value2";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $currencyNum);
             $stmt->bindParam(':value2', $userID);

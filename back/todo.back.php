@@ -55,4 +55,15 @@ class Todo{
         $stmt->execute();
         return true;
     }
+
+    public function updateStatus($taskID,$status){
+        $db = new Database();
+        $sql = "UPDATE todo SET status = :status WHERE taskID = :taskID";
+        $stmt = $db->connect()->prepare($sql);
+        $stmt->bindParam(':taskID', $taskID);
+        $stmt->bindParam(':status', $status);
+        $stmt->execute();
+        return true;
+    }
+
 }

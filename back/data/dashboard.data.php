@@ -233,8 +233,12 @@
                 <div class='row align-items-center'>
                 <div class='col-2 d-flex justify-content-center align-items-center'>
                     <div class='form-check'>
-                    <input class='form-check-input' type='checkbox' value='' id='todo1' style='padding:10px;'>
-                    <label class='form-check-label' for='todo1'></label>
+                    <input class='form-check-input' type='checkbox' value='' id='todo{$row['taskID']}' style='padding:10px;' data-task-id='{$row['taskID']}' ";
+            if ($row['status'] === "Completed") {
+                echo "checked";
+            }
+            echo ">
+                    <label class='form-check-label' for='todo{$row['taskID']}'></label>
                     </div>
                 </div>
                 <div class='col-8 flex-grow-1'>
@@ -243,7 +247,7 @@
                     <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
                 </div>
                 <div class='col-2 text-right'>
-                    <a href='#' class='text-muted mr-3' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'><i class='fas fa-edit'></i></a>
+                    <a href='edit' class='text-muted mr-3' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'><i class='fas fa-edit'></i></a>
                 </div>
                 </div>
             </div>
@@ -279,8 +283,33 @@
                     </div> 
                 </div>
             </div>
+
+            <script>
+            document.getElementById('todo{$row['taskID']}').addEventListener('change', function(event) {
+                var taskID = event.target.dataset.taskId;
+                var status = event.target.checked ? 'Completed' : 'Active';
+                updateTaskStatus(taskID, status);
+            });
+
+            function updateTaskStatus(taskID, status) {
+                $.ajax({
+                    url: '../back/action/dashboard.action.php?action=updateTaskStatus',
+                    type: 'GET',
+                    data: {
+                        taskID: taskID,
+                        status: status
+                    },
+                    success: function(data) {
+                        refreshDashboard();
+                    }
+                });
+            }
+
+            </script>
+
             ";
         }
-    }
+
+    }    
 
 ?>

@@ -36,6 +36,9 @@
         case 'deleteTask':
             deleteTask();
             break;
+        case 'updateTaskStatus':
+            updateTaskStatus();
+            break;
     }
 
     function decreaseFood_one () {
@@ -87,6 +90,14 @@
         $taskID = $_GET['taskID'];
         $taskData = new Todo();
         $taskData->deleteTask($taskID);
+    }
+
+    function updateTaskStatus(){
+        $taskID = $_GET['taskID'];
+        $status = $_GET['status'];
+
+        $taskData = new Todo();
+        $taskData->updateStatus($taskID,$status);
     }
     
 ?>

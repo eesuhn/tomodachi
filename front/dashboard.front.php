@@ -147,33 +147,30 @@
 
   <script>
 
-  document.getElementById('todo').addEventListener('keypress', function(event){
-    if (event.key === 'Enter') { // 
-        event.preventDefault(); // prevent the form from being submitted
-        addTask(); // call the function to add the task
+    document.getElementById('todo').addEventListener('keypress', function(event){
+      if (event.key === 'Enter') { // 
+          event.preventDefault(); // prevent the form from being submitted
+          addTask(); // call the function to add the task
+      }
+    });
+
+    state = "Active";
+        
+    $('#active-btn').on('click', function() {
+      toggleState('Active');
+    });
+
+    $('#completed-btn').on('click', function() {
+      toggleState('Completed');
+    });
+    
+    function toggleState(state) {
+      currentState = state;
+      $('#active-btn').removeClass('active');
+      $('#completed-btn').removeClass('active');
+      $('#' + state.toLowerCase() + '-btn').addClass('active');
+      refreshTodo(currentState); 
     }
-  });
-
-  // set the default state to "active"
-  var currentState = "Active";
-
-  // function to toggle between active and completed tasks
-  function toggleState(state) {
-    currentState = state;
-    $("#active-btn").removeClass("active");
-    $("#completed-btn").removeClass("active");
-    $("#" + state.toLowerCase() + "-btn").addClass("active");
-    refreshTodo(currentState);
-  }
-
-  // event listeners for the toggle buttons
-  $("#active-btn").on("click", function() {
-    toggleState("Active");
-  });
-
-  $("#completed-btn").on("click", function() {
-    toggleState("Completed");
-  });
 
   </script>
 

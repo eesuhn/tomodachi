@@ -84,3 +84,17 @@ function deleteTask(taskID){
     });
     refreshDashboard();
 }
+
+function updateTaskStatus(taskID, status) {
+    $.ajax({
+        url: '../back/action/dashboard.action.php?action=updateTaskStatus',
+        type: 'GET',
+        data: {
+            taskID: taskID,
+            status: status
+        },
+        success: function(data) {
+            refreshDashboard();
+        }
+    });
+}

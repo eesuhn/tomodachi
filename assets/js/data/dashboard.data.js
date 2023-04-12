@@ -72,23 +72,23 @@ function refreshWallpaper() {
         url: '../back/data/dashboard.data.php?action=refreshWallpaper',
         dataType: 'json',
         success: function(data) {
-          console.log(data.imageUrl);
-          // set the background image of the div
-          $('#wallpaper').css('background-image', 'url(' + data.imageUrl + ')');
+            console.log(data.imageUrl);
+            // set the background image of the div
+            $('#wallpaper').css('background-image', 'url(' + data.imageUrl + ')');
         }
     });
 }
 
 function refreshTodo(state) {
     $.ajax({
-      url: "../back/data/dashboard.data.php?action=refreshTodo",
-      type: "POST",
-      dataType: "html",
-      data: { 
-        currentState: state 
-      },
-      success: function (data) {
-        $("#tasklist").html(data);
-      },
+        url: "../back/data/dashboard.data.php?action=refreshTodo",
+        type: "POST",
+        dataType: "html",
+        data: { 
+            currentState: state 
+        },
+        success: function (data) {
+            $("#tasklist").html(data);
+        },
     });
 }

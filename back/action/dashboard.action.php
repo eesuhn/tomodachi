@@ -74,7 +74,7 @@
         $taskDue = $_GET['taskDue'];
 
         $taskData = new Todo();
-        $taskData->updateTask($taskID,$taskTitle,$taskDue,$taskDesc);
+        $taskData->updateTask($taskID, $taskTitle, $taskDue, $taskDesc);
     }
 
     function addTask(){
@@ -83,11 +83,12 @@
         $taskDue = date("Y-m-d");
         
         $taskData = new Todo();
-        $taskData->addTask($userID,$todo,$taskDue);
+        $taskData->addTask($userID, $todo, $taskDue);
     }
 
     function deleteTask(){
         $taskID = $_GET['taskID'];
+        
         $taskData = new Todo();
         $taskData->deleteTask($taskID);
     }
@@ -97,7 +98,7 @@
         $status = $_GET['status'];
 
         $taskData = new Todo();
-        $taskData->updateStatus($taskID,$status);
+        $taskData->updateStatus($taskID, $status);
     }
     
 ?>

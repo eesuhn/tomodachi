@@ -40,9 +40,10 @@ function equipWallpaper(userID, wallpaperID) {
 }
 
 function saveTask(taskID){    
-    let taskTitle = document.getElementById('editTaskTitle'+taskID).value;
-    let taskDesc = document.getElementById('editTaskDesc'+taskID).value;
-    let taskDue = document.getElementById('editTaskDue'+taskID).value;
+    let taskTitle = document.getElementById('editTaskTitle' + taskID).value;
+    let taskDesc = document.getElementById('editTaskDesc' + taskID).value;
+    let taskDue = document.getElementById('editTaskDue' + taskID).value;
+
     $.ajax({
         url: "../back/action/dashboard.action.php?action=saveTask",
         type: "GET",
@@ -59,6 +60,7 @@ function saveTask(taskID){
 function addTask() {
     var todoInput = document.getElementById("todo");
     var todo = todoInput.value.trim();
+    
     if(todo !== ''){
         $.ajax({
             url: "../back/action/dashboard.action.php?action=addTask",

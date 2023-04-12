@@ -11,3 +11,22 @@ body {
 .shopItems:hover {
   transform: scale(1.1);
 }
+
+p.food-stats img:not(:first-child) {
+  margin-left: 20px;
+}
+
+p.food-stats img:not(:first-child) {
+  margin-right: 4px;
+}
+
+button.foodCounter:hover {
+  transform: scale(1.1);
+}
+
+button.foodCounter {
+  text-decoration: none; 
+  color: white; 
+  background-color: #212529; 
+  border: none;
+}

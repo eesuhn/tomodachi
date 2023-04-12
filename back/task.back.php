@@ -1,11 +1,15 @@
 <?php
 class Task {
+    private $db;
+
+    public function __construct() {
+        $this->db = new Database();
+    }
 
     public function submitTask($userID, $taskTitle) {
-        $db = new Database();
         $sql = "INSERT INTO task (userID, taskTitle) VALUES (:userID, :taskTitle)";
 
-        $stmt = $db->connect()->prepare($sql);
+        $stmt = $this->db->connect()->prepare($sql);
 
         $stmt->bindParam(':userID', $userID);
         $stmt->bindParam(':taskTitle', $taskTitle);
@@ -14,10 +18,9 @@ class Task {
     }
 
     public function getUserTasks($userID, $taskStatus) {
-        $db = new Database();
         $sql = "SELECT * FROM task WHERE userID = :userID AND taskStatus = :taskStatus";
 
-        $stmt = $db->connect()->prepare($sql);
+        $stmt = $this->db->connect()->prepare($sql);
 
         $stmt->bindParam(':userID', $userID);
         $stmt->bindValue(':taskStatus', $taskStatus);
@@ -29,10 +32,9 @@ class Task {
     }
 
     public function updateTask($taskID, $taskTitle, $taskDue, $taskDesc) {
-        $db = new Database();
         $sql = "UPDATE task SET taskTitle = :taskTitle, taskDue = :taskDue, taskDesc = :taskDesc WHERE taskID = :taskID";
 
-        $stmt = $db->connect()->prepare($sql);
+        $stmt = $this->db->connect()->prepare($sql);
 
         $stmt->bindParam(':taskTitle', $taskTitle);
         $stmt->bindParam(':taskDue', $taskDue);
@@ -44,10 +46,9 @@ class Task {
     }
 
     public function addTask($userID, $taskTitle, $taskDue) {
-        $db = new Database();
         $sql = "INSERT INTO task (userID, taskTitle, taskDesc, taskDue) VALUES (:userID, :taskTitle, '', :taskDue)";
         
-        $stmt = $db->connect()->prepare($sql);
+        $stmt = $this->db->connect()->prepare($sql);
 
         $stmt->bindParam(':userID', $userID);
         $stmt->bindParam(':taskTitle', $taskTitle);
@@ -58,10 +59,9 @@ class Task {
     }
 
     public function deleteTask($taskID) {
-        $db = new Database();
         $sql = "DELETE FROM task WHERE taskID = :taskID";
 
-        $stmt = $db->connect()->prepare($sql);
+        $stmt = $this->db->connect()->prepare($sql);
 
         $stmt->bindParam(':taskID', $taskID);
 
@@ -70,10 +70,9 @@ class Task {
     }
 
     public function updateStatus($taskID, $taskStatus) {
-        $db = new Database();
         $sql = "UPDATE task SET taskStatus = :taskStatus WHERE taskID = :taskID";
 
-        $stmt = $db->connect()->prepare($sql);
+        $stmt = $this->db->connect()->prepare($sql);
 
         $stmt->bindParam(':taskID', $taskID);
         $stmt->bindParam(':taskStatus', $taskStatus);

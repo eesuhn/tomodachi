@@ -1,14 +1,18 @@
 
 <?php
 	class Wallpaper {
+		private $db;
+
+		public function __construct() {
+			$this->db = new Database();
+		}
 
 		public function getAllWallpapers() {
 
 			// get all wallpaper details
 			$sql = "SELECT * FROM wallpaper ORDER BY wallpaperPrice ASC";
 
-			$db = new Database();
-			$stmt = $db->connect()->prepare($sql);
+			$stmt = $this->db->connect()->prepare($sql);
 
 			$stmt->execute();
 			$wallpapers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -21,8 +25,7 @@
 			// add record to wallpaper_inventory table
 			$sql = "INSERT INTO wallpaper_inventory (userID, wallpaperID, wallpaperStatus) VALUES (?, ?, 'Kept')";
 
-			$db = new Database();
-			$stmt = $db->connect()->prepare($sql);
+			$stmt = $this->db->connect()->prepare($sql);
 
 			$result = $stmt->execute([$userID, $wallpaperID]);
 
@@ -31,8 +34,7 @@
 
 		public function checkWallpaper($userID, $wallpaperID) {
 
-			$db = new Database();
-			$stmt = $db->connect()->prepare("SELECT * FROM wallpaper_inventory WHERE userID = ? AND wallpaperID = ?");
+			$stmt = $this->db->connect()->prepare("SELECT * FROM wallpaper_inventory WHERE userID = ? AND wallpaperID = ?");
 			
 			$stmt->execute([$userID, $wallpaperID]);
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -47,8 +49,7 @@
 					INNER JOIN wallpaper_inventory wi ON w.wallpaperID = wi.wallpaperID
 					WHERE wi.userID = ?
 					";
-			$db = new Database();
-			$stmt = $db->connect()->prepare($sql);
+			$stmt = $this->db->connect()->prepare($sql);
 
 			$stmt->execute([$userID]);
 			$userWallpapers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -60,9 +61,8 @@
 
 			// Set all wallpapers of the user to "Kept" status except for the wallpaper to be equipped
 			$sql = "UPDATE wallpaper_inventory SET wallpaperStatus = 'Kept' WHERE userID = :userID AND wallpaperID != :wallpaperID";
-			$db = new Database();
 
-			$stmt = $db->connect()->prepare($sql);
+			$stmt = $this->db->connect()->prepare($sql);
 
 			$stmt->bindParam(':userID', $userID);
 			$stmt->bindParam(':wallpaperID', $wallpaperID);
@@ -72,7 +72,7 @@
 			// Set the selected wallpaper to "Equipped" status
 			$sql = "UPDATE wallpaper_inventory SET wallpaperStatus = 'Equipped' WHERE userID = :userID AND wallpaperID = :wallpaperID";
 
-			$stmt = $db->connect()->prepare($sql);
+			$stmt = $this->db->connect()->prepare($sql);
 
 			$stmt->bindParam(':userID', $userID);
 			$stmt->bindParam(':wallpaperID', $wallpaperID);
@@ -86,8 +86,7 @@
 					INNER JOIN wallpaper_inventory ON wallpaper.wallpaperID = wallpaper_inventory.wallpaperID
 					WHERE wallpaper_inventory.userID = ? AND wallpaper_inventory.wallpaperStatus = 'Equipped'";
 
-			$db = new Database();
-			$stmt = $db->connect()->prepare($sql);
+			$stmt = $this->db->connect()->prepare($sql);
 
 			$stmt->execute([$userID]);
 			$wallpaper = $stmt->fetch();
@@ -97,9 +96,8 @@
 
 		public function startingWallpaper($userID) {
 			$sql = "INSERT INTO wallpaper_inventory (userID, wallpaperID, wallpaperStatus) VALUES (?, 1, 'Equipped')";
-			$db = new Database();
 			
-			$stmt = $db->connect()->prepare($sql);
+			$stmt = $this->db->connect()->prepare($sql);
 			$stmt->execute([$userID]);
 		}
 	}

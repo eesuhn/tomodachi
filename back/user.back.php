@@ -3,6 +3,11 @@
         private $userName;
         private $userEmail;
         private $userPwd;
+        private $db;
+
+        public function __construct() {
+            $this->db = new Database();
+        }
         
         public function setAccountDetails($userName, $userEmail, $userPwd) {
             $this->userName = $userName;
@@ -13,9 +18,7 @@
         public function checkEmail() {
             $sql = "SELECT userEmail FROM user WHERE userEmail = :email";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':email', $this->userEmail);
 
@@ -39,9 +42,7 @@
         public function registerUser() {
             $sql = "INSERT INTO user (userName, userEmail, userPwd) VALUES (:value1, :value2, :value3)";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $this->userName);
             $stmt->bindParam(':value2', $this->userEmail);
@@ -69,9 +70,7 @@
         public function loginUser($userEmail, $userPwd) {
             $sql = "SELECT * FROM user WHERE userEmail = :email AND userPwd = :pwd";
         
-            $db = new Database();
-        
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
         
             $stmt->bindParam(':email', $userEmail);
             $stmt->bindParam(':pwd', $userPwd);
@@ -88,7 +87,7 @@
                     $_SESSION['userName'] = $row['userName'];
                     
                     $petInventorySql = "SELECT * FROM pet_inventory WHERE userID = :userID";
-                    $petInventoryStmt = $db->connect()->prepare($petInventorySql);
+                    $petInventoryStmt = $this->db->connect()->prepare($petInventorySql);
                     $petInventoryStmt->bindParam(':userID', $_SESSION['userID']);
                     $petInventoryStmt->execute();
                     
@@ -112,9 +111,7 @@
         public function getUserID($userEmail) {
             $sql = "SELECT userID FROM user WHERE userEmail = :email";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':email', $userEmail);
 

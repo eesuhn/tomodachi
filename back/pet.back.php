@@ -5,12 +5,16 @@
     }
 
     class Pet {
+        private $db;
+
+        public function __construct() {
+            $this->db = new Database();
+        }
         
         public function startingPet() {
             $sql = "SELECT * FROM pet WHERE petRarity = 'Common';";
-            $db = new Database();
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
@@ -38,9 +42,8 @@
 
         public function ownPet($userID, $petID) {
             $sql = "SELECT petHealthIn, petHungerIn FROM pet_rarity WHERE petRarity = (SELECT petRarity FROM pet WHERE petID = ?)";
-            $db = new Database();
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute([$petID]);
 
             $petRarityStats = $stmt->fetch();
@@ -51,7 +54,7 @@
             $sql = "INSERT INTO pet_inventory (userID, petID, petLevel, petXP, petHealthTol, petHungerTol, petHealthCur, petHungerCur, petStatus) 
                     VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Equipped')";
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute([$userID, $petID, $healthIn, $hungerIn, $healthIn, $hungerIn]);
 
             echo "
@@ -64,8 +67,7 @@
                     INNER JOIN pet_inventory ON pet.petID = pet_inventory.petID
                     WHERE pet_inventory.userID = ? AND pet_inventory.petStatus = 'Equipped'";
 
-            $db = new Database();
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->execute([$userID]);
             $pet = $stmt->fetch();
@@ -74,12 +76,11 @@
         }
 
         public function checkOwnedPets($userID) {
-            $db = new Database();
             
             // check if the user owns all available pets
             $sql = "SELECT COUNT(*) as total FROM `pet` WHERE `petID` NOT IN (SELECT `petID` FROM `pet_inventory` WHERE `userID` = ?)";
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->execute([$userID]);
             $result = $stmt->fetch();
@@ -112,8 +113,7 @@
                 $petRarity = "Common";
             }
     
-            $db = new Database();
-            $pet = $this->getAvailablePet($petRarity, $userID, $db);
+            $pet = $this->getAvailablePet($petRarity, $userID);
     
             // next rarity tier if no available pets in the current tier
             if (!$pet) {
@@ -127,7 +127,7 @@
                     // no pets available in any tier
                     return false;
                 }
-                $pet = $this->getAvailablePet($petRarity, $userID, $db);
+                $pet = $this->getAvailablePet($petRarity, $userID);
             }
     
             if (!$pet) {
@@ -138,7 +138,7 @@
             // get pet_rarity stats based on $pet['petID'] from $pet created above
             $sql = "SELECT * FROM `pet_rarity` WHERE `petRarity` = (SELECT `petRarity` FROM `pet` WHERE `petID` = ?)";
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute([$pet['petID']]);
 
             $pet_rarity = $stmt->fetch();
@@ -148,7 +148,7 @@
                     (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHungerTol`, `petHealthCur`, `petHungerCur`, `petStatus`)
                     VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Kept')";
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute([
                     $userID, $pet['petID'], $pet_rarity['petHealthIn'], 
                     $pet_rarity['petHungerIn'], $pet_rarity['petHealthIn'], 
@@ -159,7 +159,7 @@
             return $pet;
         }
 
-        private function getAvailablePet($petRarity, $userID, $db) {
+        private function getAvailablePet($petRarity, $userID) {
 
             // select a pet of the same or higher rarity tier, excluding owned pets
             while (true) {
@@ -170,7 +170,7 @@
                         AND `petID` NOT IN (
                             SELECT `petID` FROM `pet_inventory` WHERE `userID` = ?)";
                             
-                $stmt = $db->connect()->prepare($sql);
+                $stmt = $this->db->connect()->prepare($sql);
                 $stmt->execute([$petRarity, $userID]);
 
                 $pets = $stmt->fetchAll();
@@ -202,9 +202,8 @@
         // show all pets based on pet rarity
         public function showPetDetails_rarity($petRarity) {
             $sql = "SELECT petName, petDesc, petImg from pet WHERE petRarity = :petRarity";
-            $db = new Database();
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':petRarity', $petRarity);
 
             $stmt->execute();
@@ -216,9 +215,8 @@
         // show pets info based on petID 
         public function showPetDetails($petID) {
             $sql = "SELECT * from pet WHERE petID = :petID";
-            $db = new Database();
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':petID', $petID);
 
             $stmt->execute(array(
@@ -229,14 +227,13 @@
         }
 
         public function showPetInventory($userID){
-            $db = new Database();
 
             $sql = "SELECT pi.petID, p.petName, pi.petStatus, p.petImg
                     FROM pet_inventory pi
                     JOIN pet p ON pi.petID = p.petID
                     WHERE pi.userID = :userID";
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':userID', $userID);
 
             $stmt->execute();
@@ -246,12 +243,11 @@
         }
 
         public function equipPet($userID, $petID) {
-            $db = new Database();
         
             // Set all pets of the user to "Kept" status except for the pet to be equipped
             $sql = "UPDATE pet_inventory SET petStatus = 'Kept' WHERE userID = :userID AND petID != :petID";
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
 
@@ -260,7 +256,7 @@
             // Set the selected pet to "Equipped" status
             $sql = "UPDATE pet_inventory SET petStatus = 'Equipped' WHERE userID = :userID AND petID = :petID";
 
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
 

@@ -1,13 +1,16 @@
 <?php
     class Food {
+        private $db;
+
+        public function __construct() {
+            $this->db = new Database();
+        }
 
         // get foodImg based on foodID
         public function getImg ($foodID) {
             $sql = "SELECT foodImg FROM food WHERE foodID = :value1";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodID);
 
@@ -23,9 +26,7 @@
         public function getName ($foodID) {
             $sql = "SELECT foodName FROM food WHERE foodID = :value1";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodID);
 
@@ -41,9 +42,7 @@
         public function getDesc ($foodID) {
             $sql = "SELECT foodDesc FROM food WHERE foodID = :value1";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodID);
 
@@ -59,9 +58,7 @@
         public function getPrice ($foodID) {
             $sql = "SELECT foodPrice FROM food WHERE foodID = :value1";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodID);
 
@@ -77,9 +74,7 @@
         public function getHunger ($foodID) {
             $sql = "SELECT foodHunger FROM food WHERE foodID = :value1";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodID);
 
@@ -95,9 +90,7 @@
         public function getXP ($foodID) {
             $sql = "SELECT foodXP FROM food WHERE foodID = :value1";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodID);
 
@@ -113,9 +106,7 @@
         public function getFoodNum ($foodID, $userID) {
             $sql = "SELECT foodNum FROM food_inventory WHERE foodID = :value1 AND userID = :value2";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodID);
             $stmt->bindParam(':value2', $userID);
@@ -134,9 +125,7 @@
             "SELECT food.foodName, food.foodImg, food_inventory.userID, food_inventory.foodID, food_inventory.foodNum FROM food 
             INNER JOIN food_inventory ON food.foodID = food_inventory.foodID WHERE food_inventory.userID = :userID";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':userID', $userID);
 
@@ -149,9 +138,7 @@
         public function increaseFood ($foodInID, $foodNum) {
             $sql = "UPDATE food_inventory SET foodNum = foodNum + :value1 WHERE foodInID = :value2";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $foodNum);
             $stmt->bindParam(':value2', $foodInID);
@@ -165,9 +152,7 @@
         public function decreaseFood_one ($userID, $foodID) {
             $sql = "UPDATE food_inventory SET foodNum = foodNum - 1 WHERE userID = :value1 AND foodID = :value2";
 
-            $db = new Database();
-
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->bindParam(':value1', $userID);
             $stmt->bindParam(':value2', $foodID);
@@ -184,8 +169,7 @@
                     LEFT JOIN food_inventory ON food.foodID = food_inventory.foodID AND food_inventory.userID = ?
                     ORDER BY food.foodPrice ASC";
 
-            $db = new Database();
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
             
             $stmt->execute([$userID]);
             $foods = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -200,15 +184,14 @@
             // check if the food exists in the food table
             $sql = "SELECT * FROM food WHERE foodID = ?";
 
-            $db = new Database();
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->execute([$foodID]);
             $food = $stmt->fetch(PDO::FETCH_ASSOC);
         
             // check if the user already has this food in their inventory
             $sql = "SELECT * FROM food_inventory WHERE userID = ? AND foodID = ?";
-            $stmt = $db->connect()->prepare($sql);
+            $stmt = $this->db->connect()->prepare($sql);
 
             $stmt->execute([$userID, $foodID]);
             $inventory = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -218,14 +201,14 @@
                 $quantity = $inventory['foodNum'] + 1;
                 $sql = "UPDATE food_inventory SET foodNum = ? WHERE userID = ? AND foodID = ?";
 
-                $stmt = $db->connect()->prepare($sql);
+                $stmt = $this->db->connect()->prepare($sql);
                 $stmt->execute([$quantity, $userID, $foodID]);
                 
             } else {
                 // user does not have this food in their inventory, insert a new row
                 $sql = "INSERT INTO food_inventory (userID, foodID, foodNum) VALUES (?, ?, ?)";
 
-                $stmt = $db->connect()->prepare($sql);
+                $stmt = $this->db->connect()->prepare($sql);
                 $stmt->execute([$userID, $foodID, $quantity]);
             }
         }

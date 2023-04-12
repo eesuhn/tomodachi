@@ -228,6 +228,9 @@
 
     function refreshTask() {
         $userID = $_SESSION['userID'];
+
+        date_default_timezone_set('Asia/Kuala_Lumpur');
+        $today = date("Y-m-d");
         
         $taskData = new Task();
         $status = $_POST['status'];
@@ -270,20 +273,18 @@
                             <h5 class='modal-title' id='editTask'>Update Task</h5>
                         </div>
                         <div class='modal-body'>
-                            <form id='task-form-{$row['taskID']}'>
-                                <div class='form-group'>
-                                    <label for='editTaskTitle{$row['taskID']}'>Task Title</label>
-                                    <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>                                
-                                </div>
-                                <div class='form-group'>
-                                    <label for='editTaskDesc{$row['taskID']}'>Task Description</label>
-                                    <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='3'>{$row['taskDesc']}</textarea>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='editTaskDue{$row['taskID']}'>Due Date</label>
-                                    <input type='date' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>                                
-                                </div>
-                            </form>
+                            <div class='form-group'>
+                                <label for='editTaskTitle{$row['taskID']}'>Task Title</label>
+                                <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>                                
+                            </div>
+                            <div class='form-group'>
+                                <label for='editTaskDesc{$row['taskID']}'>Task Description</label>
+                                <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
+                            </div>
+                            <div class='form-group'>
+                                <label for='editTaskDue{$row['taskID']}'>Due Date</label>
+                                <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>                                
+                            </div>
                         </div>
                         <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
                         <div class='modal-footer'>

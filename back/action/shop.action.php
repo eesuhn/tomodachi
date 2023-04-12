@@ -37,7 +37,7 @@
         $currencyData = new Currency();
 
         $petData->petScout($userID);
-        $currencyData->decreaseCurrency($userID, 100);
+        $currencyData->decreaseCurrency($userID, 1000);
     }
 
     function purchaseFood(){

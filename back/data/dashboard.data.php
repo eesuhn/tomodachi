@@ -54,11 +54,11 @@
         $petName = $petData['petName'];
         $petImg = $petData['petImg'];
         $petHealthTol = $petData['petHealthTol'];
-        $petHungerTol = $petData['petHungerTol'];
+        $petHappTol = $petData['petHappTol'];
         $petXP = $petData['petXP'];
         $petLevel = $petData['petLevel'];
         $petHealthCur = $petData['petHealthCur'];
-        $petHungerCur = $petData['petHungerCur'];
+        $petHappCur = $petData['petHappCur'];
 
         $currency = new Currency();
 
@@ -85,9 +85,9 @@
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $petHealthCur%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
-                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Hunger: $petHungerCur/$petHungerTol<br>
+                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
                     <div class='progress' style='height:3px;'>
-                        <div class='progress-bar bg-warning' role='progressbar' style='width: $petHungerCur%' aria-valuemin='0' aria-valuemax='$petHungerTol'></div>
+                        <div class='progress-bar bg-warning' role='progressbar' style='width: $petHappCur%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>
                 

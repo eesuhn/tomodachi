@@ -1,23 +1,23 @@
 -- Dump data for table `food`
-INSERT INTO `food` (`foodName`, `foodDesc`, `foodPrice`, `foodHunger`, `foodXP`, `foodImg`) VALUES 
+INSERT INTO `food` (`foodName`, `foodDesc`, `foodPrice`, `foodXP`, `foodHealth`, `foodHapp`, `foodImg`) VALUES 
 ('Donut', 
 'A sweet and circular pastry with a hole in the middle, perfect for satisfying your sweet tooth cravings.', 
-'6', '10', '10', '../assets/foods/donut.png'),
+'20', '10', '10', '10', '../assets/foods/donut.png'),
 ('Ramen', 
 'A Japanese noodle soup dish, perfect for satisfying your hunger cravings.', 
-'12', '20', '20', '../assets/foods/ramen.png'),
+'36', '20', '20', '20', '../assets/foods/ramen.png'),
 ('Squid', 
 'A sea creature that is perfect for satisfying your hunger cravings.', 
-'8', '15', '15', '../assets/foods/squid.png'),
+'28', '15', '15', '15', '../assets/foods/squid.png'),
 ('Strawberry', 
 'A sweet and juicy red fruit', 
-'3', '6', '6', '../assets/foods/strawberry.png');
+'20', '12', '12', '12', '../assets/foods/strawberry.png');
 
 -- Dump data for table `pet_rarity`
-INSERT INTO `pet_rarity` (`petRarity`, `petHealthIn`, `petHungerIn`) VALUES 
-('Common', '100', '100'),
-('Rare', '200', '200'),
-('Legendary', '250', '250');
+INSERT INTO `pet_rarity` (`petRarity`, `petHealthIn`, `petHappIn`) VALUES 
+('Common', '100', '200'),
+('Rare', '200', '150'),
+('Legendary', '250', '100');
 
 -- Dump data for table `pet`
 INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES 
@@ -45,9 +45,9 @@ INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES
 
 -- Dump data for table `wallpaper`
 INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperDesc`, `wallpaperPrice`, `wallpaperImg`) VALUES 
-('Sky', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.', '50', '../assets/wallpapers/sky.png'), 
-('Meadow', 'A calming and refreshing wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers', '50', '../assets/wallpapers/meadow.png'), 
-('Folklore', 'A rustic wallpaper design, , inspired by traditional tales and legends from around the world, featuring intricate patterns and symbols', '50', '../assets/wallpapers/folklore.png'), 
-('Mars', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.', '50', '../assets/wallpapers/mars.png'), 
-('Campfire', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.', '50', '../assets/wallpapers/campfire.png'), 
-('Starry Nights', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', '50', '../assets/wallpapers/starrynight.png');
+('Sky', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.', '0', '../assets/wallpapers/sky.png'), 
+('Meadow', 'A calming and refreshing wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers', '250', '../assets/wallpapers/meadow.png'), 
+('Folklore', 'A rustic wallpaper design, , inspired by traditional tales and legends from around the world, featuring intricate patterns and symbols', '250', '../assets/wallpapers/folklore.png'), 
+('Campfire', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.', '250', '../assets/wallpapers/campfire.png'), 
+('Mars', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.', '500', '../assets/wallpapers/mars.png'),
+('Starry Nights', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', '500', '../assets/wallpapers/starrynight.png');

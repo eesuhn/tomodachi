@@ -4,6 +4,7 @@
     include '../currency.back.php';
     include '../food.back.php';
     include '../wallpaper.back.php';
+    include '../task.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -25,6 +26,18 @@
             break;
         case 'equipWallpaper':
             equipWallpaper();
+            break;
+        case 'saveTask':
+            saveTask();
+            break;
+        case 'addTask':
+            addTask();
+            break;
+        case 'deleteTask':
+            deleteTask();
+            break;
+        case 'updateTaskStatus':
+            updateTaskStatus();
             break;
     }
 
@@ -53,5 +66,43 @@
         $wallpaperData = new Wallpaper();
 
         $wallpaperData->equipWallpaper($userID, $wallpaperID);
+    }
+
+    function saveTask(){
+        $taskID = $_GET['taskID'];
+        $taskTitle = $_GET['taskTitle'];
+        $taskDesc = $_GET['taskDesc'];
+        $taskDue = $_GET['taskDue'];
+
+        $taskData = new Task();
+        $taskData->updateTask($taskID, $taskTitle, $taskDue, $taskDesc);
+    }
+
+    function addTask(){
+        $userID = $_SESSION['userID'];
+        $taskTitle = $_POST['taskTitle'];
+
+        date_default_timezone_set('Asia/Kuala_Lumpur');
+
+        $today = date('Y-m-d');
+        $taskDue = $today;
+        
+        $taskData = new Task();
+        $taskData->addTask($userID, $taskTitle, $taskDue);
+    }
+
+    function deleteTask(){
+        $taskID = $_GET['taskID'];
+
+        $taskData = new Task();
+        $taskData->deleteTask($taskID);
+    }
+
+    function updateTaskStatus(){
+        $taskID = $_GET['taskID'];
+        $taskStatus = $_GET['taskStatus'];
+
+        $taskData = new Task();
+        $taskData->updateStatus($taskID, $taskStatus);
     }
 ?>

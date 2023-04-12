@@ -24,7 +24,7 @@ INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES
 ('Bird', 'Common', 
 'This avian is a real chatterbox! They love showing off their beautiful feathers and mimicking human speech. With their sweet singing and playful antics, they\'re sure to brighten up your day.', 
 '../assets/pets/bird.png'), 
-('Capybara', 'Rare', 
+('Capybara', 'Legendary', 
 'This gentle giant is the king of chill! They love lounging in the sun and taking dips in the water. With their large size and friendly nature, they\'re sure to make a unique and lovable addition to your pet collection.', 
 '../assets/pets/capybara.png'), 
 ('Cat', 'Common', 
@@ -43,18 +43,11 @@ INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES
 'This mischievous critter is always up to something! Whether they\'re raiding your garbage can or snuggling up in a cozy spot, they\'re sure to keep you entertained. With their masked face and bushy tail, they\'re the perfect pet for anyone.', 
 '../assets/pets/raccoon.png');
 
--- Dump data for table `food_inventory`
-INSERT INTO `food_inventory` (`userID`, `foodID`, `foodNum`) VALUES 
-('1', '1', '2'), 
-('1', '2', '3'), 
-('1', '3', '4'),
-('1', '4', '5');
-
 -- Dump data for table `wallpaper`
-INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperImg`, `wallpaperDesc`, `wallpaperPrice`) VALUES 
-('Sky', '../assets/wallpapers/sky.png', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.', '50'), 
-('Meadow', '../assets/wallpapers/meadow.png', 'A calming and refreshing wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers', '50'), 
-('Folklore', '../assets/wallpapers/folklore.png', 'A rustic wallpaper design, , inspired by traditional tales and legends from around the world, featuring intricate patterns and symbols', '50'), 
-('Mars', '../assets/wallpapers/mars.png', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.', '50'), 
-('Campfire', '../assets/wallpapers/campfire.png', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.', '50'), 
-('Starry Nights', '../assets/wallpapers/starrynight.png', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', '50');
+INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperDesc`, `wallpaperPrice`, `wallpaperImg`) VALUES 
+('Sky', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.', '50', '../assets/wallpapers/sky.png'), 
+('Meadow', 'A calming and refreshing wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers', '50', '../assets/wallpapers/meadow.png'), 
+('Folklore', 'A rustic wallpaper design, , inspired by traditional tales and legends from around the world, featuring intricate patterns and symbols', '50', '../assets/wallpapers/folklore.png'), 
+('Mars', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.', '50', '../assets/wallpapers/mars.png'), 
+('Campfire', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.', '50', '../assets/wallpapers/campfire.png'), 
+('Starry Nights', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', '50', '../assets/wallpapers/starrynight.png');

@@ -70,7 +70,7 @@
               background: rgba(0, 0, 0, 0.5); 
               padding: 5px;" class="inventory">
             <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
-            <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
+              <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
           </div>
           <div class="pet" id="petImg">
             <!-- display petImage with AJAX -->
@@ -79,16 +79,26 @@
       </div></a>
 
       <div class="col-md-4 py-1">
-        <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px";>Habits</h3>
+        <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px" ;>Habits</h3>
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
           <input type="text" class="form-control" id="habit" placeholder="Add a new habit" style="margin-top: 10px;">
         </div>
       </div>
 
       <div class="col-md-4 py-1">
-        <h3><img src="../assets/images/todo.png" width="30" style="margin-right: 10px";>To-Do</h3>
-        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
-          <input type="text" class="form-control" id="todo" placeholder="Add a new task" style="margin-top: 10px;">
+        <h3><img src="../assets/images/task.png" width="30" style="margin-right: 10px;">To-Do's</h3>
+        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px; display: flex; flex-direction: column;">
+          <input type="text" class="form-control" id="taskTitle" name="taskTitle" placeholder="Add a new task" style="margin-top: 10px;">
+
+          <div class="btn-group justify-content-end" style="margin-top: 10px;">
+            <button type="button" id="active-btn" class="btn btn-secondary active">Active</button>
+            <button type="button" id="completed-btn" class="btn btn-secondary">Completed</button>
+          </div>
+
+          <div id="taskList">
+            <!-- display tasks with AJAX -->
+          </div>
+          <div style="margin-top: 10px;"></div>
         </div>
       </div>
 
@@ -114,7 +124,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-body" style="color:black" id="inventoryData">
-            <!-- display inventory with AJAX -->
+          <!-- display inventory with AJAX -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -136,6 +146,37 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('taskTitle').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        // prevent the form from being submitted
+        event.preventDefault();
+
+        // add task
+        addTask();
+      }
+    });
+
+    status = "Active";
+
+    $('#active-btn').on('click', function(){
+      toggleStatus('Active');
+    });
+
+    $('#completed-btn').on('click', function(){
+      toggleStatus('Completed');
+    });
+
+    function toggleStatus(status){
+
+      $('#active-btn').removeClass('active');
+      $('#completed-btn').removeClass('active');
+      $('#' + status.toLowerCase() + '-btn').addClass('active');
+
+      refreshTask(status);
+    }
+  </script>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

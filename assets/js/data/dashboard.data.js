@@ -1,15 +1,19 @@
-$(document).ready(function() {
+$(document).ready(function () {
+    $("#active-btn").trigger("click");
     refreshDashboard();
 });
 
+var state = "Active";
+
 // refresh dashboard data
 function refreshDashboard() {
-    setTimeout(function() {
+    setTimeout(function () {
         refreshStatsHeader();
         refreshFood();
         refreshInventory();
         refreshPetImg();
         refreshWallpaper();
+        refreshTask(state);
     }, 100);
 }
 
@@ -67,11 +71,25 @@ function refreshWallpaper() {
     $.ajax({
         url: '../back/data/dashboard.data.php?action=refreshWallpaper',
         dataType: 'json',
-
         success: function(data) {
-          
-          // set the background image of the div
-          $('#wallpaper').css('background-image', 'url(' + data.imageUrl + ')');
+
+            // set the background image of the div
+            $('#wallpaper').css('background-image', 'url(' + data.imageUrl + ')');
         }
+    });
+}
+
+function refreshTask(status) {
+    $.ajax({
+        url: "../back/data/dashboard.data.php?action=refreshTask",
+        type: "POST",
+        dataType: "html",
+        data: { 
+            status: status 
+        },
+
+        success: function (data) {
+            $("#taskList").html(data);
+        },
     });
 }

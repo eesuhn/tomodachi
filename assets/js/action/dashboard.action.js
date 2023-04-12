@@ -58,19 +58,19 @@ function saveTask(taskID){
 }
 
 function addTask() {
-    var todoInput = document.getElementById("todo");
-    var todo = todoInput.value.trim();
-    
-    if(todo !== ''){
+    var taskInput = document.getElementById("taskTitle");
+    var taskTitle = taskInput.value.trim();
+
+    if(taskTitle !== ''){
         $.ajax({
             url: "../back/action/dashboard.action.php?action=addTask",
             type: "POST",
             data: {
-                todo: todo
+                taskTitle: taskTitle
             },
             success: function(){
                 refreshDashboard();
-                todoInput.value = '';
+                taskInput.value = '';
             }
         });
     }
@@ -87,15 +87,15 @@ function deleteTask(taskID){
     refreshDashboard();
 }
 
-function updateTaskStatus(taskID, status) {
+function updateTaskStatus(taskID, taskStatus) {
     $.ajax({
         url: '../back/action/dashboard.action.php?action=updateTaskStatus',
         type: 'GET',
         data: {
             taskID: taskID,
-            status: status
+            taskStatus: taskStatus
         },
-        success: function(data) {
+        success: function() {
             refreshDashboard();
         }
     });

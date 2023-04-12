@@ -86,16 +86,16 @@
       </div>
 
       <div class="col-md-4 py-1">
-        <h3><img src="../assets/images/todo.png" width="30" style="margin-right: 10px;">To-Do's</h3>
+        <h3><img src="../assets/images/task.png" width="30" style="margin-right: 10px;">To-Do's</h3>
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px; display: flex; flex-direction: column;">
-          <input type="text" class="form-control" id="todo" name="todo" placeholder="Add a new task" style="margin-top: 10px;">
+          <input type="text" class="form-control" id="taskTitle" name="taskTitle" placeholder="Add a new task" style="margin-top: 10px;">
 
           <div class="btn-group justify-content-end" style="margin-top: 10px;">
             <button type="button" id="active-btn" class="btn btn-secondary active">Active</button>
             <button type="button" id="completed-btn" class="btn btn-secondary">Completed</button>
           </div>
 
-          <div id="tasklist">
+          <div id="taskList">
             <!-- display tasks with AJAX -->
           </div>
           <div style="margin-top: 10px;"></div>
@@ -148,29 +148,33 @@
   </div>
 
   <script>
-    document.getElementById('todo').addEventListener('keypress', function(event) {
-      if (event.key === 'Enter') { 
-        event.preventDefault(); // prevent the form from being submitted
-        addTask(); // add task
+    document.getElementById('taskTitle').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        // prevent the form from being submitted
+        event.preventDefault();
+
+        // add task
+        addTask();
       }
     });
 
-    state = "Active";
+    status = "Active";
 
     $('#active-btn').on('click', function(){
-      toggleState('Active');
+      toggleStatus('Active');
     });
 
     $('#completed-btn').on('click', function(){
-      toggleState('Completed');
+      toggleStatus('Completed');
     });
 
-    function toggleState(state){
-      currentState = state;
+    function toggleStatus(status){
+
       $('#active-btn').removeClass('active');
       $('#completed-btn').removeClass('active');
-      $('#' + state.toLowerCase() + '-btn').addClass('active');
-      refreshTodo(currentState);
+      $('#' + status.toLowerCase() + '-btn').addClass('active');
+
+      refreshTask(status);
     }
   </script>
 

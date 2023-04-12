@@ -4,7 +4,7 @@
     include '../currency.back.php';
     include '../food.back.php';
     include '../wallpaper.back.php';
-    include '../todo.back.php';
+    include '../task.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -67,38 +67,42 @@
 
         $wallpaperData->equipWallpaper($userID, $wallpaperID);
     }
+
     function saveTask(){
         $taskID = $_GET['taskID'];
         $taskTitle = $_GET['taskTitle'];
         $taskDesc = $_GET['taskDesc'];
         $taskDue = $_GET['taskDue'];
 
-        $taskData = new Todo();
+        $taskData = new Task();
         $taskData->updateTask($taskID, $taskTitle, $taskDue, $taskDesc);
     }
 
     function addTask(){
         $userID = $_SESSION['userID'];
-        $todo = $_POST['todo'];
-        $taskDue = date("Y-m-d");
+        $taskTitle = $_POST['taskTitle'];
+
+        date_default_timezone_set('Asia/Kuala_Lumpur');
+
+        $today = date('Y-m-d');
+        $taskDue = $today;
         
-        $taskData = new Todo();
-        $taskData->addTask($userID, $todo, $taskDue);
+        $taskData = new Task();
+        $taskData->addTask($userID, $taskTitle, $taskDue);
     }
 
     function deleteTask(){
         $taskID = $_GET['taskID'];
-        
-        $taskData = new Todo();
+
+        $taskData = new Task();
         $taskData->deleteTask($taskID);
     }
 
     function updateTaskStatus(){
         $taskID = $_GET['taskID'];
-        $status = $_GET['status'];
+        $taskStatus = $_GET['taskStatus'];
 
-        $taskData = new Todo();
-        $taskData->updateStatus($taskID, $status);
+        $taskData = new Task();
+        $taskData->updateStatus($taskID, $taskStatus);
     }
-    
 ?>

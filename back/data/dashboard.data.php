@@ -4,7 +4,7 @@
     include '../currency.back.php';
     include '../food.back.php';
     include '../wallpaper.back.php';
-    include '../todo.back.php';
+    include '../task.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -39,8 +39,8 @@
             refreshWallpaper();
             break;
 
-        case 'refreshTodo':
-            refreshTodo();
+        case 'refreshTask':
+            refreshTask();
             break;
     }
 
@@ -63,6 +63,9 @@
         $currency = new Currency();
 
         $currencyNum = $currency->getCurrency($userID);
+
+        date_default_timezone_set('Asia/Kuala_Lumpur');
+        $today = date("l, j F Y");
 
         echo 
         "<div class='row px-2 py-4'>
@@ -90,7 +93,7 @@
                 
                 <div class='card-block px-3 col-4'>
                     <img src='../assets/images/coin.png' style='height: 19px; width: 19px; margin: 10px;'>$currencyNum
-                    <h4><?=date('l, j F Y');?></h4>
+                    <h4>$today</h4>
                     <p>0 Tasks Today</p>
                 </div>
             </div>
@@ -217,13 +220,13 @@
         echo json_encode(array('imageUrl' => $imageUrl));
     }
 
-    function refreshTodo() {
+    function refreshTask() {
         $userID = $_SESSION['userID'];
         
-        $taskData = new Todo();
-        $currentState = $_POST['currentState'];
+        $taskData = new Task();
+        $status = $_POST['status'];
 
-        $stmt = $taskData->getUserTasks($userID,$currentState);
+        $stmt = $taskData->getUserTasks($userID, $status);
     
         foreach ($stmt as $row) {            
     
@@ -233,13 +236,13 @@
                     <div class='row align-items-center'>
                         <div class='col-2 d-flex justify-content-center align-items-center'>
                             <div class='form-check'>
-                                <input class='form-check-input' type='checkbox' value='' id='todo{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}' ";
+                                <input class='form-check-input' type='checkbox' value='' id='task{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}' ";
 
-            if ($row['status'] === "Completed") {
+            if ($row['taskStatus'] === "Completed") {
                 echo "checked";
             }
             echo ">
-                                <label class='form-check-label' for='todo{$row['taskID']}'></label>
+                                <label class='form-check-label' for='task{$row['taskID']}'></label>
                             </div>
                         </div>
                         <div class='col-8 flex-grow-1'>
@@ -258,7 +261,7 @@
                 <div class='modal-dialog'>
                     <div class='modal-content'>
                         <div class='modal-header'>
-                            <h5 class='modal-title' id='editToDo'>Update Task</h5>
+                            <h5 class='modal-title' id='editTask'>Update Task</h5>
                         </div>
                         <div class='modal-body'>
                             <form id='task-form-{$row['taskID']}'>
@@ -286,25 +289,11 @@
             </div>
 
             <script>
-                document.getElementById('todo{$row['taskID']}').addEventListener('change', function(event) {
+                document.getElementById('task{$row['taskID']}').addEventListener('change', function(event) {
                     var taskID = event.target.dataset.taskId;
-                    var status = event.target.checked ? 'Completed' : 'Active';
-                    updateTaskStatus(taskID, status);
+                    var taskStatus = event.target.checked ? 'Completed' : 'Active';
+                    updateTaskStatus(taskID, taskStatus);
                 });
-
-                function updateTaskStatus(taskID, status) {
-                    $.ajax({
-                        url: '../back/action/dashboard.action.php?action=updateTaskStatus',
-                        type: 'GET',
-                        data: {
-                            taskID: taskID,
-                            status: status
-                        },
-                        success: function(data) {
-                            refreshDashboard();
-                        }
-                    });
-                }
             </script>";
         }
     }

@@ -13,7 +13,7 @@ function refreshDashboard() {
         refreshInventory();
         refreshPetImg();
         refreshWallpaper();
-        refreshTodo(state);
+        refreshTask(state);
     }, 100);
 }
 
@@ -72,23 +72,24 @@ function refreshWallpaper() {
         url: '../back/data/dashboard.data.php?action=refreshWallpaper',
         dataType: 'json',
         success: function(data) {
-            console.log(data.imageUrl);
+
             // set the background image of the div
             $('#wallpaper').css('background-image', 'url(' + data.imageUrl + ')');
         }
     });
 }
 
-function refreshTodo(state) {
+function refreshTask(status) {
     $.ajax({
-        url: "../back/data/dashboard.data.php?action=refreshTodo",
+        url: "../back/data/dashboard.data.php?action=refreshTask",
         type: "POST",
         dataType: "html",
         data: { 
-            currentState: state 
+            status: status 
         },
+
         success: function (data) {
-            $("#tasklist").html(data);
+            $("#taskList").html(data);
         },
     });
 }

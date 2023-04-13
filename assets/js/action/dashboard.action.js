@@ -114,4 +114,5 @@ function deleteCompletedTasks(userID){
         }
     });
     refreshDashboard();
+    document.getElementById('toast-delete').play();
 }

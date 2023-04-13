@@ -255,7 +255,7 @@ include '../include/shop.inc.php';
   </div>
 
   <!--Codes for notification-->
-  <div aria-live="polite" aria-atomic="true" style="position: fixed; bottom: 0; right: 0; z-index: 1060;">
+  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
     <div class="toast toast-purchase" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <img src="../assets/images/logo3.png" width="20">

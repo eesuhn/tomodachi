@@ -197,6 +197,14 @@ include '../include/dashboard.inc.php';
     <source src="../assets/audio/task.mp3" type="audio/mpeg">
   </audio>
 
+  <audio id="toast-delete">
+    <source src="../assets/audio/delete.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="toast-equip">
+    <source src="../assets/audio/equip.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
     document.getElementById('taskTitle').addEventListener('keypress', function(event) {
       if (event.key === 'Enter') {

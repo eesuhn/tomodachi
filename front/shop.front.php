@@ -1,5 +1,5 @@
 <?php
-  include '../include/shop.inc.php';
+include '../include/shop.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,8 @@
 
   <script src="../assets/js/data/shop.data.js"></script>
   <script src="../assets/js/action/shop.action.js"></script>
-  
+  <script src="../assets/js/toast.js"></script>
+
 </head>
 
 
@@ -63,8 +64,8 @@
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
         <a class="shopItems" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="refreshFoodShop()">
-            <img src="../assets/foods/squid.png" width="200">
-            <h4 style="text-align:center;">Purchase Foods</h4>
+          <img src="../assets/foods/squid.png" width="200">
+          <h4 style="text-align:center;">Purchase Foods</h4>
         </a>
       </div>
 
@@ -252,6 +253,23 @@
       </div>
     </div>
   </div>
+
+  <!--Codes for notification-->
+  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+    <div class="toast toast-purchase" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="../assets/images/logo3.png" width="20">
+        <strong>Tomodachi</strong>
+      </div>
+      <div class="toast-body" style="color:#333">
+        Purchase success!
+      </div>
+    </div>
+  </div>
+
+  <audio id="toast-success">
+    <source src="https://res.cloudinary.com/dxfq3iotg/video/upload/v1557233524/success.mp3" type="audio/mpeg">
+  </audio>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

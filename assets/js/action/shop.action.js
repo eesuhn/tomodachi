@@ -1,3 +1,4 @@
+
 // pet scout 
 function petScout(userID) {
     $.ajax({
@@ -8,6 +9,7 @@ function petScout(userID) {
         },
         success: function() {
             showPetScout();
+            showPurchaseToast();
         }
     });
     
@@ -25,6 +27,7 @@ function purchaseFood(userID, foodID, foodPrice) {
         },
         success: function() {
             refreshFoodShop();
+            showPurchaseToast();
         }
     });
     
@@ -42,8 +45,8 @@ function purchaseWallpaper(userID, wallpaperID, wallpaperPrice) {
         },
         success: function() {
             refreshWallpaperShop();
+            showPurchaseToast();
         }
     });
-    
     refreshShop();
 }

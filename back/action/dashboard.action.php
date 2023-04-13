@@ -36,6 +36,9 @@
         case 'deleteTask':
             deleteTask();
             break;
+        case 'deleteCompletedTasks':
+            deleteCompletedTasks();
+            break;
         case 'updateTaskStatus':
             updateTaskStatus();
             break;
@@ -96,6 +99,13 @@
 
         $taskData = new Task();
         $taskData->deleteTask($taskID);
+    }
+
+    function deleteCompletedTasks(){
+        $userID = $_GET['userID'];
+
+        $taskData = new Task();
+        $taskData->deleteCompletedTasks($userID);
     }
 
     function updateTaskStatus(){

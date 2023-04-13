@@ -173,6 +173,18 @@ include '../include/dashboard.inc.php';
     </div>
   </div>
 
+  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+    <div class="toast toast-task" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="../assets/images/logo3.png" width="20">
+        <strong class="me-auto">Tomodachi</strong>
+      </div>
+      <div class="toast-body">
+        Task Completed
+      </div>
+    </div>
+  </div>
+
   <audio id="toast-feed">
     <source src="../assets/audio/fed.mp3" type="audio/mpeg">
   </audio>
@@ -181,6 +193,9 @@ include '../include/dashboard.inc.php';
     <source src="../assets/audio/positive.mp3" type="audio/mpeg">
   </audio>
 
+  <audio id="toast-task">
+    <source src="../assets/audio/task.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     document.getElementById('taskTitle').addEventListener('keypress', function(event) {
@@ -193,7 +208,6 @@ include '../include/dashboard.inc.php';
       }
     });
 
-    status = "Active";
 
     $('#active-btn').on('click', function() {
       toggleStatus('Active');

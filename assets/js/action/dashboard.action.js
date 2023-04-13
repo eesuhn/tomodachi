@@ -100,6 +100,18 @@ function updateTaskStatus(taskID, taskStatus) {
         },
         success: function() {
             refreshDashboard();
+            showTaskToast();
         }
     });
+}
+
+function deleteCompletedTasks(userID){    
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=deleteCompletedTasks",
+        type: "GET",
+        data: {
+            userID: userID,
+        }
+    });
+    refreshDashboard();
 }

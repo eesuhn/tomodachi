@@ -16,8 +16,8 @@ function showFeedToast() {
     document.getElementById('toast-feed').play();
 }
 function showTaskToast(){
-    var toast = $('.toast-feeding')
+    var toast = $('.toast-task')
     toast.toast({ autohide: true, delay: 1000 });
     toast.toast('show');
-    document.getElementById('toast-positive').play();
+    document.getElementById('toast-task').play();
 }

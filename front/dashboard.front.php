@@ -1,5 +1,5 @@
 <?php
-  include '../include/dashboard.inc.php';
+include '../include/dashboard.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +25,7 @@
 
   <script src="../assets/js/data/dashboard.data.js"></script>
   <script src="../assets/js/action/dashboard.action.js"></script>
+  <script src="../assets/js/toast.js"></script>
 
 </head>
 
@@ -147,6 +148,40 @@
     </div>
   </div>
 
+  <!--Toast notifications-->
+  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+    <div class="toast toast-equipped" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="../assets/images/logo3.png" width="20">
+        <strong class="me-auto">Tomodachi</strong>
+      </div>
+      <div class="toast-body">
+        Equipped Successfully
+      </div>
+    </div>
+  </div>
+
+  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+    <div class="toast toast-feeding" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="../assets/images/logo3.png" width="20">
+        <strong class="me-auto">Tomodachi</strong>
+      </div>
+      <div class="toast-body">
+        Fed Successfully
+      </div>
+    </div>
+  </div>
+
+  <audio id="toast-feed">
+    <source src="../assets/audio/fed.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="toast-positive">
+    <source src="../assets/audio/positive.mp3" type="audio/mpeg">
+  </audio>
+
+
   <script>
     document.getElementById('taskTitle').addEventListener('keypress', function(event) {
       if (event.key === 'Enter') {
@@ -160,15 +195,15 @@
 
     status = "Active";
 
-    $('#active-btn').on('click', function(){
+    $('#active-btn').on('click', function() {
       toggleStatus('Active');
     });
 
-    $('#completed-btn').on('click', function(){
+    $('#completed-btn').on('click', function() {
       toggleStatus('Completed');
     });
 
-    function toggleStatus(status){
+    function toggleStatus(status) {
 
       $('#active-btn').removeClass('active');
       $('#completed-btn').removeClass('active');

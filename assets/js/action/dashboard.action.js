@@ -10,6 +10,7 @@ function decreaseFood_one(userID, foodID) {
         }
     });
     refreshDashboard();
+    showFeedToast();
 }
 
 // equip pet
@@ -24,6 +25,7 @@ function equipPet(userID, petID) {
         }
     });
     refreshDashboard();
+    showEquippedToast();
 }
 
 // equip wallpaper
@@ -37,6 +39,7 @@ function equipWallpaper(userID, wallpaperID) {
         }
     });
     refreshDashboard();
+    showEquippedToast();
 }
 
 function saveTask(taskID){    

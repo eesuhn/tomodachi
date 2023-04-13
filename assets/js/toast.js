@@ -2,11 +2,22 @@ function showPurchaseToast() {
     var toast = $('.toast-purchase')
     toast.toast({ autohide: true, delay: 1000 });
     toast.toast('show');
-    document.getElementById('toast-success').play();
+    document.getElementById('toast-purchase').play();
 }
-function showLossToast() {
-    var toast = $('.toast-loss')
-    toast.toast({ autohide: true, delay: 500 });
+function showEquippedToast() {
+    var toast = $('.toast-equipped')
+    toast.toast({ autohide: true, delay: 1000 });
     toast.toast('show');
-    document.getElementById('toast-warning').play();
+}
+function showFeedToast() {
+    var toast = $('.toast-feeding')
+    toast.toast({ autohide: true, delay: 1000 });
+    toast.toast('show');
+    document.getElementById('toast-feed').play();
+}
+function showTaskToast(){
+    var toast = $('.toast-feeding')
+    toast.toast({ autohide: true, delay: 1000 });
+    toast.toast('show');
+    document.getElementById('toast-positive').play();
 }

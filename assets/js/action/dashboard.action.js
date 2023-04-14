@@ -111,8 +111,11 @@ function deleteCompletedTasks(userID) {
         type: "GET",
         data: {
             userID: userID,
+        },
+
+        success: function() {
+            refreshTask('Completed');
         }
     });
-    refreshDashboard();
     document.getElementById('toast-delete').play();
 }

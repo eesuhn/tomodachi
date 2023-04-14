@@ -265,7 +265,7 @@
         if ($status == "Completed"){
             echo "
                 <div class='row d-flex justify-content-center px-2 py-2'>
-                    <button type='button' class='btn btn-danger' style='margin-top: 2px; margin-bottom: -8px; width: 290px;' onclick='deleteCompletedTasks($userID)'>Delete Completed Tasks</button>
+                    <button type='button' class='btn btn-danger' style='margin-top: 2px; margin-bottom: -8px; width: 98.4%;' onclick='deleteCompletedTasks($userID)'>Delete Completed Tasks</button>
                 </div>";
         }
 

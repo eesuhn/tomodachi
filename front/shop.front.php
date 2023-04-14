@@ -1,5 +1,6 @@
 <?php
-include '../include/shop.inc.php';
+  include '../include/shop.inc.php';
+  include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,6 @@ include '../include/shop.inc.php';
   <script src="../assets/js/data/shop.data.js"></script>
   <script src="../assets/js/action/shop.action.js"></script>
   <script src="../assets/js/toast.js"></script>
-
 </head>
 
 
@@ -253,23 +253,6 @@ include '../include/shop.inc.php';
       </div>
     </div>
   </div>
-
-  <!--Codes for notification-->
-  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
-    <div class="toast toast-purchase" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="../assets/images/logo3.png" width="20">
-        <strong>Tomodachi</strong>
-      </div>
-      <div class="toast-body" style="color:#333">
-        Purchased successfully!
-      </div>
-    </div>
-  </div>
-
-  <audio id="toast-purchase">
-    <source src="../assets/audio/purchase.mp3" type="audio/mpeg">
-  </audio>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

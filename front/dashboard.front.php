@@ -1,5 +1,6 @@
 <?php
-include '../include/dashboard.inc.php';
+  include '../include/dashboard.inc.php';
+  include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -148,63 +149,6 @@ include '../include/dashboard.inc.php';
     </div>
   </div>
 
-  <!--Toast notifications-->
-  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
-    <div class="toast toast-equipped" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="../assets/images/logo3.png" width="20">
-        <strong class="me-auto">Tomodachi</strong>
-      </div>
-      <div class="toast-body">
-        Equipped Successfully
-      </div>
-    </div>
-  </div>
-
-  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
-    <div class="toast toast-feeding" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="../assets/images/logo3.png" width="20">
-        <strong class="me-auto">Tomodachi</strong>
-      </div>
-      <div class="toast-body">
-        Fed Successfully
-      </div>
-    </div>
-  </div>
-
-  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
-    <div class="toast toast-task" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="../assets/images/logo3.png" width="20">
-        <strong class="me-auto">Tomodachi</strong>
-      </div>
-      <div class="toast-body">
-        Task Completed
-      </div>
-    </div>
-  </div>
-
-  <audio id="toast-feed">
-    <source src="../assets/audio/fed.mp3" type="audio/mpeg">
-  </audio>
-
-  <audio id="toast-positive">
-    <source src="../assets/audio/positive.mp3" type="audio/mpeg">
-  </audio>
-
-  <audio id="toast-task">
-    <source src="../assets/audio/task.mp3" type="audio/mpeg">
-  </audio>
-
-  <audio id="toast-delete">
-    <source src="../assets/audio/delete.mp3" type="audio/mpeg">
-  </audio>
-
-  <audio id="toast-equip">
-    <source src="../assets/audio/equip.mp3" type="audio/mpeg">
-  </audio>
-
   <script>
     document.getElementById('taskTitle').addEventListener('keypress', function(event) {
       if (event.key === 'Enter') {
@@ -216,19 +160,19 @@ include '../include/dashboard.inc.php';
       }
     });
 
-
     $('#active-btn').on('click', function() {
-      toggleStatus('Active');
+      toggleStatus('active');
     });
 
     $('#completed-btn').on('click', function() {
-      toggleStatus('Completed');
+      toggleStatus('completed');
     });
 
     function toggleStatus(status) {
       $('#active-btn').removeClass('active');
       $('#completed-btn').removeClass('active');
-      $('#' + status.toLowerCase() + '-btn').addClass('active');
+      $('#' + status + '-btn').addClass('active');
+
       refreshTask(status)
     }
   </script>

@@ -1,4 +1,3 @@
-
 // pet scout 
 function petScout(userID) {
     $.ajax({

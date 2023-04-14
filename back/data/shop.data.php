@@ -68,18 +68,19 @@
         "<div class='text-center'>
             <h2>Congratulations!</h2>
             <p>You have successfully partnered up with a new pet!</p>
-            <h3>You got a</h3>
-        ";
+            <h3>You got a</h3>";
+            
         if ($petRarity === "Legendary"){
             echo "<img src='../assets/images/legendary.png' width='150'>";
+
         } else if ($petRarity === "Rare"){
             echo "<img src='../assets/images/rare.png' width='150'>";
+
         }else{
             echo "<img src='../assets/images/common.png' width='150'>";
         }
         echo"
             <h4>$petName</h4>
-
             <img src='$petImg' alt='$petName' style='width: 150px;'>
             <p>$petDesc</p>
             <p>Check your inventory to see your new pet!</p>

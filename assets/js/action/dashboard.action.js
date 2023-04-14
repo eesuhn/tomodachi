@@ -64,7 +64,7 @@ function addTask() {
     var taskInput = document.getElementById("taskTitle");
     var taskTitle = taskInput.value.trim();
 
-    if(taskTitle !== ''){
+    if (taskTitle !== '') {
         $.ajax({
             url: "../back/action/dashboard.action.php?action=addTask",
             type: "POST",
@@ -105,7 +105,7 @@ function updateTaskStatus(taskID, taskStatus) {
     });
 }
 
-function deleteCompletedTasks(userID){    
+function deleteCompletedTasks(userID) {    
     $.ajax({
         url: "../back/action/dashboard.action.php?action=deleteCompletedTasks",
         type: "GET",

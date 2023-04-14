@@ -308,17 +308,16 @@
             if ($row['taskStatus'] === "Completed") {
                 echo "
                 <div class='card' style='margin-top:10px;'>
-                <div class='card-body'>
-                    <div class='row align-items-center'>
-                        <div class='col-12 flex-grow-1'>
-                            <h5 class='card-title'>{$row['taskTitle']}</h5>
-                            <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                            <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
+                    <div class='card-body'>
+                        <div class='row align-items-center'>
+                            <div class='col-12 flex-grow-1'>
+                                <h5 class='card-title'>{$row['taskTitle']}</h5>
+                                <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
+                                <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                </div>
-                ";
+                </div>";
             }
         }
         if ($status === "Completed"){

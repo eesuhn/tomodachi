@@ -236,72 +236,95 @@
         $status = $_POST['status'];
 
         $stmt = $taskData->getUserTasks($userID, $status);
-    
         foreach ($stmt as $row) {            
-    
-            echo "
-            <div class='card' style='margin-top:10px;'>
-                <div class='card-body'>
-                    <div class='row align-items-center'>
-                        <div class='col-2 d-flex justify-content-center align-items-center'>
-                            <div class='form-check'>
-                                <input class='form-check-input' type='checkbox' value='' id='task{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}' ";
-
-            if ($row['taskStatus'] === "Completed") {
-                echo "checked";
-            }
-            echo ">
-                                <label class='form-check-label' for='task{$row['taskID']}'></label>
+            if ($row['taskStatus'] === "Active") {
+                echo "
+                <div class='card' style='margin-top:10px;'>
+                    <div class='card-body'>
+                        <div class='row align-items-center'>
+                            <div class='col-2 d-flex justify-content-center align-items-center'>
+                                <div class='form-check'>
+                                    <input class='form-check-input' type='checkbox' value='' id='task{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}'>
+                                    <label class='form-check-label' for='task{$row['taskID']}'></label>
+                                </div>
                             </div>
-                        </div>
-                        <div class='col-8 flex-grow-1'>
-                            <h5 class='card-title'>{$row['taskTitle']}</h5>
-                            <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                            <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
-                        </div>
-                        <div class='col-2 text-right'>
-                            <a href='edit' class='text-muted mr-3' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'><i class='fas fa-edit'></i></a>
+                            <div class='col-8 flex-grow-1'>
+                                <h5 class='card-title'>{$row['taskTitle']}</h5>
+                                <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
+                                <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
+                            </div>
+                            <div class='col-2 text-right'>
+                            <div class='dropdown'>
+                                <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
+                                    <i class='fa-solid fa-ellipsis-h fa-xl dropdownopt' style='color:gainsboro;'></i>
+                                </a>
+                                <ul class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
+                                    <li><a class='dropdown-item' href='edit' class='text-muted mr-3' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'>Edit</a></li>
+                                    <li><a class='dropdown-item' href='#' onclick='deleteTask({$row['taskID']})'>Delete</a></li>
+                                </ul>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class='modal fade' id='editTask{$row['taskID']}' tabindex='-1' aria-hidden='true'>
-                <div class='modal-dialog'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-title' id='editTask'>Update Task</h5>
-                        </div>
-                        <div class='modal-body'>
-                            <div class='form-group'>
-                                <label for='editTaskTitle{$row['taskID']}'>Task Title</label>
-                                <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>                                
+                
+                <div class='modal fade' id='editTask{$row['taskID']}' tabindex='-1' aria-hidden='true'>
+                    <div class='modal-dialog'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <h5 class='modal-title' id='editTask'>Update Task</h5>
                             </div>
-                            <div class='form-group'>
-                                <label for='editTaskDesc{$row['taskID']}'>Task Description</label>
-                                <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
+                            <div class='modal-body'>
+                                <div class='form-group'>
+                                    <label for='editTaskTitle{$row['taskID']}'>Task Title</label>
+                                    <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>                                
+                                </div>
+                                <div class='form-group'>
+                                    <label for='editTaskDesc{$row['taskID']}'>Task Description</label>
+                                    <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='editTaskDue{$row['taskID']}'>Due Date</label>
+                                    <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>                                
+                                </div>
                             </div>
-                            <div class='form-group'>
-                                <label for='editTaskDue{$row['taskID']}'>Due Date</label>
-                                <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>                                
+                            <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                                <button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='saveTask({$row['taskID']})'>Save</button>
                             </div>
-                        </div>
-                        <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
-                        <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                            <button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='saveTask({$row['taskID']})'>Save</button>
-                        </div>
-                    </div> 
+                        </div> 
+                    </div>
                 </div>
-            </div>
 
-            <script>
-                document.getElementById('task{$row['taskID']}').addEventListener('change', function(event) {
-                    var taskID = event.target.dataset.taskId;
-                    var taskStatus = event.target.checked ? 'Completed' : 'Active';
-                    updateTaskStatus(taskID, taskStatus);
-                });
-            </script>";
+                <script>
+                    document.getElementById('task{$row['taskID']}').addEventListener('change', function(event) {
+                        var taskID = event.target.dataset.taskId;
+                        var taskStatus = event.target.checked ? 'Completed' : 'Active';
+                        updateTaskStatus(taskID, taskStatus);
+                    });
+                </script>";
+            }
+            if ($row['taskStatus'] === "Completed") {
+                echo "
+                <div class='card' style='margin-top:10px;'>
+                    <div class='card-body'>
+                        <div class='row align-items-center'>
+                            <div class='col-12 flex-grow-1'>
+                                <h5 class='card-title'>{$row['taskTitle']}</h5>
+                                <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
+                                <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+            }
+        }
+        if ($status === "Completed"){
+            echo "
+            <div class='row d-flex justify-content-center px-2 py-2'>
+                <button type='button' class='btn btn-danger' onclick='deleteCompletedTasks($userID)'>Delete Completed Tasks</button>
+            </div>
+            ";
         }
     }
-?>

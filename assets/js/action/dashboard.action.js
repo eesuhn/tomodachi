@@ -10,6 +10,7 @@ function decreaseFood_one(userID, foodID) {
         }
     });
     refreshDashboard();
+    showFeedToast();
 }
 
 // equip pet
@@ -24,6 +25,7 @@ function equipPet(userID, petID) {
         }
     });
     refreshDashboard();
+    showEquippedToast();
 }
 
 // equip wallpaper
@@ -37,6 +39,7 @@ function equipWallpaper(userID, wallpaperID) {
         }
     });
     refreshDashboard();
+    showEquippedToast();
 }
 
 function saveTask(taskID){    
@@ -61,7 +64,7 @@ function addTask() {
     var taskInput = document.getElementById("taskTitle");
     var taskTitle = taskInput.value.trim();
 
-    if(taskTitle !== ''){
+    if (taskTitle !== '') {
         $.ajax({
             url: "../back/action/dashboard.action.php?action=addTask",
             type: "POST",
@@ -97,6 +100,19 @@ function updateTaskStatus(taskID, taskStatus) {
         },
         success: function() {
             refreshDashboard();
+            showTaskToast();
         }
     });
+}
+
+function deleteCompletedTasks(userID) {    
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=deleteCompletedTasks",
+        type: "GET",
+        data: {
+            userID: userID,
+        }
+    });
+    refreshDashboard();
+    document.getElementById('toast-delete').play();
 }

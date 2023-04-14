@@ -52,7 +52,7 @@ class Task {
 
         $stmt->bindParam(':userID', $userID);
         $stmt->bindParam(':taskTitle', $taskTitle);
-        $stmt->bindParam(':taskDue', DATE($taskDue));
+        $stmt->bindParam(':taskDue', $taskDue);
 
         $stmt->execute();
         return true;
@@ -64,6 +64,17 @@ class Task {
         $stmt = $this->db->connect()->prepare($sql);
 
         $stmt->bindParam(':taskID', $taskID);
+
+        $stmt->execute();
+        return true;
+    }
+
+    public function deleteCompletedTasks($userID) {
+        $sql = "DELETE FROM task WHERE userID = :userID AND taskStatus = 'Completed';";
+
+        $stmt = $this->db->connect()->prepare($sql);
+
+        $stmt->bindParam(':userID', $userID);
 
         $stmt->execute();
         return true;

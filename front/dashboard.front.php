@@ -1,5 +1,6 @@
 <?php
   include '../include/dashboard.inc.php';
+  include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +26,7 @@
 
   <script src="../assets/js/data/dashboard.data.js"></script>
   <script src="../assets/js/action/dashboard.action.js"></script>
+  <script src="../assets/js/toast.js"></script>
 
 </head>
 
@@ -81,14 +83,14 @@
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px" ;>Habits</h3>
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
-          <input type="text" class="form-control" id="habit" placeholder="Add a new habit" style="margin-top: 10px;">
+          <input type="text" class="form-control" id="habit" placeholder="Add a new habit" style="margin-top: 10px;" autocomplete="off">
         </div>
       </div>
 
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/task.png" width="30" style="margin-right: 10px;">To-Do's</h3>
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px; display: flex; flex-direction: column;">
-          <input type="text" class="form-control" id="taskTitle" name="taskTitle" placeholder="Add a new task" style="margin-top: 10px;">
+          <input type="text" class="form-control" id="taskTitle" name="taskTitle" placeholder="Add a new task" style="margin-top: 10px;" autocomplete="off">
 
           <div class="btn-group justify-content-end" style="margin-top: 10px;">
             <button type="button" id="active-btn" class="btn btn-secondary active">Active</button>
@@ -158,23 +160,20 @@
       }
     });
 
-    status = "Active";
-
-    $('#active-btn').on('click', function(){
-      toggleStatus('Active');
+    $('#active-btn').on('click', function() {
+      toggleStatus('active');
     });
 
-    $('#completed-btn').on('click', function(){
-      toggleStatus('Completed');
+    $('#completed-btn').on('click', function() {
+      toggleStatus('completed');
     });
 
-    function toggleStatus(status){
-
+    function toggleStatus(status) {
       $('#active-btn').removeClass('active');
       $('#completed-btn').removeClass('active');
-      $('#' + status.toLowerCase() + '-btn').addClass('active');
+      $('#' + status + '-btn').addClass('active');
 
-      refreshTask(status);
+      refreshTask(status)
     }
   </script>
 

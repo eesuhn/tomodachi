@@ -1,5 +1,6 @@
 <?php
   include '../include/shop.inc.php';
+  include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +22,7 @@
 
   <script src="../assets/js/data/shop.data.js"></script>
   <script src="../assets/js/action/shop.action.js"></script>
-  
+  <script src="../assets/js/toast.js"></script>
 </head>
 
 
@@ -63,8 +64,8 @@
 
       <div class="col-md-4 d-flex justify-content-center py-2 px-2">
         <a class="shopItems" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="refreshFoodShop()">
-            <img src="../assets/foods/squid.png" width="200">
-            <h4 style="text-align:center;">Purchase Foods</h4>
+          <img src="../assets/foods/squid.png" width="200">
+          <h4 style="text-align:center;">Purchase Foods</h4>
         </a>
       </div>
 

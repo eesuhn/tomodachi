@@ -1,5 +1,6 @@
 <?php
-include '../include/shop.inc.php';
+  include '../include/shop.inc.php';
+  include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +25,9 @@ include '../include/shop.inc.php';
   <script src="../assets/js/toast.js"></script>
   <script>
     var i = 0,
-      j = 0,
-      s = 0,
-      l = 0;
+        j = 0,
+        s = 0,
+        l = 0;
     text = "Welcome to my shop, how may I assist you today?";
     text2 = "-> Purchase Food";
     text3 = "-> Pet Scouting";
@@ -45,6 +46,7 @@ include '../include/shop.inc.php';
         document.getElementById("text2").innerHTML += text2.charAt(j);
         j++;
         setTimeout(typing2, 20);
+
       } else {
         var foodImg = "<img src='../assets/foods/squid.png' width='30'>";
         document.getElementById("text2").innerHTML += foodImg;
@@ -56,6 +58,7 @@ include '../include/shop.inc.php';
         document.getElementById("text3").innerHTML += text3.charAt(s);
         s++;
         setTimeout(typing3, 20);
+
       } else {
         var foodImg = "<img src='../assets/images/petscout.png' width='30'>";
         document.getElementById("text3").innerHTML += foodImg;
@@ -67,6 +70,7 @@ include '../include/shop.inc.php';
         document.getElementById("text4").innerHTML += text4.charAt(l);
         l++;
         setTimeout(typing4, 20);
+
       } else {
         var foodImg = "<img src='../assets/images/shop.png' width='30'>";
         document.getElementById("text4").innerHTML += foodImg;
@@ -110,28 +114,31 @@ include '../include/shop.inc.php';
       background-attachment: fixed; 
       color: #fff;">
 
-  <div class="content" style="height:100vh">
-    <div class="d-flex">
+  <div class="content" style="height: 100vh;">
+    <div class="d-flex" style="margin-top: 20px;">
       <div class="col-11"></div>
-      <div class="col-1 mt-1 py-2 px-2" style="font-size:x-large;" id="currencyData">
+      <div class="col-1 mt-1 py-2 px-2" style="font-size: x-large;" id="currencyData">
         <!-- display currency with AJAX -->
       </div>
     </div>
 
-    <div style="background-color:  rgba(255, 255, 255, 0.5);" class="mx-5 mt-2 p-2 rounded">
+    <div style="background-color: rgba(255, 255, 255, 0.5); margin-top: 30px;" class="mx-5 mt-2 p-2 rounded">
       <h1 style="margin: 10px;" id="text"><?php echo "<script> typing(); </script>"; ?></h1>
+
       <a data-bs-target="#foodShop" data-bs-toggle="modal" onclick="refreshFoodShop()">
         <h3 style="margin: 10px;" id="text2"><?php echo "<script> typing2(); </script>"; ?></h3>
       </a>
+
       <a data-bs-target="#petShop" data-bs-toggle="modal">
         <h3 style="margin: 10px;" id="text3"><?php echo "<script> typing3(); </script>"; ?></h3>
       </a>
+
       <a data-bs-target="#wallpaperShop" data-bs-toggle="modal" onclick="refreshWallpaperShop()">
         <h3 style="margin: 10px;" id="text4"><?php echo "<script> typing4(); </script>"; ?></h3>
       </a>
     </div>
 
-    <img src="../assets/images/wizard.png" style="position: fixed; bottom: 0;" width="350">
+    <img src="../assets/images/wizard.png" style="position: fixed; bottom: 24px;" width="340px">
 
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
       <div class="modal-dialog modal-xl">
@@ -300,23 +307,6 @@ include '../include/shop.inc.php';
       </div>
     </div>
   </div>
-
-  <!--Codes for notification-->
-  <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
-    <div class="toast toast-purchase" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="../assets/images/logo3.png" width="20">
-        <strong>Tomodachi</strong>
-      </div>
-      <div class="toast-body" style="color:#333">
-        Purchased successfully!
-      </div>
-    </div>
-  </div>
-
-  <audio id="toast-purchase">
-    <source src="../assets/audio/purchase.mp3" type="audio/mpeg">
-  </audio>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

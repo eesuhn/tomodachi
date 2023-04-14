@@ -1,4 +1,4 @@
-<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
     <div class="toast toast-equipped" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <img src="../assets/images/logo3.png" width="20">
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
     <div class="toast toast-feeding" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <img src="../assets/images/logo3.png" width="20">
@@ -22,7 +22,7 @@
     </div>
 </div>
 
-<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
     <div class="toast toast-task" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <img src="../assets/images/logo3.png" width="20">
@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; z-index: 1060;">
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
     <div class="toast toast-purchase" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <img src="../assets/images/logo3.png" width="20">

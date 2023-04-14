@@ -13,6 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -87,24 +88,11 @@
         </div>
       </div>
 
-      <div class="col-md-4 py-1">
-        <h3><img src="../assets/images/task.png" width="30" style="margin-right: 10px;">To-Do's</h3>
-        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px; display: flex; flex-direction: column;">
-          <input type="text" class="form-control" id="taskTitle" name="taskTitle" placeholder="Add a new task" style="margin-top: 10px;" autocomplete="off">
-
-          <div class="btn-group justify-content-end" style="margin-top: 10px;">
-            <button type="button" id="active-btn" class="btn btn-secondary active">Active</button>
-            <button type="button" id="completed-btn" class="btn btn-secondary">Completed</button>
-          </div>
-
-          <div id="taskList">
-            <!-- display tasks with AJAX -->
-          </div>
-          <div style="margin-top: 10px;"></div>
-        </div>
+      <div class="col-md-4 py-1" id="taskTracker">
+        <!-- display task tracker with AJAX -->
       </div>
 
-      <div class="card shadow  text-white bg-dark" style="margin-top: 30px;">
+      <div class="card shadow text-white bg-dark" style="margin-top: 30px;">
         <div class="card-header">
           <h4>Foods</h4>
         </div>
@@ -149,36 +137,7 @@
     </div>
   </div>
 
-  <script>
-    document.getElementById('taskTitle').addEventListener('keypress', function(event) {
-      if (event.key === 'Enter') {
-        // prevent the form from being submitted
-        event.preventDefault();
-
-        // add task
-        addTask();
-      }
-    });
-
-    $('#active-btn').on('click', function() {
-      toggleStatus('active');
-    });
-
-    $('#completed-btn').on('click', function() {
-      toggleStatus('completed');
-    });
-
-    function toggleStatus(status) {
-      $('#active-btn').removeClass('active');
-      $('#completed-btn').removeClass('active');
-      $('#' + status + '-btn').addClass('active');
-
-      refreshTask(status)
-    }
-  </script>
-
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 
 </body>

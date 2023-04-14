@@ -23,8 +23,74 @@
   <script src="../assets/js/data/shop.data.js"></script>
   <script src="../assets/js/action/shop.action.js"></script>
   <script src="../assets/js/toast.js"></script>
-</head>
+  <script>
+    var i = 0,
+        j = 0,
+        s = 0,
+        l = 0;
+    text = "Welcome to my shop, how may I assist you today?";
+    text2 = "-> Purchase Food";
+    text3 = "-> Pet Scouting";
+    text4 = "-> Purchase Wallpaper";
 
+    function typing() {
+      if (i < text.length) {
+        document.getElementById("text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 15);
+      }
+    }
+
+    function typing2() {
+      if (j < text2.length) {
+        document.getElementById("text2").innerHTML += text2.charAt(j);
+        j++;
+        setTimeout(typing2, 20);
+
+      } else {
+        var foodImg = "<img src='../assets/foods/squid.png' width='30'>";
+        document.getElementById("text2").innerHTML += foodImg;
+      }
+    }
+
+    function typing3() {
+      if (s < text3.length) {
+        document.getElementById("text3").innerHTML += text3.charAt(s);
+        s++;
+        setTimeout(typing3, 20);
+
+      } else {
+        var foodImg = "<img src='../assets/images/petscout.png' width='30'>";
+        document.getElementById("text3").innerHTML += foodImg;
+      }
+    }
+
+    function typing4() {
+      if (l < text4.length) {
+        document.getElementById("text4").innerHTML += text4.charAt(l);
+        l++;
+        setTimeout(typing4, 20);
+
+      } else {
+        var foodImg = "<img src='../assets/images/shop.png' width='30'>";
+        document.getElementById("text4").innerHTML += foodImg;
+      }
+    }
+  </script>
+
+  <style>
+    .content a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .content a:hover {
+      cursor: pointer;
+      color: #FFD700 !important;
+    }
+  </style>
+
+</head>
 
 <div class="sidebar">
   <div class="logo">
@@ -47,44 +113,32 @@
       background-position: center; 
       background-attachment: fixed; 
       color: #fff;">
-  <div class="content vh-100">
-    <div class="row">
-      <div class="col-2 py-4 px-4">
-        <img src="../assets/images/wizard.png" style="margin: 10px;" width="160">
-      </div>
-      <div class="col-9"></div>
-      <div class="col-1 py-2 px-2" style="font-size:x-large;" id="currencyData">
+
+  <div class="content" style="height: 100vh;">
+    <div class="d-flex" style="margin-top: 20px;">
+      <div class="col-11"></div>
+      <div class="col-1 mt-1 py-2 px-2" style="font-size: x-large;" id="currencyData">
         <!-- display currency with AJAX -->
       </div>
     </div>
 
-    <h3 style="margin: 10px;">Welcome, great to have you here in my shop. Anything you have eyes on today?</h3>
+    <div style="background-color: rgba(255, 255, 255, 0.5); margin-top: 30px;" class="mx-5 mt-2 p-2 rounded">
+      <h1 style="margin: 10px;" id="text"><?php echo "<script> typing(); </script>"; ?></h1>
 
-    <div class="row d-flex justify-content-center py-5 px-4" style="margin-top: 120px;">
+      <a data-bs-target="#foodShop" data-bs-toggle="modal" onclick="refreshFoodShop()">
+        <h3 style="margin: 10px;" id="text2"><?php echo "<script> typing2(); </script>"; ?></h3>
+      </a>
 
-      <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <a class="shopItems" data-bs-target="#foodShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="refreshFoodShop()">
-          <img src="../assets/foods/squid.png" width="200">
-          <h4 style="text-align:center;">Purchase Foods</h4>
-        </a>
-      </div>
+      <a data-bs-target="#petShop" data-bs-toggle="modal">
+        <h3 style="margin: 10px;" id="text3"><?php echo "<script> typing3(); </script>"; ?></h3>
+      </a>
 
-      <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <a class="shopItems" href="#petShop" data-bs-target="#petShop" data-bs-toggle="modal" style="text-decoration: none; color: white">
-          <img src="../assets/images/petscout.png" width="200">
-          <h4 style="text-align:center;">Pet Scout</h4>
-        </a>
-      </div>
-
-      <div class="col-md-4 d-flex justify-content-center py-2 px-2">
-        <a class="shopItems" href="#wallpaperShop" data-bs-target="#wallpaperShop" data-bs-toggle="modal" style="text-decoration: none; color: white" onclick="refreshWallpaperShop()">
-          <img src="../assets/images/shop.png" width="200">
-          <h4 style="text-align:center;">Wallpaper Shop</h4>
-        </a>
-      </div>
-
-      <div style="padding:50px;"></div>
+      <a data-bs-target="#wallpaperShop" data-bs-toggle="modal" onclick="refreshWallpaperShop()">
+        <h3 style="margin: 10px;" id="text4"><?php echo "<script> typing4(); </script>"; ?></h3>
+      </a>
     </div>
+
+    <img src="../assets/images/wizard.png" style="position: fixed; bottom: 24px;" width="340px">
 
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
       <div class="modal-dialog modal-xl">

@@ -148,7 +148,7 @@
           </div>
 
           <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

@@ -16,5 +16,19 @@
 
             $stmt->execute();
         }
+
+        public function getUserHabits($userID) {
+            $sql = "SELECT * FROM habit WHERE userID = :userID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+
+            $stmt->execute();
+
+            $result = $stmt->fetchAll();
+
+            return $result;
+        }
     }
 ?>

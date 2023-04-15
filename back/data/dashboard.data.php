@@ -426,6 +426,9 @@
     function refreshHabit() {
         $userID = $_SESSION['userID'];
 
+        $habitData = new Habit();
+        $stmt = $habitData->getUserHabits($userID);
+
         echo "
         <style>
             .dropdown-opt {
@@ -444,6 +447,7 @@
                 cursor: pointer;
                 transition: 0.2s ease;
                 border-radius: 4px;
+                opacity: 0.4;
             }
 
             .nature-btn:focus {
@@ -465,52 +469,67 @@
             }
 
             .nature-btn.disabled {
-                opacity: 0.6;
+                opacity: 1;
                 cursor: default;
             }
 
             .option-menu a:hover {
                 background-color: #dcdcdc;
             }
-        </style>
 
-        <div class='card'>
-            <div class='card-body'>
-                <div class='row align-items-center'>
-                    <div class='col-2 d-flex justify-content-center align-items-center'>
-                        <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='color: #097724; font-size: 30px;'></i>
-                    </div>
+            select#difficulty {
+                background-image: url('../assets/images/arrow.png');
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                background-size: 10px;
+            }
+        </style>";
 
-                    <div class='col-8 flex-grow-1'>
-                        <div class='row align-items-center'>
-                            <div class='col-10'>
-                                <h5 class='card-title'>Habit Name</h5>
-                                <p class='card-text'>Habit Description</p>
-                            </div>
+        foreach ($stmt as $row) {
 
-                            <div class='col-1 text-right'>
-                                <div class='dropdown'>
-                                    <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
-                                        <i class='fa-solid fa-ellipsis-h fa-xl dropdown-opt' style='color: #212529;'></i>
-                                    </a>
+            $difficultyID = $row['difficultyID'];
 
-                                    <ul class='dropdown-menu option-menu' aria-labelledby='dropdownMenuLink'>
-                                        <li><a class='dropdown-item' href='edit' data-bs-target='#editHabit' data-bs-toggle='modal'>Edit</a></li>
-                                        <li><a class='dropdown-item' href='#'>Delete</a></li>
-                                    </ul>
+            $btnPositive = ($row['habitPositive'] == 1) ? "true" : "false";
+            $btnNegative = ($row['habitNegative'] == 1) ? "true" : "false";
+
+            echo "
+            <div class='card'>
+                <div class='card-body'>
+                    <div class='row align-items-center'>
+                        <div class='col-2 d-flex justify-content-center align-items-center'>
+                            <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='color: #097724; font-size: 30px;'></i>
+                        </div>
+
+                        <div class='col-8 flex-grow-1'>
+                            <div class='row align-items-center'>
+                                <div class='col-10'>
+                                    <h5 class='card-title'>{$row['habitTitle']}</h5>
+                                    <p class='card-text'>{$row['habitDesc']}</p>
+                                </div>
+
+                                <div class='col-1 text-right'>
+                                    <div class='dropdown'>
+                                        <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
+                                            <i class='fa-solid fa-ellipsis-h fa-xl dropdown-opt' style='color: #212529;'></i>
+                                        </a>
+
+                                        <ul class='dropdown-menu option-menu' aria-labelledby='dropdownMenuLink'>
+                                            <li><a class='dropdown-item' href='edit' data-bs-target='#editHabit{$row['habitID']}' data-bs-toggle='modal'>Edit</a></li>
+                                            <li><a class='dropdown-item' href='#'>Delete</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class='col-2'>
-                        <i class='fa-solid fa-circle-minus fa-xl' style='color: #aa0808; font-size: 30px;'></i>
+                        <div class='col-2'>
+                            <i class='fa-solid fa-circle-minus fa-xl' style='color: #aa0808; font-size: 30px;'></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-            <div class='modal fade' id='editHabit' aria-hidden='true' tabindex='-1'>
+            <div class='modal fade' id='editHabit{$row['habitID']}' aria-hidden='true' tabindex='-1'>
                 <div class='modal-dialog modal-dialog-centered'>
                     <div class='modal-content'>
                         <div class='row'>
@@ -520,24 +539,24 @@
 
                             <form>
                                 <div class='col-12 px-2'>
-                                    <label for='habit'>Habit</label>
+                                    <label for='editHabitTitle{$row['habitTitle']}'>Habit</label>
                                 </div>
                                 <div class='col-12 d-flex justify-content-center px-2'>
-                                    <input type='text' class='form-control' id='habit' name='habit' placeholder='' required>
+                                    <input type='text' class='form-control' id='editHabitTitle{$row['habitTitle']}' placeholder='{$row['habitTitle']}' required>
                                 </div>
                                 <div class='col-12 px-2'>
-                                    <label for='description'>Description</label>
+                                    <label for='editHabitDesc{$row['habitDesc']}'>Description</label>
                                 </div>
                                 <div class='col-12 d-flex justify-content-center px-2'>
-                                    <textarea class='form-control' id='description' rows='4' style='resize: none; overflow-y: scroll;'></textarea>
+                                    <textarea class='form-control' id='editHabitDesc{$row['habitDesc']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['habitDesc']}</textarea>
                                 </div>
 
                                 <div class='col-12 d-flex justify-content-center px-2 py-2'>
-                                    <input type='hidden' name='naturePositive' id='naturePositive' value=''>
-                                    <button type='button' class='nature-btn positive' id='togglePositive' onclick='toggleNature('positive')'>Positive</button>
+                                    <input type='hidden' name='naturePositive' id='naturePositive' value='$btnPositive'>
+                                    <button type='button' class='nature-btn positive' id='togglePositive' onclick='toggleNature(\"positive\")'>Positive</button>
 
-                                    <input type='hidden' name='natureNegative' id='natureNegative' value=''>
-                                    <button type='button' class='nature-btn negative' id='toggleNegative' onclick='toggleNature('negative')'>Negative</button>
+                                    <input type='hidden' name='natureNegative' id='natureNegative' value='$btnNegative'>
+                                    <button type='button' class='nature-btn negative' id='toggleNegative' onclick='toggleNature(\"negative\")'>Negative</button>
                                 </div>
                                 
                                 <div class='col-12 px-2'>
@@ -545,9 +564,21 @@
                                 </div>
                                 <div class='col-12 px-2'>
                                     <select class='form-control' id='difficulty'>
-                                        <option value='easy' selected>Easy ✦ </option>
-                                        <option value='medium'>Medium ✦ ✦ </option>
-                                        <option value='hard'>Hard ✦ ✦ ✦ </option>
+                                        <option value='1' "; if ($difficultyID == 1) {
+                                            echo 'selected';
+                                        }
+                                        echo
+                                        ">Easy ✦ </option>
+                                        <option value='2' "; if ($difficultyID == 2) {
+                                            echo 'selected';
+                                        }
+                                        echo
+                                        ">Medium ✦ ✦ </option>
+                                        <option value='3' "; if ($difficultyID == 3) {
+                                            echo 'selected';
+                                        }
+                                        echo
+                                        ">Hard ✦ ✦ ✦ </option>
                                     </select>
                                 </div>
                             </form>
@@ -560,39 +591,51 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>";
+        }
+        echo "
+        <script>
+            var btnPositive = document.getElementById('naturePositive').value;
+            var btnNegative = document.getElementById('natureNegative').value;
 
-            <script>
-                function toggleNature(nature) {
-                    var currentNature = nature ?? '';
+            if (btnPositive === 'true') {
+                document.getElementById('togglePositive').classList.add('disabled');
+            }
 
-                    const togglePositive = document.getElementById('togglePositive');
-                    const toggleNegative = document.getElementById('toggleNegative');
+            if (btnNegative === 'true') {
+                document.getElementById('toggleNegative').classList.add('disabled');
+            }
 
-                    const naturePositive = document.getElementById('naturePositive');
-                    const natureNegative = document.getElementById('natureNegative');
+            function toggleNature(nature) {
+                var currentNature = nature;
 
-                    if (currentNature === 'positive') {
-                        if (togglePositive.classList.contains('disabled')) {
-                            togglePositive.classList.remove('disabled');
-                            naturePositive.value = 'false';
+                const togglePositive = document.getElementById('togglePositive');
+                const toggleNegative = document.getElementById('toggleNegative');
 
-                        } else {
-                            togglePositive.classList.add('disabled');
-                            naturePositive.value = 'true';
-                        }
+                const naturePositive = document.getElementById('naturePositive');
+                const natureNegative = document.getElementById('natureNegative');
 
-                    } else if (currentNature === 'negative') {
-                        if (toggleNegative.classList.contains('disabled')) {
-                            toggleNegative.classList.remove('disabled');
-                            natureNegative.value = 'false';
+                if (currentNature === 'positive') {
+                    if (togglePositive.classList.contains('disabled')) {
+                        togglePositive.classList.remove('disabled');
+                        naturePositive.value = 'false';
 
-                        } else {
-                            toggleNegative.classList.add('disabled');
-                            natureNegative.value = 'true';
-                        }
+                    } else {
+                        togglePositive.classList.add('disabled');
+                        naturePositive.value = 'true';
+                    }
+
+                } else if (currentNature === 'negative') {
+                    if (toggleNegative.classList.contains('disabled')) {
+                        toggleNegative.classList.remove('disabled');
+                        natureNegative.value = 'false';
+
+                    } else {
+                        toggleNegative.classList.add('disabled');
+                        natureNegative.value = 'true';
                     }
                 }
-            </script>";
+            }
+        </script>";
     }
 ?>

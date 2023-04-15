@@ -14,6 +14,7 @@ function refreshDashboard() {
         refreshPetImg();
         refreshWallpaper();
         refreshTask(state);
+        refreshHabit();
     }, 100);
 }
 
@@ -91,5 +92,17 @@ function refreshTask(status) {
         success: function (data) {
             $("#taskTracker").html(data);
         },
+    });
+}
+
+function refreshHabit() {
+    $.ajax({
+        url: "../back/data/dashboard.data.php?action=refreshHabit",
+        type: "POST",
+        dataType: "html",
+
+        success: function (data) {
+            $("#habitTracker").html(data);
+        }
     });
 }

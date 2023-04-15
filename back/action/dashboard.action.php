@@ -5,6 +5,7 @@
     include '../food.back.php';
     include '../wallpaper.back.php';
     include '../task.back.php';
+    include '../habit.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -42,9 +43,12 @@
         case 'updateTaskStatus':
             updateTaskStatus();
             break;
+        case 'addHabit':
+            addHabit();
+            break;
     }
 
-    function decreaseFood_one () {
+    function decreaseFood_one(){
         $userID = $_GET['userID'];
         $foodID = $_GET['foodID'];
 
@@ -114,5 +118,13 @@
 
         $taskData = new Task();
         $taskData->updateStatus($taskID, $taskStatus);
+    }
+
+    function addHabit(){
+        $userID = $_SESSION['userID'];
+        $habitTitle = $_POST['habitTitle'];
+        
+        $habitData = new Habit();
+        $habitData->addHabit($userID, $habitTitle);
     }
 ?>

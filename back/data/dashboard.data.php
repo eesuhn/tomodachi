@@ -425,5 +425,174 @@
 
     function refreshHabit() {
         $userID = $_SESSION['userID'];
+
+        echo "
+        <style>
+            .dropdown-opt {
+                display: none;
+            }
+
+            .card:hover .dropdown-opt {
+                display: inline-block;
+            }
+
+            .nature-btn {
+                border: none;
+                color: white;
+                font-size: 1.2rem;
+                padding: 4px 12px;
+                cursor: pointer;
+                transition: 0.2s ease;
+                border-radius: 4px;
+            }
+
+            .nature-btn:focus {
+                outline: none;
+            }
+
+            .nature-btn.positive {
+                background-color: #097724;
+                margin-right: 12px;
+            }
+
+            .nature-btn.negative {
+                background-color: #aa0808;
+            }
+
+            .nature-btn.positive:active,
+            .nature-btn.negative:active {
+                transform: translateY(2px);
+            }
+
+            .nature-btn.disabled {
+                opacity: 0.6;
+                cursor: default;
+            }
+
+            .option-menu a:hover {
+                background-color: #dcdcdc;
+            }
+        </style>
+
+        <div class='card'>
+            <div class='card-body'>
+                <div class='row align-items-center'>
+                    <div class='col-2 d-flex justify-content-center align-items-center'>
+                        <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='color: #097724; font-size: 30px;'></i>
+                    </div>
+
+                    <div class='col-8 flex-grow-1'>
+                        <div class='row align-items-center'>
+                            <div class='col-10'>
+                                <h5 class='card-title'>Habit Name</h5>
+                                <p class='card-text'>Habit Description</p>
+                            </div>
+
+                            <div class='col-1 text-right'>
+                                <div class='dropdown'>
+                                    <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
+                                        <i class='fa-solid fa-ellipsis-h fa-xl dropdown-opt' style='color: #212529;'></i>
+                                    </a>
+
+                                    <ul class='dropdown-menu option-menu' aria-labelledby='dropdownMenuLink'>
+                                        <li><a class='dropdown-item' href='edit' data-bs-target='#editHabit' data-bs-toggle='modal'>Edit</a></li>
+                                        <li><a class='dropdown-item' href='#'>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-2'>
+                        <i class='fa-solid fa-circle-minus fa-xl' style='color: #aa0808; font-size: 30px;'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class='modal fade' id='editHabit' aria-hidden='true' tabindex='-1'>
+                <div class='modal-dialog modal-dialog-centered'>
+                    <div class='modal-content'>
+                        <div class='row'>
+                            <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                                <h2>Edit Habit</h2>
+                            </div>
+
+                            <form>
+                                <div class='col-12 px-2'>
+                                    <label for='habit'>Habit</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <input type='text' class='form-control' id='habit' name='habit' placeholder='' required>
+                                </div>
+                                <div class='col-12 px-2'>
+                                    <label for='description'>Description</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <textarea class='form-control' id='description' rows='4' style='resize: none; overflow-y: scroll;'></textarea>
+                                </div>
+
+                                <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                                    <input type='hidden' name='naturePositive' id='naturePositive' value=''>
+                                    <button type='button' class='nature-btn positive' id='togglePositive' onclick='toggleNature('positive')'>Positive</button>
+
+                                    <input type='hidden' name='natureNegative' id='natureNegative' value=''>
+                                    <button type='button' class='nature-btn negative' id='toggleNegative' onclick='toggleNature('negative')'>Negative</button>
+                                </div>
+                                
+                                <div class='col-12 px-2'>
+                                    <label for='difficulty'>Difficulty </label>
+                                </div>
+                                <div class='col-12 px-2'>
+                                    <select class='form-control' id='difficulty'>
+                                        <option value='easy' selected>Easy ✦ </option>
+                                        <option value='medium'>Medium ✦ ✦ </option>
+                                        <option value='hard'>Hard ✦ ✦ ✦ </option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div style='margin-bottom: 10px;'></div>
+                        <div class='modal-footer'>
+                            <button type='submit' name='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
+                            <button type='submit' name='submit' class='btn btn-primary'>Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function toggleNature(nature) {
+                    var currentNature = nature ?? '';
+
+                    const togglePositive = document.getElementById('togglePositive');
+                    const toggleNegative = document.getElementById('toggleNegative');
+
+                    const naturePositive = document.getElementById('naturePositive');
+                    const natureNegative = document.getElementById('natureNegative');
+
+                    if (currentNature === 'positive') {
+                        if (togglePositive.classList.contains('disabled')) {
+                            togglePositive.classList.remove('disabled');
+                            naturePositive.value = 'false';
+
+                        } else {
+                            togglePositive.classList.add('disabled');
+                            naturePositive.value = 'true';
+                        }
+
+                    } else if (currentNature === 'negative') {
+                        if (toggleNegative.classList.contains('disabled')) {
+                            toggleNegative.classList.remove('disabled');
+                            natureNegative.value = 'false';
+
+                        } else {
+                            toggleNegative.classList.add('disabled');
+                            natureNegative.value = 'true';
+                        }
+                    }
+                }
+            </script>";
     }
 ?>

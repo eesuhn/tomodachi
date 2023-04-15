@@ -104,8 +104,8 @@ CREATE TABLE `habit` (
     `difficultyID` int(11) NOT NULL,
     `habitTitle` varchar(255) NOT NULL,
     `habitDesc` varchar(255) NOT NULL,
-    `habitPositive` int(1) NOT NULL,
-    `habitNegative` int(1) NOT NULL
+    `habitPositive` int(1) NOT NULL DEFAULT '0',
+    `habitNegative` int(1) NOT NULL DEFAULT '0'
 );
 
 

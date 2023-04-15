@@ -119,3 +119,22 @@ function deleteCompletedTasks(userID) {
     });
     document.getElementById('toast-delete').play();
 }
+
+function addHabit() {
+    var habitInput = document.getElementById("habitTitle");
+    var habitTitle = habitInput.value.trim();
+
+    if (habitTitle !== '') {
+        $.ajax({
+            url: "../back/action/dashboard.action.php?action=addHabit",
+            type: "POST",
+            data: {
+                habitTitle: habitTitle
+            },
+            success: function(){
+                refreshDashboard();
+                habitInput.value = '';
+            }
+        });
+    }
+}

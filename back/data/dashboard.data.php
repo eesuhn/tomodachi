@@ -5,6 +5,7 @@
     include '../food.back.php';
     include '../wallpaper.back.php';
     include '../task.back.php';
+    include '../habit.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -41,6 +42,10 @@
 
         case 'refreshTask':
             refreshTask();
+            break;
+
+        case 'refreshHabit':
+            refreshHabit();
             break;
     }
 
@@ -252,6 +257,10 @@
                 .task-nav-btn button.active {
                     background-color: #212529;
                 }
+
+                .option-menu a:hover {
+                    background-color: #dcdcdc;
+                }
             </style>
 
             <h3><img src='../assets/images/task.png' width='30' style='margin-right: 10px;'>To-Do's</h3>
@@ -296,15 +305,15 @@
                                 <p class='card-text text-muted'>Due On: $formattedDate</p>
                             </div>
                             <div class='col-2 text-right'>
-                            <div class='dropdown'>
-                                <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
-                                    <i class='fa-solid fa-ellipsis-h fa-xl dropdownopt' style='color:gainsboro;'></i>
-                                </a>
-                                <ul class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
-                                    <li><a class='dropdown-item' href='edit' class='text-muted mr-3' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'>Edit</a></li>
-                                    <li><a class='dropdown-item' href='#' onclick='deleteTask({$row['taskID']})'>Delete</a></li>
-                                </ul>
-                            </div>
+                                <div class='dropdown'>
+                                    <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
+                                        <i class='fa-solid fa-ellipsis-h fa-xl dropdown-opt' style='color: #212529;'></i>
+                                    </a>
+                                    <ul class='dropdown-menu option-menu' aria-labelledby='dropdownMenuLink'>
+                                        <li><a class='dropdown-item' href='edit' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'>Edit</a></li>
+                                        <li><a class='dropdown-item' href='#' onclick='deleteTask({$row['taskID']})'>Delete</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -412,5 +421,9 @@
                 }
             }
         </script>";
+    }
+
+    function refreshHabit() {
+        $userID = $_SESSION['userID'];
     }
 ?>

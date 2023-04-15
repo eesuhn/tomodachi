@@ -51,3 +51,9 @@ INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperDesc`, `wallpaperPrice`, `wa
 ('Campfire', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.', '250', '../assets/wallpapers/campfire.png'), 
 ('Mars', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.', '500', '../assets/wallpapers/mars.png'),
 ('Starry Nights', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', '500', '../assets/wallpapers/starrynight.png');
+
+-- Dump data for table `difficulty`
+INSERT INTO `difficulty` (`difficultyTitle`, `currencyReward`, `XPReward`, `healthPenalize`, `currencyPenalize`) VALUES 
+('Easy', '5', '5', '10', '10'), 
+('Medium', '10', '10', '20', '20'), 
+('Hard', '20', '20', '40', '40');

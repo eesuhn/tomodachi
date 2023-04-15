@@ -22,7 +22,7 @@
 
 <div class="col-12 d-flex align-items-center vh-100" style="background-image: url('../assets/images/bg.png'); background-size: cover;";>
     <div class="card-body p-4 p-lg-5 text-black">
-        <form id="login_user" method="POST" action="../include/login.inc.php">
+        <form id="login_admin" method="POST" action="../include/admin.inc.php">
             <div class="d-flex align-items-center mb-3 pb-1 justify-content-center">
                 <span class="h1 fw-bold mb-0">
                     <img src="../assets/images/logo1.png" width="120">

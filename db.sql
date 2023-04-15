@@ -87,7 +87,13 @@ CREATE TABLE `task` (
     `taskStatus` varchar(255) NOT NULL DEFAULT 'Active'
 );
 
-
+-- user table
+CREATE TABLE `admin` (
+    `adminID` int(11) NOT NULL,
+    `adminName` varchar(255) NOT NULL,
+    `adminEmail` varchar(255) NOT NULL,
+    `adminPwd` varchar(255) NOT NULL
+);
 
 -- Primary key
 ALTER TABLE `user`
@@ -120,6 +126,9 @@ ALTER TABLE `wallpaper_inventory`
 ALTER TABLE `task`
     ADD PRIMARY KEY (`taskID`);
 
+ALTER TABLE `admin`
+    ADD PRIMARY KEY (`adminID`);
+
 
 
 -- Auto increment
@@ -141,6 +150,8 @@ ALTER TABLE `wallpaper`
 ALTER TABLE `task`
     MODIFY `taskID` int(11) NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `admin`
+    MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT;
 
 
 -- Foreign key

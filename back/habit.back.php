@@ -45,5 +45,15 @@
 
             $stmt->execute();
         }
+
+        public function deleteHabit($habitID) {
+            $sql = "DELETE FROM habit WHERE habitID = :habitID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':habitID', $habitID);
+
+            $stmt->execute();
+        }
     }
 ?>

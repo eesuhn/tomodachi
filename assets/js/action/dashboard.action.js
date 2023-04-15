@@ -160,3 +160,14 @@ function updateHabit(habitID) {
     });
     refreshDashboard();
 }
+
+function deleteHabit(habitID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=deleteHabit",
+        type: "GET",
+        data: {
+            habitID: habitID,
+        }
+    });
+    refreshDashboard();
+}

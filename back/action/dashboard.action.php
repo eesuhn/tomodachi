@@ -49,6 +49,9 @@
         case 'updateHabit':
             updateHabit();
             break;
+        case 'deleteHabit':
+            deleteHabit();
+            break;
     }
 
     function decreaseFood_one(){
@@ -153,5 +156,12 @@
 
         $habitData = new Habit();
         $habitData->updateHabit($habitID, $difficultyID, $habitTitle, $habitDesc, $habitPositive, $habitNegative);
+    }
+
+    function deleteHabit() {
+        $habitID = $_GET['habitID'];
+
+        $habitData = new Habit();
+        $habitData->deleteHabit($habitID);
     }
 ?>

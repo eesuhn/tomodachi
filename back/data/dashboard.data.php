@@ -73,12 +73,12 @@
         $today = date("l, j F Y");
 
         echo 
-        "<div class='row px-2 py-4'>
+        "<div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
                 <div class='card-header border-0'>
-                    <img src='$petImg' width='100px' style='margin-top: 30px'>
+                    <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
                 </div>
-                <div class='card-block px-3 col-4'>
+                <div class='card-block px-3 col-3'>
                     <h5>$petName</h5>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
                     <div class='progress' style='height:3px;'>
@@ -95,11 +95,12 @@
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $petHappCur%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>
+
+                <div class='card-block px-3 col-2'></div>
                 
-                <div class='card-block px-3 col-4'>
-                    <img src='../assets/images/coin.png' style='height: 19px; width: 19px; margin: 10px;'>$currencyNum
+                <div class='card-block px-3 col-2'>
+                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
                     <h4>$today</h4>
-                    <p>0 Tasks Today</p>
                 </div>
             </div>
         </div>";
@@ -149,7 +150,10 @@
             $foodCount += $row['foodNum'];
         }
         if ($foodCount == 0) {
-            echo "<p style='font-size: 22px; margin-left: 20px; font-weight: 400;'>Your food storage is empty :(</p>";
+            echo "
+            <div style='height: 60px;'>
+                <p style='font-size: 22px; margin-left: 20px; font-weight: 400; margin-top: 10px;'>Your food storage is empty :(</p>
+            </div>";
         }
     }
 
@@ -265,6 +269,10 @@
                 .option-menu a:active {
                     color: black;
                 }
+
+                .task-checkbox {
+                    border: 1px solid #5c636a;
+                }
             </style>
 
             <h3><img src='../assets/images/task.png' width='30' style='margin-right: 10px;'>To-Do's</h3>
@@ -299,7 +307,7 @@
                         <div class='row align-items-center'>
                             <div class='col-2 d-flex justify-content-center align-items-center'>
                                 <div class='form-check'>
-                                    <input class='form-check-input' type='checkbox' value='' id='task{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}'>
+                                    <input class='form-check-input task-checkbox' type='checkbox' value='' id='task{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}'>
                                     <label class='form-check-label' for='task{$row['taskID']}'></label>
                                 </div>
                             </div>
@@ -468,7 +476,7 @@
             .nature-btn {
                 border: none;
                 color: white;
-                font-size: 1.2rem;
+                font-size: 18px;
                 padding: 4px 12px;
                 cursor: pointer;
                 transition: 0.2s ease;
@@ -503,13 +511,13 @@
 
             .nature-btn.positive {
                 color: #009f65;
-                border: 1.6px solid #009f65;
+                border: 2px solid #009f65;
                 background-color: transparent;
-                margin-right: 12px;
+                margin-right: 14px;
             }
             .nature-btn.negative {
                 color: #f60b0b;
-                border: 1.6px solid #f60b0b;
+                border: 2px solid #f60b0b;
                 background-color: transparent;
             }
 
@@ -586,7 +594,7 @@
 
                                         <ul class='dropdown-menu option-menu' aria-labelledby='dropdownMenuLink'>
                                             <li><a class='dropdown-item' href='edit' data-bs-target='#editHabit{$row['habitID']}' data-bs-toggle='modal'>Edit</a></li>
-                                            <li><a class='dropdown-item' href='#'>Delete</a></li>
+                                            <li><a class='dropdown-item' href='#' onclick='deleteHabit({$row['habitID']})'>Delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -652,6 +660,7 @@
                                         ">Hard ✦ ✦ ✦ </option>
                                     </select>
                                 </div>
+                                <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteHabit({$row['habitID']})'>Delete this task?</button></center>
                             </form>
                         </div>
 

@@ -261,6 +261,10 @@
                 .option-menu a:hover {
                     background-color: #dcdcdc;
                 }
+
+                .option-menu a:active {
+                    color: black;
+                }
             </style>
 
             <h3><img src='../assets/images/task.png' width='30' style='margin-right: 10px;'>To-Do's</h3>
@@ -300,9 +304,15 @@
                                 </div>
                             </div>
                             <div class='col-8 flex-grow-1'>
-                                <h5 class='card-title'>{$row['taskTitle']}</h5>
-                                <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                                <p class='card-text text-muted'>Due On: $formattedDate</p>
+                                <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['taskTitle']}</h5>";
+                                if ($row['taskDesc'] != "") {
+                                    echo "
+                                    <div style='margin-bottom: 2px;'>
+                                        <p class='card-text text-muted'>{$row['taskDesc']}</p>
+                                    </div>";
+                                }
+                                echo "
+                                <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>
                             </div>
                             <div class='col-2 text-right'>
                                 <div class='dropdown'>
@@ -332,7 +342,7 @@
                                         <label for='editTaskTitle{$row['taskID']}'>Title</label>
                                     </div>
                                     <div class='col-12 d-flex justify-content-center px-2'>
-                                        <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>
+                                        <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}' required>
                                     </div>
                                     <div class='col-12 px-2'>
                                         <label for='editTaskDesc{$row['taskID']}'>Description</label>
@@ -372,9 +382,15 @@
                     <div class='card-body'>
                         <div class='row align-items-center'>
                             <div class='col-12 flex-grow-1'>
-                                <h5 class='card-title'>{$row['taskTitle']}</h5>
-                                <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                                <p class='card-text text-muted'>Due On: $formattedDate</p>
+                                <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['taskTitle']}</h5>";
+                                if ($row['taskDesc'] != "") {
+                                    echo "
+                                    <div style='margin-bottom: 2px;'>
+                                        <p class='card-text text-muted'>{$row['taskDesc']}</p>
+                                    </div>";
+                                }
+                                echo "
+                                <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>
                             </div>
                         </div>
                     </div>
@@ -457,20 +473,22 @@
                 cursor: pointer;
                 transition: 0.2s ease;
                 border-radius: 4px;
-                opacity: 0.4;
+                opacity: 0.6;
+                font-weight: 500;
             }
 
             .nature-btn:focus {
                 outline: none;
             }
 
-            .nature-btn.positive {
-                background-color: #097724;
-                margin-right: 12px;
+            .nature-btn.positive.disabled {
+                background-color: #009f65;
+                color: white;
             }
 
-            .nature-btn.negative {
-                background-color: #aa0808;
+            .nature-btn.negative.disabled {
+                background-color: #f60b0b;
+                color: white;
             }
 
             .nature-btn.positive:active,
@@ -483,8 +501,24 @@
                 cursor: default;
             }
 
+            .nature-btn.positive {
+                color: #009f65;
+                border: 1.6px solid #009f65;
+                background-color: transparent;
+                margin-right: 12px;
+            }
+            .nature-btn.negative {
+                color: #f60b0b;
+                border: 1.6px solid #f60b0b;
+                background-color: transparent;
+            }
+
             .option-menu a:hover {
                 background-color: #dcdcdc;
+            }
+
+            .option-menu a:active {
+                color: black;
             }
 
             select#difficulty {
@@ -493,28 +527,55 @@
                 background-position: right 10px center;
                 background-size: 10px;
             }
+
+            .nature-opt i:not(#disabled):hover {
+                opacity: 0.8;
+                transition: 0.2s ease;
+                transform: translateY(-2px);
+                cursor: pointer;
+            }
         </style>";
 
         foreach ($stmt as $row) {
 
             $difficultyID = $row['difficultyID'];
 
+            if ($difficultyID == 1) {
+                $difficultyTitle = "Easy ✦ ";
+
+            } else if ($difficultyID == 2) {
+                $difficultyTitle = "Medium ✦ ✦ ";
+
+            } else if ($difficultyID == 3) {
+                $difficultyTitle = "Hard ✦ ✦ ✦ ";
+            }
+
             $btnPositive = ($row['habitPositive'] == 1) ? "true" : "false";
             $btnNegative = ($row['habitNegative'] == 1) ? "true" : "false";
+
+            $btnPositiveStyle = ($row['habitPositive'] == 1) ? "color: #009f65;'" : "color: #b7b7b7' id='disabled'";
+            $btnNegativeStyle = ($row['habitNegative'] == 1) ? "color: #f60b0b;'" : "color: #b7b7b7' id='disabled'";
 
             echo "
             <div class='card' style='margin-top: 10px;'>
                 <div class='card-body'>
                     <div class='row align-items-center'>
-                        <div class='col-2 d-flex justify-content-center align-items-center'>
-                            <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='color: #097724; font-size: 30px;'></i>
+                        <div class='col-2 d-flex justify-content-center align-items-center nature-opt'>
+                            <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='font-size: 30px; $btnPositiveStyle></i>
                         </div>
 
                         <div class='col-8 flex-grow-1'>
                             <div class='row align-items-center'>
                                 <div class='col-10'>
-                                    <h5 class='card-title'>{$row['habitTitle']}</h5>
-                                    <p class='card-text'>{$row['habitDesc']}</p>
+                                    <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['habitTitle']}</h5>";
+                                    if ($row['habitDesc'] != "") {
+                                        echo "
+                                        <div style='margin-bottom: 2px;'>
+                                            <p class='card-text text-muted'>{$row['habitDesc']}</p>
+                                        </div>";
+                                    }
+                                    echo "
+                                    <p class='card-text'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>
                                 </div>
 
                                 <div class='col-1 text-right'>
@@ -532,8 +593,8 @@
                             </div>
                         </div>
 
-                        <div class='col-2'>
-                            <i class='fa-solid fa-circle-minus fa-xl' style='color: #aa0808; font-size: 30px;'></i>
+                        <div class='col-2 nature-opt'>
+                            <i class='fa-solid fa-circle-minus fa-xl' style='font-size: 30px; $btnNegativeStyle'></i>
                         </div>
                     </div>
                 </div>
@@ -549,16 +610,16 @@
 
                             <form>
                                 <div class='col-12 px-2'>
-                                    <label for='editHabitTitle{$row['habitTitle']}'>Title</label>
+                                    <label for='editHabitTitle{$row['habitID']}'>Title</label>
                                 </div>
                                 <div class='col-12 d-flex justify-content-center px-2'>
-                                    <input type='text' class='form-control' id='editHabitTitle{$row['habitTitle']}' value='{$row['habitTitle']}' required>
+                                    <input type='text' class='form-control' id='editHabitTitle{$row['habitID']}' value='{$row['habitTitle']}' required>
                                 </div>
                                 <div class='col-12 px-2'>
-                                    <label for='editHabitDesc{$row['habitDesc']}'>Description</label>
+                                    <label for='editHabitDesc{$row['habitID']}'>Description</label>
                                 </div>
                                 <div class='col-12 d-flex justify-content-center px-2'>
-                                    <textarea class='form-control' id='editHabitDesc{$row['habitDesc']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['habitDesc']}</textarea>
+                                    <textarea class='form-control' id='editHabitDesc{$row['habitID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['habitDesc']}</textarea>
                                 </div>
 
                                 <div class='col-12 d-flex justify-content-center px-2 py-2'>
@@ -573,7 +634,7 @@
                                     <label for='difficulty'>Difficulty </label>
                                 </div>
                                 <div class='col-12 px-2'>
-                                    <select class='form-control' id='difficulty'>
+                                    <select class='form-control' id='difficulty{$row['habitID']}'>
                                         <option value='1' "; if ($difficultyID == 1) {
                                             echo 'selected';
                                         }

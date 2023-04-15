@@ -46,6 +46,9 @@
         case 'addHabit':
             addHabit();
             break;
+        case 'updateHabit':
+            updateHabit();
+            break;
     }
 
     function decreaseFood_one(){
@@ -126,5 +129,29 @@
         
         $habitData = new Habit();
         $habitData->addHabit($userID, $habitTitle);
+    }
+
+    function updateHabit() {
+        $habitID = $_GET['habitID'];
+        $difficultyID = $_GET['difficultyID'];
+        $habitTitle = $_GET['habitTitle'];
+        $habitDesc = $_GET['habitDesc'];
+        $habitPositive = $_GET['habitPositive'];
+        $habitNegative = $_GET['habitNegative'];
+
+        if ($habitPositive == 'true') {
+            $habitPositive = 1;
+        } else {
+            $habitPositive = 0;
+        }
+
+        if ($habitNegative == 'true') {
+            $habitNegative = 1;
+        } else {
+            $habitNegative = 0;
+        }
+
+        $habitData = new Habit();
+        $habitData->updateHabit($habitID, $difficultyID, $habitTitle, $habitDesc, $habitPositive, $habitNegative);
     }
 ?>

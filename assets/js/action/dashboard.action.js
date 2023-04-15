@@ -140,5 +140,23 @@ function addHabit() {
 }
 
 function updateHabit(habitID) {
-    console.log(habitID);
+    let difficultyID = document.getElementById('difficulty' + habitID).value;
+    let habitTitle = document.getElementById('editHabitTitle' + habitID).value;
+    let habitDesc = document.getElementById('editHabitDesc' + habitID).value;
+    let habitPositive = document.getElementById('naturePositive' + habitID).value;
+    let habitNegative = document.getElementById('natureNegative' + habitID).value;
+
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=updateHabit",
+        type: "GET",
+        data: {
+            habitID: habitID,
+            difficultyID: difficultyID,
+            habitTitle: habitTitle,
+            habitDesc: habitDesc,
+            habitPositive: habitPositive,
+            habitNegative: habitNegative,
+        }
+    });
+    refreshDashboard();
 }

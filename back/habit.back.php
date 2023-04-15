@@ -30,5 +30,20 @@
 
             return $result;
         }
+
+        public function updateHabit($habitID, $difficultyID, $habitTitle, $habitDesc, $habitPositive, $habitNegative) {
+            $sql = "UPDATE habit SET difficultyID = :difficultyID, habitTitle = :habitTitle, habitDesc = :habitDesc, habitPositive = :habitPositive, habitNegative = :habitNegative WHERE habitID = :habitID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':habitID', $habitID);
+            $stmt->bindParam(':difficultyID', $difficultyID);
+            $stmt->bindParam(':habitTitle', $habitTitle);
+            $stmt->bindParam(':habitDesc', $habitDesc);
+            $stmt->bindParam(':habitPositive', $habitPositive);
+            $stmt->bindParam(':habitNegative', $habitNegative);
+
+            $stmt->execute();
+        }
     }
 ?>

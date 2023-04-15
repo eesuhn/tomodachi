@@ -42,13 +42,13 @@ function equipWallpaper(userID, wallpaperID) {
     showEquippedToast();
 }
 
-function saveTask(taskID){    
+function updateTask(taskID){    
     let taskTitle = document.getElementById('editTaskTitle' + taskID).value;
     let taskDesc = document.getElementById('editTaskDesc' + taskID).value;
     let taskDue = document.getElementById('editTaskDue' + taskID).value;
 
     $.ajax({
-        url: "../back/action/dashboard.action.php?action=saveTask",
+        url: "../back/action/dashboard.action.php?action=updateTask",
         type: "GET",
         data: {
             taskID: taskID,
@@ -137,4 +137,8 @@ function addHabit() {
             }
         });
     }
+}
+
+function updateHabit(habitID) {
+    console.log(habitID);
 }

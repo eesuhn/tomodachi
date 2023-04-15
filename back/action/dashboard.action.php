@@ -28,8 +28,8 @@
         case 'equipWallpaper':
             equipWallpaper();
             break;
-        case 'saveTask':
-            saveTask();
+        case 'updateTask':
+            updateTask();
             break;
         case 'addTask':
             addTask();
@@ -75,7 +75,7 @@
         $wallpaperData->equipWallpaper($userID, $wallpaperID);
     }
 
-    function saveTask(){
+    function updateTask(){
         $taskID = $_GET['taskID'];
         $taskTitle = $_GET['taskTitle'];
         $taskDesc = $_GET['taskDesc'];

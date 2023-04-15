@@ -322,29 +322,39 @@
                 <div class='modal fade' id='editTask{$row['taskID']}' tabindex='-1' aria-hidden='true'>
                     <div class='modal-dialog'>
                         <div class='modal-content'>
-                            <div class='modal-header'>
-                                <h5 class='modal-title' id='editTask'>Update Task</h5>
+                            <div class='row'>
+                                <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                                    <h2>Edit Task</h2>
+                                </div>
+
+                                <form>
+                                    <div class='col-12 px-2'>
+                                        <label for='editTaskTitle{$row['taskID']}'>Title</label>
+                                    </div>
+                                    <div class='col-12 d-flex justify-content-center px-2'>
+                                        <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>
+                                    </div>
+                                    <div class='col-12 px-2'>
+                                        <label for='editTaskDesc{$row['taskID']}'>Description</label>
+                                    </div>
+                                    <div class='col-12 d-flex justify-content-center px-2'>
+                                        <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
+                                    </div>
+                                    <div class='col-12 px-2'>
+                                        <label for='editTaskDue{$row['taskID']}'>Due Date</label>
+                                    </div>
+                                    <div class='col-12 d-flex justify-content-center px-2'>
+                                        <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>
+                                    </div>
+
+                                    <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
+                                </form>
                             </div>
-                            <div class='modal-body'>
-                                <div class='form-group'>
-                                    <label for='editTaskTitle{$row['taskID']}'>Task Title</label>
-                                    <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>                                
-                                </div>
-                                <div class='form-group'>
-                                    <label for='editTaskDesc{$row['taskID']}'>Task Description</label>
-                                    <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='editTaskDue{$row['taskID']}'>Due Date</label>
-                                    <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>                                
-                                </div>
-                            </div>
-                            <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
                             <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                                <button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='saveTask({$row['taskID']})'>Save</button>
+                                <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Cancel</button>
+                                <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick='updateTask({$row['taskID']})'>Save</button>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
 
@@ -493,7 +503,7 @@
             $btnNegative = ($row['habitNegative'] == 1) ? "true" : "false";
 
             echo "
-            <div class='card'>
+            <div class='card' style='margin-top: 10px;'>
                 <div class='card-body'>
                     <div class='row align-items-center'>
                         <div class='col-2 d-flex justify-content-center align-items-center'>
@@ -539,10 +549,10 @@
 
                             <form>
                                 <div class='col-12 px-2'>
-                                    <label for='editHabitTitle{$row['habitTitle']}'>Habit</label>
+                                    <label for='editHabitTitle{$row['habitTitle']}'>Title</label>
                                 </div>
                                 <div class='col-12 d-flex justify-content-center px-2'>
-                                    <input type='text' class='form-control' id='editHabitTitle{$row['habitTitle']}' placeholder='{$row['habitTitle']}' required>
+                                    <input type='text' class='form-control' id='editHabitTitle{$row['habitTitle']}' value='{$row['habitTitle']}' required>
                                 </div>
                                 <div class='col-12 px-2'>
                                     <label for='editHabitDesc{$row['habitDesc']}'>Description</label>
@@ -552,11 +562,11 @@
                                 </div>
 
                                 <div class='col-12 d-flex justify-content-center px-2 py-2'>
-                                    <input type='hidden' name='naturePositive' id='naturePositive' value='$btnPositive'>
-                                    <button type='button' class='nature-btn positive' id='togglePositive' onclick='toggleNature(\"positive\")'>Positive</button>
+                                    <input type='hidden' id='naturePositive{$row['habitID']}' value='$btnPositive'>
+                                    <button type='button' class='nature-btn positive' id='togglePositive{$row['habitID']}' onclick='toggleNature{$row['habitID']}(\"positive\")'>Positive</button>
 
-                                    <input type='hidden' name='natureNegative' id='natureNegative' value='$btnNegative'>
-                                    <button type='button' class='nature-btn negative' id='toggleNegative' onclick='toggleNature(\"negative\")'>Negative</button>
+                                    <input type='hidden' id='natureNegative{$row['habitID']}' value='$btnNegative'>
+                                    <button type='button' class='nature-btn negative' id='toggleNegative{$row['habitID']}' onclick='toggleNature{$row['habitID']}(\"negative\")'>Negative</button>
                                 </div>
                                 
                                 <div class='col-12 px-2'>
@@ -584,58 +594,56 @@
                             </form>
                         </div>
 
-                        <div style='margin-bottom: 10px;'></div>
                         <div class='modal-footer'>
-                            <button type='submit' name='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
-                            <button type='submit' name='submit' class='btn btn-primary'>Save</button>
+                            <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
+                            <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick='updateHabit({$row['habitID']})'>Save</button>
                         </div>
                     </div>
                 </div>
-            </div>";
-        }
-        echo "
-        <script>
-            var btnPositive = document.getElementById('naturePositive').value;
-            var btnNegative = document.getElementById('natureNegative').value;
+            </div>
+            <script>
+                var btnPositive = document.getElementById('naturePositive{$row['habitID']}').value;
+                var btnNegative = document.getElementById('natureNegative{$row['habitID']}').value;
 
-            if (btnPositive === 'true') {
-                document.getElementById('togglePositive').classList.add('disabled');
-            }
+                if (btnPositive === 'true') {
+                    document.getElementById('togglePositive{$row['habitID']}').classList.add('disabled');
+                }
 
-            if (btnNegative === 'true') {
-                document.getElementById('toggleNegative').classList.add('disabled');
-            }
+                if (btnNegative === 'true') {
+                    document.getElementById('toggleNegative{$row['habitID']}').classList.add('disabled');
+                }
 
-            function toggleNature(nature) {
-                var currentNature = nature;
+                function toggleNature{$row['habitID']}(nature) {
+                    var currentNature = nature;
 
-                const togglePositive = document.getElementById('togglePositive');
-                const toggleNegative = document.getElementById('toggleNegative');
+                    const togglePositive = document.getElementById('togglePositive{$row['habitID']}');
+                    const toggleNegative = document.getElementById('toggleNegative{$row['habitID']}');
 
-                const naturePositive = document.getElementById('naturePositive');
-                const natureNegative = document.getElementById('natureNegative');
+                    const naturePositive = document.getElementById('naturePositive{$row['habitID']}');
+                    const natureNegative = document.getElementById('natureNegative{$row['habitID']}');
 
-                if (currentNature === 'positive') {
-                    if (togglePositive.classList.contains('disabled')) {
-                        togglePositive.classList.remove('disabled');
-                        naturePositive.value = 'false';
+                    if (currentNature === 'positive') {
+                        if (togglePositive.classList.contains('disabled')) {
+                            togglePositive.classList.remove('disabled');
+                            naturePositive.value = 'false';
 
-                    } else {
-                        togglePositive.classList.add('disabled');
-                        naturePositive.value = 'true';
-                    }
+                        } else {
+                            togglePositive.classList.add('disabled');
+                            naturePositive.value = 'true';
+                        }
 
-                } else if (currentNature === 'negative') {
-                    if (toggleNegative.classList.contains('disabled')) {
-                        toggleNegative.classList.remove('disabled');
-                        natureNegative.value = 'false';
+                    } else if (currentNature === 'negative') {
+                        if (toggleNegative.classList.contains('disabled')) {
+                            toggleNegative.classList.remove('disabled');
+                            natureNegative.value = 'false';
 
-                    } else {
-                        toggleNegative.classList.add('disabled');
-                        natureNegative.value = 'true';
+                        } else {
+                            toggleNegative.classList.add('disabled');
+                            natureNegative.value = 'true';
+                        }
                     }
                 }
-            }
-        </script>";
+            </script>";
+        }
     }
 ?>

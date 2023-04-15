@@ -236,8 +236,50 @@
         $status = $_POST['status'];
 
         $stmt = $taskData->getUserTasks($userID, $status);
-        foreach ($stmt as $row) {            
-            if ($row['taskStatus'] === "Active") {
+
+        $btnFlag1 = "";
+        $btnFlag2 = "";
+
+        if ($status == "Active") {
+            $btnFlag1 = "active";
+
+        } else if ($status == "Completed") {
+            $btnFlag2 = "active";
+        }
+
+        echo "
+            <style>
+                .task-nav-btn button.active {
+                    background-color: #212529;
+                }
+            </style>
+
+            <h3><img src='../assets/images/task.png' width='30' style='margin-right: 10px;'>To-Do's</h3>
+            <div class='container' style='height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px; display: flex; flex-direction: column;'>";
+
+        if ($status == "Active") {
+            echo "
+                <input type='text' class='form-control' id='taskTitle' name='taskTitle' placeholder='Add a new task' style='margin-top: 10px;' autocomplete='off'>";
+        }
+
+        if ($status == "Completed"){
+            echo "
+                <div class='row d-flex justify-content-center px-2 py-2'>
+                    <button type='button' class='btn btn-danger' style='margin-top: 2px; margin-bottom: -8px; width: 98.4%;' onclick='deleteCompletedTasks($userID)'>Delete Completed Tasks</button>
+                </div>";
+        }
+
+        echo "
+                <div class='btn-group justify-content-end task-nav-btn' style='margin-top: 10px;'>
+                    <button type='button' id='active-btn' class='btn btn-secondary $btnFlag1'>Active</button>
+                    <button type='button' id='completed-btn' class='btn btn-secondary $btnFlag2'>Completed</button>
+                </div>";
+
+        foreach ($stmt as $row) {
+
+            $formattedDate = date("d-M-Y", strtotime($row['taskDue']));
+
+            if ($row['taskStatus'] == "Active" && $status == "Active") {
                 echo "
                 <div class='card' style='margin-top:10px;'>
                     <div class='card-body'>
@@ -251,7 +293,7 @@
                             <div class='col-8 flex-grow-1'>
                                 <h5 class='card-title'>{$row['taskTitle']}</h5>
                                 <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                                <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
+                                <p class='card-text text-muted'>Due On: $formattedDate</p>
                             </div>
                             <div class='col-2 text-right'>
                             <div class='dropdown'>
@@ -305,7 +347,7 @@
                     });
                 </script>";
             }
-            if ($row['taskStatus'] === "Completed") {
+            if ($row['taskStatus'] == "Completed" && $status == "Completed") {
                 echo "
                 <div class='card' style='margin-top:10px;'>
                     <div class='card-body'>
@@ -313,18 +355,62 @@
                             <div class='col-12 flex-grow-1'>
                                 <h5 class='card-title'>{$row['taskTitle']}</h5>
                                 <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                                <p class='card-text text-muted'>Due On: {$row['taskDue']}</p>
+                                <p class='card-text text-muted'>Due On: $formattedDate</p>
                             </div>
                         </div>
                     </div>
                 </div>";
             }
         }
-        if ($status === "Completed"){
-            echo "
-            <div class='row d-flex justify-content-center px-2 py-2'>
-                <button type='button' class='btn btn-danger' onclick='deleteCompletedTasks($userID)'>Delete Completed Tasks</button>
+
+        echo "
+            <div style='margin-top: 10px;'></div>
             </div>
-            ";
-        }
+        </div>
+        
+        <script>
+
+            var taskTitle = document.getElementById('taskTitle') ?? {textContent: ''};
+
+            if (taskTitle && taskTitle.tagName === 'INPUT') {
+                taskTitle.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        // prevent the form from being submitted
+                        event.preventDefault();
+
+                        // add task
+                        addTask();
+                    }
+                });
+            }
+
+            $('#active-btn').on('click', function() {
+                toggleStatus('active');
+            });
+
+            $('#completed-btn').on('click', function() {
+                toggleStatus('completed');
+            });
+
+            function toggleStatus(status) {
+                $('#active-btn').removeClass('active');
+                $('#completed-btn').removeClass('active');
+                $('#' + status + '-btn').addClass('active');
+
+                refreshTask(checkActiveBtn());
+            }
+
+            function checkActiveBtn() {
+                var activeBtn = document.getElementById('active-btn');
+                var completedBtn = document.getElementById('completed-btn');
+
+                if (activeBtn.classList.contains('active')) {
+                    return 'Active';
+
+                } else if (completedBtn.classList.contains('active')) {
+                    return 'Completed';
+                }
+            }
+        </script>";
     }
+?>

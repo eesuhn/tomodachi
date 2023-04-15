@@ -5,6 +5,7 @@
     include '../food.back.php';
     include '../wallpaper.back.php';
     include '../task.back.php';
+    include '../habit.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -27,8 +28,8 @@
         case 'equipWallpaper':
             equipWallpaper();
             break;
-        case 'saveTask':
-            saveTask();
+        case 'updateTask':
+            updateTask();
             break;
         case 'addTask':
             addTask();
@@ -42,9 +43,18 @@
         case 'updateTaskStatus':
             updateTaskStatus();
             break;
+        case 'addHabit':
+            addHabit();
+            break;
+        case 'updateHabit':
+            updateHabit();
+            break;
+        case 'deleteHabit':
+            deleteHabit();
+            break;
     }
 
-    function decreaseFood_one () {
+    function decreaseFood_one(){
         $userID = $_GET['userID'];
         $foodID = $_GET['foodID'];
 
@@ -71,7 +81,7 @@
         $wallpaperData->equipWallpaper($userID, $wallpaperID);
     }
 
-    function saveTask(){
+    function updateTask(){
         $taskID = $_GET['taskID'];
         $taskTitle = $_GET['taskTitle'];
         $taskDesc = $_GET['taskDesc'];
@@ -114,5 +124,44 @@
 
         $taskData = new Task();
         $taskData->updateStatus($taskID, $taskStatus);
+    }
+
+    function addHabit(){
+        $userID = $_SESSION['userID'];
+        $habitTitle = $_POST['habitTitle'];
+        
+        $habitData = new Habit();
+        $habitData->addHabit($userID, $habitTitle);
+    }
+
+    function updateHabit() {
+        $habitID = $_GET['habitID'];
+        $difficultyID = $_GET['difficultyID'];
+        $habitTitle = $_GET['habitTitle'];
+        $habitDesc = $_GET['habitDesc'];
+        $habitPositive = $_GET['habitPositive'];
+        $habitNegative = $_GET['habitNegative'];
+
+        if ($habitPositive == 'true') {
+            $habitPositive = 1;
+        } else {
+            $habitPositive = 0;
+        }
+
+        if ($habitNegative == 'true') {
+            $habitNegative = 1;
+        } else {
+            $habitNegative = 0;
+        }
+
+        $habitData = new Habit();
+        $habitData->updateHabit($habitID, $difficultyID, $habitTitle, $habitDesc, $habitPositive, $habitNegative);
+    }
+
+    function deleteHabit() {
+        $habitID = $_GET['habitID'];
+
+        $habitData = new Habit();
+        $habitData->deleteHabit($habitID);
     }
 ?>

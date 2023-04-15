@@ -5,6 +5,7 @@
     include '../food.back.php';
     include '../wallpaper.back.php';
     include '../task.back.php';
+    include '../habit.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -42,6 +43,10 @@
         case 'refreshTask':
             refreshTask();
             break;
+
+        case 'refreshHabit':
+            refreshHabit();
+            break;
     }
 
     function refreshStatsHeader () {
@@ -68,12 +73,12 @@
         $today = date("l, j F Y");
 
         echo 
-        "<div class='row px-2 py-4'>
+        "<div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
                 <div class='card-header border-0'>
-                    <img src='$petImg' width='100px' style='margin-top: 30px'>
+                    <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
                 </div>
-                <div class='card-block px-3 col-4'>
+                <div class='card-block px-3 col-3'>
                     <h5>$petName</h5>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
                     <div class='progress' style='height:3px;'>
@@ -90,11 +95,12 @@
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $petHappCur%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>
+
+                <div class='card-block px-3 col-2'></div>
                 
-                <div class='card-block px-3 col-4'>
-                    <img src='../assets/images/coin.png' style='height: 19px; width: 19px; margin: 10px;'>$currencyNum
+                <div class='card-block px-3 col-2'>
+                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
                     <h4>$today</h4>
-                    <p>0 Tasks Today</p>
                 </div>
             </div>
         </div>";
@@ -144,7 +150,10 @@
             $foodCount += $row['foodNum'];
         }
         if ($foodCount == 0) {
-            echo "<p style='font-size: 22px; margin-left: 20px; font-weight: 400;'>Your food storage is empty :(</p>";
+            echo "
+            <div style='height: 60px;'>
+                <p style='font-size: 22px; margin-left: 20px; font-weight: 400; margin-top: 10px;'>Your food storage is empty :(</p>
+            </div>";
         }
     }
 
@@ -252,6 +261,18 @@
                 .task-nav-btn button.active {
                     background-color: #212529;
                 }
+
+                .option-menu a:hover {
+                    background-color: #dcdcdc;
+                }
+
+                .option-menu a:active {
+                    color: black;
+                }
+
+                .task-checkbox {
+                    border: 1px solid #5c636a;
+                }
             </style>
 
             <h3><img src='../assets/images/task.png' width='30' style='margin-right: 10px;'>To-Do's</h3>
@@ -286,25 +307,31 @@
                         <div class='row align-items-center'>
                             <div class='col-2 d-flex justify-content-center align-items-center'>
                                 <div class='form-check'>
-                                    <input class='form-check-input' type='checkbox' value='' id='task{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}'>
+                                    <input class='form-check-input task-checkbox' type='checkbox' value='' id='task{$row['taskID']}' style='padding: 10px;' data-task-id='{$row['taskID']}'>
                                     <label class='form-check-label' for='task{$row['taskID']}'></label>
                                 </div>
                             </div>
                             <div class='col-8 flex-grow-1'>
-                                <h5 class='card-title'>{$row['taskTitle']}</h5>
-                                <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                                <p class='card-text text-muted'>Due On: $formattedDate</p>
+                                <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['taskTitle']}</h5>";
+                                if ($row['taskDesc'] != "") {
+                                    echo "
+                                    <div style='margin-bottom: 2px;'>
+                                        <p class='card-text text-muted'>{$row['taskDesc']}</p>
+                                    </div>";
+                                }
+                                echo "
+                                <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>
                             </div>
                             <div class='col-2 text-right'>
-                            <div class='dropdown'>
-                                <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
-                                    <i class='fa-solid fa-ellipsis-h fa-xl dropdownopt' style='color:gainsboro;'></i>
-                                </a>
-                                <ul class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
-                                    <li><a class='dropdown-item' href='edit' class='text-muted mr-3' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'>Edit</a></li>
-                                    <li><a class='dropdown-item' href='#' onclick='deleteTask({$row['taskID']})'>Delete</a></li>
-                                </ul>
-                            </div>
+                                <div class='dropdown'>
+                                    <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
+                                        <i class='fa-solid fa-ellipsis-h fa-xl dropdown-opt' style='color: #212529;'></i>
+                                    </a>
+                                    <ul class='dropdown-menu option-menu' aria-labelledby='dropdownMenuLink'>
+                                        <li><a class='dropdown-item' href='edit' data-bs-target='#editTask{$row['taskID']}' data-bs-toggle='modal'>Edit</a></li>
+                                        <li><a class='dropdown-item' href='#' onclick='deleteTask({$row['taskID']})'>Delete</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -313,29 +340,39 @@
                 <div class='modal fade' id='editTask{$row['taskID']}' tabindex='-1' aria-hidden='true'>
                     <div class='modal-dialog'>
                         <div class='modal-content'>
-                            <div class='modal-header'>
-                                <h5 class='modal-title' id='editTask'>Update Task</h5>
+                            <div class='row'>
+                                <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                                    <h2>Edit Task</h2>
+                                </div>
+
+                                <form>
+                                    <div class='col-12 px-2'>
+                                        <label for='editTaskTitle{$row['taskID']}'>Title</label>
+                                    </div>
+                                    <div class='col-12 d-flex justify-content-center px-2'>
+                                        <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}' required>
+                                    </div>
+                                    <div class='col-12 px-2'>
+                                        <label for='editTaskDesc{$row['taskID']}'>Description</label>
+                                    </div>
+                                    <div class='col-12 d-flex justify-content-center px-2'>
+                                        <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
+                                    </div>
+                                    <div class='col-12 px-2'>
+                                        <label for='editTaskDue{$row['taskID']}'>Due Date</label>
+                                    </div>
+                                    <div class='col-12 d-flex justify-content-center px-2'>
+                                        <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>
+                                    </div>
+
+                                    <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
+                                </form>
                             </div>
-                            <div class='modal-body'>
-                                <div class='form-group'>
-                                    <label for='editTaskTitle{$row['taskID']}'>Task Title</label>
-                                    <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}'>                                
-                                </div>
-                                <div class='form-group'>
-                                    <label for='editTaskDesc{$row['taskID']}'>Task Description</label>
-                                    <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='editTaskDue{$row['taskID']}'>Due Date</label>
-                                    <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>                                
-                                </div>
-                            </div>
-                            <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
                             <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                                <button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='saveTask({$row['taskID']})'>Save</button>
+                                <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Cancel</button>
+                                <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick='updateTask({$row['taskID']})'>Save</button>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
 
@@ -353,9 +390,15 @@
                     <div class='card-body'>
                         <div class='row align-items-center'>
                             <div class='col-12 flex-grow-1'>
-                                <h5 class='card-title'>{$row['taskTitle']}</h5>
-                                <p class='card-text' style='margin-bottom: 0;'>{$row['taskDesc']}</p>
-                                <p class='card-text text-muted'>Due On: $formattedDate</p>
+                                <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['taskTitle']}</h5>";
+                                if ($row['taskDesc'] != "") {
+                                    echo "
+                                    <div style='margin-bottom: 2px;'>
+                                        <p class='card-text text-muted'>{$row['taskDesc']}</p>
+                                    </div>";
+                                }
+                                echo "
+                                <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>
                             </div>
                         </div>
                     </div>
@@ -412,5 +455,265 @@
                 }
             }
         </script>";
+    }
+
+    function refreshHabit() {
+        $userID = $_SESSION['userID'];
+
+        $habitData = new Habit();
+        $stmt = $habitData->getUserHabits($userID);
+
+        echo "
+        <style>
+            .dropdown-opt {
+                display: none;
+            }
+
+            .card:hover .dropdown-opt {
+                display: inline-block;
+            }
+
+            .nature-btn {
+                border: none;
+                color: white;
+                font-size: 18px;
+                padding: 4px 12px;
+                cursor: pointer;
+                transition: 0.2s ease;
+                border-radius: 4px;
+                opacity: 0.6;
+                font-weight: 500;
+            }
+
+            .nature-btn:focus {
+                outline: none;
+            }
+
+            .nature-btn.positive.disabled {
+                background-color: #009f65;
+                color: white;
+            }
+
+            .nature-btn.negative.disabled {
+                background-color: #f60b0b;
+                color: white;
+            }
+
+            .nature-btn.positive:active,
+            .nature-btn.negative:active {
+                transform: translateY(2px);
+            }
+
+            .nature-btn.disabled {
+                opacity: 1;
+                cursor: default;
+            }
+
+            .nature-btn.positive {
+                color: #009f65;
+                border: 2px solid #009f65;
+                background-color: transparent;
+                margin-right: 14px;
+            }
+            .nature-btn.negative {
+                color: #f60b0b;
+                border: 2px solid #f60b0b;
+                background-color: transparent;
+            }
+
+            .option-menu a:hover {
+                background-color: #dcdcdc;
+            }
+
+            .option-menu a:active {
+                color: black;
+            }
+
+            select#difficulty {
+                background-image: url('../assets/images/arrow.png');
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                background-size: 10px;
+            }
+
+            .nature-opt i:not(#disabled):hover {
+                opacity: 0.8;
+                transition: 0.2s ease;
+                transform: translateY(-2px);
+                cursor: pointer;
+            }
+        </style>";
+
+        foreach ($stmt as $row) {
+
+            $difficultyID = $row['difficultyID'];
+
+            if ($difficultyID == 1) {
+                $difficultyTitle = "Easy ✦ ";
+
+            } else if ($difficultyID == 2) {
+                $difficultyTitle = "Medium ✦ ✦ ";
+
+            } else if ($difficultyID == 3) {
+                $difficultyTitle = "Hard ✦ ✦ ✦ ";
+            }
+
+            $btnPositive = ($row['habitPositive'] == 1) ? "true" : "false";
+            $btnNegative = ($row['habitNegative'] == 1) ? "true" : "false";
+
+            $btnPositiveStyle = ($row['habitPositive'] == 1) ? "color: #009f65;'" : "color: #b7b7b7' id='disabled'";
+            $btnNegativeStyle = ($row['habitNegative'] == 1) ? "color: #f60b0b;'" : "color: #b7b7b7' id='disabled'";
+
+            echo "
+            <div class='card' style='margin-top: 10px;'>
+                <div class='card-body'>
+                    <div class='row align-items-center'>
+                        <div class='col-2 d-flex justify-content-center align-items-center nature-opt'>
+                            <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='font-size: 30px; $btnPositiveStyle></i>
+                        </div>
+
+                        <div class='col-8 flex-grow-1'>
+                            <div class='row align-items-center'>
+                                <div class='col-10'>
+                                    <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['habitTitle']}</h5>";
+                                    if ($row['habitDesc'] != "") {
+                                        echo "
+                                        <div style='margin-bottom: 2px;'>
+                                            <p class='card-text text-muted'>{$row['habitDesc']}</p>
+                                        </div>";
+                                    }
+                                    echo "
+                                    <p class='card-text'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>
+                                </div>
+
+                                <div class='col-1 text-right'>
+                                    <div class='dropdown'>
+                                        <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
+                                            <i class='fa-solid fa-ellipsis-h fa-xl dropdown-opt' style='color: #212529;'></i>
+                                        </a>
+
+                                        <ul class='dropdown-menu option-menu' aria-labelledby='dropdownMenuLink'>
+                                            <li><a class='dropdown-item' href='edit' data-bs-target='#editHabit{$row['habitID']}' data-bs-toggle='modal'>Edit</a></li>
+                                            <li><a class='dropdown-item' href='#' onclick='deleteHabit({$row['habitID']})'>Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='col-2 nature-opt'>
+                            <i class='fa-solid fa-circle-minus fa-xl' style='font-size: 30px; $btnNegativeStyle'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='modal fade' id='editHabit{$row['habitID']}' aria-hidden='true' tabindex='-1'>
+                <div class='modal-dialog modal-dialog-centered'>
+                    <div class='modal-content'>
+                        <div class='row'>
+                            <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                                <h2>Edit Habit</h2>
+                            </div>
+
+                            <form>
+                                <div class='col-12 px-2'>
+                                    <label for='editHabitTitle{$row['habitID']}'>Title</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <input type='text' class='form-control' id='editHabitTitle{$row['habitID']}' value='{$row['habitTitle']}' required>
+                                </div>
+                                <div class='col-12 px-2'>
+                                    <label for='editHabitDesc{$row['habitID']}'>Description</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <textarea class='form-control' id='editHabitDesc{$row['habitID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['habitDesc']}</textarea>
+                                </div>
+
+                                <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                                    <input type='hidden' id='naturePositive{$row['habitID']}' value='$btnPositive'>
+                                    <button type='button' class='nature-btn positive' id='togglePositive{$row['habitID']}' onclick='toggleNature{$row['habitID']}(\"positive\")'>Positive</button>
+
+                                    <input type='hidden' id='natureNegative{$row['habitID']}' value='$btnNegative'>
+                                    <button type='button' class='nature-btn negative' id='toggleNegative{$row['habitID']}' onclick='toggleNature{$row['habitID']}(\"negative\")'>Negative</button>
+                                </div>
+                                
+                                <div class='col-12 px-2'>
+                                    <label for='difficulty'>Difficulty </label>
+                                </div>
+                                <div class='col-12 px-2'>
+                                    <select class='form-control' id='difficulty{$row['habitID']}'>
+                                        <option value='1' "; if ($difficultyID == 1) {
+                                            echo 'selected';
+                                        }
+                                        echo
+                                        ">Easy ✦ </option>
+                                        <option value='2' "; if ($difficultyID == 2) {
+                                            echo 'selected';
+                                        }
+                                        echo
+                                        ">Medium ✦ ✦ </option>
+                                        <option value='3' "; if ($difficultyID == 3) {
+                                            echo 'selected';
+                                        }
+                                        echo
+                                        ">Hard ✦ ✦ ✦ </option>
+                                    </select>
+                                </div>
+                                <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteHabit({$row['habitID']})'>Delete this task?</button></center>
+                            </form>
+                        </div>
+
+                        <div class='modal-footer'>
+                            <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
+                            <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick='updateHabit({$row['habitID']})'>Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var btnPositive = document.getElementById('naturePositive{$row['habitID']}').value;
+                var btnNegative = document.getElementById('natureNegative{$row['habitID']}').value;
+
+                if (btnPositive === 'true') {
+                    document.getElementById('togglePositive{$row['habitID']}').classList.add('disabled');
+                }
+
+                if (btnNegative === 'true') {
+                    document.getElementById('toggleNegative{$row['habitID']}').classList.add('disabled');
+                }
+
+                function toggleNature{$row['habitID']}(nature) {
+                    var currentNature = nature;
+
+                    const togglePositive = document.getElementById('togglePositive{$row['habitID']}');
+                    const toggleNegative = document.getElementById('toggleNegative{$row['habitID']}');
+
+                    const naturePositive = document.getElementById('naturePositive{$row['habitID']}');
+                    const natureNegative = document.getElementById('natureNegative{$row['habitID']}');
+
+                    if (currentNature === 'positive') {
+                        if (togglePositive.classList.contains('disabled')) {
+                            togglePositive.classList.remove('disabled');
+                            naturePositive.value = 'false';
+
+                        } else {
+                            togglePositive.classList.add('disabled');
+                            naturePositive.value = 'true';
+                        }
+
+                    } else if (currentNature === 'negative') {
+                        if (toggleNegative.classList.contains('disabled')) {
+                            toggleNegative.classList.remove('disabled');
+                            natureNegative.value = 'false';
+
+                        } else {
+                            toggleNegative.classList.add('disabled');
+                            natureNegative.value = 'true';
+                        }
+                    }
+                }
+            </script>";
+        }
     }
 ?>

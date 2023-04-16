@@ -322,10 +322,18 @@
                                     <div style='margin-bottom: 2px;'>
                                         <p class='card-text text-muted'>{$row['taskDesc']}</p>
                                     </div>";
+                                } else {
+                                    echo "
+                                    <div style='margin-top: 6px;'>";
                                 }
                                 echo "
-                                <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>
-                            </div>
+                                <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>";
+                                if ($row['taskDesc'] == "") {
+                                    echo "
+                                    </div>";
+                                }
+                                echo 
+                                "</div>
                             <div class='col-2 text-right'>
                                 <div class='dropdown'>
                                     <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -394,16 +402,24 @@
                     <div class='card-body'>
                         <div class='row align-items-center'>
                             <div class='col-12 flex-grow-1'>
-                                <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['taskTitle']}</h5>";
-                                if ($row['taskDesc'] != "") {
-                                    echo "
-                                    <div style='margin-bottom: 2px;'>
-                                        <p class='card-text text-muted'>{$row['taskDesc']}</p>
-                                    </div>";
-                                }
+                            <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['taskTitle']}</h5>";
+                            if ($row['taskDesc'] != "") {
                                 echo "
-                                <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>
-                            </div>
+                                <div style='margin-bottom: 2px;'>
+                                    <p class='card-text text-muted'>{$row['taskDesc']}</p>
+                                </div>";
+                            } else {
+                                echo "
+                                <div style='margin-top: 6px;'>";
+                            }
+                            echo "
+                            <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>";
+                            if ($row['taskDesc'] == "") {
+                                echo "
+                                </div>";
+                            }
+                            echo 
+                            "</div>
                         </div>
                     </div>
                 </div>";
@@ -594,9 +610,17 @@
                                         <div style='margin-bottom: 2px;'>
                                             <p class='card-text text-muted'>{$row['habitDesc']}</p>
                                         </div>";
+                                    } else {
+                                        echo "
+                                        <div style='margin-top: 6px;'>";
                                     }
                                     echo "
-                                    <p class='card-text'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>
+                                    <p class='card-text'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>";
+                                    if ($row['habitDesc'] == "") {
+                                        echo "
+                                        </div>";
+                                    }
+                                echo "
                                 </div>
 
                                 <div class='col-1 text-right'>

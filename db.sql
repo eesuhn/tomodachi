@@ -57,7 +57,8 @@ CREATE TABLE `pet_inventory` (
     `petHappTol` int(11) NOT NULL,
     `petHealthCur` int(11) NOT NULL,
     `petHappCur` int(11) NOT NULL,
-    `petStatus` varchar(255) NOT NULL DEFAULT 'Kept'
+    `petStatus` varchar(255) NOT NULL DEFAULT 'Kept',
+    `petHappReset` date NOT NULL
 );
 
 -- wallpaper table
@@ -73,7 +74,7 @@ CREATE TABLE `wallpaper` (
 CREATE TABLE `wallpaper_inventory` (
     `userID` int(11) NOT NULL,
     `wallpaperID` int(11) NOT NULL,
-    `wallpaperStatus` varchar(11) NOT NULL
+    `wallpaperStatus` varchar(11) NOT NULL DEFAULT 'Kept'
 );
 
 -- task table

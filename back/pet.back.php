@@ -35,7 +35,7 @@
             }
         }
 
-        public function ownPet($userID, $petID) {
+        public function ownPetStart($userID, $petID) {
             $sql = "SELECT petHealthIn, petHappIn FROM pet_rarity WHERE petRarity = (SELECT petRarity FROM pet WHERE petID = ?)";
 
             $stmt = $this->db->connect()->prepare($sql);
@@ -46,11 +46,14 @@
             $healthIn = $petRarityStats['petHealthIn'];
             $happIn = $petRarityStats['petHappIn'];
 
-            $sql = "INSERT INTO pet_inventory (userID, petID, petLevel, petXP, petHealthTol, petHappTol, petHealthCur, petHappCur, petStatus) 
-                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, 'Equipped')";
+            date_default_timezone_set('Asia/Kuala_Lumpur');
+            $petHappReset = date('Y-m-d');
+
+            $sql = "INSERT INTO `pet_inventory` (userID, petID, petLevel, petXP, petHealthTol, petHappTol, petHealthCur, petHappCur, petStatus, petHappReset) 
+                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, 'Equipped', ?)";
 
             $stmt = $this->db->connect()->prepare($sql);
-            $stmt->execute([$userID, $petID, $healthIn, $happIn, $healthIn]);
+            $stmt->execute([$userID, $petID, $healthIn, $happIn, $healthIn, $petHappReset]);
 
             echo "
             <script>window.location.href='../front/dashboard.front.php';</script>";
@@ -137,16 +140,20 @@
             $stmt->execute([$pet['petID']]);
 
             $pet_rarity = $stmt->fetch();
+
+            date_default_timezone_set('Asia/Kuala_Lumpur');
+            $petHappReset = date('Y-m-d');
     
             // insert the new pet into the pet_inventory table
             $sql = "INSERT INTO `pet_inventory` 
-                    (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHappTol`, `petHealthCur`, `petHappCur`, `petStatus`)
-                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, 'Kept')";
+                    (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHappTol`, `petHealthCur`, `petHappCur`, `petHappReset`)
+                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, ?)";
 
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute([
                     $userID, $pet['petID'], $pet_rarity['petHealthIn'], 
-                    $pet_rarity['petHappIn'], $pet_rarity['petHealthIn']]);
+                    $pet_rarity['petHappIn'], $pet_rarity['petHealthIn'],
+                    $petHappReset]);
             
             $_SESSION['petScoutID'] = $pet['petID'];
 

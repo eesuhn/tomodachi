@@ -6,6 +6,7 @@
     include '../wallpaper.back.php';
     include '../task.back.php';
     include '../habit.back.php';
+    include '../level.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -51,6 +52,9 @@
             break;
         case 'deleteHabit':
             deleteHabit();
+            break;
+        case 'habitReward':
+            habitReward();
             break;
     }
 
@@ -163,5 +167,12 @@
 
         $habitData = new Habit();
         $habitData->deleteHabit($habitID);
+    }
+
+    function habitReward() {
+        $difficultyID = $_GET['difficultyID'];
+
+        $habitData = new Level();
+        $habitData->habitReward($difficultyID);
     }
 ?>

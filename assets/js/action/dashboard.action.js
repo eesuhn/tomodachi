@@ -171,3 +171,14 @@ function deleteHabit(habitID) {
     });
     refreshDashboard();
 }
+
+function habitReward(difficultyID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=habitReward",
+        type: "GET",
+        data: {
+            difficultyID: difficultyID,
+        }
+    });
+    refreshDashboard();
+}

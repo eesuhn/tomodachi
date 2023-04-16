@@ -1,9 +1,4 @@
 <?php
-    // start session if not started
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-
     class Pet {
         private $db;
 
@@ -257,6 +252,17 @@
             $sql = "UPDATE pet_inventory SET petStatus = 'Equipped' WHERE userID = :userID AND petID = :petID";
 
             $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
+
+        public function increaseXP($userID, $petID, $xp) {
+            $sql = "UPDATE pet_inventory SET petXP = petXP + :xp WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':xp', $xp);
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
 

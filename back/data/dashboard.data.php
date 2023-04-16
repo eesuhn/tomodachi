@@ -6,6 +6,7 @@
     include '../wallpaper.back.php';
     include '../task.back.php';
     include '../habit.back.php';
+    include '../level.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -561,7 +562,7 @@
             $btnPositive = ($row['habitPositive'] == 1) ? "true" : "false";
             $btnNegative = ($row['habitNegative'] == 1) ? "true" : "false";
 
-            $btnPositiveClick = ($row['habitPositive'] == 1) ? "color: #009f65;' onclick=''" : "color: #b7b7b7' id='disabled'";
+            $btnPositiveClick = ($row['habitPositive'] == 1) ? "color: #009f65;' onclick='habitReward($difficultyID)'" : "color: #b7b7b7' id='disabled'";
             $btnNegativeClick = ($row['habitNegative'] == 1) ? "color: #f60b0b;' onclick=''" : "color: #b7b7b7' id='disabled'";
 
             echo "

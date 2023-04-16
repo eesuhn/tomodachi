@@ -393,6 +393,7 @@
                         var taskID = event.target.dataset.taskId;
                         var taskStatus = event.target.checked ? 'Completed' : 'Active';
                         updateTaskStatus(taskID, taskStatus);
+                        taskReward();
                     });
                 </script>";
             }

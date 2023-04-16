@@ -100,5 +100,20 @@
             // increase happiness
             $this->pet->increaseHapp($this->userID, $petID, $foodHapp);
         }
+
+        public function taskReward() {
+            $currencyReward = 10;
+            $XPReward = 10;
+
+            // get equipped petID
+            $petData = $this->pet->getEquippedPet($this->userID);
+            $petID = $petData['petID'];
+
+            // increase currency
+            $this->currency->increaseCurrency($this->userID, $currencyReward);
+
+            // increase petXP
+            $this->pet->increaseXP($this->userID, $petID, $XPReward);
+        }
     }
 ?>

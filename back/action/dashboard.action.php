@@ -62,6 +62,9 @@
         case 'feedReward':
             feedReward();
             break;
+        case 'taskReward':
+            taskReward();
+            break;
     }
 
     function decreaseFood_one(){
@@ -194,5 +197,10 @@
 
         $level = new Level();
         $level->feedReward($foodID);
+    }
+
+    function taskReward() {
+        $level = new Level();
+        $level->taskReward();
     }
 ?>

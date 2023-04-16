@@ -208,3 +208,11 @@ function feedReward(foodID) {
     });
     refreshDashboard();
 }
+
+function taskReward() {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=taskReward",
+        type: "GET",
+    });
+    refreshDashboard();
+}

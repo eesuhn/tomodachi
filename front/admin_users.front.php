@@ -25,7 +25,7 @@
 
     <div class="sidebar">
         <div class="logo">
-            <img src="../assets/images/logo2.png" alt="My Website Logo">
+            <img src="../assets/images/logo2.png" alt="Tomodachi">
         </div>
         <a href="admin_dashboard.front.php">Home</a>
         <a class="active" href="admin_users.front.php">Manage Users</a>
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="content">
+    <div class="content vh-100">
         <div style="margin: 30px 0px 10px 30px;">
             <h3 style="font-size: 40px; font-weight: 400;">Manage Users</h3>
         </div>

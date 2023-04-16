@@ -35,7 +35,7 @@ include '../include/toast.inc.php';
 
   <div class="sidebar">
     <div class="logo">
-      <img src="../assets/images/logo2.png" alt="My Website Logo">
+      <img src="../assets/images/logo2.png" alt="Tomodachi">
     </div>
     <a class="active" href="#home">Home</a>
     <a href="../front/shop.front.php">Shop</a>

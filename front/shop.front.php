@@ -94,7 +94,7 @@
 
 <div class="sidebar">
   <div class="logo">
-    <img src="../assets/images/logo2.png" alt="My Website Logo">
+    <img src="../assets/images/logo2.png" alt="Tomodachi">
   </div>
 
   <a href="../front/dashboard.front.php">Home</a>

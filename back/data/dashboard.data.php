@@ -77,7 +77,7 @@
         $happBar = $petHappCur / $petHappTol * 100;
 
         $level = new Level();
-        $level->checkHapp($userID, $petData['petID']);
+        $level->checkHappReset($userID, $petData['petID']);
 
         echo 
         "<div class='row py-4'>
@@ -87,7 +87,7 @@
                 </div>
                 <div class='card-block px-3 col-3'>
                     <h5>$petName</h5>
-                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
+                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel $petXP<br>
                     <div class='progress' style='height:3px;'>
                         <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
                     </div>

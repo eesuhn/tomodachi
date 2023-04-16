@@ -31,12 +31,17 @@
             $currencyReward = $result['currencyReward'];
             $XPReward = $result['XPReward'];
 
-            // increase currency
-            $this->currency->increaseCurrency($this->userID, $currencyReward);
-
             // get equipped petID
             $petData = $this->pet->getEquippedPet($this->userID);
             $petID = $petData['petID'];
+
+            if ($this->checkPetHapp($this->userID, $petID) == true) {
+                $currencyReward = ceil($currencyReward * 1.5);
+                $XPReward = ceil($XPReward * 1.5);
+            }
+
+            // increase currency
+            $this->currency->increaseCurrency($this->userID, $currencyReward);
 
             // increase petXP
             $this->pet->increaseXP($this->userID, $petID, $XPReward);
@@ -109,6 +114,11 @@
             $petData = $this->pet->getEquippedPet($this->userID);
             $petID = $petData['petID'];
 
+            if ($this->checkPetHapp($this->userID, $petID) == true) {
+                $currencyReward = ceil($currencyReward * 1.5);
+                $XPReward = ceil($XPReward * 1.5);
+            }
+
             // increase currency
             $this->currency->increaseCurrency($this->userID, $currencyReward);
 
@@ -161,7 +171,7 @@
             if petHappReset is not today, reset petHappCur to 0
             else, do nothing
         */
-        public function checkHapp($userID, $petID) {
+        public function checkHappReset($userID, $petID) {
             $sql = "SELECT petHappReset FROM pet_inventory WHERE userID = :userID AND petID = :petID";
 
             $stmt = $this->db->connect()->prepare($sql);
@@ -234,6 +244,32 @@
 
             if ($petHealthCur <= 0) {
                 $this->decreasePetLevel($userID, $petID);
+            }
+        }
+
+        // return true if petHappCur == petHappTol
+        public function checkPetHapp($userID, $petID) {
+            $sql = "SELECT petHappCur, petHappTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $petHappCur = $result['petHappCur'];
+            $petHappTol = $result['petHappTol'];
+
+            if ($petHappCur == $petHappTol) {
+                return true;
+
+            } else {
+                return false;
             }
         }
     }

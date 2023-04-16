@@ -37,4 +37,23 @@ class Admin{
         }
     }
 
+    public function countUsers() {
+        $sql = "SELECT COUNT(*) as total FROM user";
+        $stmt = $this->db->connect()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+    public function getAllUsers() {
+        $sql = "SELECT * FROM user";
+        $stmt = $this->db->connect()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
+    public function getAdminDetails($adminID){
+
+    }
+
 }

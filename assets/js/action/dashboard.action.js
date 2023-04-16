@@ -92,6 +92,7 @@ function deleteTask(taskID){
         }
     });
     refreshDashboard();
+    document.getElementById('toast-delete').play();
 }
 
 function updateTaskStatus(taskID, taskStatus) {
@@ -174,6 +175,7 @@ function deleteHabit(habitID) {
         }
     });
     refreshDashboard();
+    document.getElementById('toast-delete').play();
 }
 
 function habitReward(difficultyID) {
@@ -185,6 +187,7 @@ function habitReward(difficultyID) {
         }
     });
     refreshDashboard();
+    showPositiveToast();
 }
 
 function habitPenalize(difficultyID) {
@@ -196,6 +199,7 @@ function habitPenalize(difficultyID) {
         }
     });
     refreshDashboard();
+    showNegativeToast();
 }
 
 function feedReward(foodID) {

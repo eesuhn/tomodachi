@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
     <script src="../assets/js/data/admin_users.data.js"></script>
+    <script src="../assets/js/action/admin_users.action.js"></script>
 </head>
 
 <body style="background-color: #f1f1f1;">

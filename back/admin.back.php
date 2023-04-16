@@ -53,5 +53,27 @@
 
             return $stmt;
         }
+
+        public function updateUser($userID, $userName, $userEmail, $userPwd, $currencyNum) {
+            $sql = "UPDATE user SET userName = :userName, userEmail = :userEmail, userPwd = :userPwd WHERE userID = :userID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':userName', $userName);
+            $stmt->bindParam(':userEmail', $userEmail);
+            $stmt->bindParam(':userPwd', $userPwd);
+
+            $stmt->execute();
+
+            $sql = "UPDATE currency SET currencyNum = :currencyNum WHERE userID = :userID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':currencyNum', $currencyNum);
+
+            $stmt->execute();
+        } 
     }
 ?>

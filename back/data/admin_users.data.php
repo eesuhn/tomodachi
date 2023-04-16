@@ -110,7 +110,7 @@
 
                                 <div class='modal-footer'>
                                     <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
-                                    <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick=''>Save</button>
+                                    <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick='updateUsers({$row['userID']})'>Save</button>
                                 </div>
                             </div>
                         </div>

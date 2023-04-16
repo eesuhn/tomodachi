@@ -1,10 +1,7 @@
-<html>
-
 <!DOCTYPE html>
 <html>
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,10 +14,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
-
 </head>
 
-<div class="col-12 d-flex align-items-center vh-100" style="background-image: url('../assets/images/bg.png'); background-size: cover;";>
+<div class="col-12 d-flex align-items-center vh-100" style="background-image: url('../assets/images/bg.png'); background-size: cover;" ;>
     <div class="card-body p-4 p-lg-5 text-black">
         <form id="login_admin" method="POST" action="../include/admin.inc.php">
             <div class="d-flex align-items-center mb-3 pb-1 justify-content-center">
@@ -28,7 +24,9 @@
                     <img src="../assets/images/logo1.png" width="120">
                 </span>
             </div>
-                <center><h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 2px; font-size:x-large;">Admin Login</h5></center>
+            <center>
+                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 2px; font-size:x-large;">Admin Login</h5>
+            </center>
             <div class="form-outline mb-4">
                 <input type="email" id="email" name="email" class="form-control form-control-lg" />
                 <label class="form-label" for="email" style="font-size:large;">Email address</label>

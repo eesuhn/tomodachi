@@ -1,35 +1,31 @@
 <?php
+    include '../back/connection.back.php';
+    include '../back/pet.back.php';
+    include '../back/currency.back.php';
+    include '../back/admin.back.php';
+    include '../back/food.back.php';
+    include '../back/wallpaper.back.php';
 
-include '../back/connection.back.php';
-include '../back/pet.back.php';
-include '../back/currency.back.php';
-include '../back/admin.back.php';
-include '../back/food.back.php';
-include '../back/wallpaper.back.php';
+    $adminID = $_SESSION['adminID'];
+    $adminName = $_SESSION['adminName'];
 
-$adminID = $_SESSION['adminID'];
-$adminName = $_SESSION['adminName'];
+    $petData = new Pet();
 
-$petData = new Pet();
-
-$petData_legendary = $petData->showPetDetails_rarity('Legendary');
-$petData_rare = $petData->showPetDetails_rarity('Rare');
-$petData_common = $petData->showPetDetails_rarity('Common');
-$foodData = new Food();
-$foodShop = $foodData->getShopFoods($userID);
-$wallpaperData = new Wallpaper();
-$userCurrency = new Currency();
-$currencyNum = $userCurrency->getCurrency($userID);
-$wallpaperShop = $wallpaperData->getAllWallpapers();
-
+    $petData_legendary = $petData->showPetDetails_rarity('Legendary');
+    $petData_rare = $petData->showPetDetails_rarity('Rare');
+    $petData_common = $petData->showPetDetails_rarity('Common');
+    $foodData = new Food();
+    $foodShop = $foodData->getShopFoods($userID);
+    $wallpaperData = new Wallpaper();
+    $userCurrency = new Currency();
+    $currencyNum = $userCurrency->getCurrency($userID);
+    $wallpaperShop = $wallpaperData->getAllWallpapers();
 ?>
-
 
 <!DOCTYPE html>
 <html>
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,7 +44,6 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
     <script src="../assets/js/data/dashboard.data.js"></script>
     <script src="../assets/js/action/dashboard.action.js"></script>
     <script src="../assets/js/toast.js"></script>
-
 </head>
 
 <body style="background-color:#f1f1f1;">
@@ -58,7 +53,7 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
             <img src="../assets/images/logo2.png" alt="My Website Logo">
         </div>
         <a class="active" href="#home">Home</a>
-        <a href="adminusers.front.php">Manage Users</a>
+        <a href="admin_users.front.php">Manage Users</a>
         <div class="logout">
             <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
         </div>
@@ -352,7 +347,7 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="row">
-                        <form id="add_pet" method="POST" action="../includes/admindashboard.inc.php" enctype="multipart/form-data">
+                        <form id="add_pet" method="POST" action="../includes/admin_dashboard.inc.php" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="hName">Pet Name</label>
                                 <input type="text" class="form-control" id="petName" name="petName" placeholder="Rabbit" required>
@@ -429,7 +424,7 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form id="add_food" method="POST" action="../includes/admindashboard.inc.php" enctype="multipart/form-data">
+                    <form id="add_food" method="POST" action="../includes/admin_dashboard.inc.php" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="petName">Food Name</label>
                             <input type="text" class="form-control" id="petName" name="petName" placeholder="Sate" required>
@@ -471,10 +466,10 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="row">
-                    <?php
-                    foreach ($wallpaperShop as $wallpaperShopData) {
-                        echo
-                        "<div class='col-md-4 px-3 py-3'>
+                        <?php
+                        foreach ($wallpaperShop as $wallpaperShopData) {
+                            echo
+                            "<div class='col-md-4 px-3 py-3'>
                             <div class='card h-100'>
                             <div class='dropdown'>
                             <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -489,19 +484,19 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
                             <div class='card-body d-flex flex-column'>
                                 <h5 class='card-title'>{$wallpaperShopData["wallpaperName"]}</h5>
                                 <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>";
-                                if ($wallpaperShopData['wallpaperPrice'] == 0) {
-                                    echo "Free!";
-                                } else {
-                                    echo $wallpaperShopData['wallpaperPrice'];
-                                }
-                                echo
-                                "</h4>
+                            if ($wallpaperShopData['wallpaperPrice'] == 0) {
+                                echo "Free!";
+                            } else {
+                                echo $wallpaperShopData['wallpaperPrice'];
+                            }
+                            echo
+                            "</h4>
                                 <p class='card-text'>{$wallpaperShopData["wallpaperDesc"]}</p>
                             </div>
                         </div>
                     </div>";
-                    }
-                    ?>
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -517,7 +512,7 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form id="add_wallpaper" method="POST" action="../includes/admindashboard.inc.php" enctype="multipart/form-data">
+                    <form id="add_wallpaper" method="POST" action="../includes/admin_dashboard.inc.php" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="wallpaperName">Wallpaper Name</label>
                             <input type="text" class="form-control" id="wallpaperName" name="wallpaperName" placeholder="Sky" required>
@@ -542,9 +537,6 @@ $wallpaperShop = $wallpaperData->getAllWallpapers();
         </div>
     </div>
 
-
-
-    </div>
     <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 

@@ -21,15 +21,22 @@
 
             if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    session_start();
+
                     $_SESSION['adminID'] = $row['adminID'];
                     $_SESSION['adminName'] = $row['adminName'];
-                    echo "<script>alert('You are now logged in'); 
-                            window.location.href='../front/admin_dashboard.front.php'</script>";
+
+                    echo "
+                        <script>
+                            alert('You are now logged in'); 
+                            window.location.href='../front/admin_dashboard.front.php'
+                        </script>";
                 }
             } else {
-                echo "<script>alert('No account has been found'); 
-                    window.location.href='../front/admin_login.front.php'</script>";
+                echo "
+                    <script>
+                        alert('No account has been found'); 
+                        window.location.href='../front/admin_login.front.php'
+                    </script>";
             }
         }
 

@@ -82,7 +82,7 @@
 
         $petData = new Pet();
 
-        $petData->equipPet($userID,$petID);
+        $petData->equipPet($userID, $petID);
     }
 
     function equipWallpaper(){

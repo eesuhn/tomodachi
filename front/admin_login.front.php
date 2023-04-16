@@ -18,26 +18,27 @@
 
 <div class="col-12 d-flex align-items-center vh-100" style="background-image: url('../assets/images/bg.png'); background-size: cover;" ;>
     <div class="card-body p-4 p-lg-5 text-black">
-        <form id="login_admin" method="POST" action="../include/admin.inc.php">
+        <form id="login_admin" method="POST" action="../include/admin_login.inc.php">
             <div class="d-flex align-items-center mb-3 pb-1 justify-content-center">
                 <span class="h1 fw-bold mb-0">
                     <img src="../assets/images/logo1.png" width="120">
                 </span>
             </div>
             <center>
-                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 2px; font-size: x-large;">Admin Login</h5>
+                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 2px; font-size: 30px;">Admin Login</h5>
             </center>
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4" style="padding: 0px 26%;">
                 <input type="email" id="email" name="email" class="form-control form-control-lg" />
                 <label class="form-label" for="email" style="font-size: large;">Email address</label>
             </div>
-
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4" style="padding: 0px 26%;">
                 <input type="password" id="password" name="password" class="form-control form-control-lg" />
                 <label class="form-label" for="password" style="font-size: large;">Password</label>
             </div>
             <div class="pt-1 mb-4">
-                <center><button class="btn btn-dark btn-lg btn-block" type="submit">Login</button></center>
+                <center>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit" style="width: 10%">Login</button>
+                </center>
             </div>
         </form>
     </div>

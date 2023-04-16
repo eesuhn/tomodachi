@@ -97,7 +97,17 @@
         $userCurrency = new Currency();
         $currencyNum = $userCurrency->getCurrency($userID);
 
-        echo '<div class="row">';
+        echo '
+        <style>
+            p.food-stats img:not(:first-child) {
+                margin-left: 20px;
+            }
+            
+            p.food-stats img {
+                margin-right: 6px;
+            }
+        </style>
+        <div class="row">';
         
         foreach ($foodShop as $foodShopData) {
 
@@ -113,7 +123,6 @@
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$foodShopData["foodName"]}</h5>
                         <p class='card-text food-stats'>
-                            <img src='../assets/images/level.png' width='20'>{$foodShopData["foodXP"]}
                             <img src='../assets/images/health.png' width='20'>{$foodShopData["foodHealth"]}
                             <img src='../assets/images/hunger.png' width='20'>{$foodShopData["foodHapp"]}
                         </p>

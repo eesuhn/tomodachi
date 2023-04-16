@@ -19,7 +19,6 @@ CREATE TABLE `food` (
     `foodName` varchar(255) NOT NULL,
     `foodDesc` varchar(255) NOT NULL,
     `foodPrice` int(11) NOT NULL,
-    `foodXP` int(11) NOT NULL,
     `foodHealth` int(11) NOT NULL,
     `foodHapp` int(11) NOT NULL,
     `foodImg` varchar(255) NOT NULL

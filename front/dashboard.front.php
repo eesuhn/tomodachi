@@ -141,6 +141,33 @@ include '../include/toast.inc.php';
     </div>
   </div>
 
+  <div class="modal fade" id="deadModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+          Uh oh, your pet has died due to your bad habits! Be careful next time.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="levelModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+          Your pet has leveled up! Keep it up!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script>
     var habitTitle = document.getElementById('habitTitle') ?? {textContent: ''};
 

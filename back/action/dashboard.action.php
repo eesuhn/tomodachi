@@ -188,10 +188,18 @@
 
     function habitPenalize() {
         $difficultyID = $_GET['difficultyID'];
+        $userID = $_SESSION['userID'];
+
+        $pet = new Pet();
+
+        $petData = $pet->getEquippedPet($userID);
+
+        $petID = $petData['petID'];
 
         $level = new Level();
         $level->habitPenalize($difficultyID);
         checkPetStats();
+
     }
 
     function feedReward() {
@@ -221,6 +229,5 @@
         $level = new Level();
         $level->checkXP($userID, $petID);
         $level->checkHealth($userID, $petID);
-        $level->checkLevel($userID,$petID);
     }
 ?>

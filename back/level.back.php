@@ -95,7 +95,7 @@
             $petID = $petData['petID'];
 
             // increase health
-            $this->pet->increaseHealth($this->userID, $petID, $foodHealth);
+            $this->checkHealth($this->userID, $petID, $foodHealth);
 
             // increase happiness
             $this->pet->increaseHapp($this->userID, $petID, $foodHapp);
@@ -154,6 +154,32 @@
 
             if ($petXP >= 100) {
                 $this->increaseLevel($userID, $petID);
+            }
+        }
+
+        /*
+            call increaseHeath if petHealthCur < petHealthTol
+            health remainder from petHealthTol - petHealthCur is not added to petHealthCur
+        */
+        public function checkHealth($userID, $petID, $foodHealth) {
+            $sql = "SELECT petHealthCur, petHealthTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $petHealthCur = $result['petHealthCur'];
+            $petHealthTol = $result['petHealthTol'];
+
+            if ($petHealthCur < $petHealthTol) {
+                $this->pet->increaseHealth($userID, $petID, $foodHealth);
             }
         }
     }

@@ -279,7 +279,25 @@
             $stmt->execute();
         }
 
+        /* 
+            check if adding $health to petHealthCur will exceed petHealthTol
+            if yes, subtract the difference from petHealthCur
+            if no, add $health to petHealthCur
+        */
         public function increaseHealth($userID, $petID, $health) {
+            $sql = "SELECT petHealthCur, petHealthTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            $pet = $stmt->fetch();
+
+            if ($pet['petHealthCur'] + $health > $pet['petHealthTol']) {
+                $health = $pet['petHealthCur'] + $health - $pet['petHealthTol'];
+            }
+
             $sql = "UPDATE pet_inventory SET petHealthCur = petHealthCur + :health WHERE userID = :userID AND petID = :petID";
 
             $stmt = $this->db->connect()->prepare($sql);

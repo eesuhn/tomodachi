@@ -86,22 +86,6 @@
             return $result['foodHapp'];
         }
 
-        // get foodXP based on foodID
-        public function getXP ($foodID) {
-            $sql = "SELECT foodXP FROM food WHERE foodID = :value1";
-
-            $stmt = $this->db->connect()->prepare($sql);
-
-            $stmt->bindParam(':value1', $foodID);
-
-            $stmt->execute(array(
-                    ':value1' => $foodID));
-
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            return $result['foodXP'];
-        }
-
         // get foodNum from food_inventory based on foodID and userID
         public function getFoodNum ($foodID, $userID) {
             $sql = "SELECT foodNum FROM food_inventory WHERE foodID = :value1 AND userID = :value2";

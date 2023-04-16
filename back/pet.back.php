@@ -1,9 +1,4 @@
 <?php
-    // start session if not started
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-
     class Pet {
         private $db;
 
@@ -40,7 +35,7 @@
             }
         }
 
-        public function ownPet($userID, $petID) {
+        public function ownPetStart($userID, $petID) {
             $sql = "SELECT petHealthIn, petHappIn FROM pet_rarity WHERE petRarity = (SELECT petRarity FROM pet WHERE petID = ?)";
 
             $stmt = $this->db->connect()->prepare($sql);
@@ -51,11 +46,14 @@
             $healthIn = $petRarityStats['petHealthIn'];
             $happIn = $petRarityStats['petHappIn'];
 
-            $sql = "INSERT INTO pet_inventory (userID, petID, petLevel, petXP, petHealthTol, petHappTol, petHealthCur, petHappCur, petStatus) 
-                    VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Equipped')";
+            date_default_timezone_set('Asia/Kuala_Lumpur');
+            $petHappReset = date('Y-m-d');
+
+            $sql = "INSERT INTO `pet_inventory` (userID, petID, petLevel, petXP, petHealthTol, petHappTol, petHealthCur, petHappCur, petStatus, petHappReset) 
+                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, 'Equipped', ?)";
 
             $stmt = $this->db->connect()->prepare($sql);
-            $stmt->execute([$userID, $petID, $healthIn, $happIn, $healthIn, $happIn]);
+            $stmt->execute([$userID, $petID, $healthIn, $happIn, $healthIn, $petHappReset]);
 
             echo "
             <script>window.location.href='../front/dashboard.front.php';</script>";
@@ -142,17 +140,20 @@
             $stmt->execute([$pet['petID']]);
 
             $pet_rarity = $stmt->fetch();
+
+            date_default_timezone_set('Asia/Kuala_Lumpur');
+            $petHappReset = date('Y-m-d');
     
             // insert the new pet into the pet_inventory table
             $sql = "INSERT INTO `pet_inventory` 
-                    (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHappTol`, `petHealthCur`, `petHappCur`, `petStatus`)
-                    VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Kept')";
+                    (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHappTol`, `petHealthCur`, `petHappCur`, `petHappReset`)
+                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, ?)";
 
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute([
                     $userID, $pet['petID'], $pet_rarity['petHealthIn'], 
-                    $pet_rarity['petHappIn'], $pet_rarity['petHealthIn'], 
-                    $pet_rarity['petHappIn']]);
+                    $pet_rarity['petHappIn'], $pet_rarity['petHealthIn'],
+                    $petHappReset]);
             
             $_SESSION['petScoutID'] = $pet['petID'];
 
@@ -257,6 +258,105 @@
             $sql = "UPDATE pet_inventory SET petStatus = 'Equipped' WHERE userID = :userID AND petID = :petID";
 
             $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
+
+        public function increaseXP($userID, $petID, $xp) {
+            $sql = "UPDATE pet_inventory SET petXP = petXP + :xp WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':xp', $xp);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
+
+        public function decreaseHealth($userID, $petID, $health) {
+            // get petHealthCur and petHealthTol
+            $sql = "SELECT petHealthCur, petHealthTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            $pet = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // store petHealthCur and petHealthTol in variables
+            $petHealthCur = $pet['petHealthCur'];
+            $petHealthTol = $pet['petHealthTol'];
+
+            if ($petHealthCur - $health < 0) {
+                // if petHealthCur - $health < 0, set petHealthCur to 0
+                $health = $petHealthCur;
+            }
+
+            $sql = "UPDATE pet_inventory SET petHealthCur = petHealthCur - :health WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':health', $health);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
+
+        /* 
+            check if adding $health to petHealthCur will exceed petHealthTol
+            if yes, subtract the difference from petHealthCur
+            if no, add $health to petHealthCur
+        */
+        public function increaseHealth($userID, $petID, $health) {
+            $sql = "SELECT petHealthCur, petHealthTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            $pet = $stmt->fetch();
+
+            if ($pet['petHealthCur'] + $health > $pet['petHealthTol']) {
+                $health = $pet['petHealthTol'] - $pet['petHealthCur'];
+            }
+
+            $sql = "UPDATE pet_inventory SET petHealthCur = petHealthCur + :health WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':health', $health);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
+
+        /* 
+            check if adding $happy to petHappCur will exceed petHappTol
+            if yes, subtract the difference from petHappCur
+            if no, add $happy to petHappCur
+        */
+        public function increaseHapp($userID, $petID, $happy) {
+            $sql = "SELECT petHappCur, petHappTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            $pet = $stmt->fetch();
+
+            if ($pet['petHappCur'] + $happy > $pet['petHappTol']) {
+                $happy = $pet['petHappTol'] - $pet['petHappCur'];
+            }
+
+            $sql = "UPDATE pet_inventory SET petHappCur = petHappCur + :happy WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':happy', $happy);
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
 

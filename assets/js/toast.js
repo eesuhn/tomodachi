@@ -25,3 +25,17 @@ function showTaskToast(){
     toast.toast('show');
     document.getElementById('toast-task').play();
 }
+
+function showPositiveToast(){
+    var toast = $('.toast-positive')
+    toast.toast({ autohide: true, delay: 1000 });
+    toast.toast('show');
+    document.getElementById('toast-positive').play();
+}
+
+function showNegativeToast(){
+    var toast = $('.toast-negative')
+    toast.toast({ autohide: true, delay: 1000 });
+    toast.toast('show');
+    document.getElementById('toast-negative').play();
+}

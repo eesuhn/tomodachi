@@ -1,6 +1,6 @@
 <?php
-  include '../include/dashboard.inc.php';
-  include '../include/toast.inc.php';
+include '../include/dashboard.inc.php';
+include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +84,11 @@
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px" ;>Habits</h3>
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
-          <input type="text" class="form-control" id="habit" placeholder="Add a new habit" style="margin-top: 10px;" autocomplete="off">
+          <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 10px; font-size: 18px;" autocomplete="off">
+
+          <div id="habitTracker">
+            <!-- display habit tracker with AJAX -->
+          </div>
         </div>
       </div>
 
@@ -136,6 +140,22 @@
       </div>
     </div>
   </div>
+
+  <script>
+    var habitTitle = document.getElementById('habitTitle') ?? {textContent: ''};
+
+    if (habitTitle && habitTitle.tagName === 'INPUT') {
+      habitTitle.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          // prevent the form from being submitted
+          event.preventDefault();
+
+          // add habit
+          addHabit();
+        }
+      });
+    }
+  </script>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>

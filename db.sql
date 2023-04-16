@@ -19,7 +19,6 @@ CREATE TABLE `food` (
     `foodName` varchar(255) NOT NULL,
     `foodDesc` varchar(255) NOT NULL,
     `foodPrice` int(11) NOT NULL,
-    `foodXP` int(11) NOT NULL,
     `foodHealth` int(11) NOT NULL,
     `foodHapp` int(11) NOT NULL,
     `foodImg` varchar(255) NOT NULL
@@ -58,7 +57,8 @@ CREATE TABLE `pet_inventory` (
     `petHappTol` int(11) NOT NULL,
     `petHealthCur` int(11) NOT NULL,
     `petHappCur` int(11) NOT NULL,
-    `petStatus` varchar(255) NOT NULL DEFAULT 'Kept'
+    `petStatus` varchar(255) NOT NULL DEFAULT 'Kept',
+    `petHappReset` date NOT NULL
 );
 
 -- wallpaper table
@@ -74,7 +74,7 @@ CREATE TABLE `wallpaper` (
 CREATE TABLE `wallpaper_inventory` (
     `userID` int(11) NOT NULL,
     `wallpaperID` int(11) NOT NULL,
-    `wallpaperStatus` varchar(11) NOT NULL
+    `wallpaperStatus` varchar(11) NOT NULL DEFAULT 'Kept'
 );
 
 -- task table
@@ -85,6 +85,27 @@ CREATE TABLE `task` (
     `taskDesc` varchar(255) NOT NULL,
     `taskDue` date NOT NULL,
     `taskStatus` varchar(255) NOT NULL DEFAULT 'Active'
+);
+
+-- difficulty table
+CREATE TABLE `difficulty` (
+    `difficultyID` int(11) NOT NULL,
+    `difficultyTitle` varchar(255) NOT NULL,
+    `currencyReward` int(11) NOT NULL,
+    `XPReward` int(11) NOT NULL,
+    `healthPenalize` int(11) NOT NULL,
+    `currencyPenalize` int(11) NOT NULL
+);
+
+-- habit table
+CREATE TABLE `habit` (
+    `habitID` int(11) NOT NULL,
+    `userID` int(11) NOT NULL,
+    `difficultyID` int(11) NOT NULL,
+    `habitTitle` varchar(255) NOT NULL,
+    `habitDesc` varchar(255) NOT NULL,
+    `habitPositive` int(1) NOT NULL DEFAULT '0',
+    `habitNegative` int(1) NOT NULL DEFAULT '0'
 );
 
 
@@ -120,6 +141,12 @@ ALTER TABLE `wallpaper_inventory`
 ALTER TABLE `task`
     ADD PRIMARY KEY (`taskID`);
 
+ALTER TABLE `difficulty`
+    ADD PRIMARY KEY (`difficultyID`);
+
+ALTER TABLE `habit`
+    ADD PRIMARY KEY (`habitID`);
+
 
 
 -- Auto increment
@@ -140,6 +167,12 @@ ALTER TABLE `wallpaper`
 
 ALTER TABLE `task`
     MODIFY `taskID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `difficulty`
+    MODIFY `difficultyID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `habit`
+    MODIFY `habitID` int(11) NOT NULL AUTO_INCREMENT;
 
 
 
@@ -164,3 +197,7 @@ ALTER TABLE `wallpaper_inventory`
 
 ALTER TABLE `task`
     ADD CONSTRAINT `task_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+
+ALTER TABLE `habit`
+    ADD CONSTRAINT `habit_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+    ADD CONSTRAINT `habit_ibfk_2` FOREIGN KEY (`difficultyID`) REFERENCES `difficulty` (`difficultyID`);

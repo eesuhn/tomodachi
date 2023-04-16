@@ -156,5 +156,44 @@
                 $this->increaseLevel($userID, $petID);
             }
         }
+
+        /*
+            if petHappReset is not today, reset petHappCur to 0
+            else, do nothing
+        */
+        public function checkHapp($userID, $petID) {
+            $sql = "SELECT petHappReset FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $petHappReset = $result['petHappReset'];
+
+            date_default_timezone_set('Asia/Kuala_Lumpur');
+            $today = date('Y-m-d');
+
+            if ($petHappReset != $today) {
+                $sql = "UPDATE pet_inventory SET petHappCur = 0, petHappReset = :petHappReset WHERE userID = :userID AND petID = :petID";
+
+                $stmt = $this->db->connect()->prepare($sql);
+
+                $stmt->bindParam(':userID', $userID);
+                $stmt->bindParam(':petID', $petID);
+                $stmt->bindParam(':petHappReset', $today);
+
+                $stmt->execute(array(
+                    ':userID' => $userID,
+                    ':petID' => $petID,
+                    ':petHappReset' => $today));
+            }
+        }
     }
 ?>

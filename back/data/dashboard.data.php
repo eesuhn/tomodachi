@@ -76,6 +76,9 @@
         $healthBar = $petHealthCur / $petHealthTol * 100;
         $happBar = $petHappCur / $petHappTol * 100;
 
+        $level = new Level();
+        $level->checkHapp($userID, $petData['petID']);
+
         echo 
         "<div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>

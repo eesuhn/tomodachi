@@ -1,17 +1,3 @@
-<?php
-    session_start();
-    include '../back/connection.back.php';
-    include '../back/pet.back.php';
-    include '../back/currency.back.php';
-    include '../back/admin.back.php';
-    
-    $adminID = $_SESSION['adminID'];
-    $adminName = $_SESSION['adminName'];
-    
-    $users = new Admin();
-    $users = $users->getAllUsers();
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -30,9 +16,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
-
-    <script src="../assets/js/action/admin_users.action.js"></script>
-    <script src="../assets/js/toast.js"></script>
 </head>
 
 <body style="background-color: #f1f1f1;">
@@ -49,75 +32,91 @@
     </div>
 
     <div class="content vh-100">
-        <table class="table mx-4 my-4">
-            <thead class="thead-primary">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <?php
-            foreach ($users as $user) {
-            ?>
+        <div style="margin: 30px 0px 10px 30px;">
+            <h3 style="font-size: 40px; font-weight: 400;">Manage Users</h3>
+        </div>
+        <div>
+            <style>
+                thead th {
+                    font-size: 26px;
+                    letter-spacing: 1px;
+                }
+
+                tbody td {
+                    font-size: 24px;
+                }
+
+                .edit-btn {
+                    font-size: 22px;
+                    margin-top: -8px;
+                }
+            </style>
+            <table class="table mx-4 my-4">
+                <thead class="thead-primary">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    <td><?= $user['userID'] ?></td>
-                    <td><?= $user['userName'] ?></td>
-                    <td><?= $user['userEmail'] ?></td>
-                    <td><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#showPassword<?= $user['userID'] ?>">Show Password</button></td>
-                    <td><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editUser<?= $user['userID'] ?>">Edit</button></td>
+                    <tr>
+                        <td>User ID</td>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>
+                            <button type="button" class="btn btn-link edit-btn" data-bs-toggle="modal" data-bs-target="#editUser">Edit</button>
+                        </td>
+                    </tr>
                 </tbody>
+            </table>
 
-                <!-- Modal -->
-                <div class="modal fade" id="showPassword<?= $user['userID'] ?>" tabindex="-1" role="dialog" aria-labelledby="showPasswordLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="showPasswordLabel">User Password</h5>
+            <div class='modal fade' id='editUser' aria-hidden='true' tabindex='-1'>
+                <div class='modal-dialog modal-dialog-centered'>
+                    <div class='modal-content'>
+                        <div class='row'>
+                            <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                                <h2>Edit User</h2>
                             </div>
-                            <div class="modal-body">
-                                <?= $user['userPwd'] ?>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                            </div>
+
+                            <form>
+                                <div class='col-12 px-2'>
+                                    <label for='editUserName'>Username</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <input type='text' class='form-control' id='editUserName' value='' required>
+                                </div>
+                                <div class='col-12 px-2'>
+                                    <label for='editUserEmail' style='margin-top: 10px;'>Email</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <input type='text' class='form-control' id='editUserEmail' value='' required>
+                                </div>
+                                <div class='col-12 px-2'>
+                                    <label for='editUserPwd' style='margin-top: 10px;'>Password</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <input type='text' class='form-control' id='editUserPwd' value='' required>
+                                </div>
+                                <div class='col-12 px-2'>
+                                    <label for='editUserCurrency' style='margin-top: 10px;'>Currency Owned</label>
+                                </div>
+                                <div class='col-12 d-flex justify-content-center px-2'>
+                                    <input type='text' class='form-control' id='editUserCurrency' value='' required>
+                                </div>
+                                <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick=''>Remove this user?</button></center>
+                            </form>
+                        </div>
+
+                        <div class='modal-footer'>
+                            <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
+                            <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick=''>Save</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="modal fade" id="editUser<?= $user['userID'] ?>" tabindex="-1" role="dialog" aria-labelledby="showPasswordLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div style="margin-top: 20px;"></div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="text" id="userID" name="id" class="form-control form-control-lg" value="<?= $user['userID'] ?>" readonly />
-                                <label class="form-label" for="email" style="font-size: large;">User ID</label>
-                            </div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="text" id="username" name="name" class="form-control form-control-lg" value="<?= $user['userName'] ?>" />
-                                <label class="form-label" for="text" style="font-size: large;">Password</label>
-                            </div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="email" id="email" name="email" class="form-control form-control-lg" value="<?= $user['userEmail'] ?>" />
-                                <label class="form-label" for="email" style="font-size: large;">Email</label>
-                            </div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="password" id="password" name="password" class="form-control form-control-lg" value="<?= $user['userPwd'] ?>" />
-                                <label class="form-label" for="password" style="font-size: large;">Password</label>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                            <center><button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="width: 50%; margin: 10px;">Delete this account?</button></center>
-                        </div>
-                    </div>
-                </div>
-            <?php
-            }
-            ?>
-        </table>
+            </div>
+        </div>
     </div>
 
     <script src="../assets/js/bootstrap-js/bootstrap.js"></script>

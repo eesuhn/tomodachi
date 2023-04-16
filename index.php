@@ -66,7 +66,9 @@
 
       <div class="d-flex align-items-center justify-content-center">
         <div class="text-center">
-          <a href="front/login.front.php"><img src="assets/images/joinbutton.png" style="width: 30%; height: auto;"></a>
+          <a href="front/login.front.php" class="join-btn">
+            <img src="assets/images/joinbutton.png" style="width: 30%; height: auto;">
+          </a>
         </div>
       </div>
     </div>

@@ -3,7 +3,9 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    session_destroy();
+    // unset only the user session
+    unset($_SESSION['userID']);
+    unset($_SESSION['petScoutID']);
 
     header('Location: ../index.php');
 ?>

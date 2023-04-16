@@ -3,7 +3,9 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    session_destroy();
+    // unset only the admin session
+    unset($_SESSION['adminID']);
+    unset($_SESSION['adminName']);
 
     header('Location: ../front/admin_login.front.php');
 ?>

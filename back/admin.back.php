@@ -40,20 +40,15 @@
             }
         }
 
-        public function countUsers() {
-            $sql = "SELECT COUNT(*) as total FROM user";
-            $stmt = $this->db->connect()->prepare($sql);
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $result['total'];
-        }
-        
+        // get all the users
         public function getAllUsers() {
             $sql = "SELECT * FROM user";
+
             $stmt = $this->db->connect()->prepare($sql);
+
             $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+
+            return $stmt;
         }
     }
 ?>

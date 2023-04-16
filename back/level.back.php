@@ -120,7 +120,7 @@
             increase petLevel by 1 when petXP >= 100
             decrease petXP by 100
         */
-        public function increaseLevel($userID, $petID) {
+        public function increasePetLevel($userID, $petID) {
             $sql = "UPDATE pet_inventory SET petLevel = petLevel + 1, petXP = petXP - 100 WHERE userID = :userID AND petID = :petID";
 
             $stmt = $this->db->connect()->prepare($sql);
@@ -134,7 +134,7 @@
         }
 
         /*
-            call increaseLevel() when petXP >= 100
+            call increasePetLevel() when petXP >= 100
         */
         public function checkXP($userID, $petID) {
             $sql = "SELECT petXP FROM pet_inventory WHERE userID = :userID AND petID = :petID";
@@ -153,7 +153,7 @@
             $petXP = $result['petXP'];
 
             if ($petXP >= 100) {
-                $this->increaseLevel($userID, $petID);
+                $this->increasePetLevel($userID, $petID);
             }
         }
 
@@ -193,6 +193,47 @@
                     ':userID' => $userID,
                     ':petID' => $petID,
                     ':petHappReset' => $today));
+            }
+        }
+
+        /*
+            decrease petLevel by 1 when petHealthCur <= 0
+            set petHealthCur to petHealthTol
+        */
+        public function decreasePetLevel($userID, $petID) {
+            $sql = "UPDATE pet_inventory SET petLevel = petLevel - 1, petHealthCur = petHealthTol WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+        }
+
+        /*
+            call decreasePetLevel() when petHealthCur <= 0
+        */
+        public function checkHealth($userID, $petID) {
+            $sql = "SELECT petHealthCur FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $petHealthCur = $result['petHealthCur'];
+
+            if ($petHealthCur <= 0) {
+                $this->decreasePetLevel($userID, $petID);
             }
         }
     }

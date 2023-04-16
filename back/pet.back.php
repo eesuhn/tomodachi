@@ -276,6 +276,25 @@
         }
 
         public function decreaseHealth($userID, $petID, $health) {
+            // get petHealthCur and petHealthTol
+            $sql = "SELECT petHealthCur, petHealthTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            $pet = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // store petHealthCur and petHealthTol in variables
+            $petHealthCur = $pet['petHealthCur'];
+            $petHealthTol = $pet['petHealthTol'];
+
+            if ($petHealthCur - $health < 0) {
+                // if petHealthCur - $health < 0, set petHealthCur to 0
+                $health = $petHealthCur;
+            }
+
             $sql = "UPDATE pet_inventory SET petHealthCur = petHealthCur - :health WHERE userID = :userID AND petID = :petID";
 
             $stmt = $this->db->connect()->prepare($sql);

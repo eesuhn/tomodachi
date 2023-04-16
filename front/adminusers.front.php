@@ -35,8 +35,7 @@ $users = $users->getAllUsers();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
-    <script src="../assets/js/data/dashboard.data.js"></script>
-    <script src="../assets/js/action/dashboard.action.js"></script>
+    <script src="../assets/js/action/adminusers.action.js"></script>
     <script src="../assets/js/toast.js"></script>
 
 </head>
@@ -55,14 +54,13 @@ $users = $users->getAllUsers();
     </div>
 
     <div class="content vh-100">
-        <table class="table mx-4 my-4" id="userList">
+        <table class="table mx-4 my-4">
             <thead class="thead-primary">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
-                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <?php
@@ -73,54 +71,7 @@ $users = $users->getAllUsers();
                     <td><?= $user['userName'] ?></td>
                     <td><?= $user['userEmail'] ?></td>
                     <td><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#showPassword<?= $user['userID'] ?>">Show Password</button></td>
-                    <td><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editUser<?= $user['userID'] ?>">Edit</button></td>
                 </tbody>
-
-                <!-- Modal -->
-                <div class="modal fade" id="showPassword<?= $user['userID'] ?>" tabindex="-1" role="dialog" aria-labelledby="showPasswordLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="showPasswordLabel">User Password</h5>
-                            </div>
-                            <div class="modal-body">
-                                <?= $user['userPwd'] ?>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal fade" id="editUser<?= $user['userID'] ?>" tabindex="-1" role="dialog" aria-labelledby="showPasswordLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div  style="margin-top: 20px;"></div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="text" id="userID" name="text" class="form-control form-control-lg" value="<?= $user['userID'] ?>" readonly/>
-                                <label class="form-label" for="email" style="font-size:large;">User ID</label>
-                            </div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="text" id="username" name="text" class="form-control form-control-lg" value="<?= $user['userName'] ?>"/>
-                                <label class="form-label" for="text" style="font-size:large;">Password</label>
-                            </div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="email" id="email" name="email" class="form-control form-control-lg" value="<?= $user['userEmail'] ?>"/>
-                                <label class="form-label" for="email" style="font-size:large;">Email address</label>
-                            </div>
-                            <div class="form-outline mb-4 mx-4 my-1">
-                                <input type="password" id="password" name="password" class="form-control form-control-lg" value="<?= $user['userPwd'] ?>"/>
-                                <label class="form-label" for="password" style="font-size:large;">Password</label>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                            <center><button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="width: 50%; margin: 10px;">Delete this account?</button></center>
-                        </div>
-                    </div>
-                </div>
-
             <?php
             }
             ?>

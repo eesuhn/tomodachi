@@ -180,7 +180,9 @@ $petData_common = $petData->showPetDetails_rarity('Common');
                                         <i class="icon-pencil primary font-large-2 float-left"></i>
                                     </div>
                                     <div class="media-body text-right">
-                                        <h3>View all Pets</h3>
+                                        <a href="#" class="link-primary" data-bs-target="#viewPets" data-bs-toggle="modal">
+                                            <h3>View all Pets</h3>
+                                        </a>
                                         <span>Check out your available pets</span>
                                     </div>
                                 </div>
@@ -197,7 +199,9 @@ $petData_common = $petData->showPetDetails_rarity('Common');
                                         <i class="icon-pencil primary font-large-2 float-left"></i>
                                     </div>
                                     <div class="media-body text-right">
-                                        <h3>Add a New Pet</h3>
+                                        <a href="#" class="link-primary" data-bs-target="#addPet" data-bs-toggle="modal">
+                                            <h3>Add a New Pet</h3>
+                                        </a>
                                         <span>Got a new partner to add?</span>
                                     </div>
                                 </div>
@@ -214,7 +218,9 @@ $petData_common = $petData->showPetDetails_rarity('Common');
                                         <i class="icon-pencil primary font-large-2 float-left"></i>
                                     </div>
                                     <div class="media-body text-right">
-                                        <h3>Edit Pet Info</h3>
+                                        <a href="#" class="link-primary" data-bs-target="#editPet" data-bs-toggle="modal">
+                                            <h3>Edit Pet Info</h3>
+                                        </a>
                                         <span>Manage your Pet's Details</span>
                                     </div>
                                 </div>
@@ -238,7 +244,9 @@ $petData_common = $petData->showPetDetails_rarity('Common');
                                         <i class="icon-pencil primary font-large-2 float-left"></i>
                                     </div>
                                     <div class="media-body text-right">
-                                        <h3>Manage Food Items</h3>
+                                        <a href="#" class="link-primary" data-bs-target="#manageFood" data-bs-toggle="modal">
+                                            <h3>Manage Food Items</h3>
+                                        </a>
                                         <span>Adjust food items sold in the shop</span>
                                     </div>
                                 </div>
@@ -255,7 +263,9 @@ $petData_common = $petData->showPetDetails_rarity('Common');
                                         <i class="icon-pencil primary font-large-2 float-left"></i>
                                     </div>
                                     <div class="media-body text-right">
-                                        <h3>Manage Wallpapers</h3>
+                                        <a href="#" class="link-primary" data-bs-target="#manageWallpaper" data-bs-toggle="modal">
+                                            <h3>Manage Wallpapers</h3>
+                                        </a>
                                         <span>Adjust wallpapers sold in the shop</span>
                                     </div>
                                 </div>

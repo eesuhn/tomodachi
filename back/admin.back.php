@@ -1,9 +1,6 @@
 <?php
 
 class Admin{
-
-    private $adminEmail;
-    private $adminPwd;
     private $db;
 
     public function __construct(){
@@ -51,9 +48,6 @@ class Admin{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
-    public function getAdminDetails($adminID){
-
-    }
-
 }
+
+

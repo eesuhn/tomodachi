@@ -92,7 +92,7 @@
             <h5>$petName</h5>
                 <h4>Your Pet has Died!</h4>
                 <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px;'><span style='font-size: 20px;'>200</span>
-                <button class='btn btn-danger' onclick='revivePet({$petID})' style='margin-bottom: 5px; height: fit-content;'>Revive Pet</button>
+                <button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-bottom: 5px; height: fit-content;'>Revive Pet</button>
                 
             </div>
             <div class='card-block px-3 col-2'></div>

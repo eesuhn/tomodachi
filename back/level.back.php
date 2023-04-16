@@ -310,7 +310,7 @@
         
 
         public function updatePetLive($alive,$userID, $petID){
-            $sql = "UPDATE pet_inventory SET petAlive = $alive WHERE userID = :userID AND petID = :petID";
+            $sql = "UPDATE pet_inventory SET petAlive = :alive WHERE userID = :userID AND petID = :petID";
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':alive', $alive);
             $stmt->bindParam(':userID', $userID);

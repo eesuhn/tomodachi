@@ -7,6 +7,10 @@ function decreaseFood_one(userID, foodID) {
         data: {
             userID: userID,
             foodID: foodID
+        }, 
+
+        success: function() {
+            feedReward(foodID);
         }
     });
     refreshDashboard();
@@ -88,6 +92,7 @@ function deleteTask(taskID){
         }
     });
     refreshDashboard();
+    document.getElementById('toast-delete').play();
 }
 
 function updateTaskStatus(taskID, taskStatus) {
@@ -168,6 +173,50 @@ function deleteHabit(habitID) {
         data: {
             habitID: habitID,
         }
+    });
+    refreshDashboard();
+    document.getElementById('toast-delete').play();
+}
+
+function habitReward(difficultyID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=habitReward",
+        type: "GET",
+        data: {
+            difficultyID: difficultyID,
+        }
+    });
+    refreshDashboard();
+    showPositiveToast();
+}
+
+function habitPenalize(difficultyID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=habitPenalize",
+        type: "GET",
+        data: {
+            difficultyID: difficultyID,
+        }
+    });
+    refreshDashboard();
+    showNegativeToast();
+}
+
+function feedReward(foodID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=feedReward",
+        type: "GET",
+        data: {
+            foodID: foodID,
+        }
+    });
+    refreshDashboard();
+}
+
+function taskReward() {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=taskReward",
+        type: "GET",
     });
     refreshDashboard();
 }

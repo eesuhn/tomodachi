@@ -23,7 +23,7 @@
 		public function purchaseWallpaper($userID, $wallpaperID) {
 
 			// add record to wallpaper_inventory table
-			$sql = "INSERT INTO wallpaper_inventory (userID, wallpaperID, wallpaperStatus) VALUES (?, ?, 'Kept')";
+			$sql = "INSERT INTO wallpaper_inventory (userID, wallpaperID) VALUES (?, ?)";
 
 			$stmt = $this->db->connect()->prepare($sql);
 

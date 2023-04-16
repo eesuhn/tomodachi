@@ -62,16 +62,35 @@
             $this->getCurrency($userID);
         }
 
-        public function decreaseCurrency ($userID, $currencyNum) {
+        public function decreaseCurrency ($userID, $currency) {
+            // get currencyNum from database
+            $sql = "SELECT currencyNum FROM currency WHERE userID = :value1";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':value1', $userID);
+
+            $stmt->execute(array(
+                    ':value1' => $userID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $currencyNum = $result['currencyNum'];
+
+            // limit currencyNum to 0
+            if ($currencyNum - $currency < 0) {
+                $currency = $currencyNum;
+            }
+
             $sql = "UPDATE currency SET currencyNum = currencyNum - :value1 WHERE userID = :value2";
 
             $stmt = $this->db->connect()->prepare($sql);
 
-            $stmt->bindParam(':value1', $currencyNum);
+            $stmt->bindParam(':value1', $currency);
             $stmt->bindParam(':value2', $userID);
 
             $stmt->execute(array(
-                    ':value1' => $currencyNum,
+                    ':value1' => $currency,
                     ':value2' => $userID));
 
             // return currencyNum after decreasing

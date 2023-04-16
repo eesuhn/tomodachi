@@ -6,6 +6,7 @@
     include '../wallpaper.back.php';
     include '../task.back.php';
     include '../habit.back.php';
+    include '../level.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -51,6 +52,18 @@
             break;
         case 'deleteHabit':
             deleteHabit();
+            break;
+        case 'habitReward':
+            habitReward();
+            break;
+        case 'habitPenalize':
+            habitPenalize();
+            break;
+        case 'feedReward':
+            feedReward();
+            break;
+        case 'taskReward':
+            taskReward();
             break;
     }
 
@@ -163,5 +176,50 @@
 
         $habitData = new Habit();
         $habitData->deleteHabit($habitID);
+    }
+
+    function habitReward() {
+        $difficultyID = $_GET['difficultyID'];
+
+        $level = new Level();
+        $level->habitReward($difficultyID);
+        checkPetStats();
+    }
+
+    function habitPenalize() {
+        $difficultyID = $_GET['difficultyID'];
+
+        $level = new Level();
+        $level->habitPenalize($difficultyID);
+        checkPetStats();
+    }
+
+    function feedReward() {
+        $foodID = $_GET['foodID'];
+
+        $level = new Level();
+        $level->feedReward($foodID);
+        checkPetStats();
+    }
+
+    function taskReward() {
+        $level = new Level();
+        $level->taskReward();
+        checkPetStats();
+    }
+
+    function checkPetStats() {
+        $userID = $_SESSION['userID'];
+
+        $pet = new Pet();
+
+        $petData = $pet->getEquippedPet($userID);
+
+        $petID = $petData['petID'];
+
+        // check XP to level up
+        $level = new Level();
+        $level->checkXP($userID, $petID);
+        $level->checkHealth($userID, $petID);
     }
 ?>

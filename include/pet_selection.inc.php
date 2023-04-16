@@ -15,5 +15,5 @@
     $wallpaper->startingWallpaper($userID);
     
     $pet = new Pet();
-    $pet->ownPet($userID, $petID);
+    $pet->ownPetStart($userID, $petID);
 ?>

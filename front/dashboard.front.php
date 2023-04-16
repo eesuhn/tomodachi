@@ -84,7 +84,7 @@ include '../include/toast.inc.php';
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px" ;>Habits</h3>
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
-          <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 10px;" autocomplete="off">
+          <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 10px; font-size: 18px;" autocomplete="off">
 
           <div id="habitTracker">
             <!-- display habit tracker with AJAX -->

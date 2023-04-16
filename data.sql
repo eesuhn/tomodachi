@@ -1,17 +1,17 @@
 -- Dump data for table `food`
-INSERT INTO `food` (`foodName`, `foodDesc`, `foodPrice`, `foodXP`, `foodHealth`, `foodHapp`, `foodImg`) VALUES 
+INSERT INTO `food` (`foodName`, `foodDesc`, `foodPrice`, `foodHealth`, `foodHapp`, `foodImg`) VALUES 
 ('Donut', 
 'A sweet and circular pastry with a hole in the middle, perfect for satisfying your sweet tooth cravings.', 
-'20', '10', '10', '10', '../assets/foods/donut.png'),
+'20', '10', '10', '../assets/foods/donut.png'),
 ('Ramen', 
 'A Japanese noodle soup dish, perfect for satisfying your hunger cravings.', 
-'36', '20', '20', '20', '../assets/foods/ramen.png'),
+'36', '20', '20', '../assets/foods/ramen.png'),
 ('Squid', 
 'A sea creature that is perfect for satisfying your hunger cravings.', 
-'28', '15', '15', '15', '../assets/foods/squid.png'),
+'28', '15', '15', '../assets/foods/squid.png'),
 ('Strawberry', 
 'A sweet and juicy red fruit', 
-'20', '12', '12', '12', '../assets/foods/strawberry.png');
+'20', '12', '12', '../assets/foods/strawberry.png');
 
 -- Dump data for table `pet_rarity`
 INSERT INTO `pet_rarity` (`petRarity`, `petHealthIn`, `petHappIn`) VALUES 

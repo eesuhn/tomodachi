@@ -280,7 +280,7 @@
 
         if ($status == "Active") {
             echo "
-                <input type='text' class='form-control' id='taskTitle' name='taskTitle' placeholder='Add a new task' style='margin-top: 10px;' autocomplete='off'>";
+                <input type='text' class='form-control' id='taskTitle' name='taskTitle' placeholder='Add a new task' style='margin-top: 10px; font-size: 18px;' autocomplete='off'>";
         }
 
         if ($status == "Completed"){
@@ -561,15 +561,24 @@
             $btnPositive = ($row['habitPositive'] == 1) ? "true" : "false";
             $btnNegative = ($row['habitNegative'] == 1) ? "true" : "false";
 
-            $btnPositiveStyle = ($row['habitPositive'] == 1) ? "color: #009f65;'" : "color: #b7b7b7' id='disabled'";
-            $btnNegativeStyle = ($row['habitNegative'] == 1) ? "color: #f60b0b;'" : "color: #b7b7b7' id='disabled'";
+            $btnPositiveClick = ($row['habitPositive'] == 1) ? "color: #009f65;' onclick=''" : "color: #b7b7b7' id='disabled'";
+            $btnNegativeClick = ($row['habitNegative'] == 1) ? "color: #f60b0b;' onclick=''" : "color: #b7b7b7' id='disabled'";
 
             echo "
+            <style>
+                select#difficulty{$row['habitID']} {
+                    background-image: url('../assets/images/arrow.png');
+                    background-repeat: no-repeat;
+                    background-position: right 10px center;
+                    background-size: 10px;
+                }
+            </style>
+
             <div class='card' style='margin-top: 10px;'>
                 <div class='card-body'>
                     <div class='row align-items-center'>
                         <div class='col-2 d-flex justify-content-center align-items-center nature-opt'>
-                            <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='font-size: 30px; $btnPositiveStyle></i>
+                            <i class='fa-sharp fa-solid fa-circle-plus fa-xl' style='font-size: 30px; $btnPositiveClick></i>
                         </div>
 
                         <div class='col-8 flex-grow-1'>
@@ -602,7 +611,7 @@
                         </div>
 
                         <div class='col-2 nature-opt'>
-                            <i class='fa-solid fa-circle-minus fa-xl' style='font-size: 30px; $btnNegativeStyle'></i>
+                            <i class='fa-solid fa-circle-minus fa-xl' style='font-size: 30px; $btnNegativeClick'></i>
                         </div>
                     </div>
                 </div>

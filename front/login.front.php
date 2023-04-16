@@ -49,25 +49,25 @@
                         </span>
                       </div>
 
-                      <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 2px; font-size:x-large;">Sign into your account</h5>
+                      <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 2px; font-size: x-large;">Sign into your account</h5>
 
                       <div class="form-outline mb-4">
                         <input type="email" id="email" name="email" class="form-control form-control-lg" />
-                        <label class="form-label" for="email" style="font-size:large;">Email address</label>
+                        <label class="form-label" for="email" style="font-size: large;">Email address</label>
                       </div>
 
                       <div class="form-outline mb-4">
                         <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                        <label class="form-label" for="password" style="font-size:large;">Password</label>
+                        <label class="form-label" for="password" style="font-size: large;">Password</label>
                       </div>
 
                       <div class="pt-1 mb-4">
                         <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                       </div>
 
-                      <a class="text-muted" style="font-size:large;" href="#!">Forgot password?</a>
+                      <a class="text-muted" style="font-size: large;" href="#!">Forgot password?</a>
 
-                      <p style="color: #393f81; font-size:large;">Don't have an account?
+                      <p style="color: #393f81; font-size: large;">Don't have an account?
                         <a href="#registerModal" data-bs-target="#registerModal" data-bs-toggle="modal" style="color: #393f81;">Register here</a>
                       </p>
 

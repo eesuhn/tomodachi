@@ -35,7 +35,7 @@
     <script src="../assets/js/toast.js"></script>
 </head>
 
-<body style="background-color:#f1f1f1;">
+<body style="background-color: #f1f1f1;">
 
     <div class="sidebar">
         <div class="logo">
@@ -93,19 +93,19 @@
                             <div style="margin-top: 20px;"></div>
                             <div class="form-outline mb-4 mx-4 my-1">
                                 <input type="text" id="userID" name="id" class="form-control form-control-lg" value="<?= $user['userID'] ?>" readonly />
-                                <label class="form-label" for="email" style="font-size:large;">User ID</label>
+                                <label class="form-label" for="email" style="font-size: large;">User ID</label>
                             </div>
                             <div class="form-outline mb-4 mx-4 my-1">
                                 <input type="text" id="username" name="name" class="form-control form-control-lg" value="<?= $user['userName'] ?>" />
-                                <label class="form-label" for="text" style="font-size:large;">Password</label>
+                                <label class="form-label" for="text" style="font-size: large;">Password</label>
                             </div>
                             <div class="form-outline mb-4 mx-4 my-1">
                                 <input type="email" id="email" name="email" class="form-control form-control-lg" value="<?= $user['userEmail'] ?>" />
-                                <label class="form-label" for="email" style="font-size:large;">Email</label>
+                                <label class="form-label" for="email" style="font-size: large;">Email</label>
                             </div>
                             <div class="form-outline mb-4 mx-4 my-1">
                                 <input type="password" id="password" name="password" class="form-control form-control-lg" value="<?= $user['userPwd'] ?>" />
-                                <label class="form-label" for="password" style="font-size:large;">Password</label>
+                                <label class="form-label" for="password" style="font-size: large;">Password</label>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>

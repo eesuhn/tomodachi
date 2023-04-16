@@ -46,7 +46,7 @@
     <script src="../assets/js/toast.js"></script>
 </head>
 
-<body style="background-color:#f1f1f1;">
+<body style="background-color: #f1f1f1;">
 
     <div class="sidebar">
         <div class="logo">
@@ -388,7 +388,7 @@
                             <div class='card h-100'>
                                 <div class='dropdown'>
                                 <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
-                                    <i class='fa-solid fa-ellipsis-h fa-xl dropdownopt' style='color:gainsboro;'></i>
+                                    <i class='fa-solid fa-ellipsis-h fa-xl dropdownopt' style='color: gainsboro;'></i>
                                 </a>
                                 <ul class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
                                     <li><a class='dropdown-item' href='edit' class='text-muted mr-3' data-bs-target='#editFood{$row['foodID']}' data-bs-toggle='modal'>Edit</a></li>
@@ -473,14 +473,14 @@
                             <div class='card h-100'>
                             <div class='dropdown'>
                             <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
-                                <i class='fa-solid fa-ellipsis-h fa-xl dropdownopt' style='color:gainsboro;'></i>
+                                <i class='fa-solid fa-ellipsis-h fa-xl dropdownopt' style='color: gainsboro;'></i>
                             </a>
                             <ul class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
                                 <li><a class='dropdown-item' href='edit' class='text-muted mr-3' data-bs-target='#editFood{$row['foodID']}' data-bs-toggle='modal'>Edit</a></li>
                                 <li><a class='dropdown-item' href='delete' onclick='deleteFood({$row['foodID']})'>Delete</a></li>
                             </ul>
                             </div>
-                            <center><img src='{$wallpaperShopData["wallpaperImg"]}' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                            <center><img src='{$wallpaperShopData["wallpaperImg"]}' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top: 15px;'></center>
                             <div class='card-body d-flex flex-column'>
                                 <h5 class='card-title'>{$wallpaperShopData["wallpaperName"]}</h5>
                                 <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>";

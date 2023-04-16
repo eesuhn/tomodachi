@@ -31,7 +31,7 @@ include '../include/toast.inc.php';
 
 </head>
 
-<body style="background-color:#f1f1f1;">
+<body style="background-color: #f1f1f1;">
 
   <div class="sidebar">
     <div class="logo">
@@ -117,7 +117,7 @@ include '../include/toast.inc.php';
   <div class="modal fade" id="inventory" aria-hidden="true" aria-labelledby="inventoryTitle" tabindex="-1">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
-        <div class="modal-body" style="color:black" id="inventoryData">
+        <div class="modal-body" style="color: black" id="inventoryData">
           <!-- display inventory with AJAX -->
         </div>
         <div class="modal-footer">
@@ -130,7 +130,7 @@ include '../include/toast.inc.php';
   <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body" style="color:black">
+        <div class="modal-body" style="color: black">
           <h4>Are you sure you want to log out?</h4>
         </div>
         <div class="modal-footer">

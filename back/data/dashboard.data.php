@@ -88,17 +88,17 @@
                 <div class='card-block px-3 col-3'>
                     <h5>$petName</h5>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
-                    <div class='progress' style='height:3px;'>
+                    <div class='progress' style='height: 3px;'>
                         <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
                     </div>
 
                     <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
-                    <div class='progress' style='height:3px;'>
+                    <div class='progress' style='height: 3px;'>
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
                     <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
-                    <div class='progress' style='height:3px;'>
+                    <div class='progress' style='height: 3px;'>
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>

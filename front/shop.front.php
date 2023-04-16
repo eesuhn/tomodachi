@@ -154,7 +154,7 @@
       </div>
     </div>
 
-    <div class="modal fade" id="petShop" aria-hidden="true" aria-labelledby="petShopTitle" tabindex="-1" style="color:black">
+    <div class="modal fade" id="petShop" aria-hidden="true" aria-labelledby="petShopTitle" tabindex="-1" style="color: black">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -177,7 +177,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
-          <div class="modal-body" style="color:black" id="petScoutData">
+          <div class="modal-body" style="color: black" id="petScoutData">
             <!-- display new pet with AJAX -->
           </div>
 
@@ -192,7 +192,7 @@
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
-          <div class="modal-body" style="color:black" id="wallpaperShopData">
+          <div class="modal-body" style="color: black" id="wallpaperShopData">
             <!-- display wallpaper shop with AJAX -->
           </div>
 
@@ -297,7 +297,7 @@
   <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body" style="color:black">
+        <div class="modal-body" style="color: black">
           <h4>Are you sure you want to log out?</h4>
         </div>
         <div class="modal-footer">

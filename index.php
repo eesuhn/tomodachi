@@ -35,11 +35,11 @@
           and are equipped with functionalities that aid in daily productivity, with the primary focus on being a habit tracker.</p>
       </div>
 
-      <div class="row py-4 px-4" style="width:75%; margin:auto;">
+      <div class="row py-4 px-4" style="width: 75%; margin: auto;">
         <div class="col-12 col-md-4 py-4">
           <div class="card">
             <img src="assets/images/collect.png" class="card-img-top" width="300">
-            <div class="card-body" style="background-color: black; color:white">
+            <div class="card-body" style="background-color: black; color: white">
               <p class="card-text" style="font-size: 24px;">Collect a variety of your own companions as you progress through the journey.</p>
             </div>
           </div>
@@ -48,7 +48,7 @@
         <div class="col-12 col-md-4 py-4">
           <div class="card">
             <img src="assets/images/refine.png" class="card-img-top">
-            <div class="card-body" style="background-color: black; color:white">
+            <div class="card-body" style="background-color: black; color: white">
               <p class="card-text" style="font-size: 24px;">Take on this initiative to refine yourself and become more productive.</p>
             </div>
           </div>
@@ -57,7 +57,7 @@
         <div class="col-12 col-md-4 py-4">
           <div class="card">
             <img src="assets/images/care.png" class="card-img-top" width="300">
-            <div class="card-body" style="background-color: black; color:white">
+            <div class="card-body" style="background-color: black; color: white">
               <p class="card-text" style="font-size: 24px;">Earn rewards and care for your companions as you achieve your goals.</p>
             </div>
           </div>

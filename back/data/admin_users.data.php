@@ -60,11 +60,13 @@
 
         foreach ($stmt as $row) {
 
+            $userPwd = $row['userPwd'];
+
             echo "
                     <tr>
-                        <td>User ID</td>
-                        <td>Name</td>
-                        <td>Email</td>
+                        <td>{$row['userID']}</td>
+                        <td>{$row['userName']}</td>
+                        <td>{$row['userEmail']}</td>
                         <td>
                             <button type='button' class='btn btn-link edit-btn' data-bs-toggle='modal' data-bs-target='#editUser{$row['userID']}'>Edit</button>
                         </td>
@@ -79,28 +81,28 @@
 
                                     <form>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserName'>Username</label>
+                                            <label for='editUserName{$row['userID']}'>Username</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserName' value='' required>
+                                            <input type='text' class='form-control' id='editUserName{$row['userID']}' value='{$row['userName']}' required>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserEmail' style='margin-top: 10px;'>Email</label>
+                                            <label for='editUserEmail{$row['userID']}' style='margin-top: 10px;'>Email</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserEmail' value='' required>
+                                            <input type='text' class='form-control' id='editUserEmail{$row['userID']}' value='{$row['userEmail']}' required>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserPwd' style='margin-top: 10px;'>Password</label>
+                                            <label for='editUserPwd{$row['userID']}' style='margin-top: 10px;'>Password</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserPwd' value='' required>
+                                            <input type='text' class='form-control' id='editUserPwd{$row['userID']}' value='$userPwd' required>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserCurrency' style='margin-top: 10px;'>Currency Owned</label>
+                                            <label for='editUserCurrency{$row['userID']}' style='margin-top: 10px;'>Currency Owned</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserCurrency' value='' required>
+                                            <input type='text' class='form-control' id='editUserCurrency{$row['userID']}' value='{$row['currencyNum']}' required>
                                         </div>
                                         <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick=''>Remove this user?</button></center>
                                     </form>

@@ -40,9 +40,12 @@
             }
         }
 
-        // get all the users
+        /*
+            select all from user table
+            select currencyNum from currency table based on userID
+        */
         public function getAllUsers() {
-            $sql = "SELECT * FROM user";
+            $sql ="SELECT u.*, c.currencyNum FROM user u, currency c WHERE u.userID = c.userID";
 
             $stmt = $this->db->connect()->prepare($sql);
 

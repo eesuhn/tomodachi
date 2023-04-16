@@ -137,12 +137,12 @@
 
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
-
+            if ($this->checkLevel($userID,$petID)>0){
             $stmt->execute(array(
                 ':userID' => $userID,
                 ':petID' => $petID));
-                
-            echo "<script>$('#levelModal').modal('show');</script>";            
+            echo "<script>$('#levelModal').modal('show');</script>";           
+            } 
         }
 
         /*
@@ -293,7 +293,9 @@
                 $stmt->bindParam(':userID', $userID);
                 $stmt->bindParam(':petID', $petID);
                 $stmt->execute();
-                echo "<script>$('#deadModal').modal('show');</script>";
+                echo "<script>$('#deadModal').modal('show');
+                document.getElementById('toast-dead').play();
+                </script>";
             } else if ($petLevel > 0) {
                 $sql = "UPDATE pet_inventory SET dead_displayed = 0 WHERE userID = :userID AND petID = :petID";
                 $stmt = $this->db->connect()->prepare($sql);
@@ -308,7 +310,7 @@
         
 
         public function updatePetLive($alive,$userID, $petID){
-            $sql = "UPDATE pet_inventory SET petAlive = $alive, petHealthCur = 0 AND petXP = 0 WHERE userID = :userID AND petID = :petID";
+            $sql = "UPDATE pet_inventory SET petAlive = $alive WHERE userID = :userID AND petID = :petID";
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':alive', $alive);
             $stmt->bindParam(':userID', $userID);

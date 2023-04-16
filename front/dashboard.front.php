@@ -145,7 +145,8 @@ include '../include/toast.inc.php';
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body" style="color:black" id="inventoryData">
-          Uh oh, your pet has died due to your bad habits! Be careful next time.
+          <h3 style="margin: 20px;">Uh oh, your pet has died due to your bad habits! Be careful next time.</h3>
+          <h5 style="margin: 20px;" class="text-muted">Complete tasks and accomplish habits to revive it!</h5>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>

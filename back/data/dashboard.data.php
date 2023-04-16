@@ -56,7 +56,7 @@
         $pet = new Pet();
 
         $petData = $pet->getEquippedPet($userID);
-
+        $petID = $petData['petID'];
         $petName = $petData['petName'];
         $petImg = $petData['petImg'];
         $petHealthTol = $petData['petHealthTol'];
@@ -85,39 +85,56 @@
                 <div class='card-header border-0'>";
 
         if (checkPetLevel()<=0){
-            echo "<img src='../assets/images/dead.png' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>";
-        }else{
-            echo "<img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>";
-        }                
-        
-        echo"
+            echo "
+            <img src='../assets/images/dead.png' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
             </div>
-                <div class='card-block px-3 col-3'>
-                    <h5>$petName</h5>
-                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
-                    <div class='progress' style='height:3px;'>
-                        <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
-                    </div>
-
-                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
-                    <div class='progress' style='height:3px;'>
-                        <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
-                    </div>
-
-                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
-                    <div class='progress' style='height:3px;'>
-                        <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
-                    </div>
-                </div>
-
-                <div class='card-block px-3 col-2'></div>
+            <div class='card-block px-3 col-3'>
+            <h5>$petName</h5>
+                <h4>Your Pet has Died!</h4>
+                <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px;'><span style='font-size: 20px;'>200</span>
+                <button class='btn btn-danger' onclick='revivePet({$petID})' style='margin-bottom: 5px; height: fit-content;'>Revive Pet</button>
                 
-                <div class='card-block px-3 col-2'>
-                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
-                    <h4>$today</h4>
+            </div>
+            <div class='card-block px-3 col-2'></div>
+            
+            <div class='card-block px-3 col-2'>
+                <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
+                <h4>$today</h4>
+            </div>
+        </div>
+        </div>
+            ";
+        }else{
+            echo "
+            <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
+            </div>
+            <div class='card-block px-3 col-3'>
+                <h5>$petName</h5>
+                <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
+                <div class='progress' style='height:3px;'>
+                    <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
+                </div>
+
+                <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
+                <div class='progress' style='height:3px;'>
+                    <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
+                </div>
+
+                <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
+                <div class='progress' style='height:3px;'>
+                    <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                 </div>
             </div>
+
+            <div class='card-block px-3 col-2'></div>
+            
+            <div class='card-block px-3 col-2'>
+                <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
+                <h4>$today</h4>
+            </div>
+        </div>
         </div>";
+        }            
     }
 
     function refreshFood () {

@@ -109,3 +109,7 @@
 <audio id="toast-negative">
     <source src="../assets/audio/negative.mp3" type="audio/mpeg">
 </audio>
+
+<audio id="toast-dead">
+    <source src="../assets/audio/error.mp3" type="audio/mpeg">
+</audio>

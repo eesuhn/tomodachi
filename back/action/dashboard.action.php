@@ -221,5 +221,6 @@
         $level = new Level();
         $level->checkXP($userID, $petID);
         $level->checkHealth($userID, $petID);
+        $level->checkLevel($userID,$petID);
     }
 ?>

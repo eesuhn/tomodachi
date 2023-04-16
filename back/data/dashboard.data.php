@@ -82,9 +82,16 @@
         echo 
         "<div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
-                <div class='card-header border-0'>
-                    <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
-                </div>
+                <div class='card-header border-0'>";
+
+        if (checkPetLevel()<=0){
+            echo "<img src='../assets/images/dead.png' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>";
+        }else{
+            echo "<img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>";
+        }                
+        
+        echo"
+            </div>
                 <div class='card-block px-3 col-3'>
                     <h5>$petName</h5>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
@@ -213,7 +220,11 @@
         $petData = $pet->getEquippedPet($userID);
         $petImg = $petData['petImg'];
 
-        echo ' <img src="' . $petImg . '" style="width: auto; height: 200px;">';
+        if (checkPetLevel()<=0){
+            echo ' <img src="../assets/images/dead.png" style="width: auto; height: 200px;">';
+        }else{
+            echo ' <img src="' . $petImg . '" style="width: auto; height: 200px;">';
+        }
     }
     
     function refreshWallpaper() {
@@ -761,5 +772,20 @@
                 </div>
             </div>";
         }
+    }
+
+    function checkPetLevel() {
+        $userID = $_SESSION['userID'];
+
+        $pet = new Pet();
+
+        $petData = $pet->getEquippedPet($userID);
+
+        $petID = $petData['petID'];
+
+        // check pet level
+        $level = new Level();
+        $petLevel = $level->checkLevel($userID, $petID);
+        return $petLevel;
     }
 ?>

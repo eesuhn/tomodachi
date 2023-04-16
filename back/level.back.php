@@ -272,5 +272,42 @@
                 return false;
             }
         }
+
+        public function checkLevel($userID, $petID) {
+            $sql = "SELECT petLevel FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $petLevel = $result['petLevel'];
+
+            if ($petLevel <= 0) {
+                $this->updatePetLive(0, $userID, $petID);
+            }else{
+                $this->updatePetLive(1, $userID, $petID);
+            }
+
+            return $petLevel;
+        }
+
+        public function updatePetLive($alive, $userID, $petID){
+            $sql = "UPDATE pet_inventory SET petAlive = :alive WHERE userID = :userID AND petID = :petID";
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':alive', $alive);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+            $stmt->execute(array(
+                ':alive' => $alive,
+                ':userID' => $userID,
+                ':petID' => $petID));
+        }
     }
 ?>

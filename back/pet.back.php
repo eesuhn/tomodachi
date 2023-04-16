@@ -47,10 +47,10 @@
             $happIn = $petRarityStats['petHappIn'];
 
             $sql = "INSERT INTO pet_inventory (userID, petID, petLevel, petXP, petHealthTol, petHappTol, petHealthCur, petHappCur, petStatus) 
-                    VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Equipped')";
+                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, 'Equipped')";
 
             $stmt = $this->db->connect()->prepare($sql);
-            $stmt->execute([$userID, $petID, $healthIn, $happIn, $healthIn, $happIn]);
+            $stmt->execute([$userID, $petID, $healthIn, $happIn, $healthIn]);
 
             echo "
             <script>window.location.href='../front/dashboard.front.php';</script>";
@@ -141,13 +141,12 @@
             // insert the new pet into the pet_inventory table
             $sql = "INSERT INTO `pet_inventory` 
                     (`userID`, `petID`, `petLevel`, `petXP`, `petHealthTol`, `petHappTol`, `petHealthCur`, `petHappCur`, `petStatus`)
-                    VALUES (?, ?, 1, 0, ?, ?, ?, ?, 'Kept')";
+                    VALUES (?, ?, 1, 0, ?, ?, ?, 0, 'Kept')";
 
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->execute([
                     $userID, $pet['petID'], $pet_rarity['petHealthIn'], 
-                    $pet_rarity['petHappIn'], $pet_rarity['petHealthIn'], 
-                    $pet_rarity['petHappIn']]);
+                    $pet_rarity['petHappIn'], $pet_rarity['petHealthIn']]);
             
             $_SESSION['petScoutID'] = $pet['petID'];
 
@@ -263,6 +262,17 @@
 
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':xp', $xp);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
+
+        public function decreaseHealth($userID, $petID, $health) {
+            $sql = "UPDATE pet_inventory SET petHealthCur = petHealthCur - :health WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':health', $health);
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
 

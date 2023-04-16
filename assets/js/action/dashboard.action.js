@@ -182,3 +182,14 @@ function habitReward(difficultyID) {
     });
     refreshDashboard();
 }
+
+function habitPenalize(difficultyID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=habitPenalize",
+        type: "GET",
+        data: {
+            difficultyID: difficultyID,
+        }
+    });
+    refreshDashboard();
+}

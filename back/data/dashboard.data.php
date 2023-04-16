@@ -73,6 +73,9 @@
         date_default_timezone_set('Asia/Kuala_Lumpur');
         $today = date("l, j F Y");
 
+        $healthBar = $petHealthCur / $petHealthTol * 100;
+        $happBar = $petHappCur / $petHappTol * 100;
+
         echo 
         "<div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
@@ -88,12 +91,12 @@
 
                     <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
                     <div class='progress' style='height:3px;'>
-                        <div class='progress-bar bg-danger' role='progressbar' style='width: $petHealthCur%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
+                        <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
                     <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
                     <div class='progress' style='height:3px;'>
-                        <div class='progress-bar bg-warning' role='progressbar' style='width: $petHappCur%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
+                        <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>
 
@@ -563,7 +566,7 @@
             $btnNegative = ($row['habitNegative'] == 1) ? "true" : "false";
 
             $btnPositiveClick = ($row['habitPositive'] == 1) ? "color: #009f65;' onclick='habitReward($difficultyID)'" : "color: #b7b7b7' id='disabled'";
-            $btnNegativeClick = ($row['habitNegative'] == 1) ? "color: #f60b0b;' onclick=''" : "color: #b7b7b7' id='disabled'";
+            $btnNegativeClick = ($row['habitNegative'] == 1) ? "color: #f60b0b;' onclick='habitPenalize($difficultyID)''" : "color: #b7b7b7' id='disabled'";
 
             echo "
             <style>

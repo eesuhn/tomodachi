@@ -41,5 +41,35 @@
             // increase petXP
             $this->pet->increaseXP($this->userID, $petID, $XPReward);
         }
+
+        public function habitPenalize($difficultyID) {
+            /*
+                get healthPenalize, currencyPenalize from difficulty table
+            */
+            $sql = "SELECT healthPenalize, currencyPenalize FROM difficulty WHERE difficultyID = :difficultyID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':difficultyID', $difficultyID);
+
+            $stmt->execute(array(
+                ':difficultyID' => $difficultyID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // store healthPenalize, currencyPenalize in variables
+            $healthPenalize = $result['healthPenalize'];
+            $currencyPenalize = $result['currencyPenalize'];
+
+            // get equipped petID
+            $petData = $this->pet->getEquippedPet($this->userID);
+            $petID = $petData['petID'];
+
+            // decrease health
+            $this->pet->decreaseHealth($this->userID, $petID, $healthPenalize);
+
+            // decrease currency
+            $this->currency->decreaseCurrency($this->userID, $currencyPenalize);
+        }
     }
 ?>

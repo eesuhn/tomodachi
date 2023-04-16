@@ -95,7 +95,7 @@
             $petID = $petData['petID'];
 
             // increase health
-            $this->checkHealth($this->userID, $petID, $foodHealth);
+            $this->pet->increaseHealth($this->userID, $petID, $foodHealth);
 
             // increase happiness
             $this->pet->increaseHapp($this->userID, $petID, $foodHapp);

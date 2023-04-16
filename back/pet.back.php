@@ -295,7 +295,7 @@
             $pet = $stmt->fetch();
 
             if ($pet['petHealthCur'] + $health > $pet['petHealthTol']) {
-                $health = $pet['petHealthCur'] + $health - $pet['petHealthTol'];
+                $health = $pet['petHealthTol'] - $pet['petHealthCur'];
             }
 
             $sql = "UPDATE pet_inventory SET petHealthCur = petHealthCur + :health WHERE userID = :userID AND petID = :petID";
@@ -308,7 +308,25 @@
             $stmt->execute();
         }
 
+        /* 
+            check if adding $happy to petHappCur will exceed petHappTol
+            if yes, subtract the difference from petHappCur
+            if no, add $happy to petHappCur
+        */
         public function increaseHapp($userID, $petID, $happy) {
+            $sql = "SELECT petHappCur, petHappTol FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            $pet = $stmt->fetch();
+
+            if ($pet['petHappCur'] + $happy > $pet['petHappTol']) {
+                $happy = $pet['petHappTol'] - $pet['petHappCur'];
+            }
+
             $sql = "UPDATE pet_inventory SET petHappCur = petHappCur + :happy WHERE userID = :userID AND petID = :petID";
 
             $stmt = $this->db->connect()->prepare($sql);

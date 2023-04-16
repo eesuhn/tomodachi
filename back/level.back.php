@@ -115,5 +115,46 @@
             // increase petXP
             $this->pet->increaseXP($this->userID, $petID, $XPReward);
         }
+
+        /* 
+            increase petLevel by 1 when petXP >= 100
+            decrease petXP by 100
+        */
+        public function increaseLevel($userID, $petID) {
+            $sql = "UPDATE pet_inventory SET petLevel = petLevel + 1, petXP = petXP - 100 WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+        }
+
+        /*
+            call increaseLevel() when petXP >= 100
+        */
+        public function checkXP($userID, $petID) {
+            $sql = "SELECT petXP FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute(array(
+                ':userID' => $userID,
+                ':petID' => $petID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $petXP = $result['petXP'];
+
+            if ($petXP >= 100) {
+                $this->increaseLevel($userID, $petID);
+            }
+        }
     }
 ?>

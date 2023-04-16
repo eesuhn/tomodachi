@@ -183,6 +183,7 @@
 
         $level = new Level();
         $level->habitReward($difficultyID);
+        checkPetStats();
     }
 
     function habitPenalize() {
@@ -190,6 +191,7 @@
 
         $level = new Level();
         $level->habitPenalize($difficultyID);
+        checkPetStats();
     }
 
     function feedReward() {
@@ -197,10 +199,26 @@
 
         $level = new Level();
         $level->feedReward($foodID);
+        checkPetStats();
     }
 
     function taskReward() {
         $level = new Level();
         $level->taskReward();
+        checkPetStats();
+    }
+
+    function checkPetStats() {
+        $userID = $_SESSION['userID'];
+
+        $pet = new Pet();
+
+        $petData = $pet->getEquippedPet($userID);
+
+        $petID = $petData['petID'];
+
+        // check XP to level up
+        $level = new Level();
+        $level->checkXP($userID, $petID);
     }
 ?>

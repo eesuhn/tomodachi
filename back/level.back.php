@@ -71,5 +71,34 @@
             // decrease currency
             $this->currency->decreaseCurrency($this->userID, $currencyPenalize);
         }
+
+        public function feedReward($foodID) {
+            /*
+                get foodHealth, foodHapp from food table
+            */
+            $sql = "SELECT foodHealth, foodHapp FROM food WHERE foodID = :foodID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':foodID', $foodID);
+
+            $stmt->execute(array(
+                ':foodID' => $foodID));
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // store foodHealth, foodHapp in variables
+            $foodHealth = $result['foodHealth'];
+            $foodHapp = $result['foodHapp'];
+
+            $petData = $this->pet->getEquippedPet($this->userID);
+            $petID = $petData['petID'];
+
+            // increase health
+            $this->pet->increaseHealth($this->userID, $petID, $foodHealth);
+
+            // increase happiness
+            $this->pet->increaseHapp($this->userID, $petID, $foodHapp);
+        }
     }
 ?>

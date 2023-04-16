@@ -7,6 +7,10 @@ function decreaseFood_one(userID, foodID) {
         data: {
             userID: userID,
             foodID: foodID
+        }, 
+
+        success: function() {
+            feedReward(foodID);
         }
     });
     refreshDashboard();
@@ -189,6 +193,17 @@ function habitPenalize(difficultyID) {
         type: "GET",
         data: {
             difficultyID: difficultyID,
+        }
+    });
+    refreshDashboard();
+}
+
+function feedReward(foodID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=feedReward",
+        type: "GET",
+        data: {
+            foodID: foodID,
         }
     });
     refreshDashboard();

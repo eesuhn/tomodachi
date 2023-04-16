@@ -278,5 +278,27 @@
 
             $stmt->execute();
         }
+
+        public function increaseHealth($userID, $petID, $health) {
+            $sql = "UPDATE pet_inventory SET petHealthCur = petHealthCur + :health WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':health', $health);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
+
+        public function increaseHapp($userID, $petID, $happy) {
+            $sql = "UPDATE pet_inventory SET petHappCur = petHappCur + :happy WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':happy', $happy);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+        }
     }
 ?>

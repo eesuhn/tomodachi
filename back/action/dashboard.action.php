@@ -59,6 +59,9 @@
         case 'habitPenalize':
             habitPenalize();
             break;
+        case 'feedReward':
+            feedReward();
+            break;
     }
 
     function decreaseFood_one(){
@@ -175,14 +178,21 @@
     function habitReward() {
         $difficultyID = $_GET['difficultyID'];
 
-        $habitData = new Level();
-        $habitData->habitReward($difficultyID);
+        $level = new Level();
+        $level->habitReward($difficultyID);
     }
 
     function habitPenalize() {
         $difficultyID = $_GET['difficultyID'];
 
-        $habitData = new Level();
-        $habitData->habitPenalize($difficultyID);
+        $level = new Level();
+        $level->habitPenalize($difficultyID);
+    }
+
+    function feedReward() {
+        $foodID = $_GET['foodID'];
+
+        $level = new Level();
+        $level->feedReward($foodID);
     }
 ?>

@@ -127,7 +127,7 @@ include '../include/toast.inc.php';
             <li><a href="scout.front.php">Pet Scout</a></li>
         </ul>
 
-        <section style="background-color: #f2f2f2f2; padding: 10px;">
+        <section style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; color: white; opacity: 92%;">
             <h2>Food Shop</h2>
 
             <div class="row" style="margin: 10px">

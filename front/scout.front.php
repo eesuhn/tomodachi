@@ -59,7 +59,7 @@ include '../include/toast.inc.php';
 
         h2 h3{
             margin-left: 30px;
-            color: #1d304a;
+            color: white;
         }
 
         p.food-stats img:not(:first-child) {
@@ -97,7 +97,7 @@ include '../include/toast.inc.php';
             font-weight: bold;
         }
 
-        .link-secondary:hover{
+        .link-light:hover{
             cursor: pointer;
         }
     </style>
@@ -124,23 +124,25 @@ include '../include/toast.inc.php';
             <span class="coin-count">100000</span>
         </div>
 
-        <div style="background-image: url('../assets/images/shopbg2.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 200px;"></div>
+        <div style="background-image: url('../assets/images/shopbg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 200px;"></div>
 
         <ul>
             <li><a href="shop.front.php">Shop</a></li>
             <li><a class="active" href="scout.front.php">Pet Scout</a></li>
         </ul>
 
-        <section style="background-color: #f2f2f2f2; padding: 10px;">
+        <section style="background-image: url('../assets/images/scoutbg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; color: white; opacity: 92%;">
+            <div style="padding:10px">
             <h2>Pet Scout</h2>
-            <h3 class="text-muted">Partner up with new pets from different rarities using your earned coins!
+            <h3 style="color: white">Partner up with new pets from different rarities using your earned coins!
             </h3>
+            </div>
 
             <center>
-            <img src="../assets/images/petscout.png" style="margin: auto; width: 500px;">
+            <img src="../assets/images/petscout.png" style="margin: auto; width: 450px;">
             <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
             <button type='button' class='btn btn-primary' style="padding: 10px; width: 25%;">Scout</button><br>
-            <a data-bs-target="#offeringRates" data-bs-toggle="modal" class="link-secondary" style="text-decoration: none;">Check Offering Rates</a>
+            <a data-bs-target="#offeringRates" data-bs-toggle="modal" class="link-light" style="text-decoration: none; font-size: 20px;">Check Offering Rates</a>
             </center>
 
         </section>

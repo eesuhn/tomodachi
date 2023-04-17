@@ -96,7 +96,7 @@
                 </div>
                 <div class='card-block px-3 col-2'></div>
             
-                <div class='card-block px-3 col-2'>
+                <div class='card-block px-3 col-4'>
                     <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
                     <h4>$today</h4>
                 </div>
@@ -107,7 +107,7 @@
             echo "
                     <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
                 </div>
-                <div class='card-block px-3 col-3'>
+                <div class='card-block px-3 col-4'>
                     <h5>$petName</h5>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
                     <div class='progress' style='height:3px;'>

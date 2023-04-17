@@ -16,90 +16,13 @@ include '../include/toast.inc.php';
     <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/shop.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="../assets/js/data/shop.data.js"></script>
     <script src="../assets/js/action/shop.action.js"></script>
     <script src="../assets/js/toast.js"></script>
-
-    <style>
-        ul {
-            font-size: x-large;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            /* align items horizontally */
-        }
-
-        li {
-            text-align: center;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a.active {
-            color: chartreuse;
-        }
-
-        li a:hover {
-            background-color: #111;
-        }
-
-        h2 h3{
-            margin-left: 30px;
-            color: white;
-        }
-
-        p.food-stats img:not(:first-child) {
-            margin-left: 20px;
-        }
-
-        p.food-stats img {
-            margin-right: 6px;
-        }
-
-        .coin-indicator {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            padding: 5px 10px;
-            border-radius: 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-            z-index: 1;
-        }
-
-        .coin-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-image: url("../assets/images/coin.png");
-            background-size: cover;
-            margin-right: 5px;
-        }
-
-        .coin-count {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .link-light:hover{
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <div class="sidebar">
@@ -141,7 +64,7 @@ include '../include/toast.inc.php';
             <img src="../assets/images/petscout.png" style="margin: auto; width: 450px;">
             <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
             <button type='button' class='btn btn-primary' style="padding: 10px; width: 25%;">Scout</button><br>
-            <a data-bs-target="#offeringRates" data-bs-toggle="modal" class="link-light" style="text-decoration: none; font-size: 20px;">Check Offering Rates</a>
+            <a data-bs-target="#offeringRates" data-bs-toggle="modal" class="link-light">Check Offering Rates</a>
             </center>
 
         </section>

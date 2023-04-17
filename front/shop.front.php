@@ -16,6 +16,7 @@ include '../include/toast.inc.php';
     <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/shop.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -23,80 +24,6 @@ include '../include/toast.inc.php';
     <script src="../assets/js/data/shop.data.js"></script>
     <script src="../assets/js/action/shop.action.js"></script>
     <script src="../assets/js/toast.js"></script>
-
-    <style>
-        ul {
-            font-size: x-large;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            /* align items horizontally */
-        }
-
-        li {
-            text-align: center;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a.active {
-            color: chartreuse;
-        }
-
-        li a:hover {
-            background-color: #111;
-        }
-
-        h2 {
-            margin-left: 30px;
-            color: #1d304a;
-        }
-
-        p.food-stats img:not(:first-child) {
-            margin-left: 20px;
-        }
-
-        p.food-stats img {
-            margin-right: 6px;
-        }
-
-        .coin-indicator {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            padding: 10px 20x;
-            border-radius: 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-            z-index: 1;
-        }
-
-        .coin-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-image: url("../assets/images/coin.png");
-            background-size: cover;
-            margin-right: 5px;
-        }
-
-        .coin-count {
-            font-size: 50px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <div class="sidebar">
@@ -128,7 +55,9 @@ include '../include/toast.inc.php';
         </ul>
 
         <section style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; color: white; opacity: 92%;">
-            <h2>Food Shop</h2>
+            <center>
+                <h2 style="color: black; padding: 10px">FOOD SHOP</h2>
+            </center>
 
             <div class="row" style="margin: 10px">
 
@@ -219,7 +148,9 @@ include '../include/toast.inc.php';
 
             </div>
 
-            <h2>Wallpaper Shop</h2>
+            <center>
+            <h2 style="color: black; padding: 10px">WALLPAPER SHOP</h2>
+            </center>
 
             <div class="row" style="margin: 10px">
 
@@ -280,103 +211,100 @@ include '../include/toast.inc.php';
                 </div>
 
 
-    <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
+                <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
 
-          <div class="modal-body" style="color: black">
-            <div class="row">
-              <div class="col-12 d-flex justify-content-center" style="margin-bottom: -10px;">
-                <img src="../assets/images/legendary.png" width="150">
-              </div>
+                            <div class="modal-body" style="color: black">
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center" style="margin-bottom: -10px;">
+                                        <img src="../assets/images/legendary.png" width="150">
+                                    </div>
 
-              <?php foreach ($petData_legendary as $pet_legendary) { ?>
-                <div class="col-12 d-flex justify-content-center">
-                  <img src="<?= $pet_legendary['petImg'] ?>" width="150">
+                                    <?php foreach ($petData_legendary as $pet_legendary) { ?>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <img src="<?= $pet_legendary['petImg'] ?>" width="150">
+                                        </div>
+
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <h2><?= $pet_legendary['petName'] ?></h2>
+                                        </div>
+
+                                        <div class="col-3"></div>
+                                        <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+                                            <h6><?= $pet_legendary['petDesc'] ?></h6>
+                                        </div>
+
+                                        <div class="col-3"></div>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
+                                        <img src="../assets/images/rare.png" width="150">
+                                    </div>
+
+                                    <?php foreach ($petData_rare as $pet_rare) { ?>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <img src="<?= $pet_rare['petImg'] ?>" width="150">
+                                        </div>
+
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <h2><?= $pet_rare['petName'] ?></h2>
+                                        </div>
+
+                                        <div class="col-3"></div>
+                                        <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+                                            <h6><?= $pet_rare['petDesc'] ?></h6>
+                                        </div>
+
+                                        <div class="col-3"></div>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
+                                        <img src="../assets/images/common.png" width="150">
+                                    </div>
+
+                                    <?php foreach ($petData_common as $pet_common) { ?>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <img src="<?= $pet_common['petImg'] ?>" width="150">
+                                        </div>
+
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <h2><?= $pet_common['petName'] ?></h2>
+                                        </div>
+
+                                        <div class="col-3"></div>
+                                        <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+                                            <h6><?= $pet_common['petDesc'] ?></h6>
+                                        </div>
+
+                                        <div class="col-3"></div>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-2"></div>
+                                    <div class="col-8 d-flex justify-content-center">
+                                        <p class="text-muted" style="text-align: center;">Looking for that special pet to add to your collection? Take a chance and try our gacha system, where legendaries appear with a 5% chance, rares with a 35% chance, and commons with a 60% chance. With a variety of pets to collect, each with their own unique rarity and value, you'll never know what you might get! So why not try your luck today and see if you can obtain the pet of your dreams?</p>
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-12 d-flex justify-content-center">
-                  <h2><?= $pet_legendary['petName'] ?></h2>
-                </div>
-
-                <div class="col-3"></div>
-                <div class="col-6 d-flex justify-content-center" style="text-align: center;">
-                  <h6><?= $pet_legendary['petDesc'] ?></h6>
-                </div>
-
-                <div class="col-3"></div>
-              <?php } ?>
             </div>
-
-            <div class="row">
-              <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
-                <img src="../assets/images/rare.png" width="150">
-              </div>
-
-              <?php foreach ($petData_rare as $pet_rare) { ?>
-                <div class="col-12 d-flex justify-content-center">
-                  <img src="<?= $pet_rare['petImg'] ?>" width="150">
-                </div>
-
-                <div class="col-12 d-flex justify-content-center">
-                  <h2><?= $pet_rare['petName'] ?></h2>
-                </div>
-
-                <div class="col-3"></div>
-                <div class="col-6 d-flex justify-content-center" style="text-align: center;">
-                  <h6><?= $pet_rare['petDesc'] ?></h6>
-                </div>
-
-                <div class="col-3"></div>
-              <?php } ?>
-            </div>
-
-            <div class="row">
-              <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
-                <img src="../assets/images/common.png" width="150">
-              </div>
-
-              <?php foreach ($petData_common as $pet_common) { ?>
-                <div class="col-12 d-flex justify-content-center">
-                  <img src="<?= $pet_common['petImg'] ?>" width="150">
-                </div>
-
-                <div class="col-12 d-flex justify-content-center">
-                  <h2><?= $pet_common['petName'] ?></h2>
-                </div>
-
-                <div class="col-3"></div>
-                <div class="col-6 d-flex justify-content-center" style="text-align: center;">
-                  <h6><?= $pet_common['petDesc'] ?></h6>
-                </div>
-
-                <div class="col-3"></div>
-              <?php } ?>
-            </div>
-
-            <div class="row" style="margin-top: 10px;">
-              <div class="col-2"></div>
-              <div class="col-8 d-flex justify-content-center">
-                <p class="text-muted" style="text-align: center;">Looking for that special pet to add to your collection? Take a chance and try our gacha system, where legendaries appear with a 5% chance, rares with a 35% chance, and commons with a 60% chance. With a variety of pets to collect, each with their own unique rarity and value, you'll never know what you might get! So why not try your luck today and see if you can obtain the pet of your dreams?</p>
-              </div>
-              <div class="col-2"></div>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-            </div>
-
-        </section>
 
     </div>
-
+    </section>
+    </div>
     </div>
 
     <script src="../assets/js/bootstrap-js/bootstrap.js"></script>

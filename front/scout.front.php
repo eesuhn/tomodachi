@@ -31,8 +31,7 @@ include '../include/toast.inc.php';
     </div>
     <a href="../front/dashboard.front.php">Home</a>
     <a class="active" href="../front/shop.front.php">Shop</a>
-    <a href="#contact">Study</a>
-    <a href="#about">Schedule</a>
+    <a href="../front/study.front.php">Study</a>
     <div class="logout">
         <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
     </div>

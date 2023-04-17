@@ -36,10 +36,9 @@ include '../include/toast.inc.php';
     <div class="logo">
       <img src="../assets/images/logo2.png" alt="Tomodachi">
     </div>
-    <a class="active" href="#home">Home</a>
+    <a class="active" href="dashboard.front.php">Home</a>
     <a href="../front/shop.front.php">Shop</a>
     <a href="#contact">Study</a>
-    <a href="#about">Schedule</a>
     <div class="logout">
       <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
     </div>

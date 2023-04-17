@@ -137,10 +137,11 @@
 
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
-
+            if ($this->checkLevel($userID,$petID)>0){
             $stmt->execute(array(
                 ':userID' => $userID,
-                ':petID' => $petID));
+                ':petID' => $petID));         
+            } 
         }
 
         /*
@@ -271,6 +272,52 @@
             } else {
                 return false;
             }
+        }
+
+        public function checkLevel($userID, $petID) {
+            $sql = "SELECT petLevel, dead_displayed FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+            $stmt->execute();
+        
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $petLevel = $result['petLevel'];
+            $deadDisplayed = $result['dead_displayed'];
+        
+            if ($petLevel <= 0 && $deadDisplayed == 0) {
+                $this->updatePetLive(0,$userID, $petID);
+                $sql = "UPDATE pet_inventory SET dead_displayed = 1 WHERE userID = :userID AND petID = :petID";
+                $stmt = $this->db->connect()->prepare($sql);
+                $stmt->bindParam(':userID', $userID);
+                $stmt->bindParam(':petID', $petID);
+                $stmt->execute();
+                echo "<script>$('#deadModal').modal('show');
+                document.getElementById('toast-dead').play();
+                </script>";
+            } else if ($petLevel > 0) {
+                $sql = "UPDATE pet_inventory SET dead_displayed = 0 WHERE userID = :userID AND petID = :petID";
+                $stmt = $this->db->connect()->prepare($sql);
+                $stmt->bindParam(':userID', $userID);
+                $stmt->bindParam(':petID', $petID);
+                $stmt->execute();
+                $this->updatePetLive(1, $userID, $petID);
+            }
+        
+            return $petLevel;
+        }
+        
+
+        public function updatePetLive($alive,$userID, $petID){
+            $sql = "UPDATE pet_inventory SET petAlive = :alive WHERE userID = :userID AND petID = :petID";
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':alive', $alive);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+            $stmt->execute(array(
+                ':alive' => $alive,
+                ':userID' => $userID,
+                ':petID' => $petID));
         }
     }
 ?>

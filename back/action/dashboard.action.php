@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
     include '../connection.back.php';
     include '../pet.back.php';
     include '../currency.back.php';
@@ -65,6 +66,10 @@
         case 'taskReward':
             taskReward();
             break;
+        case 'revivePet':
+            revivePet();
+            break;
+
     }
 
     function decreaseFood_one(){
@@ -188,10 +193,18 @@
 
     function habitPenalize() {
         $difficultyID = $_GET['difficultyID'];
+        $userID = $_SESSION['userID'];
+
+        $pet = new Pet();
+
+        $petData = $pet->getEquippedPet($userID);
+
+        $petID = $petData['petID'];
 
         $level = new Level();
         $level->habitPenalize($difficultyID);
         checkPetStats();
+
     }
 
     function feedReward() {
@@ -222,4 +235,16 @@
         $level->checkXP($userID, $petID);
         $level->checkHealth($userID, $petID);
     }
+
+    function revivePet() {
+        $userID = $_GET['userID'];
+        $petID = $_GET['petID'];
+        $pet = new Pet();
+        $currencyData = new Currency();
+
+        $pet->revivePet($userID,$petID);
+        $currencyData->decreaseCurrency($userID, 200);
+
+    }
+    
 ?>

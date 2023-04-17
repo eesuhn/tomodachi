@@ -141,6 +141,48 @@ include '../include/toast.inc.php';
     </div>
   </div>
 
+  <div class="modal fade" id="deadModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+          <h3 style="margin: 20px;">Uh oh, your pet has died due to your bad habits! Be careful next time.</h3>
+          <h5 style="margin: 20px;" class="text-muted">Complete tasks and accomplish habits to revive it!</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="levelModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+          Your pet has leveled up! Keep it up!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="reviveModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+          Your pet has been revived and you lost some currencies. Take better care of your pet next time :(.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script>
     var habitTitle = document.getElementById('habitTitle') ?? {textContent: ''};
 

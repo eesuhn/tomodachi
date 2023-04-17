@@ -1,207 +1,284 @@
 <?php
-  include '../include/shop.inc.php';
-  include '../include/toast.inc.php';
+include '../include/shop.inc.php';
+include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <script src="../assets/js/data/shop.data.js"></script>
-  <script src="../assets/js/action/shop.action.js"></script>
-  <script src="../assets/js/toast.js"></script>
-  <script>
-    var i = 0,
-        j = 0,
-        s = 0,
-        l = 0;
-    text = "Welcome to my shop, how may I assist you today?";
-    text2 = "-> Purchase Food";
-    text3 = "-> Pet Scouting";
-    text4 = "-> Purchase Wallpaper";
+    <script src="../assets/js/data/shop.data.js"></script>
+    <script src="../assets/js/action/shop.action.js"></script>
+    <script src="../assets/js/toast.js"></script>
 
-    function typing() {
-      if (i < text.length) {
-        document.getElementById("text").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, 15);
-      }
-    }
+    <style>
+        ul {
+            font-size: x-large;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            /* align items horizontally */
+        }
 
-    function typing2() {
-      if (j < text2.length) {
-        document.getElementById("text2").innerHTML += text2.charAt(j);
-        j++;
-        setTimeout(typing2, 20);
+        li {
+            text-align: center;
+        }
 
-      } else {
-        var foodImg = "<img src='../assets/foods/squid.png' width='30'>";
-        document.getElementById("text2").innerHTML += foodImg;
-      }
-    }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 
-    function typing3() {
-      if (s < text3.length) {
-        document.getElementById("text3").innerHTML += text3.charAt(s);
-        s++;
-        setTimeout(typing3, 20);
+        li a.active {
+            color: chartreuse;
+        }
 
-      } else {
-        var foodImg = "<img src='../assets/images/petscout.png' width='30'>";
-        document.getElementById("text3").innerHTML += foodImg;
-      }
-    }
+        li a:hover {
+            background-color: #111;
+        }
 
-    function typing4() {
-      if (l < text4.length) {
-        document.getElementById("text4").innerHTML += text4.charAt(l);
-        l++;
-        setTimeout(typing4, 20);
+        h2 {
+            margin-left: 30px;
+            color: #1d304a;
+        }
 
-      } else {
-        var foodImg = "<img src='../assets/images/shop.png' width='30'>";
-        document.getElementById("text4").innerHTML += foodImg;
-      }
-    }
-  </script>
+        p.food-stats img:not(:first-child) {
+            margin-left: 20px;
+        }
 
-  <style>
-    .content a {
-      color: white;
-      text-decoration: none;
-    }
+        p.food-stats img {
+            margin-right: 6px;
+        }
 
-    .content a:hover {
-      cursor: pointer;
-      color: #FFD700 !important;
-    }
-  </style>
+        .coin-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
 
+        .coin-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url("../assets/images/coin.png");
+            background-size: cover;
+            margin-right: 5px;
+        }
+
+        .coin-count {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <div class="sidebar">
-  <div class="logo">
-    <img src="../assets/images/logo2.png" alt="Tomodachi">
-  </div>
-
-  <a href="../front/dashboard.front.php">Home</a>
-  <a class="active" href="../front/shop.front.php">Shop</a>
-  <a href="#contact">Study</a>
-  <a href="#about">Schedule</a>
-  <div class="logout">
-    <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
-  </div>
+    <div class="logo">
+        <img src="../assets/images/logo2.png" alt="My Website Logo">
+    </div>
+    <a href="../front/dashboard.front.php">Home</a>
+    <a class="active" href="front/shop.front.php">Shop</a>
+    <a href="#contact">Study</a>
+    <a href="#about">Schedule</a>
+    <div class="logout">
+        <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
+    </div>
 </div>
 
-<body style="
-      background-image: url('../assets/images/bg2.png'); 
-      background-size: cover; 
-      background-repeat: no-repeat; 
-      background-position: center; 
-      background-attachment: fixed; 
-      color: #fff;">
+<body>
+    <div class="content vh-100 p-0">
 
-  <div class="content" style="height: 100vh;">
-    <div class="d-flex" style="margin-top: 20px;">
-      <div class="col-11"></div>
-      <div class="col-1 mt-1 py-2 px-2" style="font-size: x-large;" id="currencyData">
-        <!-- display currency with AJAX -->
-      </div>
-    </div>
-
-    <div style="background-color: rgba(255, 255, 255, 0.5); margin-top: 30px;" class="mx-5 mt-2 p-2 rounded">
-      <h1 style="margin: 10px;" id="text"><?php echo "<script> typing(); </script>"; ?></h1>
-
-      <a data-bs-target="#foodShop" data-bs-toggle="modal" onclick="refreshFoodShop()">
-        <h3 style="margin: 10px;" id="text2"><?php echo "<script> typing2(); </script>"; ?></h3>
-      </a>
-
-      <a data-bs-target="#petShop" data-bs-toggle="modal">
-        <h3 style="margin: 10px;" id="text3"><?php echo "<script> typing3(); </script>"; ?></h3>
-      </a>
-
-      <a data-bs-target="#wallpaperShop" data-bs-toggle="modal" onclick="refreshWallpaperShop()">
-        <h3 style="margin: 10px;" id="text4"><?php echo "<script> typing4(); </script>"; ?></h3>
-      </a>
-    </div>
-
-    <img src="../assets/images/wizard.png" style="position: fixed; bottom: 24px;" width="340px">
-
-    <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-          <div class="modal-body" id="foodShopData">
-            <!-- display food shop with AJAX -->
-          </div>
-
-          <div class="modal-footer">
-            <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-          </div>
+        <div class="coin-indicator">
+            <span class="coin-icon"></span>
+            <span class="coin-count">100000</span>
         </div>
-      </div>
-    </div>
 
-    <div class="modal fade" id="petShop" aria-hidden="true" aria-labelledby="petShopTitle" tabindex="-1" style="color: black">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="petShopTitle">Pet Scout</h1>
-          </div>
+        <div style="background-image: url('../assets/images/shopbg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 200px;"></div>
 
-          <div class="modal-body" id="gachaButton">
-            <!-- display Gacha button with AJAX -->
-          </div>
+        <ul>
+            <li><a class="active" href="shop.front.php">Shop</a></li>
+            <li><a href="scout.front.php">Pet Scout</a></li>
+        </ul>
 
-          <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-target="#offeringRates" data-bs-toggle="modal">Offering Rates</button>
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+        <section style="background-color: #f2f2f2f2; padding: 10px;">
+            <h2>Food Shop</h2>
 
-    <div class="modal fade" id="petScout" aria-hidden="true" aria-labelledby="petScoutTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+            <div class="row" style="margin: 10px">
 
-          <div class="modal-body" style="color: black" id="petScoutData">
-            <!-- display new pet with AJAX -->
-          </div>
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-80'>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Donut</h5>
+                            <p class='card-text food-stats'>
+                                <img src='../assets/images/health.png' width='20'>30
+                                <img src='../assets/images/hunger.png' width='20'>50
+                            </p>
+                            <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: 50</p>
 
-    <div class="modal fade" id="wallpaperShop" aria-hidden="true" aria-labelledby="wallpaperShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>15</h4>
+                            <p class='card-text'>A circle</p>
 
-          <div class="modal-body" style="color: black" id="wallpaperShopData">
-            <!-- display wallpaper shop with AJAX -->
-          </div>
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none;'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-80'>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Donut</h5>
+                            <p class='card-text food-stats'>
+                                <img src='../assets/images/health.png' width='20'>30
+                                <img src='../assets/images/hunger.png' width='20'>50
+                            </p>
+                            <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: 50</p>
+
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>15</h4>
+                            <p class='card-text'>A circle</p>
+
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none;'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-80'>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Donut</h5>
+                            <p class='card-text food-stats'>
+                                <img src='../assets/images/health.png' width='20'>30
+                                <img src='../assets/images/hunger.png' width='20'>50
+                            </p>
+                            <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: 50</p>
+
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>15</h4>
+                            <p class='card-text'>A circle</p>
+
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none;'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-80'>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Donut</h5>
+                            <p class='card-text food-stats'>
+                                <img src='../assets/images/health.png' width='20'>30
+                                <img src='../assets/images/hunger.png' width='20'>50
+                            </p>
+                            <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: 50</p>
+
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>15</h4>
+                            <p class='card-text'>A circle</p>
+
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none;'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2>Wallpaper Shop</h2>
+
+            <div class="row" style="margin: 10px">
+
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-40'>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Meadow</h5>
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>
+                            <p class='card-text'>This is a meadow</p>
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-40'>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Meadow</h5>
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>
+                            <p class='card-text'>This is a meadow</p>
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-40'>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Meadow</h5>
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>
+                            <p class='card-text'>This is a meadow</p>
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-3 px-3 py-3'>
+                    <div class='card h-40'>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <div class='card-body d-flex flex-column'>
+                            <h5 class='card-title'>Meadow</h5>
+                            <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>
+                            <p class='card-text'>This is a meadow</p>
+                            <div class='mt-auto'>
+                                <button class='btn btn-primary' style='margin: -6px 0px 0px; border: none'>Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
     <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-scrollable">
@@ -294,23 +371,17 @@
     </div>
   </div>
 
-  <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body" style="color: black">
-          <h4>Are you sure you want to log out?</h4>
-        </div>
-        <div class="modal-footer">
-          <a href="../include/logout.inc.php" class="btn btn-primary" role="button" aria-pressed="true">Confirm</a>
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+            </div>
 
-  <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        </section>
+
+    </div>
+
+    </div>
+
+    <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 
 </body>
 
-</html>
+<html>

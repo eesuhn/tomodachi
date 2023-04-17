@@ -77,7 +77,7 @@
         }
 
         public function getAllPets() {
-            $sql = "SELECT * FROM pet";
+            $sql = "SELECT p.*, pr.petHealthIn, pr.petHappIn FROM pet p, pet_rarity pr WHERE p.petRarity = pr.petRarity";
 
             $stmt = $this->db->connect()->prepare($sql);
 

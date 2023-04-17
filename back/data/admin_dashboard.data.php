@@ -38,23 +38,38 @@
         <div class='row'>";
 
         foreach ($stmt as $row) {
+            $petRarityImg = getPetRarityImg($row['petRarity']);
+
             echo "
             <div class='col-md-4 px-3 py-3'>
                 <div class='card h-100'>
-                    <center><img src='' class='card-img-top' alt='Pet Image' style='max-width: 55%;'></center>
+                    <center><img src='{$row['petImg']}' class='card-img-top' alt='Pet Image' style='max-width: 55%;'></center>
                     <div class='card-body d-flex flex-column'>
-                        <h5 class='card-title'></h5>
+                        <h4 class='card-title' style='font-weight: 400;'>{$row['petName']}</h4>
                         <p class='card-text pet-stats'>
-                            <img src='../assets/images/health.png' width='20'>
-                            <img src='../assets/images/hunger.png' width='20'>
+                            <img src='../assets/images/health.png' width='20'>{$row['petHealthIn']}
+                            <img src='../assets/images/hunger.png' width='20'>{$row['petHappIn']}
                         </p>
-                        
-                        <h4 class='card-text'><img src='' width='32' alt='Pet Rarity' style='margin: -2px 6px 2px 2px;'></h4>
-                        <p class='card-text'></p>
+                        <div style='margin: -10px -4px -2px;'>
+                            <h4 class='card-text'><img src='$petRarityImg' width='80px' alt='Pet Rarity'></h4>
+                        </div>
+                        <p class='card-text'>{$row['petDesc']}</p>
                     </div>
                 </div>
             </div>";
         }
         echo "</div>";
+    }
+
+    function getPetRarityImg($petRarity) {
+        if ($petRarity === "Legendary"){
+            return "../assets/images/legendary.png";
+
+        } else if ($petRarity === "Rare"){
+            return "../assets/images/rare.png";
+
+        }else{
+            return "../assets/images/common.png";
+        }
     }
 ?>

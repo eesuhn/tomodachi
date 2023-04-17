@@ -291,7 +291,7 @@
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-body" id="viewPetsData">
-                    <!-- display food shop with AJAX -->
+                    <!-- display pets with AJAX -->
                 </div>
 
                 <div class="modal-footer">
@@ -303,14 +303,47 @@
 
     <div class="modal fade" id="addPet" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-dismiss="modal" onclick="">Add</button>
-                    <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                </div>
+            <div class='modal-content' style="padding: 10px 20px;">
+                <form>
+                    <div class='row'>
+                        <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                            <h2>Add a New Pet</h2>
+                        </div>
+
+                        <div class='col-12 px-2'>
+                            <label for=''>Pet Name</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <input type='text' class='form-control' id='' name='' required>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Description</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <textarea class='form-control' id='' name='' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Rarity </label>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <select class='form-control' id='' name=''>
+                                <option value="Common">Common</option>
+                                <option value="Rare">Rare</option>
+                                <option value="Legendary">Legendary</option>
+                            </select>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Upload an image</label>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <input type='file' class='form-control' id='' name='' required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add Pet</button>
+                        <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -330,14 +363,55 @@
 
     <div class="modal fade" id="addFood" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <!-- add food with AJAX -->
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-dismiss="modal" onclick="">Add</button>
-                    <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                </div>
+            <div class='modal-content' style="padding: 10px 20px;">
+                <form>
+                    <div class='row'>
+                        <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                            <h2>Add a New Food</h2>
+                        </div>
+
+                        <div class='col-12 px-2'>
+                            <label for=''>Food Name</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <input type='text' class='form-control' id='' name='' required>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Description</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <textarea class='form-control' id='' name='' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Price</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <input type='number' class='form-control' id='' name='' required>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Health Regenerate</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <input type='number' class='form-control' id='' name='' required>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Happiness Increase</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <input type='number' class='form-control' id='' name='' required>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Upload an image</label>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <input type='file' class='form-control' id='' name='' required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add Food</button>
+                        <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -358,14 +432,43 @@
 
     <div class="modal fade" id="addWallpaper" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <!-- add wallpaper with AJAX -->
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-dismiss="modal" onclick="">Add</button>
-                    <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                </div>
+            <div class='modal-content' style="padding: 10px 20px;">
+                <form>
+                    <div class='row'>
+                        <div class='col-12 d-flex justify-content-center px-2 py-2'>
+                            <h2>Add a New Wallpaper</h2>
+                        </div>
+
+                        <div class='col-12 px-2'>
+                            <label for=''>Wallpaper Name</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <input type='text' class='form-control' id='' name='' required>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Description</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <textarea class='form-control' id='' name='' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Price</label>
+                        </div>
+                        <div class='col-12 d-flex justify-content-center px-2'>
+                            <input type='number' class='form-control' id='' name='' required>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <label for='' style='margin-top: 10px;'>Upload an image</label>
+                        </div>
+                        <div class='col-12 px-2'>
+                            <input type='file' class='form-control' id='' name='' required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add Wallpaper</button>
+                        <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

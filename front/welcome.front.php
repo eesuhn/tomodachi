@@ -50,7 +50,7 @@
         <div class="col-3"></div>
 
         <div class="col-6 justify-content-center d-flex">
-          <h5>Before you embark on your journey,</h5>
+          <h5>Before you embark on your journey, </h5>
         </div>
         
         <div class="col-3"></div>

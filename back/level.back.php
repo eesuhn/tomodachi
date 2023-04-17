@@ -137,7 +137,7 @@
 
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
-            if ($this->checkLevel($userID,$petID)>0){
+            if ($this->checkLevel($userID, $petID)>0){
             $stmt->execute(array(
                 ':userID' => $userID,
                 ':petID' => $petID));         
@@ -286,7 +286,7 @@
             $deadDisplayed = $result['dead_displayed'];
         
             if ($petLevel <= 0 && $deadDisplayed == 0) {
-                $this->updatePetLive(0,$userID, $petID);
+                $this->updatePetLive(0, $userID, $petID);
                 $sql = "UPDATE pet_inventory SET dead_displayed = 1 WHERE userID = :userID AND petID = :petID";
                 $stmt = $this->db->connect()->prepare($sql);
                 $stmt->bindParam(':userID', $userID);
@@ -308,7 +308,7 @@
         }
         
 
-        public function updatePetLive($alive,$userID, $petID){
+        public function updatePetLive($alive, $userID, $petID){
             $sql = "UPDATE pet_inventory SET petAlive = :alive WHERE userID = :userID AND petID = :petID";
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':alive', $alive);

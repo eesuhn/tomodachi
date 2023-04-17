@@ -324,7 +324,7 @@
 
                 if ($row['taskStatus'] == "Active" && $status == "Active") {
                     echo "
-                    <div class='card' style='margin-top:10px;'>
+                    <div class='card' style='margin-top: 10px;'>
                         <div class='card-body'>
                             <div class='row align-items-center'>
                                 <div class='col-2 d-flex justify-content-center align-items-center'>
@@ -417,7 +417,7 @@
                 }
                 if ($row['taskStatus'] == "Completed" && $status == "Completed") {
                     echo "
-                    <div class='card' style='margin-top:10px;'>
+                    <div class='card' style='margin-top: 10px;'>
                         <div class='card-body'>
                             <div class='row align-items-center'>
                                 <div class='col-12 flex-grow-1'>

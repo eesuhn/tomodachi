@@ -242,7 +242,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
         $pet = new Pet();
         $currencyData = new Currency();
 
-        $pet->revivePet($userID,$petID);
+        $pet->revivePet($userID, $petID);
         $currencyData->decreaseCurrency($userID, 200);
 
     }

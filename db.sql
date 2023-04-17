@@ -131,7 +131,7 @@ ALTER TABLE `food`
     ADD PRIMARY KEY (`foodID`);
 
 ALTER TABLE `food_inventory`
-    ADD PRIMARY KEY (`userID`,`foodID`);
+    ADD PRIMARY KEY (`userID`, `foodID`);
 
 ALTER TABLE `pet`
     ADD PRIMARY KEY (`petID`);
@@ -140,13 +140,13 @@ ALTER TABLE `pet_rarity`
     ADD PRIMARY KEY (`petRarity`);
 
 ALTER TABLE `pet_inventory`
-    ADD PRIMARY KEY (`userID`,`petID`);
+    ADD PRIMARY KEY (`userID`, `petID`);
 
 ALTER TABLE `wallpaper`
     ADD PRIMARY KEY (`wallpaperID`);
 
 ALTER TABLE `wallpaper_inventory`
-    ADD PRIMARY KEY (`userID`,`wallpaperID`);
+    ADD PRIMARY KEY (`userID`, `wallpaperID`);
 
 ALTER TABLE `task`
     ADD PRIMARY KEY (`taskID`);

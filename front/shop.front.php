@@ -77,7 +77,7 @@ include '../include/toast.inc.php';
             display: flex;
             align-items: center;
             background-color: #fff;
-            padding: 5px 10px;
+            padding: 10px 20x;
             border-radius: 20px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             z-index: 1;
@@ -93,7 +93,7 @@ include '../include/toast.inc.php';
         }
 
         .coin-count {
-            font-size: 16px;
+            font-size: 50px;
             font-weight: bold;
         }
     </style>

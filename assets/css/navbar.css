@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   z-index: 99;
-  font-size: x-large;
+  font-size: 29px;
 }
 
 .navbar ul {
@@ -25,6 +25,11 @@
   font-weight: bold;
   text-transform: uppercase;
 }
-.navbar a:hover {
-  color:#81EB30; 
+.navbar a.active {
+  color: chartreuse;
 }
+.navbar a:hover {
+  color: chartreuse;
+
+}
+

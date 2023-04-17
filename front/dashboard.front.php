@@ -20,7 +20,6 @@ include '../include/toast.inc.php';
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
@@ -72,8 +71,8 @@ include '../include/toast.inc.php';
               margin: 5px; 
               background: rgba(0, 0, 0, 0.5); 
               padding: 5px;" class="inventory">
-            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
-              <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
+            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height:40px; margin-bottom: 5px;">
+              <span style="margin-left: 10px; color: white; font-size: 24px;">Inventory</span></a>
           </div>
           <div class="pet" id="petImg">
             <!-- display petImage with AJAX -->
@@ -154,20 +153,6 @@ include '../include/toast.inc.php';
       </div>
     </div>
   </div>
-
-  <div class="modal fade" id="reviveModal" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body" style="color: black" id="inventoryData">
-          <p>Your pet has been revived and you lost some currencies. Take better care of your pet next time :(</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <script>
     var habitTitle = document.getElementById('habitTitle') ?? {textContent: ''};

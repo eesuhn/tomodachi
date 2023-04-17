@@ -88,17 +88,17 @@
                 <div class='card-block px-3 col-3'>
                     <h5>$petName</h5>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
-                    <div class='progress' style='height:3px;'>
+                    <div class='progress' style='height: 3px;'>
                         <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
                     </div>
 
                     <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
-                    <div class='progress' style='height:3px;'>
+                    <div class='progress' style='height: 3px;'>
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
                     <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
-                    <div class='progress' style='height:3px;'>
+                    <div class='progress' style='height: 3px;'>
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>
@@ -340,7 +340,7 @@
                     </div>
                     
                     <div class='modal fade' id='editTask{$row['taskID']}' tabindex='-1' aria-hidden='true'>
-                        <div class='modal-dialog'>
+                        <div class='modal-dialog modal-dialog-centered'>
                             <div class='modal-content'>
                                 <div class='row'>
                                     <div class='col-12 d-flex justify-content-center px-2 py-2'>
@@ -355,13 +355,13 @@
                                             <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}' required>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editTaskDesc{$row['taskID']}'>Description</label>
+                                            <label for='editTaskDesc{$row['taskID']}' style='margin-top: 10px;'>Description</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
                                             <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editTaskDue{$row['taskID']}'>Due Date</label>
+                                            <label for='editTaskDue{$row['taskID']}' style='margin-top: 10px;'>Due Date</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
                                             <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>
@@ -662,7 +662,7 @@
                                         <input type='text' class='form-control' id='editHabitTitle{$row['habitID']}' value='{$row['habitTitle']}' required>
                                     </div>
                                     <div class='col-12 px-2'>
-                                        <label for='editHabitDesc{$row['habitID']}'>Description</label>
+                                        <label for='editHabitDesc{$row['habitID']}' style='margin-top: 10px;'>Description</label>
                                     </div>
                                     <div class='col-12 d-flex justify-content-center px-2'>
                                         <textarea class='form-control' id='editHabitDesc{$row['habitID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['habitDesc']}</textarea>

@@ -18,3 +18,7 @@ button.foodCounter {
   background-color: #212529; 
   border: none;
 }
+
+.join-btn img:hover {
+  transform: translateY(-4px);
+}

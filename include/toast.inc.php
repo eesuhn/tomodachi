@@ -51,7 +51,7 @@
             <img src="../assets/images/logo3.png" width="20">
             <strong>&nbsp Tomodachi</strong>
         </div>
-        <div class="toast-body" style="color:#333">
+        <div class="toast-body">
             <p>Purchased successfully!</p>
         </div>
     </div>
@@ -63,7 +63,7 @@
             <img src="../assets/images/logo3.png" width="20">
             <strong>&nbsp Tomodachi</strong>
         </div>
-        <div class="toast-body" style="color:#333">
+        <div class="toast-body">
             <p>You've earned some currency and experience points</p>
         </div>
     </div>
@@ -75,7 +75,7 @@
             <img src="../assets/images/logo3.png" width="20">
             <strong>&nbsp Tomodachi</strong>
         </div>
-        <div class="toast-body" style="color:#333">
+        <div class="toast-body">
             <p>You've lost some currency and health points</p>
         </div>
     </div>

@@ -17,8 +17,7 @@
   text-decoration: none;
 }
 .sidebar a.active {
-  background-color: #004aad;
-  color: white;
+  color: chartreuse;
 }
 .sidebar .logo {
   padding: 16px;

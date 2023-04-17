@@ -108,6 +108,14 @@ CREATE TABLE `habit` (
     `habitNegative` int(1) NOT NULL DEFAULT '0'
 );
 
+-- admin table
+CREATE TABLE `admin` (
+    `adminID` int(11) NOT NULL,
+    `adminName` varchar(255) NOT NULL,
+    `adminEmail` varchar(255) NOT NULL,
+    `adminPwd` varchar(255) NOT NULL
+);
+
 
 
 -- Primary key
@@ -147,6 +155,9 @@ ALTER TABLE `difficulty`
 ALTER TABLE `habit`
     ADD PRIMARY KEY (`habitID`);
 
+ALTER TABLE `admin`
+    ADD PRIMARY KEY (`adminID`);
+
 
 
 -- Auto increment
@@ -173,6 +184,9 @@ ALTER TABLE `difficulty`
 
 ALTER TABLE `habit`
     MODIFY `habitID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `admin`
+    MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT;
 
 
 

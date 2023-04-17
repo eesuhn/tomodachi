@@ -94,7 +94,7 @@
 
 <div class="sidebar">
   <div class="logo">
-    <img src="../assets/images/logo2.png" alt="My Website Logo">
+    <img src="../assets/images/logo2.png" alt="Tomodachi">
   </div>
 
   <a href="../front/dashboard.front.php">Home</a>
@@ -141,7 +141,7 @@
     <img src="../assets/images/wizard.png" style="position: fixed; bottom: 24px;" width="340px">
 
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-body" id="foodShopData">
             <!-- display food shop with AJAX -->
@@ -154,7 +154,7 @@
       </div>
     </div>
 
-    <div class="modal fade" id="petShop" aria-hidden="true" aria-labelledby="petShopTitle" tabindex="-1" style="color:black">
+    <div class="modal fade" id="petShop" aria-hidden="true" aria-labelledby="petShopTitle" tabindex="-1" style="color: black">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -174,10 +174,10 @@
     </div>
 
     <div class="modal fade" id="petScout" aria-hidden="true" aria-labelledby="petScoutTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
 
-          <div class="modal-body" style="color:black" id="petScoutData">
+          <div class="modal-body" style="color: black" id="petScoutData">
             <!-- display new pet with AJAX -->
           </div>
 
@@ -189,10 +189,10 @@
     </div>
 
     <div class="modal fade" id="wallpaperShop" aria-hidden="true" aria-labelledby="wallpaperShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
-          <div class="modal-body" style="color:black" id="wallpaperShopData">
+          <div class="modal-body" style="color: black" id="wallpaperShopData">
             <!-- display wallpaper shop with AJAX -->
           </div>
 
@@ -209,7 +209,7 @@
 
           <div class="modal-body" style="color: black">
             <div class="row">
-              <div class="col-12 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center" style="margin-bottom: -10px;">
                 <img src="../assets/images/legendary.png" width="150">
               </div>
 
@@ -232,7 +232,7 @@
             </div>
 
             <div class="row">
-              <div class="col-12 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
                 <img src="../assets/images/rare.png" width="150">
               </div>
 
@@ -255,7 +255,7 @@
             </div>
 
             <div class="row">
-              <div class="col-12 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
                 <img src="../assets/images/common.png" width="150">
               </div>
 
@@ -297,7 +297,7 @@
   <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body" style="color:black">
+        <div class="modal-body" style="color: black">
           <h4>Are you sure you want to log out?</h4>
         </div>
         <div class="modal-footer">

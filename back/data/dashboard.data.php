@@ -137,6 +137,12 @@
     }
 
     function refreshFood () {
+
+        $pet = new Pet();
+        $petData = $pet->getEquippedPet($_SESSION['userID']);
+
+        $petID = $petData['petID'];
+
         $userID = $_SESSION['userID'];
 
         $foodData = new Food();
@@ -150,7 +156,7 @@
                 echo 
                 "<div class='col-3 col-lg-3'>
                     <div class='count-data text-center' style='font-size: 20px;'>
-                        <button class='foodCounter' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].")'>
+                        <button class='foodCounter' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
                             <img src='"
                             .$row['foodImg'] . 
                             "' width='30px'>

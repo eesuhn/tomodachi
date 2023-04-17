@@ -43,8 +43,10 @@
             // increase currency
             $this->currency->increaseCurrency($this->userID, $currencyReward);
 
-            // increase petXP
-            $this->pet->increaseXP($this->userID, $petID, $XPReward);
+            if ($this->checkAlive($this->userID) == "alive") {
+                // increase petXP
+                $this->pet->increaseXP($this->userID, $petID, $XPReward);
+            }
         }
 
         public function habitPenalize($difficultyID) {
@@ -70,8 +72,10 @@
             $petData = $this->pet->getEquippedPet($this->userID);
             $petID = $petData['petID'];
 
-            // decrease health
-            $this->pet->decreaseHealth($this->userID, $petID, $healthPenalize);
+            if ($this->checkAlive($this->userID) == "alive") {
+                // decrease health
+                $this->pet->decreaseHealth($this->userID, $petID, $healthPenalize);
+            }
 
             // decrease currency
             $this->currency->decreaseCurrency($this->userID, $currencyPenalize);
@@ -99,11 +103,13 @@
             $petData = $this->pet->getEquippedPet($this->userID);
             $petID = $petData['petID'];
 
-            // increase health
-            $this->pet->increaseHealth($this->userID, $petID, $foodHealth);
+            if ($this->checkAlive($this->userID) == "alive") {
+                // increase health
+                $this->pet->increaseHealth($this->userID, $petID, $foodHealth);
 
-            // increase happiness
-            $this->pet->increaseHapp($this->userID, $petID, $foodHapp);
+                // increase happiness
+                $this->pet->increaseHapp($this->userID, $petID, $foodHapp);
+            }
         }
 
         public function taskReward() {
@@ -319,17 +325,69 @@
         }
 
         public function updatePetLive($alive, $userID, $petID){
-            $sql = "UPDATE pet_inventory SET petAlive = :alive WHERE userID = :userID AND petID = :petID";
+            if ($alive == 0) {
+                $sql = "UPDATE pet_inventory SET petAlive = :alive, petHealthCur = :petHealthCur WHERE userID = :userID AND petID = :petID";
+            } else {
+                $sql = "UPDATE pet_inventory SET petAlive = :alive WHERE userID = :userID AND petID = :petID";
+            }
 
             $stmt = $this->db->connect()->prepare($sql);
+
+            if ($alive == 0) {
+                $petHealthCur = 0;
+                $stmt->bindParam(':petHealthCur', $petHealthCur);
+            }
+
             $stmt->bindParam(':alive', $alive);
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':petID', $petID);
 
-            $stmt->execute(array(
-                ':alive' => $alive,
-                ':userID' => $userID,
-                ':petID' => $petID));
+            if ($alive == 0) {
+                $stmt->execute(array(
+                    ':alive' => $alive,
+                    ':petHealthCur' => $petHealthCur,
+                    ':userID' => $userID,
+                    ':petID' => $petID));
+            } else {
+                $stmt->execute(array(
+                    ':alive' => $alive,
+                    ':userID' => $userID,
+                    ':petID' => $petID));
+            }
+        }
+
+        // return true if petAlive == 1
+        public function checkAlive($userID){
+            // get equipped pet ID
+            $sql = "SELECT pet.*, pet_inventory.* 
+                    FROM pet
+                    INNER JOIN pet_inventory ON pet.petID = pet_inventory.petID
+                    WHERE pet_inventory.userID = ? AND pet_inventory.petStatus = 'Equipped'";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->execute([$userID]);
+            $pet = $stmt->fetch();
+
+            $petID = $pet['petID'];
+
+            $sql = "SELECT petAlive FROM pet_inventory WHERE userID = :userID AND petID = :petID";
+
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':petID', $petID);
+
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $petAlive = $result['petAlive'];
+
+            if ($petAlive == 1) {
+                return "alive";
+
+            } else {
+                return "dead";
+            }
         }
     }
 ?>

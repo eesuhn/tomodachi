@@ -74,10 +74,16 @@
     function decreaseFood_one(){
         $userID = $_GET['userID'];
         $foodID = $_GET['foodID'];
+        $petID = $_GET['petID'];
+
+        $level = new Level();
+        $petAlive = $level->checkAlive($userID, $petID);
 
         $foodData = new Food();
 
-        $foodData->decreaseFood_one($userID, $foodID);
+        if ($petAlive == "alive") {
+            $foodData->decreaseFood_one($userID, $foodID);
+        }
     }
 
     function equipPet(){

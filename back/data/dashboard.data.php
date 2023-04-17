@@ -340,7 +340,7 @@
                     </div>
                     
                     <div class='modal fade' id='editTask{$row['taskID']}' tabindex='-1' aria-hidden='true'>
-                        <div class='modal-dialog'>
+                        <div class='modal-dialog modal-dialog-centered'>
                             <div class='modal-content'>
                                 <div class='row'>
                                     <div class='col-12 d-flex justify-content-center px-2 py-2'>

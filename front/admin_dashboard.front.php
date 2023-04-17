@@ -288,7 +288,7 @@
     </div>
 
     <div class="modal fade" id="viewPets" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-body" id="viewPetsData">
                     <!-- display food shop with AJAX -->
@@ -305,7 +305,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <!-- add pet with AJAX -->
+                    
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" data-bs-dismiss="modal" onclick="">Add</button>
@@ -316,7 +316,7 @@
     </div>
 
     <div class="modal fade" id="viewFoods" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-body" id="viewFoodsData">
                     <!-- display foods with AJAX -->
@@ -343,7 +343,7 @@
     </div>
 
     <div class="modal fade" id="viewWallpapers" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-body" id="viewWallpapersData">
                     <!-- display wallpapers with AJAX -->

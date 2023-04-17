@@ -49,7 +49,7 @@
             echo "
             <div class='col-md-4 px-3 py-3'>
                 <div class='card h-100'>
-                    <center><img src='{$row['petImg']}' class='card-img-top' alt='Pet Image' style='max-width: 55%;'></center>
+                    <center><img src='{$row['petImg']}' class='card-img-top' alt='Pet Image' style='max-width: 50%;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h4 class='card-title' style='font-weight: 400;'>{$row['petName']}</h4>
                         <p class='card-text pet-stats'>
@@ -101,7 +101,7 @@
             echo
             "<div class='col-md-4 px-3 py-3'>
                 <div class='card h-100'>
-                    <center><img src='{$row["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                    <center><img src='{$row["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 30%;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$row["foodName"]}</h5>
                         <p class='card-text food-stats'>
@@ -139,7 +139,7 @@
             echo
             "<div class='col-md-4 px-3 py-3'>
                 <div class='card h-100'>
-                    <center><img src='{$row["wallpaperImg"]}' class='card-img-top' alt='Wallpaper Image' style='max-width: 55%;'></center>
+                    <center><img src='{$row["wallpaperImg"]}' class='card-img-top' alt='Wallpaper Image' style='max-width: 70%;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$row["wallpaperName"]}</h5>
                         <p class='card-text wallpaper-stats'>

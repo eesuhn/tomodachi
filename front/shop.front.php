@@ -141,7 +141,7 @@
     <img src="../assets/images/wizard.png" style="position: fixed; bottom: 24px;" width="340px">
 
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-body" id="foodShopData">
             <!-- display food shop with AJAX -->
@@ -174,7 +174,7 @@
     </div>
 
     <div class="modal fade" id="petScout" aria-hidden="true" aria-labelledby="petScoutTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
 
           <div class="modal-body" style="color: black" id="petScoutData">
@@ -189,7 +189,7 @@
     </div>
 
     <div class="modal fade" id="wallpaperShop" aria-hidden="true" aria-labelledby="wallpaperShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
           <div class="modal-body" style="color: black" id="wallpaperShopData">

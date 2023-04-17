@@ -74,6 +74,16 @@
             $stmt->bindParam(':currencyNum', $currencyNum);
 
             $stmt->execute();
-        } 
+        }
+
+        public function getAllPets() {
+            $sql = "SELECT * FROM pet";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt;
+        }
     }
 ?>

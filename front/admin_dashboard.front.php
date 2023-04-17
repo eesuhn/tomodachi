@@ -16,6 +16,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
+
+    <script src="../assets/js/data/admin_dashboard.data.js"></script>
+    <script src="../assets/js/action/admin_dashboard.action.js"></script>
 </head>
 
 <body style="background-color: #f1f1f1;">
@@ -285,13 +288,14 @@
     </div>
 
     <div class="modal fade" id="viewPets" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-body">
-                    <!-- display pets with AJAX -->
+                <div class="modal-body" id="viewPetsData">
+                    <!-- display food shop with AJAX -->
                 </div>
+
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="" data-bs-toggle="modal">Close</button>
+                    <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

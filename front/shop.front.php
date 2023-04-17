@@ -209,7 +209,7 @@
 
           <div class="modal-body" style="color: black">
             <div class="row">
-              <div class="col-12 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center" style="margin-bottom: -10px;">
                 <img src="../assets/images/legendary.png" width="150">
               </div>
 
@@ -232,7 +232,7 @@
             </div>
 
             <div class="row">
-              <div class="col-12 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
                 <img src="../assets/images/rare.png" width="150">
               </div>
 
@@ -255,7 +255,7 @@
             </div>
 
             <div class="row">
-              <div class="col-12 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
                 <img src="../assets/images/common.png" width="150">
               </div>
 

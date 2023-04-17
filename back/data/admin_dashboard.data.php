@@ -21,6 +21,9 @@
         case 'refreshViewFoods':
             refreshViewFoods();
             break;
+        case 'refreshViewWallpapers':
+            refreshViewWallpapers();
+            break;
     }
 
     function refreshViewPets() {
@@ -107,6 +110,42 @@
                             <img src='../assets/images/coin.png' width='20'>{$row["foodPrice"]}
                         </p>
                         <p class='card-text'>{$row["foodDesc"]}</p>
+                    </div>
+                </div>
+            </div>";
+        }
+        echo '</div>';
+    }
+
+    function refreshViewWallpapers() {
+        $admin = new Admin();
+
+        $stmt = $admin->getAllWallpapers();
+
+        echo '
+        <style>
+            p.wallpaper-stats img:not(:first-child) {
+                margin-left: 20px;
+            }
+            
+            p.wallpaper-stats img {
+                margin-right: 6px;
+            }
+        </style>
+        <div class="row">';
+        
+        foreach ($stmt as $row) {
+
+            echo
+            "<div class='col-md-4 px-3 py-3'>
+                <div class='card h-100'>
+                    <center><img src='{$row["wallpaperImg"]}' class='card-img-top' alt='Wallpaper Image' style='max-width: 55%;'></center>
+                    <div class='card-body d-flex flex-column'>
+                        <h5 class='card-title'>{$row["wallpaperName"]}</h5>
+                        <p class='card-text wallpaper-stats'>
+                            <img src='../assets/images/coin.png' width='20'>{$row["wallpaperPrice"]}
+                        </p>
+                        <p class='card-text'>{$row["wallpaperDesc"]}</p>
                     </div>
                 </div>
             </div>";

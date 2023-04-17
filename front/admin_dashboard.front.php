@@ -345,7 +345,7 @@
     <div class="modal fade" id="viewWallpapers" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body" id="viewWallpapersData">
                     <!-- display wallpapers with AJAX -->
                 </div>
                 <div class="modal-footer">

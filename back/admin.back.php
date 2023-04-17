@@ -95,5 +95,15 @@
 
             return $stmt;
         }
+
+        public function getAllWallpapers() {
+            $sql = "SELECT * FROM wallpaper";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt;
+        }
     }
 ?>

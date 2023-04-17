@@ -6,6 +6,7 @@ function refreshAdminDashboard() {
     setTimeout(function () {
         refreshViewPets();
         refreshViewFoods();
+        refreshViewWallpapers();
     }, 100);
 }
 
@@ -29,6 +30,18 @@ function refreshViewFoods() {
 
         success: function (data) {
             $("#viewFoodsData").html(data);
+        }
+    });
+}
+
+function refreshViewWallpapers() {
+    $.ajax({
+        url: "../back/data/admin_dashboard.data.php?action=refreshViewWallpapers",
+        type: "POST",
+        dataType: "html",
+
+        success: function (data) {
+            $("#viewWallpapersData").html(data);
         }
     });
 }

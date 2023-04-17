@@ -169,6 +169,20 @@ include '../include/toast.inc.php';
   </div>
 
 
+  <div class="modal fade" id="reviveModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color:black" id="inventoryData">
+          Your pet has been revived and you lost some currencies. Take better care of your pet next time :(.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script>
     var habitTitle = document.getElementById('habitTitle') ?? {textContent: ''};
 

@@ -140,8 +140,7 @@
             if ($this->checkLevel($userID,$petID)>0){
             $stmt->execute(array(
                 ':userID' => $userID,
-                ':petID' => $petID));
-            echo "<script>$('#levelModal').modal('show');</script>";           
+                ':petID' => $petID));         
             } 
         }
 

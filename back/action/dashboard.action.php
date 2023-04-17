@@ -66,7 +66,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
         case 'taskReward':
             taskReward();
             break;
-        case 'revivePet()':
+        case 'revivePet':
             revivePet();
             break;
 
@@ -244,6 +244,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
 
         $pet->revivePet($userID,$petID);
         $currencyData->decreaseCurrency($userID, 200);
+
     }
     
 ?>

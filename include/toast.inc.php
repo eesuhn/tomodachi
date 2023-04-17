@@ -81,6 +81,18 @@
     </div>
 </div>
 
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
+    <div class="toast toast-revive" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="../assets/images/logo3.png" width="20">
+            <strong>&nbsp Tomodachi</strong>
+        </div>
+        <div class="toast-body">
+            <p>Your pet has been successfully revived.</p>
+        </div>
+    </div>
+</div>
+
 <!-- audio files -->
 <audio id="toast-feed">
     <source src="../assets/audio/fed.mp3" type="audio/mpeg">

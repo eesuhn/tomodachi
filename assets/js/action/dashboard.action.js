@@ -245,6 +245,7 @@ function revivePet(userID, petID) {
         }, 
         success: function() {
             refreshDashboard();
+            showReviveToast();
         }
     });
 }

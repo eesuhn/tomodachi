@@ -71,7 +71,7 @@
         $currencyNum = $currency->getCurrency($userID);
 
         date_default_timezone_set('Asia/Kuala_Lumpur');
-        $today = date("l, j F Y");
+        $today = date("l, j F");
 
         $healthBar = $petHealthCur / $petHealthTol * 100;
         $happBar = $petHappCur / $petHappTol * 100;
@@ -80,7 +80,16 @@
         $level->checkHappReset($userID, $petData['petID']);
 
         echo 
-        "<div class='row py-4'>
+        "
+        <style>
+        /* hide the pet image on screens smaller than 768 pixels */
+        @media (max-width: 980px) {
+            .card-header{
+                display: none;
+            }
+        }
+        </style>
+        <div class='row py-4 mx-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
                 <div class='card-header border-0'>";
 
@@ -88,47 +97,48 @@
             echo "
                     <img src='../assets/images/dead.png' style='margin: 20px -10px 0px; width: 80px; aspect-ratio: 1/1;'>
                 </div>
-                <div class='card-block px-3 col-3'>
-                    <h5>$petName</h5>
+                <div class='card-block px-3 col-5'>
+                    <h2>$petName</h2>
                     <h4>Your Pet has Died!</h4>
                     <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px 4px 5px 0px;'><span style='font-size: 20px; margin-right: 4px;'>200</span>
                     <button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>
                 </div>
-                <div class='card-block px-3 col-2'></div>
             
-                <div class='card-block px-3 col-4'>
-                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
-                    <h4>$today</h4>
+                <div class='card-block px-3 col-5'>
+                <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
+                <h4>$today</h4>
                 </div>
             </div>
         </div>";
 
         }else{
             echo "
-                    <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
+                    <img src='$petImg' style='margin: 30px -10px 0px; width: 120px;'>
                 </div>
-                <div class='card-block px-3 col-4'>
-                    <h5>$petName</h5>
-                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
-                    <div class='progress' style='height:3px;'>
+                <div class='card-block px-3 col-5'>
+
+                    <h3>$petName</h3>
+                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <span style='font-size: 20px;'>Level: $petLevel</span><br>
+                        <div class='progress' style='height:5px;'>
                         <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
                     </div>
 
-                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
-                    <div class='progress' style='height:3px;'>
+                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <span style='font-size: 20px;'>Health: $petHealthCur/$petHealthTol</span><br>
+                    <div class='progress' style='height:5px;'>
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
-                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
-                    <div class='progress' style='height:3px;'>
+                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <span style='font-size: 20px;'>Happy: $petHappCur/$petHappTol</span><br>
+                    <div class='progress' style='height:5px;'>
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>
-
-                <div class='card-block px-3 col-2'></div>
             
-                <div class='card-block px-3 col-2'>
-                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
+                <div class='card-block px-3 col-5'>
+                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
                     <h4>$today</h4>
                 </div>
             </div>
@@ -305,7 +315,7 @@
 
         if ($status == "Active") {
             echo "
-                <input type='text' class='form-control' id='taskTitle' name='taskTitle' placeholder='Add a new task' style='margin-top: 10px; font-size: 18px;' autocomplete='off'>";
+                <input type='text' class='form-control' id='taskTitle' name='taskTitle' placeholder='Add a new task' style='margin-top: 10px; font-size: 20px;' autocomplete='off'>";
         }
 
         if ($status == "Completed"){
@@ -452,11 +462,12 @@
             }
         } else {
             echo "
-            <div class='row'>
-                <div class='col-12 d-flex justify-content-center px-2 py-2'>
-                    <p style='padding-top: 28%; font-size: 24px; font-weight: 400; color: #e9e9e9;'>You have no tasks yet :)</p>
-                </div>
-            </div>";
+                    <center>
+                        <i class='fa-sharp fa-solid fa-check-to-slot fa-xl' style='color: #e9e9e9; padding-top: 150px; margin: 5px;'></i>
+                        <p style='font-size: 24px; font-weight: 400; color: #e9e9e9;'>Your To Do's will appear here.</p>
+                        <p style='font-size 18px;  color: #e9e9e9;'>To Do's need to be completed once, get rewarded for each task you complete.</p>
+                     </center>
+                </div>";
         }
         echo "
             <div style='margin-top: 10px;'></div>
@@ -789,11 +800,12 @@
             }
         } else {
             echo "
-            <div class='row'>
-                <div class='col-12 d-flex justify-content-center px-2 py-2'>
-                    <p style='padding-top: 39%; font-size: 24px; font-weight: 400; color: #e9e9e9;'>Record your first habit!</p>
-                </div>
-            </div>";
+            <center>
+                <i class='fa-solid fa-bicycle fa-xl' style='color: #e9e9e9; padding-top: 200px; margin: 5px;'></i>
+                <p style='font-size: 24px; font-weight: 400; color: #e9e9e9;'>Your Habits will appear here.</p>
+                <p style='font-size 18px;  color: #e9e9e9;'>Check them off multiple times per day at your own pace.</p>
+            </center>
+         ";
         }
     }
 

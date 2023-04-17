@@ -30,7 +30,7 @@ include '../include/toast.inc.php';
 
 </head>
 
-<body style="background-color: #f1f1f1;">
+<body  style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;opacity: 92%;">
 
   <div class="sidebar">
     <div class="logo">

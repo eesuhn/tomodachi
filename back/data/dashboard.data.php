@@ -89,7 +89,7 @@
             }
         }
         </style>
-        <div class='row py-4 mx-4'>
+        <div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
                 <div class='card-header border-0'>";
 
@@ -350,18 +350,18 @@
                                     </div>
                                 </div>
                                 <div class='col-8 flex-grow-1'>
-                                    <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['taskTitle']}</h5>";
+                                    <h3 class='card-title' style='margin-bottom: -4px; font-size: 25px;'>{$row['taskTitle']}</h3>";
                                     if ($row['taskDesc'] != "") {
                                         echo "
                                         <div style='margin-bottom: 2px;'>
-                                            <p class='card-text text-muted'>{$row['taskDesc']}</p>
+                                            <p class='card-text text-muted' style='font-size: 18px;'>{$row['taskDesc']}</p>
                                         </div>";
                                     } else {
                                         echo "
                                         <div style='margin-top: 6px;'>";
                                     }
                                     echo "
-                                    <p class='card-text'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>";
+                                    <p class='card-text' style='font-size: 16px;'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>";
                                     if ($row['taskDesc'] == "") {
                                         echo "
                                         </div>";
@@ -388,21 +388,21 @@
                             <div class='modal-content'>
                                 <div class='row'>
                                     <div class='col-12 d-flex justify-content-center px-2 py-2'>
-                                        <h2>Edit Task</h2>
+                                        <h2 style='color: slategrey'>Edit Task</h2>
                                     </div>
 
-                                    <form>
+                                    <form style='font-size: 20px;'>
                                         <div class='col-12 px-2'>
                                             <label for='editTaskTitle{$row['taskID']}'>Title</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}' required>
+                                            <input type='text' class='form-control' id='editTaskTitle{$row['taskID']}' value='{$row['taskTitle']}' style='font-size: 20px;' required>
                                         </div>
                                         <div class='col-12 px-2'>
                                             <label for='editTaskDesc{$row['taskID']}' style='margin-top: 10px;'>Description</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['taskDesc']}</textarea>
+                                            <textarea class='form-control' id='editTaskDesc{$row['taskID']}' rows='4' style='resize: none; overflow-y: scroll; font-size: 20px;'>{$row['taskDesc']}</textarea>
                                         </div>
                                         <div class='col-12 px-2'>
                                             <label for='editTaskDue{$row['taskID']}' style='margin-top: 10px;'>Due Date</label>
@@ -650,18 +650,18 @@
                             <div class='col-8 flex-grow-1'>
                                 <div class='row align-items-center'>
                                     <div class='col-10'>
-                                        <h5 class='card-title' style='margin-bottom: -4px; font-size: 20px; font-weight: 400;'>{$row['habitTitle']}</h5>";
+                                        <h3 class='card-title' style='margin-bottom: -4px; font-size: 25px;'>{$row['habitTitle']}</h3>";
                                         if ($row['habitDesc'] != "") {
                                             echo "
                                             <div style='margin-bottom: 2px;'>
-                                                <p class='card-text text-muted'>{$row['habitDesc']}</p>
+                                                <p class='card-text text-muted' style='font-size: 18px;'>{$row['habitDesc']}</p>
                                             </div>";
                                         } else {
                                             echo "
                                             <div style='margin-top: 6px;'>";
                                         }
                                         echo "
-                                        <p class='card-text'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>";
+                                        <p class='card-text' style='font-size: 16px;'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>";
                                         if ($row['habitDesc'] == "") {
                                             echo "
                                             </div>";
@@ -696,21 +696,21 @@
                         <div class='modal-content'>
                             <div class='row'>
                                 <div class='col-12 d-flex justify-content-center px-2 py-2'>
-                                    <h2>Edit Habit</h2>
+                                    <h2 style='color: slategrey'>Edit Habit</h2>
                                 </div>
 
                                 <form>
                                     <div class='col-12 px-2'>
-                                        <label for='editHabitTitle{$row['habitID']}'>Title</label>
+                                        <label for='editHabitTitle{$row['habitID']}' style='font-size: 20px'>Title</label>
                                     </div>
                                     <div class='col-12 d-flex justify-content-center px-2'>
-                                        <input type='text' class='form-control' id='editHabitTitle{$row['habitID']}' value='{$row['habitTitle']}' required>
+                                        <input type='text' class='form-control' id='editHabitTitle{$row['habitID']}' value='{$row['habitTitle']}' style='font-size: 20px;'' required>
                                     </div>
                                     <div class='col-12 px-2'>
-                                        <label for='editHabitDesc{$row['habitID']}' style='margin-top: 10px;'>Description</label>
+                                        <label for='editHabitDesc{$row['habitID']}' style='margin-top: 10px; font-size: 20px'>Description</label>
                                     </div>
                                     <div class='col-12 d-flex justify-content-center px-2'>
-                                        <textarea class='form-control' id='editHabitDesc{$row['habitID']}' rows='4' style='resize: none; overflow-y: scroll;'>{$row['habitDesc']}</textarea>
+                                        <textarea class='form-control' id='editHabitDesc{$row['habitID']}' rows='4' style='font-size: 20px; resize: none; overflow-y: scroll;'>{$row['habitDesc']}</textarea>
                                     </div>
 
                                     <div class='col-12 d-flex justify-content-center px-2 py-2'>
@@ -722,10 +722,10 @@
                                     </div>
                                     
                                     <div class='col-12 px-2'>
-                                        <label for='difficulty'>Difficulty </label>
+                                        <label for='difficulty'style='font-size: 20px''>Difficulty </label>
                                     </div>
                                     <div class='col-12 px-2'>
-                                        <select class='form-control' id='difficulty{$row['habitID']}'>
+                                        <select class='form-select' id='difficulty{$row['habitID']}'>
                                             <option value='1' "; if ($difficultyID == 1) {
                                                 echo 'selected';
                                             }

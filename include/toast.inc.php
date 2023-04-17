@@ -1,3 +1,12 @@
+<?php
+    include '../back/level.back.php';
+
+    $level = new Level();
+
+    $userID = $_SESSION['userID'];
+
+    $petAlive = $level->checkAlive($userID);
+?>
 <style>
     .toast-body p {
         font-size: 16px;
@@ -28,7 +37,11 @@
             <strong>&nbsp Tomodachi</strong>
         </div>
         <div class="toast-body">
-            <p>Fed Successfully</p>
+            <?php if ($petAlive == "alive") { ?>
+                <p>Fed Successfully</p>
+            <?php } else { ?>
+                <p>You can't feed your dead pet.</p>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -81,9 +94,37 @@
     </div>
 </div>
 
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
+    <div class="toast toast-revive" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="../assets/images/logo3.png" width="20">
+            <strong>&nbsp Tomodachi</strong>
+        </div>
+        <div class="toast-body">
+            <p>Your pet has been successfully revived.</p>
+        </div>
+    </div>
+</div>
+
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
+    <div class="toast toast-no-feed" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="../assets/images/logo3.png" width="20">
+            <strong>&nbsp Tomodachi</strong>
+        </div>
+        <div class="toast-body">
+            <p>You can't feed your dead pet.</p>
+        </div>
+    </div>
+</div>
+
 <!-- audio files -->
 <audio id="toast-feed">
-    <source src="../assets/audio/fed.mp3" type="audio/mpeg">
+    <?php if ($petAlive == "alive") {?>
+        <source src="../assets/audio/fed.mp3" type="audio/mpeg">
+    <?php } else { ?>
+        <source src="../assets/audio/negative.mp3" type="audio/mpeg">
+    <?php } ?>
 </audio>
 
 <audio id="toast-task">
@@ -108,4 +149,8 @@
 
 <audio id="toast-negative">
     <source src="../assets/audio/negative.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="toast-dead">
+    <source src="../assets/audio/error.mp3" type="audio/mpeg">
 </audio>

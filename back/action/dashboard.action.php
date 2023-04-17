@@ -65,15 +65,25 @@
         case 'taskReward':
             taskReward();
             break;
+        case 'revivePet':
+            revivePet();
+            break;
+
     }
 
     function decreaseFood_one(){
         $userID = $_GET['userID'];
         $foodID = $_GET['foodID'];
+        $petID = $_GET['petID'];
+
+        $level = new Level();
+        $petAlive = $level->checkAlive($userID, $petID);
 
         $foodData = new Food();
 
-        $foodData->decreaseFood_one($userID, $foodID);
+        if ($petAlive == "alive") {
+            $foodData->decreaseFood_one($userID, $foodID);
+        }
     }
 
     function equipPet(){
@@ -192,6 +202,7 @@
         $level = new Level();
         $level->habitPenalize($difficultyID);
         checkPetStats();
+
     }
 
     function feedReward() {
@@ -221,5 +232,16 @@
         $level = new Level();
         $level->checkXP($userID, $petID);
         $level->checkHealth($userID, $petID);
+    }
+
+    function revivePet() {
+        $userID = $_GET['userID'];
+        $petID = $_GET['petID'];
+
+        $pet = new Pet();
+        $currencyData = new Currency();
+
+        $pet->revivePet($userID, $petID);
+        $currencyData->decreaseCurrency($userID, 200);
     }
 ?>

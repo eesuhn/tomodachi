@@ -174,7 +174,7 @@
     </div>
 
     <div class="modal fade" id="petScout" aria-hidden="true" aria-labelledby="petScoutTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
           <div class="modal-body" style="color: black" id="petScoutData">
@@ -189,7 +189,7 @@
     </div>
 
     <div class="modal fade" id="wallpaperShop" aria-hidden="true" aria-labelledby="wallpaperShopTitle" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
 
           <div class="modal-body" style="color: black" id="wallpaperShopData">

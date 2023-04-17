@@ -39,3 +39,17 @@ function showNegativeToast(){
     toast.toast('show');
     document.getElementById('toast-negative').play();
 }
+
+function showReviveToast(){
+    var toast = $('.toast-revive')
+    toast.toast({ autohide: true, delay: 1000 });
+    toast.toast('show');
+    document.getElementById('toast-task').play();
+}
+
+function showNoFeedToast(){
+    var toast = $('.toast-no-feed')
+    toast.toast({ autohide: true, delay: 1000 });
+    toast.toast('show');
+    document.getElementById('toast-negative').play();
+}

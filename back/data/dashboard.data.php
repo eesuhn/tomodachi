@@ -56,7 +56,7 @@
         $pet = new Pet();
 
         $petData = $pet->getEquippedPet($userID);
-
+        $petID = $petData['petID'];
         $petName = $petData['petName'];
         $petImg = $petData['petImg'];
         $petHealthTol = $petData['petHealthTol'];
@@ -82,38 +82,67 @@
         echo 
         "<div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
-                <div class='card-header border-0'>
-                    <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
+                <div class='card-header border-0'>";
+
+        if (checkPetLevel()<=0){
+            echo "
+                    <img src='../assets/images/dead.png' style='margin: 20px -10px 0px; width: 80px; aspect-ratio: 1/1;'>
                 </div>
                 <div class='card-block px-3 col-3'>
                     <h5>$petName</h5>
-                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
-                    <div class='progress' style='height: 3px;'>
-                        <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
-                    </div>
-
-                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
-                    <div class='progress' style='height: 3px;'>
-                        <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
-                    </div>
-
-                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
-                    <div class='progress' style='height: 3px;'>
-                        <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
-                    </div>
+                    <h4>Your Pet has Died!</h4>
+                    <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px 4px 5px 0px;'><span style='font-size: 20px; margin-right: 4px;'>200</span>
+                    <button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>
                 </div>
-
                 <div class='card-block px-3 col-2'></div>
-                
+            
                 <div class='card-block px-3 col-2'>
                     <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
                     <h4>$today</h4>
                 </div>
             </div>
         </div>";
+
+        }else{
+            echo "
+                    <img src='$petImg' style='margin: 20px -10px 0px; width: 120px; aspect-ratio: 1.6/1;'>
+                </div>
+                <div class='card-block px-3 col-3'>
+                    <h5>$petName</h5>
+                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'></i>Level: $petLevel<br>
+                    <div class='progress' style='height:3px;'>
+                        <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
+                    </div>
+
+                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>Health: $petHealthCur/$petHealthTol<br>
+                    <div class='progress' style='height:3px;'>
+                        <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
+                    </div>
+
+                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>Happiness: $petHappCur/$petHappTol<br>
+                    <div class='progress' style='height:3px;'>
+                        <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
+                    </div>
+                </div>
+
+                <div class='card-block px-3 col-2'></div>
+            
+                <div class='card-block px-3 col-2'>
+                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px;'><span style='font-size: 20px;'>$currencyNum</span>
+                    <h4>$today</h4>
+                </div>
+            </div>
+        </div>";
+        }            
     }
 
     function refreshFood () {
+
+        $pet = new Pet();
+        $petData = $pet->getEquippedPet($_SESSION['userID']);
+
+        $petID = $petData['petID'];
+
         $userID = $_SESSION['userID'];
 
         $foodData = new Food();
@@ -127,7 +156,7 @@
                 echo 
                 "<div class='col-3 col-lg-3'>
                     <div class='count-data text-center' style='font-size: 20px;'>
-                        <button class='foodCounter' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].")'>
+                        <button class='foodCounter' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
                             <img src='"
                             .$row['foodImg'] . 
                             "' width='30px'>
@@ -213,7 +242,12 @@
         $petData = $pet->getEquippedPet($userID);
         $petImg = $petData['petImg'];
 
-        echo ' <img src="' . $petImg . '" style="width: auto; height: 200px;">';
+        if (checkPetLevel()<=0){
+            echo ' <img src="../assets/images/dead.png" style="width: auto; height: 200px;">';
+
+        }else{
+            echo ' <img src="' .$petImg. '" style="width: auto; height: 200px;">';
+        }
     }
     
     function refreshWallpaper() {
@@ -296,7 +330,7 @@
 
                 if ($row['taskStatus'] == "Active" && $status == "Active") {
                     echo "
-                    <div class='card' style='margin-top:10px;'>
+                    <div class='card' style='margin-top: 10px;'>
                         <div class='card-body'>
                             <div class='row align-items-center'>
                                 <div class='col-2 d-flex justify-content-center align-items-center'>
@@ -389,7 +423,7 @@
                 }
                 if ($row['taskStatus'] == "Completed" && $status == "Completed") {
                     echo "
-                    <div class='card' style='margin-top:10px;'>
+                    <div class='card' style='margin-top: 10px;'>
                         <div class='card-body'>
                             <div class='row align-items-center'>
                                 <div class='col-12 flex-grow-1'>
@@ -761,5 +795,20 @@
                 </div>
             </div>";
         }
+    }
+
+    function checkPetLevel() {
+        $userID = $_SESSION['userID'];
+
+        $pet = new Pet();
+
+        $petData = $pet->getEquippedPet($userID);
+
+        $petID = $petData['petID'];
+
+        // check pet level
+        $level = new Level();
+        $petLevel = $level->checkLevel($userID, $petID);
+        return $petLevel;
     }
 ?>

@@ -1,12 +1,13 @@
 // decrease food by one
-function decreaseFood_one(userID, foodID) {
+function decreaseFood_one(userID, foodID, petID) {
 
     $.ajax({
         url: "../back/action/dashboard.action.php?action=decreaseFood_one",
         type: "GET",
         data: {
             userID: userID,
-            foodID: foodID
+            foodID: foodID,
+            petID: petID
         }, 
 
         success: function() {
@@ -219,4 +220,20 @@ function taskReward() {
         type: "GET",
     });
     refreshDashboard();
+}
+
+function revivePet(userID, petID) {
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=revivePet",
+        type: "GET",
+        data: {
+            userID: userID,
+            petID: petID
+        }, 
+
+        success: function() {
+            refreshDashboard();
+            showReviveToast();
+        }
+    });
 }

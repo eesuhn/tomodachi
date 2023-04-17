@@ -318,7 +318,7 @@
     <div class="modal fade" id="viewFoods" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body" id="viewFoodsData">
                     <!-- display foods with AJAX -->
                 </div>
                 <div class="modal-footer">

@@ -85,5 +85,15 @@
 
             return $stmt;
         }
+
+        public function getAllFoods() {
+            $sql = "SELECT * FROM food";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt;
+        }
     }
 ?>

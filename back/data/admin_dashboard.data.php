@@ -18,6 +18,9 @@
         case 'refreshViewPets':
             refreshViewPets();
             break;
+        case 'refreshViewFoods':
+            refreshViewFoods();
+            break;
     }
 
     function refreshViewPets() {
@@ -71,5 +74,43 @@
         }else{
             return "../assets/images/common.png";
         }
+    }
+
+    function refreshViewFoods() {
+        $admin = new Admin();
+
+        $stmt = $admin->getAllFoods();
+
+        echo '
+        <style>
+            p.food-stats img:not(:first-child) {
+                margin-left: 20px;
+            }
+            
+            p.food-stats img {
+                margin-right: 6px;
+            }
+        </style>
+        <div class="row">';
+        
+        foreach ($stmt as $row) {
+
+            echo
+            "<div class='col-md-4 px-3 py-3'>
+                <div class='card h-100'>
+                    <center><img src='{$row["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                    <div class='card-body d-flex flex-column'>
+                        <h5 class='card-title'>{$row["foodName"]}</h5>
+                        <p class='card-text food-stats'>
+                            <img src='../assets/images/health.png' width='20'>{$row["foodHealth"]}
+                            <img src='../assets/images/hunger.png' width='20'>{$row["foodHapp"]}
+                            <img src='../assets/images/coin.png' width='20'>{$row["foodPrice"]}
+                        </p>
+                        <p class='card-text'>{$row["foodDesc"]}</p>
+                    </div>
+                </div>
+            </div>";
+        }
+        echo '</div>';
     }
 ?>

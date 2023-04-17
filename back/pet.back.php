@@ -364,8 +364,9 @@
         }
 
         public function revivePet($userID, $petID) {
-            $sql = "UPDATE pet_inventory SET petLevel = 1, petHappCur = 0, petXP = 0, petAlive = 1, 
-                    deadModal = 0 WHERE userID = :userID AND petID = :petID";
+            $sql = "UPDATE pet_inventory SET petLevel = 1, petHappCur = 0, petXP = 0, 
+                    petAlive = 1, deadModal = 0, petHealthCur = petHealthTol  
+                    WHERE userID = :userID AND petID = :petID";
             
             $stmt = $this->db->connect()->prepare($sql);
             $stmt->bindParam(':userID', $userID);

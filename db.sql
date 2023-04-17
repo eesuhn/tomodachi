@@ -58,9 +58,9 @@ CREATE TABLE `pet_inventory` (
     `petHealthCur` int(11) NOT NULL,
     `petHappCur` int(11) NOT NULL,
     `petStatus` varchar(255) NOT NULL DEFAULT 'Kept',
-    `petHappReset` date NOT NULL
+    `petHappReset` date NOT NULL,
     `petAlive` tinyint(1) NOT NULL DEFAULT '1',
-    `dead_displayed` tinyint(1) NOT NULL DEFAULT '0'
+    `deadModal` tinyint(1) NOT NULL DEFAULT '0'
 );
 
 -- wallpaper table

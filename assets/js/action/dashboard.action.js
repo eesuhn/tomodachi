@@ -225,24 +225,11 @@ function revivePet(userID, petID) {
     $.ajax({
         url: "../back/action/dashboard.action.php?action=revivePet",
         type: "GET",
-        data: { 
-            userID: userID, 
-            petID: petID 
-        },
-        success: function() {
-            refreshDashboard();
-        }
-    });
-}
-// revive pet
-function revivePet(userID, petID) {
-    $.ajax({
-        url: "../back/action/dashboard.action.php?action=revivePet",
-        type: "GET",
         data: {
             userID: userID,
             petID: petID
         }, 
+
         success: function() {
             refreshDashboard();
             showReviveToast();

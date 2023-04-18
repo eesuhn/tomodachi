@@ -105,5 +105,60 @@
 
             return $stmt;
         }
+
+        public function addPet($petName, $petRarity, $petDesc, $petImg) {
+            $sql = "INSERT INTO pet (petName, petRarity, petDesc, petImg) VALUES (:petName, :petRarity, :petDesc, :petImg)";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':petName', $petName);
+            $stmt->bindParam(':petRarity', $petRarity);
+            $stmt->bindParam(':petDesc', $petDesc);
+            $stmt->bindParam(':petImg', $petImg);
+
+            $stmt->execute();
+        }
+
+        public function addFood($foodName, $foodDesc, $foodPrice, $foodHealth, $foodHapp, $foodImg) {
+            $sql = "INSERT INTO food (foodName, foodDesc, foodPrice, foodHealth, foodHapp, foodImg) VALUES (:foodName, :foodDesc, :foodPrice, :foodHealth, :foodHapp, :foodImg)";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':foodName', $foodName);
+            $stmt->bindParam(':foodDesc', $foodDesc);
+            $stmt->bindParam(':foodPrice', $foodPrice);
+            $stmt->bindParam(':foodHealth', $foodHealth);
+            $stmt->bindParam(':foodHapp', $foodHapp);
+            $stmt->bindParam(':foodImg', $foodImg);
+
+            $stmt->execute();
+        }
+
+        public function addWallpaper($wallpaperName, $wallpaperDesc, $wallpaperPrice, $wallpaperImg) {
+            $sql = "INSERT INTO wallpaper (wallpaperName, wallpaperDesc, wallpaperPrice, wallpaperImg) VALUES (:wallpaperName, :wallpaperDesc, :wallpaperPrice, :wallpaperImg)";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->bindParam(':wallpaperName', $wallpaperName);
+            $stmt->bindParam(':wallpaperDesc', $wallpaperDesc);
+            $stmt->bindParam(':wallpaperPrice', $wallpaperPrice);
+            $stmt->bindParam(':wallpaperImg', $wallpaperImg);
+
+            $stmt->execute();
+        }
+
+        public function getTotal() {
+            $sql = "SELECT
+                    (SELECT COUNT(*) FROM user) AS userCount,
+                    (SELECT COUNT(*) FROM pet) AS petCount,
+                    (SELECT COUNT(*) FROM food) AS foodCount,
+                    (SELECT COUNT(*) FROM wallpaper) AS wallpaperCount;";
+
+            $stmt = $this->db->connect()->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt;
+        }
     }
 ?>

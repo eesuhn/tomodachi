@@ -1,17 +1,13 @@
 -- Dump data for table `food`
-INSERT INTO `food` (`foodName`, `foodDesc`, `foodPrice`, `foodHealth`, `foodHapp`, `foodImg`) VALUES 
-('Donut', 
-'A sweet and circular pastry with a hole in the middle, perfect for satisfying your sweet tooth cravings.', 
-'20', '10', '10', '../assets/foods/donut.png'),
-('Ramen', 
-'A Japanese noodle soup dish, perfect for satisfying your hunger cravings.', 
-'36', '20', '20', '../assets/foods/ramen.png'),
-('Squid', 
-'A sea creature that is perfect for satisfying your hunger cravings.', 
-'28', '15', '15', '../assets/foods/squid.png'),
-('Strawberry', 
-'A sweet and juicy red fruit', 
-'20', '12', '12', '../assets/foods/strawberry.png');
+INSERT INTO `food` (`foodName`, `foodDesc`, `foodPrice`, `foodHealth`, `foodHapp`, `foodImg`) VALUES
+('Donut', 'Circular pastry with a hole in center, sweet, glazed or sprinkled topping for satisfying your cravings.', 
+20, 10, 20, '../assets/foods/donut.png'),
+('Ramen', 'Japanese noodle dish with savory broth, wheat noodles, and various toppings.', 
+32, 20, 40, '../assets/foods/ramen.png'),
+('Squid', 'Crispy, bite-sized pieces of deep-fried squid, seasoned with salt and spices.', 
+26, 15, 30, '../assets/foods/squid.png'),
+('Strawberry', 'Small, juicy, red fruit with sweet and tangy taste, edible seeds, provides health or energy boost.', 
+20, 12, 24, '../assets/foods/strawberry.png');
 
 -- Dump data for table `pet_rarity`
 INSERT INTO `pet_rarity` (`petRarity`, `petHealthIn`, `petHappIn`) VALUES 
@@ -20,40 +16,33 @@ INSERT INTO `pet_rarity` (`petRarity`, `petHealthIn`, `petHappIn`) VALUES
 ('Legendary', '250', '100');
 
 -- Dump data for table `pet`
-INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES 
+INSERT INTO `pet` (`petName`, `petRarity`, `petDesc`, `petImg`) VALUES
 ('Bird', 'Common', 
-'This avian is a real chatterbox! They love showing off their beautiful feathers and mimicking human speech. With their sweet singing and playful antics, they\'re sure to brighten up your day.', 
-'../assets/pets/bird.png'), 
+'This avian is a real chatterbox! They love showing off their beautiful feathers and mimicking human speech, with their sweet singing and playful antics.', '../assets/pets/bird.png'),
 ('Dinosaur', 'Legendary', 
-'This prehistoric pal is a blast from the past! Whether they\'re stomping around and roaring or curling up for a nap, they\'re sure to be a hit. With their scaly skin and fierce claws, they\'re the ultimate pet.', 
-'../assets/pets/dinosaur.png'), 
+'This prehistoric pal is a blast from the past! Whether they\'re stomping around and roaring or curling up for a nap, they\'re the ultimate pet.', '../assets/pets/dinosaur.png'),
 ('Capybara', 'Legendary', 
-'This gentle giant is the king of chill! They love lounging in the sun and taking dips in the water. With their large size and friendly nature, they\'re sure to make a unique and lovable addition to your pet collection.', 
-'../assets/pets/capybara.png'), 
+'This gentle giant is the king of chill! They love lounging in the sun and taking dips in the water. With their large size and friendly nature, they\'re sure to make a unique personality to your pet collection.', '../assets/pets/capybara.png'),
 ('Cat', 'Common', 
-'This sassy feline may seem aloof, but they secretly love getting attention from their humans. With their sleek fur and piercing eyes, they\'re sure to make a stylish addition to your pet collection.', 
-'../assets/pets/cat.png'), 
+'This sassy feline may seem aloof, but they secretly love getting attention from their humans, with their sleek fur and piercing eyes.', '../assets/pets/cat.png'),
 ('Chicken', 'Common', 
-'This feathered friend may seem unassuming, but they\'re full of surprises! They love scratching around in the dirt and clucking happily when they find a tasty treat. With their soft, downy feathers and quirky personality, they\'re sure to win your heart.', 
-'../assets/pets/chicken.png'), 
+'This feathered friend may seem unassuming, but they\'re full of surprises! They love scratching around in the dirt and clucking happily when they find a tasty treat.', '../assets/pets/chicken.png'),
 ('Dog', 'Common', 
-'This loyal pup loves nothing more than playing fetch and cuddling up with their owner. With their wagging tail, friendly bark and immense bravery, they\'re sure to be your new best friend forever!', 
-'../assets/pets/dog.png'), 
+'This loyal pup loves nothing more than playing fetch and cuddling up with their owner. With their wagging tail, friendly bark and immense bravery, they\'re sure to be your new best friend forever!', '../assets/pets/dog.png'),
 ('Raccoon', 'Rare', 
-'This mischievous critter is always up to something! Whether they\'re raiding your garbage can or snuggling up in a cozy spot, they\'re sure to keep you entertained. With their masked face and bushy tail, they\'re the perfect pet for anyone.', 
-'../assets/pets/raccoon.png');
+'This mischievous critter is always up to something! Whether they\'re raiding your garbage can or snuggling up in a cozy spot, they\'re sure to keep you entertained.', '../assets/pets/raccoon.png');
 
 -- Dump data for table `wallpaper`
-INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperDesc`, `wallpaperPrice`, `wallpaperImg`) VALUES 
-('Sky', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.', '0', '../assets/wallpapers/sky.png'), 
-('Meadow', 'A calming and refreshing wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers', '250', '../assets/wallpapers/meadow.png'), 
-('Folklore', 'A rustic wallpaper design, , inspired by traditional tales and legends from around the world, featuring intricate patterns and symbols', '250', '../assets/wallpapers/folklore.png'), 
-('Campfire', 'A cozy wallpaper design, featuring a warm and flickering fire that conjures up images of camping trips.', '250', '../assets/wallpapers/campfire.png'), 
-('Mars', 'A bold wallpaper design, featuring a stunning image of the Red Planet that captures the imagination and inspires a sense of adventure and exploration.', '500', '../assets/wallpapers/mars.png'),
-('Starry Nights', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', '500', '../assets/wallpapers/starrynight.png');
+INSERT INTO `wallpaper` (`wallpaperName`, `wallpaperDesc`, `wallpaperPrice`, `wallpaperImg`) VALUES
+('Sky', 'A simple wallpaper design featuring a gradient of blue hues that evoke feelings of peace.', 0, '../assets/wallpapers/sky.png'),
+('Meadow', 'A calming wallpaper design, featuring a serene landscape of gently swaying grasses and wildflowers.', 250, '../assets/wallpapers/meadow.png'),
+('Folklore', 'A rustic wallpaper design, inspired by traditional tales from around the world.', 250, '../assets/wallpapers/folklore.png'),
+('Campfire', 'Featuring a warm and flickering fire that conjures up images of camping trips.', 250, '../assets/wallpapers/campfire.png'),
+('Mars', 'The Red Planet that captures the imagination and inspires a sense of adventure and exploration.', 500, '../assets/wallpapers/mars.png'),
+('Starry Nights', 'A magical and enchanting wallpaper design, featuring a stunning night sky filled with twinkling stars', 500, '../assets/wallpapers/starrynight.png');
 
 -- Dump data for table `difficulty`
 INSERT INTO `difficulty` (`difficultyTitle`, `currencyReward`, `XPReward`, `healthPenalize`, `currencyPenalize`) VALUES 
 ('Easy', '5', '5', '10', '10'), 
 ('Medium', '10', '10', '20', '20'), 
-('Hard', '20', '20', '40', '40');
+('Hard', '20', '20', '30', '30');

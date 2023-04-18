@@ -1,3 +1,7 @@
+<?php
+    include '../include/admin_dashboard.inc.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +22,6 @@
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
     <script src="../assets/js/data/admin_dashboard.data.js"></script>
-    <script src="../assets/js/action/admin_dashboard.action.js"></script>
 </head>
 
 <body style="background-color: #f1f1f1;">
@@ -40,14 +43,18 @@
                 font-size: 20px;
                 font-weight: 500;
             }
+            .d-flex span {
+                font-size: 20px;
+                font-weight: 500;
+            }
         </style>
         <div class="row d-flex justify-content-center mx-4 my-4">
             <div class="col-12" style="margin-top: 16px;">
                 <center>
-                    <h2>Welcome back, Admin Name</h2>
+                    <h2>Welcome back, <?=$adminName?></h2>
                 </center>
             </div>
-            <div class="col-md-4 py-2">
+            <div class="col-md-3 py-2">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -56,7 +63,7 @@
                                     <i class="icon-pencil primary font-large-2 float-left"></i>
                                 </div>
                                 <div class="media-body text-right">
-                                    <h3>Pending</h3>
+                                    <h3><?=$userCount?></h3>
                                     <span>Total Number of Users</span>
                                 </div>
                             </div>
@@ -64,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 py-2">
+            <div class="col-md-3 py-2">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -73,7 +80,7 @@
                                     <i class="icon-pencil primary font-large-2 float-left"></i>
                                 </div>
                                 <div class="media-body text-right">
-                                    <h3>Pending</h3>
+                                    <h3><?=$petCount?></h3>
                                     <span>Total Number of Pets</span>
                                 </div>
                             </div>
@@ -81,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 py-2">
+            <div class="col-md-3 py-2">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -90,7 +97,7 @@
                                     <i class="icon-pencil primary font-large-2 float-left"></i>
                                 </div>
                                 <div class="media-body text-right">
-                                    <h3>Pending</h3>
+                                    <h3><?=$foodCount?></h3>
                                     <span>Total Number of Food Items</span>
                                 </div>
                             </div>
@@ -98,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 py-2">
+            <div class="col-md-3 py-2">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -107,42 +114,8 @@
                                     <i class="icon-pencil primary font-large-2 float-left"></i>
                                 </div>
                                 <div class="media-body text-right">
-                                    <h3>Pending</h3>
-                                    <span>Total To-Dos Completed</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 py-2">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="align-self-center">
-                                    <i class="icon-pencil primary font-large-2 float-left"></i>
-                                </div>
-                                <div class="media-body text-right">
-                                    <h3>Pending</h3>
-                                    <span>Total Number of Positive Habits Done</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 py-2">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="align-self-center">
-                                    <i class="icon-pencil primary font-large-2 float-left"></i>
-                                </div>
-                                <div class="media-body text-right">
-                                    <h3>Pending</h3>
-                                    <span>Total Time in Study Mode</span>
+                                    <h3><?=$wallpaperCount?></h3>
+                                    <span>Total Number of Wallpapers</span>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +123,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-center mx-4 my-4">
-                <div class="col-12" style="margin-top: -6px;">
+                <div class="col-12" style="margin-top: 16px;">
                     <center>
                         <h3>Manage Pets</h3>
                     </center>
@@ -195,7 +168,7 @@
                 </div>
             </div>
             <div class="row mx-4 my-4 d-flex justify-content-center">
-                <div class="col-12" style="margin-top: -6px;">
+                <div class="col-12">
                     <center>
                         <h3>Manage Foods</h3>
                     </center>
@@ -240,7 +213,7 @@
                 </div>
             </div>
             <div class="row mx-4 my-4 d-flex justify-content-center">
-                <div class="col-12" style="margin-top: -6px;">
+                <div class="col-12">
                     <center>
                         <h3>Manage Wallpapers</h3>
                     </center>
@@ -304,7 +277,7 @@
     <div class="modal fade" id="addPet" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class='modal-content' style="padding: 10px 20px;">
-                <form>
+                <form method="POST" enctype="multipart/form-data" action="../include/admin_dashboard.inc.php?action=addPet">
                     <div class='row'>
                         <div class='col-12 d-flex justify-content-center px-2 py-2'>
                             <h2>Add a New Pet</h2>
@@ -314,19 +287,19 @@
                             <label for=''>Pet Name</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <input type='text' class='form-control' id='' name='' required>
+                            <input type='text' class='form-control' id='petName' name='petName' required>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Description</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <textarea class='form-control' id='' name='' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
+                            <textarea class='form-control' id='petDesc' name='petDesc' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Rarity </label>
                         </div>
                         <div class='col-12 px-2'>
-                            <select class='form-control' id='' name=''>
+                            <select class='form-control' id='petRarity' name='petRarity'>
                                 <option value="Common">Common</option>
                                 <option value="Rare">Rare</option>
                                 <option value="Legendary">Legendary</option>
@@ -336,7 +309,7 @@
                             <label for='' style='margin-top: 10px;'>Upload an image</label>
                         </div>
                         <div class='col-12 px-2'>
-                            <input type='file' class='form-control' id='' name='' required>
+                            <input type='file' class='form-control' id='fileUpload' name='fileUpload' required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -364,7 +337,7 @@
     <div class="modal fade" id="addFood" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class='modal-content' style="padding: 10px 20px;">
-                <form>
+                <form method="POST" enctype="multipart/form-data" action="../include/admin_dashboard.inc.php?action=addFood">
                     <div class='row'>
                         <div class='col-12 d-flex justify-content-center px-2 py-2'>
                             <h2>Add a New Food</h2>
@@ -374,37 +347,37 @@
                             <label for=''>Food Name</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <input type='text' class='form-control' id='' name='' required>
+                            <input type='text' class='form-control' id='foodName' name='foodName' required>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Description</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <textarea class='form-control' id='' name='' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
+                            <textarea class='form-control' id='foodDesc' name='foodDesc' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Price</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <input type='number' class='form-control' id='' name='' required>
+                            <input type='number' class='form-control' id='foodPrice' name='foodPrice' required>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Health Regenerate</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <input type='number' class='form-control' id='' name='' required>
+                            <input type='number' class='form-control' id='foodHealth' name='foodHealth' required>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Happiness Increase</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <input type='number' class='form-control' id='' name='' required>
+                            <input type='number' class='form-control' id='foodHapp' name='foodHapp' required>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Upload an image</label>
                         </div>
                         <div class='col-12 px-2'>
-                            <input type='file' class='form-control' id='' name='' required>
+                            <input type='file' class='form-control' id='fileUpload' name='fileUpload' required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -433,7 +406,7 @@
     <div class="modal fade" id="addWallpaper" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class='modal-content' style="padding: 10px 20px;">
-                <form>
+                <form method="POST" enctype="multipart/form-data" action="../include/admin_dashboard.inc.php?action=addWallpaper">
                     <div class='row'>
                         <div class='col-12 d-flex justify-content-center px-2 py-2'>
                             <h2>Add a New Wallpaper</h2>
@@ -443,25 +416,25 @@
                             <label for=''>Wallpaper Name</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <input type='text' class='form-control' id='' name='' required>
+                            <input type='text' class='form-control' id='wallpaperName' name='wallpaperName' required>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Description</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <textarea class='form-control' id='' name='' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
+                            <textarea class='form-control' id='wallpaperDesc' name='wallpaperDesc' rows='4' style='resize: none; overflow-y: scroll;' required></textarea>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Price</label>
                         </div>
                         <div class='col-12 d-flex justify-content-center px-2'>
-                            <input type='number' class='form-control' id='' name='' required>
+                            <input type='number' class='form-control' id='wallpaperPrice' name='wallpaperPrice' required>
                         </div>
                         <div class='col-12 px-2'>
                             <label for='' style='margin-top: 10px;'>Upload an image</label>
                         </div>
                         <div class='col-12 px-2'>
-                            <input type='file' class='form-control' id='' name='' required>
+                            <input type='file' class='form-control' id='fileUpload' name='fileUpload' required>
                         </div>
                     </div>
                     <div class="modal-footer">

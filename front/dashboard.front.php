@@ -1,6 +1,6 @@
 <?php
-include '../include/dashboard.inc.php';
-include '../include/toast.inc.php';
+  include '../include/dashboard.inc.php';
+  include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,6 @@ include '../include/toast.inc.php';
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
@@ -31,23 +30,22 @@ include '../include/toast.inc.php';
 
 </head>
 
-<body style="background-color: #f1f1f1;">
+<body style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; opacity: 92%;">
 
   <div class="sidebar">
     <div class="logo">
       <img src="../assets/images/logo2.png" alt="Tomodachi">
     </div>
-    <a class="active" href="#home">Home</a>
+    <a class="active" href="dashboard.front.php">Home</a>
     <a href="../front/shop.front.php">Shop</a>
-    <a href="#contact">Study</a>
-    <a href="#about">Schedule</a>
+    <a href="../front/study.front.php">Study</a>
     <div class="logout">
       <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
     </div>
   </div>
 
   <div class="content">
-    <div class="container" id="statsHeader">
+    <div class="container" id="statsHeader" style="margin-bottom: -10px;">
       <!-- display stats header with AJAX -->
     </div>
 
@@ -70,10 +68,12 @@ include '../include/toast.inc.php';
               display: flex; 
               align-items: center; 
               margin: 5px; 
-              background: rgba(0, 0, 0, 0.5); 
-              padding: 5px;" class="inventory">
-            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height: 36px;">
-              <span style="margin-left: 10px; color: white; font-size: 20px;">Inventory</span></a>
+              background: rgba(0, 0, 0, 0.8); 
+              padding: 2px 8px 2px;" class="inventory">
+            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()">
+              <img src="../assets/images/inventory.png" style="width: auto; height: 40px; margin-bottom: 5px;">
+              <span style="margin-left: 10px; color: white; font-size: 24px;">Inventory</span>
+            </a>
           </div>
           <div class="pet" id="petImg">
             <!-- display petImage with AJAX -->
@@ -83,8 +83,8 @@ include '../include/toast.inc.php';
 
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px" ;>Habits</h3>
-        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
-          <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 10px; font-size: 18px;" autocomplete="off">
+        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #5C6C7D; border-radius: 6px;">
+          <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 16px; font-size: 20px;" autocomplete="off">
 
           <div id="habitTracker">
             <!-- display habit tracker with AJAX -->
@@ -96,9 +96,9 @@ include '../include/toast.inc.php';
         <!-- display task tracker with AJAX -->
       </div>
 
-      <div class="card shadow text-white bg-dark" style="margin-top: 30px;">
+      <div class="card shadow text-white bg-dark" style="margin-top: 20px;">
         <div class="card-header">
-          <h4>Foods</h4>
+          <h4 style="font-size: 24px; padding-top: 6px; padding-left: 2px;">Foods</h4>
         </div>
         <div class="row no-gutters">
           <div class="col-md-12"></div>
@@ -155,22 +155,10 @@ include '../include/toast.inc.php';
     </div>
   </div>
 
-  <div class="modal fade" id="reviveModal" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body" style="color: black" id="inventoryData">
-          <p>Your pet has been revived and you lost some currencies. Take better care of your pet next time :(</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <script>
-    var habitTitle = document.getElementById('habitTitle') ?? {textContent: ''};
+    var habitTitle = document.getElementById('habitTitle') ?? {
+      textContent: ''
+    };
 
     if (habitTitle && habitTitle.tagName === 'INPUT') {
       habitTitle.addEventListener('keypress', function(event) {

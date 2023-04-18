@@ -149,6 +149,11 @@
                     ':userID' => $userID,
                     ':petID' => $petID));
             }
+            echo "
+            <script>
+                $('#levelModal').modal('show');
+                document.getElementById('toast-level').play();
+            </script>";
         }
 
         /*

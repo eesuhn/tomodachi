@@ -5,10 +5,11 @@
   background-color: #000;
   position: fixed;
   height: 100%;
-  font-size: 23px;
+  font-size: 28px;
   overflow: auto;
   text-align: center;
 }
+
 .sidebar a {
   text-align: center;
   display: block;
@@ -16,51 +17,63 @@
   padding: 16px;
   text-decoration: none;
 }
+
 .sidebar a.active {
   color: chartreuse;
 }
+
 .sidebar .logo {
   padding: 16px;
   text-align: center;
 }
+
 .sidebar .logo img {
-  width: 100px;
+  width: 120px;
 }
+
 .sidebar a:hover:not(.active) {
   background-color: #555;
   color: white;
 }
+
 .sidebar .logout {
   position: absolute;
   bottom: 0;
   width: 100%;
   text-align: center;
 }
+
 div.content {
   margin-left: 200px;
   padding: 1px 16px;
   height: 1000px;
 }
+
 .counter {
   padding: 10px;
 }
+
 .counter .count {
   font-weight: 800;
   color: #20247b;
 }
+
 .counter p {
   font-weight: 600;
   margin: 0;
 }
+
 @media screen and (max-width: 1400px) {
   .sidebar {
     width: 100%;
     height: auto;
     position: relative;
   }
+
   .sidebar a {
     float: left;
   }
+
   .sidebar .logout {
     position: absolute;
     bottom: 0;
@@ -68,6 +81,7 @@ div.content {
     width: auto;
     text-align: right;
   }
+  
   div.content {
     margin-left: 0;
   }

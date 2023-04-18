@@ -81,7 +81,7 @@
         $petID = $_GET['petID'];
 
         $level = new Level();
-        $petAlive = $level->checkAlive($userID, $petID);
+        $petAlive = $level->checkAlive($userID);
 
         $foodData = new Food();
 

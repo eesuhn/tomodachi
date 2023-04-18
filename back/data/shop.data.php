@@ -46,8 +46,9 @@
 
         $currencyNum = $userCurrency->getCurrency($userID);
 
-        echo 
-        "<img src='../assets/images/coin.png' style='height: 30px; margin: 10px;'>$currencyNum";
+        echo "
+        <span class='coin-icon'></span>
+        <span class='coin-count'>$currencyNum</span>";
     }
 
     function showPetScout () {
@@ -92,50 +93,40 @@
         $userID = $_SESSION['userID'];
         
         $foodData = new Food();
-        $foodShop = $foodData->getShopFoods($userID);
+        $stmt = $foodData->getShopFoods($userID);
 
         $userCurrency = new Currency();
         $currencyNum = $userCurrency->getCurrency($userID);
-
-        echo '
-        <style>
-            p.food-stats img:not(:first-child) {
-                margin-left: 20px;
-            }
-            
-            p.food-stats img {
-                margin-right: 6px;
-            }
-        </style>
-        <div class="row">';
         
-        foreach ($foodShop as $foodShopData) {
+        foreach ($stmt as $row) {
+            $disableBtn = '';
 
-            $disableButton = '';
-
-            if ($currencyNum < $foodShopData['foodPrice']) {
-                $disableButton = 'disabled';
+            if ($currencyNum < $row['foodPrice']) {
+                $disableBtn = 'disabled';
             }
-            echo
-            "<div class='col-md-4 px-3 py-3'>
-                <div class='card h-100'>
-                    <center><img src='{$foodShopData["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+
+            $foodNum = ($row['foodNum'] == 0) ? "0" : $row['foodNum'];
+
+            echo "
+            <div class='col-md-3 px-3 py-3' style='max-width: 24.6%;'>
+                <div class='card h-40'>
+                    <center><img src='{$row['foodImg']}' class='card-img-top' alt='Food Image' style='max-width: 40%;'></center>
                     <div class='card-body d-flex flex-column'>
-                        <h5 class='card-title'>{$foodShopData["foodName"]}</h5>
+                        <h5 class='card-title' style='font-size: 24px;'>{$row['foodName']}</h5>
                         <p class='card-text food-stats'>
-                            <img src='../assets/images/health.png' width='20'>{$foodShopData["foodHealth"]}
-                            <img src='../assets/images/hunger.png' width='20'>{$foodShopData["foodHapp"]}
+                            <img src='../assets/images/health.png' width='20'><span style='font-size: 18px;'>{$row['foodHealth']}</span>
+                            <img src='../assets/images/hunger.png' width='20'><span style='font-size: 18px;'>{$row['foodHapp']}</span>
                         </p>
-                        <p class='card-text' style='margin: -6px 0px -2px;'>In Inventory: {$foodShopData["foodNum"]}</p>
-                        
-                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>{$foodShopData["foodPrice"]}</h4>
-                        <p class='card-text'>{$foodShopData["foodDesc"]}</p>
+                        <p class='card-text' style='margin: -6px 0px -2px; font-size: 18px;'>In Inventory: &nbsp$foodNum</p>
+
+                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 0px;'>{$row['foodPrice']}</h4>
+                        <p class='card-text' style='font-size: 18px;'>{$row['foodDesc']}</p>
 
                         <div class='mt-auto'>
-                            <button class='btn btn-primary' $disableButton onclick='purchaseFood({$userID}, {$foodShopData['foodID']}, {$foodShopData['foodPrice']})' 
+                            <button class='btn btn-primary' $disableBtn onclick='purchaseFood({$userID}, {$row['foodID']}, {$row['foodPrice']})' 
                             style='margin: -6px 0px 0px; border: none; ";
                             
-                            if ($disableButton == 'disabled') {
+                            if ($disableBtn == 'disabled') {
                                 echo "background-color: red;'>Not enough coins!";
                             } else {
                                 echo "'>Purchase";
@@ -146,8 +137,7 @@
                     </div>
                 </div>
             </div>";
-        }
-        echo '</div>';
+        };
     }
 
     function refreshGachaButton() {
@@ -166,41 +156,20 @@
         if ($ownedPets || $currencyNum < 1000) {
             $flag = "disabled"; 
         };
-
+        
         echo 
-        "<div class='text-muted'>Partner up with new pets from different rarities using your earned coins!</div>
+        "<button type='button' class='btn btn-primary $flag' data-bs-target='#petScout' data-bs-toggle='modal' onclick='petScout($userID)' style='padding: 6px -10px; width: 25%; font-size: 30px; border: none; ";
+        if ($ownedPets) {
+            echo " background-color: black; opacity: 0.9;' disabled>You owned all the pets!"; 
 
-        <div class='row'>
-          <div class='col-3'></div>
-
-          <div class='col-6 d-flex justify-content-center'>
-            <img src='../assets/images/petscout.png' width='150'>
-          </div>
-          <div class='col-3'></div>
-
-          <div class='col-12 d-flex justify-content-center'>
-            <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
-          </div>
-
-          <div class='col-12 d-flex justify-content-center'>
-            <button type='button' onclick='petScout($userID)' class='btn btn-primary ".$flag; 
+        } else if ($currencyNum < 1000) {
+            echo " background-color: red; opacity: 0.9;' disabled>Not enough coins!";
             
-        echo 
-            "' data-bs-target='#petScout' data-bs-toggle='modal' style='border: none;";
-            
-            if ($ownedPets) {
-                echo " background-color: black;' disabled>You owned all the pets!"; 
-
-            } else if ($currencyNum < 1000) {
-                echo " background-color: red;' disabled>Not enough coins!";
-                
-            } else {
-                echo " width: 15%;'>Go!";
-            }
+        } else {
+            echo "'>Scout!";
+        }
         echo
-            "</button>
-          </div>
-        </div>";
+        "</button>";
     }
 
     function refreshWallpaperShop(){
@@ -212,46 +181,37 @@
 
         $currencyNum = $userCurrency->getCurrency($userID);
 
-        $wallpaperShop = $wallpaperData->getAllWallpapers();
+        $stmt = $wallpaperData->getAllWallpapers();
 
         echo '<div class="row">';
         
-        foreach ($wallpaperShop as $wallpaperShopData) {
+        foreach ($stmt as $row) {
 
-            $disableButton = '';
+            $disableBtn = '';
             $flag ='';
 
-            if ($currencyNum < $wallpaperShopData['wallpaperPrice']) {
-                $disableButton = 'disabled';
+            if ($currencyNum < $row['wallpaperPrice']) {
+                $disableBtn = 'disabled';
                 $flag = 'notEnough';
             }
 
-            $isOwned = $wallpaperData->checkWallpaper($userID, $wallpaperShopData['wallpaperID']);
+            $isOwned = $wallpaperData->checkWallpaper($userID, $row['wallpaperID']);
 
             if ($isOwned) {
-                $disableButton = 'disabled';
+                $disableBtn = 'disabled';
                 $flag = 'owned';
             }
 
-            echo
-            "<div class='col-md-4 px-3 py-3'>
-                <div class='card h-100'>
-                    <center><img src='{$wallpaperShopData["wallpaperImg"]}' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top: 15px;'></center>
+            echo "
+            <div class='col-md-3 px-3 py-3'>
+                <div class='card h-40'>
+                    <center><img src='{$row['wallpaperImg']}' class='card-img-top' alt='Food Image' style='max-width: 90%; padding: 15px 10px 0px 10px;'></center>
                     <div class='card-body d-flex flex-column'>
-                        <h5 class='card-title'>{$wallpaperShopData["wallpaperName"]}</h5>
-                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>";
-                        if ($wallpaperShopData['wallpaperPrice'] == 0) {
-                            echo "Free!";
-
-                        } else {
-                            echo $wallpaperShopData['wallpaperPrice'];
-                        }
-            echo
-                        "</h4>
-                        <p class='card-text'>{$wallpaperShopData["wallpaperDesc"]}</p>
-
+                        <h5 class='card-title' style='font-size: 24px;'>{$row['wallpaperName']}</h5>
+                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 0px;'>{$row['wallpaperPrice']}</h4>
+                        <p class='card-text' style='font-size: 18px;'>{$row['wallpaperDesc']}</p>
                         <div class='mt-auto'>
-                            <button class='btn btn-primary' $disableButton onclick='purchaseWallpaper({$userID}, {$wallpaperShopData['wallpaperID']}, {$wallpaperShopData['wallpaperPrice']})' 
+                            <button class='btn btn-primary' $disableBtn onclick='purchaseWallpaper({$userID}, {$row['wallpaperID']}, {$row['wallpaperPrice']})' 
                             style='margin: -6px 0px 0px; border: none; ";
                             
                             if ($flag == 'notEnough') {
@@ -269,7 +229,6 @@
                     </div>
                 </div>
             </div>";
-        }
-        echo '</div>';
+        };
     }
 ?>

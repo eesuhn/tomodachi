@@ -1,6 +1,6 @@
 <?php
-  include '../include/shop.inc.php';
-  include '../include/toast.inc.php';
+include '../include/shop.inc.php';
+include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/shop.css">
-  
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -41,9 +41,8 @@
 <body style='background-color: #f2f2f2f2;'>
   <div class="content vh-100 p-0">
 
-    <div class="coin-indicator">
-      <span class="coin-icon"></span>
-      <span class="coin-count">100000</span>
+    <div class="coin-indicator" id="currencyData">
+      <!-- display currency with AJAX -->
     </div>
 
     <div style="background-image: url('../assets/images/shopbg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 200px;"></div>
@@ -64,12 +63,31 @@
       <center>
         <img src="../assets/images/petscout.png" style="margin: auto; width: 420px;">
         <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
-        <button type='button' class='btn btn-primary' style="padding: 6px -10px; width: 25%; font-size: 30px;">Scout</button><br>
+
+        <div id="gachaButton">
+          <!-- display Gacha button with AJAX -->
+        </div>
+
         <div style="padding: 10px 0px 30px 0px;">
           <a data-bs-target="#offeringRates" data-bs-toggle="modal" class="link-light" style="text-decoration: underline;">Check Offering Rates</a>
         </div>
       </center>
     </section>
+  </div>
+
+  <div class="modal fade" id="petScout" aria-hidden="true" aria-labelledby="petScoutTitle" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-body" style="color: black" id="petScoutData">
+          <!-- display new pet with AJAX -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">

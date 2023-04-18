@@ -5,6 +5,8 @@ $(document).ready(function() {
 // refresh shop data
 function refreshShop() {
     setTimeout(function() {
+        refreshFoodShop();
+        refreshWallpaperShop();
         refreshCurrency();
         refreshGachaButton();
     }, 100);

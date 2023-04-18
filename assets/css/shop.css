@@ -69,6 +69,7 @@ p.food-stats img {
 .coin-count {
   font-size: 30px;
   font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .link-light {

@@ -63,6 +63,7 @@
                     </div>
                 </div>
             </div>
+            <a href="" class="link-secondary" data-bs-target="#pomodoro" data-bs-toggle="modal">What is pomodoro studying?</a>
         </div>
     </div>
 </div>
@@ -102,6 +103,25 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="pomodoro" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <center>
+            <img src="../assets/images/studying.png" width="65%" style="margin-right: 80px;">
+            <h4 class="text-muted">Pomodoro studying is a time management technique that involves breaking up study sessions into shorter intervals with breaks in between to improve productivity and focus. It's named after a tomato-shaped kitchen timer used by its creator, Francesco Cirillo.</h4>
+            <h5 class="text-muted">For each studying session you complete, you will earn some some <img src="../assets/images/coin.png" width="10"> gold to contribute to your total funds for spending in the shop.</h5>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <audio id="toast-level">
     <source src="../assets/audio/level.mp3" type="audio/mpeg">

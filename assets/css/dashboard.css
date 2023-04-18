@@ -1,9 +1,9 @@
 .inventory {
-  opacity: 80%;
+  opacity: 0.9;
 }
 
 .inventory:hover {
-  opacity: 100%;
+  opacity: 1;
   transition: 0.2s ease;
   cursor: pointer;
 }

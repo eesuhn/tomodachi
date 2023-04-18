@@ -42,21 +42,22 @@
 <div style="background-image: url('../assets/images/bg2.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
 
     <div class="content vh-100">
-        <center><img src="../assets/images/studying.png" width="400" style="margin-top: 150px; margin-right: 80px;"></center>
+        <center>
+            <img src="../assets/images/studying.png" width="400" style="margin-top: 150px; margin-right: 80px;">
+        </center>
         <div id="wrapper">
             <div id="main-panel">
-                <div id="pomodoro-box">
-                    <h1 style="font-size: 45px">Pomodoro Studying</h1>
+                <div id="pomodoro-box" style="margin-bottom: -10px;">
+                    <h1 style="font-size: 45px;">Pomodoro Studying</h1>
                     <h4 class="text-muted">Earn currencies for each session you complete!</h4>
                     <div class="time" id="timer">00:00</div>
-                    <!-- <div class="time-strip"></div> -->
                     <div class="controls" id="pomodoro-controls">
                         <div class="button-container">
-                            <button class="btn btn-primary btn-lg" id="workButton">Work</button>
+                            <button class="btn btn-primary btn-lg" id="workButton" style="font-size: 22px; letter-spacing: 1px; width: 120px;">Start</button>
                             <div class="button-time">25:00</div>
                         </div>
                         <div class="button-container">
-                            <button class="btn btn-dark btn-lg" id="restButton">Rest</button>
+                            <button class="btn btn-dark btn-lg" id="restButton" style="font-size: 22px; letter-spacing: 1px; width: 120px;">Rest</button>
                             <div class="button-time">5:00</div>
                         </div>
                     </div>

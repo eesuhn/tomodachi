@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/shop.css">
+  
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -48,25 +49,27 @@
     <div style="background-image: url('../assets/images/shopbg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 200px;"></div>
 
     <ul>
-      <li><a href="shop.front.php">Shop</a></li>
+      <li><a href="shop.front.php">Food & Wallpaper</a></li>
       <li><a class="active" href="scout.front.php">Pet Scout</a></li>
     </ul>
 
     <section style="background-image: url('../assets/images/scoutbg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; color: white; opacity: 92%;">
-      <div style="padding: 10px">
-        <h2>Pet Scout</h2>
-        <h3 style="color: white">Partner up with new pets from different rarities using your earned coins!
-        </h3>
+      <div style="padding: 20px 20px 10px;">
+        <h1>Pet Scout</h1>
+        <h4 style="color: white">
+          Partner up with new pets from different rarities using your earned coins!
+        </h4>
       </div>
 
       <center>
-        <img src="../assets/images/petscout.png" style="margin: auto; width: 450px;">
+        <img src="../assets/images/petscout.png" style="margin: auto; width: 420px;">
         <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
-        <button type='button' class='btn btn-primary' style="padding: 10px; width: 25%;">Scout</button><br>
-        <a data-bs-target="#offeringRates" data-bs-toggle="modal" class="link-light">Check Offering Rates</a>
+        <button type='button' class='btn btn-primary' style="padding: 6px -10px; width: 25%; font-size: 30px;">Scout</button><br>
+        <div style="padding: 10px 0px 30px 0px;">
+          <a data-bs-target="#offeringRates" data-bs-toggle="modal" class="link-light" style="text-decoration: underline;">Check Offering Rates</a>
+        </div>
       </center>
     </section>
-
   </div>
 
   <div class="modal fade modal-lg" id="offeringRates" aria-hidden="true" aria-labelledby="offeringRatesTitle" tabindex="-1">

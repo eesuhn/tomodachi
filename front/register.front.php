@@ -26,34 +26,35 @@
   </nav>
 
   <div class="container-fluid p-0">
-    <div class="row no-gutters">
+    <div class="row no-gutters" style="margin-top: -40px;">
       <div class="col-md-6 d-none d-md-block">
         <img src="../assets/images/registerbg.png" alt="Login image" class="w-100" style="object-fit: cover; height: 105vh;">
       </div>
       <div class="col-md-6 d-flex align-items-center">
         <div class="container p-5">
-          <center><img src="../assets/images/logo1.png" width="195"></center>
+          <center>
+            <img src="../assets/images/logo1.png" width="195">
+          </center>
           <h1 class="text-center mb-5">Create an account</h1>
           <form id="register_user" method="POST" action="../include/register.inc.php">
-            <div class="form-group">
-              <label for="name" style="font-size: 24px;">Username</label>
-              <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="e.g. John Doe" required />
-            </div>
-            <div class="form-group">
-              <label for="email" style="font-size: 24px;">Email address</label>
-              <input type="text" id="email" name="email" class="form-control form-control-lg" placeholder="e.g. john@gmail.com" required />
-            </div>
-            <div class="form-group">
-              <label for="password" style="font-size: 24px;">Password</label>
-              <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter a secure password" required />
-              <div id="passwordHelp" class="form-text">Keep your account protected!</div>
-            </div>
-            <div class="form-group">
-              <label for="confirm_password" style="font-size: 24px;">Password Confirmation</label>
-              <input type="password" id="confirm_password" name="confirm_password" class="form-control form-control-lg" placeholder="Retype your password" required />
-            </div>
+            <center>
+              <div class="form-group" style="width: 66%; margin-top: -20px;">
+                <label for="name" style="font-size: 24px;">Username</label>
+                <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="e.g. John Doe" required />
+              </div>
+              <div class="form-group" style="width: 66%; margin-top: 20px;">
+                <label for="email" style="font-size: 24px;">Email address</label>
+                <input type="text" id="email" name="email" class="form-control form-control-lg" placeholder="e.g. john@gmail.com" required />
+              </div>
+              <div class="form-group" style="width: 66%; margin-top: 20px; margin-bottom: 10px;">
+                <label for="password" style="font-size: 24px;">Password</label>
+                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter a secure password" required style="margin-bottom: 6px;"/>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control form-control-lg" placeholder="Retype your password" required />
+                <div id="passwordHelp" class="form-text" style="font-size: 18px;">Keep your account protected!</div>
+              </div>
+            </center>
             <div class="text-center">
-              <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 30%; margin-top: 15px;">Create Account</button>
+              <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 30%; margin-top: 15px; letter-spacing: 1px;">Create Account</button>
             </div>
             <p class="text-center mt-3 mb-0" style="font-size: 20px;">Already have an account? <a href="login.front.php">Login here</a></p>
           </form>
@@ -67,31 +68,33 @@
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
           <h3 class="text-uppercase">Tomodachi</h3>
-          <p>
-            Final Year Project, DIIT AUG 2021
-          </p>
+          <div style="margin-top: -6px;">
+            <p>
+              DIIT AUG 2021
+            </p>
+          </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Quick Access</h5>
-          <ul class="list-unstyled mb-0">
+          <ul class="list-unstyled mb-0 footer-direct" style="margin-top: -4px;">
             <li>
-              <a href="front/login.front.php" class="text-white">Login</a>
+              <a href="login.front.php" class="text-white">Login</a>
             </li>
             <li>
-              <a href="front/register.front.php" class="text-white">Register</a>
+              <a href="#" class="text-white">Register</a>
             </li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Creators</h5>
-          <ul class="list-unstyled mb-0 text-white">
+          <ul class="list-unstyled mb-0 text-white footer-creator" style="margin-top: -4px;">
             <li>
-              Lim Yi Hong
+              <a href="https://github.com/eesuhn">Lim Yi Hong</a>
             </li>
             <li>
-              Mak Wei Jen
+              <a href="https://github.com/makwj">Mak Wei Jen</a>
             </li>
           </ul>
         </div>

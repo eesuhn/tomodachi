@@ -45,7 +45,7 @@
   </div>
 
   <div class="content">
-    <div class="container" id="statsHeader">
+    <div class="container" id="statsHeader" style="margin-bottom: -10px;">
       <!-- display stats header with AJAX -->
     </div>
 
@@ -68,8 +68,8 @@
               display: flex; 
               align-items: center; 
               margin: 5px; 
-              background: rgba(0, 0, 0, 0.5); 
-              padding: 5px;" class="inventory">
+              background: rgba(0, 0, 0, 0.8); 
+              padding: 2px 8px 2px;" class="inventory">
             <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()">
               <img src="../assets/images/inventory.png" style="width: auto; height: 40px; margin-bottom: 5px;">
               <span style="margin-left: 10px; color: white; font-size: 24px;">Inventory</span>
@@ -83,8 +83,8 @@
 
       <div class="col-md-4 py-1">
         <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px" ;>Habits</h3>
-        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px;">
-          <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 10px; font-size: 20px;" autocomplete="off">
+        <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #5C6C7D; border-radius: 6px;">
+          <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 16px; font-size: 20px;" autocomplete="off">
 
           <div id="habitTracker">
             <!-- display habit tracker with AJAX -->
@@ -96,9 +96,9 @@
         <!-- display task tracker with AJAX -->
       </div>
 
-      <div class="card shadow text-white bg-dark" style="margin-top: 30px;">
+      <div class="card shadow text-white bg-dark" style="margin-top: 20px;">
         <div class="card-header">
-          <h4>Foods</h4>
+          <h4 style="font-size: 24px; padding-top: 6px; padding-left: 2px;">Foods</h4>
         </div>
         <div class="row no-gutters">
           <div class="col-md-12"></div>

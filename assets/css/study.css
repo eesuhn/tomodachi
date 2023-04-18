@@ -5,12 +5,13 @@
 #wrapper {
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
+  width: 56%;
   text-align: center;
-  padding: 20px;
+  padding: 26px 14px 10px;
   border-radius: 25px;
-  background-color: #f2f2f2;
+  background-color: #f4ecca;
   position: relative;
+  border: 6px solid black;
 }
 
 button {
@@ -54,9 +55,9 @@ h3 {
 }
 
 #pomodoro-controls .button-container .button-time {
-  margin-top: 6px;
-  font-size: 25px;
-  color:#aaa;
+  margin-top: 2px;
+  font-size: 26px;
+  color:#687786;
 }
 
 #counter-controls .button {

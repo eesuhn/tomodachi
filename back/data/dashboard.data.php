@@ -212,7 +212,7 @@
                         <img src='{$row['petImg']}' class='card-img-top' width='120'>
                         <div class='card-body'>
                             <h5 class='card-title'>{$row['petName']}</h5>
-                            <button class='btn btn-primary' onclick='equipPet({$userID}, {$row['petID']})' style='border: none; " .($isEquipped ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
+                            <button class='btn btn-primary' onclick='equipPet({$userID}, {$row['petID']})' style='border: none; font-size: 18px; " .($isEquipped ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
                         </div>
                     </div>
                 </div>";
@@ -235,7 +235,7 @@
                         <img src='{$row2['wallpaperImg']}' class='card-img-top' width='120'>
                         <div class='card-body'>
                             <h5 class='card-title'>{$row2['wallpaperName']}</h5>
-                            <button class='btn btn-primary' onclick='equipWallpaper({$userID}, {$row2['wallpaperID']})' style='border: none; " .($isEquipped2 ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
+                            <button class='btn btn-primary' onclick='equipWallpaper({$userID}, {$row2['wallpaperID']})' style='border: none; font-size: 18px; " .($isEquipped2 ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
                         </div>
                     </div>
                 </div>";
@@ -309,24 +309,24 @@
             </style>
 
             <h3><img src='../assets/images/task.png' width='30' style='margin-right: 10px;'>To-Do's</h3>
-            <div class='container' style='height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #A4A4A4; border-radius: 6px; display: flex; flex-direction: column;'>";
+            <div class='container' style='height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #5C6C7D; border-radius: 6px; display: flex; flex-direction: column;'>";
 
         if ($status == "Active") {
             echo "
-                <input type='text' class='form-control' id='taskTitle' name='taskTitle' placeholder='Add a new task' style='margin-top: 10px; font-size: 20px;' autocomplete='off'>";
+                <input type='text' class='form-control' id='taskTitle' name='taskTitle' placeholder='Add a new task' style='margin-top: 16px; font-size: 20px;' autocomplete='off'>";
         }
 
         if ($status == "Completed"){
             echo "
                 <div class='row d-flex justify-content-center px-2 py-2'>
-                    <button type='button' class='btn btn-danger' style='margin-top: 2px; margin-bottom: -8px; width: 98.4%;' onclick='deleteCompletedTasks($userID)'>Delete Completed Tasks</button>
+                    <button type='button' class='btn btn-danger' style='margin-top: 8px; margin-bottom: -8px; width: 98.4%; font-size: 20px;' onclick='deleteCompletedTasks($userID)'>Delete Completed Tasks</button>
                 </div>";
         }
 
             echo "
                 <div class='btn-group justify-content-end task-nav-btn' style='margin-top: 10px;'>
-                    <button type='button' id='active-btn' class='btn btn-secondary $btnFlag1'>Active</button>
-                    <button type='button' id='completed-btn' class='btn btn-secondary $btnFlag2'>Completed</button>
+                    <button type='button' style='font-size: 18px;' id='active-btn' class='btn btn-secondary $btnFlag1'>Active</button>
+                    <button type='button' style='font-size: 18px;' id='completed-btn' class='btn btn-secondary $btnFlag2'>Completed</button>
                 </div>";
 
         // check if there are any tasks
@@ -352,14 +352,14 @@
                                     if ($row['taskDesc'] != "") {
                                         echo "
                                         <div style='margin-bottom: 2px;'>
-                                            <p class='card-text text-muted' style='font-size: 18px;'>{$row['taskDesc']}</p>
+                                            <p class='card-text text-muted' style='font-size: 20px;'>{$row['taskDesc']}</p>
                                         </div>";
                                     } else {
                                         echo "
                                         <div style='margin-top: 6px;'>";
                                     }
                                     echo "
-                                    <p class='card-text' style='font-size: 16px;'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>";
+                                    <p class='card-text' style='font-size: 18px;'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>";
                                     if ($row['taskDesc'] == "") {
                                         echo "
                                         </div>";
@@ -406,10 +406,10 @@
                                             <label for='editTaskDue{$row['taskID']}' style='margin-top: 10px;'>Due Date</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}'>
+                                            <input type='date' min='$today' class='form-control' id='editTaskDue{$row['taskID']}' value='{$row['taskDue']}' style='font-size: 18px;'>
                                         </div>
 
-                                        <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})'>Delete this task?</button></center>
+                                        <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteTask({$row['taskID']})' style='font-size: 18px;'>Delete this task?</button></center>
                                     </form>
                                 </div>
                                 <div class='modal-footer'>
@@ -460,15 +460,14 @@
             }
         } else {
             echo "
-                <center>
-                    <i class='fa-sharp fa-solid fa-check-to-slot fa-xl' style='color: #e9e9e9; padding-top: 150px; margin: 5px;'></i>
+                <div style='text-align: center;'>
+                    <i class='fa-sharp fa-solid fa-check-to-slot fa-xl' style='color: #e9e9e9; padding-top: 100px; margin-bottom: 15px;'></i>
                     <p style='font-size: 24px; font-weight: 400; color: #e9e9e9;'>Your To Do's will appear here.</p>
-                    <p style='font-size 18px;  color: #e9e9e9;'>To Do's need to be completed once, get rewarded for each task you complete.</p>
-                </center>
+                    <p style='font-size 22px; color: #e9e9e9; letter-spacing: 0.2px;'>Get rewarded for each task you complete.</p>
+                </div>
             </div>";
         }
         echo "
-            <div style='margin-top: 10px;'></div>
             </div>
         </div>
         
@@ -537,7 +536,7 @@
             .nature-btn {
                 border: none;
                 color: white;
-                font-size: 18px;
+                font-size: 20px;
                 padding: 4px 12px;
                 cursor: pointer;
                 transition: 0.2s ease;
@@ -553,11 +552,13 @@
             .nature-btn.positive.disabled {
                 background-color: #009f65;
                 color: white;
+                letter-spacing: 1px;
             }
 
             .nature-btn.negative.disabled {
                 background-color: #f60b0b;
                 color: white;
+                letter-spacing: 1px;
             }
 
             .nature-btn.positive:active,
@@ -574,12 +575,17 @@
                 color: #009f65;
                 border: 2px solid #009f65;
                 background-color: transparent;
-                margin-right: 14px;
+                margin-right: 18px;
+                font-weight: 600;
+                letter-spacing: 1px;
             }
+
             .nature-btn.negative {
                 color: #f60b0b;
                 border: 2px solid #f60b0b;
                 background-color: transparent;
+                font-weight: 600;
+                letter-spacing: 1px;
             }
 
             .option-menu a:hover {
@@ -652,14 +658,14 @@
                                         if ($row['habitDesc'] != "") {
                                             echo "
                                             <div style='margin-bottom: 2px;'>
-                                                <p class='card-text text-muted' style='font-size: 18px;'>{$row['habitDesc']}</p>
+                                                <p class='card-text text-muted' style='font-size: 20px;'>{$row['habitDesc']}</p>
                                             </div>";
                                         } else {
                                             echo "
                                             <div style='margin-top: 6px;'>";
                                         }
                                         echo "
-                                        <p class='card-text' style='font-size: 16px;'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>";
+                                        <p class='card-text' style='font-size: 18px;'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>";
                                         if ($row['habitDesc'] == "") {
                                             echo "
                                             </div>";
@@ -723,7 +729,7 @@
                                         <label for='difficulty'style='font-size: 20px''>Difficulty </label>
                                     </div>
                                     <div class='col-12 px-2'>
-                                        <select class='form-select' id='difficulty{$row['habitID']}'>
+                                        <select class='form-select' style='font-size: 18px;' id='difficulty{$row['habitID']}'>
                                             <option value='1' "; if ($difficultyID == 1) {
                                                 echo 'selected';
                                             }
@@ -741,7 +747,7 @@
                                             ">Hard ✦ ✦ ✦ </option>
                                         </select>
                                     </div>
-                                    <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteHabit({$row['habitID']})'>Delete this task?</button></center>
+                                    <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick='deleteHabit({$row['habitID']})' style='font-size: 18px;'>Delete this task?</button></center>
                                 </form>
                             </div>
 
@@ -798,11 +804,11 @@
             }
         } else {
             echo "
-            <center>
-                <i class='fa-solid fa-bicycle fa-xl' style='color: #e9e9e9; padding-top: 200px; margin: 5px;'></i>
+            <div style='text-align: center;'>
+                <i class='fa-solid fa-bicycle fa-xl' style='color: #e9e9e9; padding-top: 150px; margin-bottom: 15px;'></i>
                 <p style='font-size: 24px; font-weight: 400; color: #e9e9e9;'>Your Habits will appear here.</p>
-                <p style='font-size 18px;  color: #e9e9e9;'>Check them off multiple times per day at your own pace.</p>
-            </center>";
+                <p style='font-size 22px; color: #e9e9e9; letter-spacing: 0.2px;'>Check them off multiple times per day at your own pace.</p>
+            </div>";
         }
     }
 

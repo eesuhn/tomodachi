@@ -1,6 +1,6 @@
 <?php
-include '../include/shop.inc.php';
-include '../include/toast.inc.php';
+    include '../include/shop.inc.php';
+    include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -49,21 +49,23 @@ include '../include/toast.inc.php';
         <div style="background-image: url('../assets/images/shopbg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 200px;"></div>
 
         <ul>
-            <li><a class="active" href="shop.front.php">Shop</a></li>
+            <li><a class="active" href="shop.front.php">Food & Wallpaper</a></li>
             <li><a href="scout.front.php">Pet Scout</a></li>
         </ul>
 
         <section style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; color: white; opacity: 92%;">
             <center>
-                <h2 style="color: black; padding: 10px">FOOD SHOP</h2>
+                <div style="padding-top: 20px;">
+                    <h2 style="color: black; padding: 10px">FOOD SHOP</h2>
+                </div>
             </center>
 
-            <div class="row" style="margin: 10px">
+            <div class="row" style="margin: -30px 10px 10px 10px;">
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-80'>
 
-                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 40%;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Donut</h5>
                             <p class='card-text food-stats'>
@@ -84,7 +86,7 @@ include '../include/toast.inc.php';
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-80'>
-                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 40%;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Donut</h5>
                             <p class='card-text food-stats'>
@@ -105,7 +107,7 @@ include '../include/toast.inc.php';
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-80'>
-                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 40%;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Donut</h5>
                             <p class='card-text food-stats'>
@@ -126,7 +128,7 @@ include '../include/toast.inc.php';
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-80'>
-                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 55%;'></center>
+                        <center><img src='../assets/foods/donut.png' class='card-img-top' alt='Food Image' style='max-width: 40%;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Donut</h5>
                             <p class='card-text food-stats'>
@@ -148,10 +150,10 @@ include '../include/toast.inc.php';
             </div>
 
             <center>
-            <h2 style="color: black; padding: 10px">WALLPAPER SHOP</h2>
+                <h2 style="color: black; padding: 20px">WALLPAPER SHOP</h2>
             </center>
 
-            <div class="row" style="margin: 10px">
+            <div class="row" style="margin: -32px 10px 10px 10px;">
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-40'>

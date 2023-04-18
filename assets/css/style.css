@@ -22,3 +22,15 @@ button.foodCounter {
 .join-btn img:hover {
   transform: translateY(-4px);
 }
+
+.footer-creator a {
+  color: white;
+}
+
+.footer-creator li:hover {
+  transform: translateY(-2px);
+}
+
+.footer-direct li:hover {
+  transform: translateY(-2px);
+}

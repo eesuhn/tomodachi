@@ -28,20 +28,24 @@
   <div class="container-fluid p-0">
     <div class="row no-gutters">
       <div class="col-md-6 d-flex align-items-center">
-        <div class="container p-5">
-          <center><img src="../assets/images/logo1.png" width="195"></center>
+        <div class="container p-5" style="margin-top: -100px;">
+          <center>
+            <img src="../assets/images/logo1.png" width="195">
+          </center>
           <h1 class="text-center mb-5">Sign into your account</h1>
           <form id="login_user" method="POST" action="../include/login.inc.php">
-            <div class="form-group">
-              <label for="email" style="font-size: 24px;">Email address</label>
-              <input type="email" id="email" name="email" class="form-control form-control-lg" required />
-            </div>
-            <div class="form-group">
-              <label for="password" style="font-size: 24px;">Password</label>
-              <input type="password" id="password" name="password" class="form-control form-control-lg" required />
-            </div>
+            <center>
+              <div class="form-group" style="width: 70%; margin-top: -30px;">
+                <label for="email" style="font-size: 24px;">Email address</label>
+                <input type="email" id="email" name="email" class="form-control form-control-lg" required />
+              </div>
+              <div class="form-group" style="width: 70%; margin-top: 20px; margin-bottom: 20px;">
+                <label for="password" style="font-size: 24px;">Password</label>
+                <input type="password" id="password" name="password" class="form-control form-control-lg" required />
+              </div>
+            </center>
             <div class="text-center">
-              <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 30%; margin-top: 15px;">Login</button>
+              <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 30%; margin-top: 15px; letter-spacing: 1px;">Login</button>
             </div>
             <p class="text-center mt-3 mb-0" style="font-size: 20px">Don't have an account? <a href="register.front.php">Register here</a></p>
           </form>
@@ -58,31 +62,33 @@
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
           <h3 class="text-uppercase">Tomodachi</h3>
-          <p>
-            Final Year Project, DIIT AUG 2021
-          </p>
+          <div style="margin-top: -6px;">
+            <p>
+              DIIT AUG 2021
+            </p>
+          </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Quick Access</h5>
-          <ul class="list-unstyled mb-0">
+          <ul class="list-unstyled mb-0 footer-direct" style="margin-top: -4px;">
             <li>
-              <a href="front/login.front.php" class="text-white">Login</a>
+              <a href="#" class="text-white">Login</a>
             </li>
             <li>
-              <a href="front/register.front.php" class="text-white">Register</a>
+              <a href="register.front.php" class="text-white">Register</a>
             </li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Creators</h5>
-          <ul class="list-unstyled mb-0 text-white">
+          <ul class="list-unstyled mb-0 text-white footer-creator" style="margin-top: -4px;">
             <li>
-              Lim Yi Hong
+              <a href="https://github.com/eesuhn">Lim Yi Hong</a>
             </li>
             <li>
-              Mak Wei Jen
+              <a href="https://github.com/makwj">Mak Wei Jen</a>
             </li>
           </ul>
         </div>

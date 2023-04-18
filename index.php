@@ -74,19 +74,21 @@
     </div>
   </div>
 
-  <footer class="bg-dark text-center text-lg-start text-white" style="font-size:19px">
+  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px">
     <div class="container p-4">
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
           <h3 class="text-uppercase">Tomodachi</h3>
-          <p>
-            Final Year Project, DIIT AUG 2021
-          </p>
+          <div style="margin-top: -6px;">
+            <p>
+              DIIT AUG 2021
+            </p>
+          </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Quick Access</h5>
-          <ul class="list-unstyled mb-0">
+          <ul class="list-unstyled mb-0 footer-direct" style="margin-top: -4px;">
             <li>
               <a href="front/login.front.php" class="text-white">Login</a>
             </li>
@@ -98,12 +100,12 @@
 
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Creators</h5>
-          <ul class="list-unstyled mb-0 text-white">
+          <ul class="list-unstyled mb-0 text-white footer-creator" style="margin-top: -4px;">
             <li>
-              Lim Yi Hong
+              <a href="https://github.com/eesuhn">Lim Yi Hong</a>
             </li>
             <li>
-              Mak Wei Jen
+              <a href="https://github.com/makwj">Mak Wei Jen</a>
             </li>
           </ul>
         </div>

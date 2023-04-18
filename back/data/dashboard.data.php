@@ -413,7 +413,7 @@
                                     </form>
                                 </div>
                                 <div class='modal-footer'>
-                                    <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Cancel</button>
+                                    <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
                                     <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick='updateTask({$row['taskID']})'>Save</button>
                                 </div>
                             </div>

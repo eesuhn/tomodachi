@@ -47,6 +47,15 @@
                 font-size: 20px;
                 font-weight: 500;
             }
+            .col-12 label {
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            .col-12 input {
+                font-size: 18px;
+                font-weight: 400;
+            }
         </style>
         <div class="row d-flex justify-content-center mx-4 my-4">
             <div class="col-12" style="margin-top: 16px;">
@@ -299,7 +308,7 @@
                             <label for='' style='margin-top: 10px;'>Rarity </label>
                         </div>
                         <div class='col-12 px-2'>
-                            <select class='form-control' id='petRarity' name='petRarity'>
+                            <select class='form-control' id='petRarity' name='petRarity' style='font-size: 18px;'>
                                 <option value="Common">Common</option>
                                 <option value="Rare">Rare</option>
                                 <option value="Legendary">Legendary</option>

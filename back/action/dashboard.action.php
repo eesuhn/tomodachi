@@ -7,6 +7,7 @@
     include '../task.back.php';
     include '../habit.back.php';
     include '../level.back.php';
+    include '../user.back.php';
 
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
@@ -67,6 +68,9 @@
             break;
         case 'revivePet':
             revivePet();
+            break;
+        case 'setTutModal':
+            setTutModal();
             break;
 
     }
@@ -243,5 +247,11 @@
 
         $pet->revivePet($userID, $petID);
         $currencyData->decreaseCurrency($userID, 200);
+    }
+
+    function setTutModal() {
+        $userID = $_SESSION['userID'];
+        $user = new User();
+        $user->updateTutorialModalFlag($userID);
     }
 ?>

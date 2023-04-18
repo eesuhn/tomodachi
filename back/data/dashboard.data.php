@@ -1,5 +1,6 @@
 <?php
     include '../connection.back.php';
+    include '../user.back.php';
     include '../pet.back.php';
     include '../currency.back.php';
     include '../food.back.php';
@@ -48,7 +49,20 @@
         case 'refreshHabit':
             refreshHabit();
             break;
+        case 'getTutorialModalFlag':
+            getTutorialModalFlag();
+            break;
     }
+
+    function getTutorialModalFlag() {
+        $userID = $_SESSION['userID'];
+    
+        $user = new User();
+    
+        $response = array('tutorialModal' => $user->getTutorialModalFlag($userID)['tutModal']);
+        echo json_encode($response);
+    }
+    
 
     function refreshStatsHeader () {
         $userID = $_SESSION['userID'];

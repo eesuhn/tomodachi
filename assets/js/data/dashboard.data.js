@@ -1,10 +1,12 @@
 $(document).ready(function () {
     $("#active-btn").trigger("click");
     refreshDashboard();
+
 });
 
 var state = "Active";
 
+// refresh dashboard data
 // refresh dashboard data
 function refreshDashboard() {
     setTimeout(function () {
@@ -15,8 +17,22 @@ function refreshDashboard() {
         refreshWallpaper();
         refreshTask(state);
         refreshHabit();
+        $.ajax({
+            url: "../back/data/dashboard.data.php?action=getTutorialModalFlag",
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.tutorialModal === "0") {
+                    $('#tutorial1').modal('show');
+                }
+            },
+            error: function () {
+                console.log("Error: unable to get tutorial modal flag");
+            }
+        });
     }, 100);
 }
+
 
 // refresh stats header 
 function refreshStatsHeader() {

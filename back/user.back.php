@@ -123,5 +123,21 @@
 
             return $result['userID'];
         }
+
+        public function getTutorialModalFlag($userID){
+            $sql = "SELECT tutModal FROM user WHERE userID = :userID";
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['tutModal'];
+        }
+
+        public function updateTutorialModalFlag($userID){
+            $sql = "UPDATE user SET tutModal = 1 WHERE userID = :userID";
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->execute();
+        }
     }
 ?>

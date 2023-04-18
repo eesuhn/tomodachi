@@ -77,7 +77,11 @@
             <strong>&nbsp Tomodachi</strong>
         </div>
         <div class="toast-body">
-            <p>You've earned some currency and experience points</p>
+            <?php if ($petAlive == "alive") {?>
+                <p>You've earned some currency and experience points</p>
+            <?php } else { ?>
+                <p>You've earned some currency</p>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -89,7 +93,11 @@
             <strong>&nbsp Tomodachi</strong>
         </div>
         <div class="toast-body">
-            <p>You've lost some currency and health points</p>
+            <?php if ($petAlive == "alive") {?>
+                <p>You've lost some currency and health points</p>
+            <?php } else { ?>
+                <p>You've lost some currency</p>
+            <?php } ?>
         </div>
     </div>
 </div>

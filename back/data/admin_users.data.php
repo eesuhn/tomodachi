@@ -79,32 +79,31 @@
                                         <h2>Edit User</h2>
                                     </div>
 
-                                    <form>
+                                    <form class='edit-user'>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserName{$row['userID']}'>Username</label>
+                                            <label for='editUserName{$row['userID']}' style='font-size: 22px;'>Username</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserName{$row['userID']}' value='{$row['userName']}' required>
+                                            <input type='text' class='form-control' id='editUserName{$row['userID']}' value='{$row['userName']}' required style='font-size: 18px;'>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserEmail{$row['userID']}' style='margin-top: 10px;'>Email</label>
+                                            <label for='editUserEmail{$row['userID']}' style='margin-top: 10px; font-size: 22px;'>Email</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserEmail{$row['userID']}' value='{$row['userEmail']}' required>
+                                            <input type='text' class='form-control' id='editUserEmail{$row['userID']}' value='{$row['userEmail']}' required style='font-size: 18px;'>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserPwd{$row['userID']}' style='margin-top: 10px;'>Password</label>
+                                            <label for='editUserPwd{$row['userID']}' style='margin-top: 10px; font-size: 22px;'>Password</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserPwd{$row['userID']}' value='$userPwd' required>
+                                            <input type='text' class='form-control' id='editUserPwd{$row['userID']}' value='$userPwd' required style='font-size: 18px;'>
                                         </div>
                                         <div class='col-12 px-2'>
-                                            <label for='editUserCurrency{$row['userID']}' style='margin-top: 10px;'>Currency Owned</label>
+                                            <label for='editUserCurrency{$row['userID']}' style='margin-top: 10px; font-size: 22px;'>Currency Owned</label>
                                         </div>
                                         <div class='col-12 d-flex justify-content-center px-2'>
-                                            <input type='text' class='form-control' id='editUserCurrency{$row['userID']}' value='{$row['currencyNum']}' required>
+                                            <input type='text' class='form-control' id='editUserCurrency{$row['userID']}' value='{$row['currencyNum']}' required style='font-size: 18px;'>
                                         </div>
-                                        <center><button type='button' class='btn btn-link' data-bs-dismiss='modal' onclick=''>Remove this user?</button></center>
                                     </form>
                                 </div>
 

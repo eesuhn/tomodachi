@@ -163,7 +163,7 @@
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             if ($row['foodNum'] != 0) {
                 echo 
-                "<div class='col-3 col-lg-3'>
+                "<div class='col-2 col-lg-2'>
                     <div class='count-data text-center' style='font-size: 20px;'>
                         <button class='foodCounter' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
                             <img src='"
@@ -413,7 +413,7 @@
                                     </form>
                                 </div>
                                 <div class='modal-footer'>
-                                    <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Cancel</button>
+                                    <button type='submit' class='btn btn-dark' data-bs-dismiss='modal'>Close</button>
                                     <button type='submit' class='btn btn-primary' data-bs-dismiss='modal' onclick='updateTask({$row['taskID']})'>Save</button>
                                 </div>
                             </div>

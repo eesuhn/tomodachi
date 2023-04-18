@@ -28,7 +28,7 @@
   <div class="container-fluid p-0">
     <div class="row no-gutters" style="margin-top: -40px;">
       <div class="col-md-6 d-none d-md-block">
-        <img src="../assets/images/registerbg.png" alt="Login image" class="w-100" style="object-fit: cover; height: 105vh;">
+      <img src="../assets/images/registerbg.png" alt="Register image" class="w-100" style="object-fit: cover; height: 120vh;">
       </div>
       <div class="col-md-6 d-flex align-items-center">
         <div class="container p-5">
@@ -103,83 +103,98 @@
   </footer>
 
   <script>
-    const form = document.querySelector('#register_user');
-    const emailInput = form.querySelector('#email');
-    const passwordInput = form.querySelector('#password');
-    const confirmPasswordInput = form.querySelector('#confirm_password');
+  const form = document.querySelector('#register_user');
+  const emailInput = form.querySelector('#email');
+  const passwordInput = form.querySelector('#password');
+  const confirmPasswordInput = form.querySelector('#confirm_password');
 
-    const errorMessage = document.createElement('div');
-    errorMessage.classList.add('text-danger');
-    
-    const emailErrorMessage = document.createElement('div');
-    emailErrorMessage.classList.add('text-danger');
-    const submitButton = form.querySelector('button[type="submit"]');
+  const errorMessage = document.createElement('div');
+  errorMessage.classList.add('text-danger');
+  
+  const emailErrorMessage = document.createElement('div');
+  emailErrorMessage.classList.add('text-danger');
+  const submitButton = form.querySelector('button[type="submit"]');
 
-    function checkPasswordStrength() {
-      const password = passwordInput.value;
-      const regex = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){8,}$/;
+  function checkPasswordStrength() {
+    const password = passwordInput.value;
+    const regex = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){8,}$/;
 
-      if (regex.test(password)) {
-        errorMessage.textContent = '';
-        return true;
-      } else {
-        errorMessage.textContent = 'Password should be at least 8 characters long and include at least 1 digit and alphabet';
-        return false;
-      }
+    if (regex.test(password)) {
+      errorMessage.textContent = '';
+      return true;
+    } else {
+      errorMessage.textContent = 'Password should be at least 8 characters long and include at least 1 digit and alphabet';
+      return false;
     }
+  }
 
-    function validateEmail() {
-      const email = emailInput.value;
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function validateEmail() {
+    const email = emailInput.value;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (regex.test(email)) {
-        emailErrorMessage.textContent = '';
-        return true;
-      } else {
-        emailErrorMessage.textContent = 'Please enter a valid email address';
-        return false;
-      }
+    if (regex.test(email)) {
+      emailErrorMessage.textContent = '';
+      return true;
+    } else {
+      emailErrorMessage.textContent = 'Please enter a valid email address';
+      return false;
     }
+  }
 
-    form.addEventListener('submit', (event) => {
-      if (passwordInput.value !== confirmPasswordInput.value || !checkPasswordStrength() || !validateEmail()) {
-        event.preventDefault();
-        if (!form.contains(errorMessage)) {
-          confirmPasswordInput.insertAdjacentElement('afterend', errorMessage);
-        }
-        if (!form.contains(emailErrorMessage)) {
-          emailInput.insertAdjacentElement('afterend', emailErrorMessage);
-        }
-        submitButton.disabled = true;
-      }
-    });
+  function checkPasswordMatch() {
+    if (passwordInput.value !== confirmPasswordInput.value) {
+      errorMessage.textContent = 'Passwords do not match';
+      return false;
+    } else {
+      errorMessage.textContent = '';
+      return true;
+    }
+  }
 
-    confirmPasswordInput.addEventListener('input', () => {
-      if (form.contains(errorMessage)) {
-        errorMessage.remove();
+  form.addEventListener('submit', (event) => {
+    if (!checkPasswordMatch() || !checkPasswordStrength() || !validateEmail()) {
+      event.preventDefault();
+      if (!form.contains(errorMessage)) {
+        confirmPasswordInput.insertAdjacentElement('afterend', errorMessage);
       }
-      checkPasswordStrength();
-      validateEmail();
-      submitButton.disabled = false;
-    });
+      if (!form.contains(emailErrorMessage)) {
+        emailInput.insertAdjacentElement('afterend', emailErrorMessage);
+      }
+      submitButton.disabled = true;
+    }
+  });
 
-    passwordInput.addEventListener('input', () => {
-      if (form.contains(errorMessage)) {
-        errorMessage.remove();
-      }
-      checkPasswordStrength();
-      validateEmail();
-      submitButton.disabled = false;
-    });
+  confirmPasswordInput.addEventListener('input', () => {
+    if (form.contains(errorMessage)) {
+      errorMessage.remove();
+    }
+    checkPasswordStrength();
+    checkPasswordMatch();
+    validateEmail();
+    submitButton.disabled = false;
+  });
 
-    emailInput.addEventListener('input', () => {
-      if (form.contains(emailErrorMessage)) {
-        emailErrorMessage.remove();
-      }
-      validateEmail();
-      submitButton.disabled = false;
-    });
-  </script>
+  passwordInput.addEventListener('input', () => {
+    if (form.contains(errorMessage)) {
+      errorMessage.remove();
+    }
+    checkPasswordStrength();
+    checkPasswordMatch();
+    validateEmail();
+    submitButton.disabled = false;
+  });
+
+  emailInput.addEventListener('input', () => {
+    if (form.contains(emailErrorMessage)) {
+      emailErrorMessage.remove();
+    }
+    validateEmail();
+    checkPasswordMatch();
+    checkPasswordStrength();
+    submitButton.disabled = false;
+  });
+</script>
+
 
 </body>
 

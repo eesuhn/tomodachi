@@ -113,10 +113,14 @@
                 <div class='card-block px-3 col-5'>
                     <h2>$petName</h2>
                     <h4>Your Pet has Died!</h4>
-                    <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px 4px 5px 0px;'><span style='font-size: 20px; margin-right: 4px;'>200</span>
-                    <button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>
-                </div>
-            
+                    <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px 4px 5px 0px;'><span style='font-size: 20px; margin-right: 4px;'>200</span>";
+                    if ($currencyNum < 200) {
+                        echo "<button class='btn btn-danger' disabled style='margin-bottom: 5px; height: fit-content; font-size: 16px;'>Insufficient Gold</button>";
+                    } else {
+                        echo "<button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>";
+                    }
+                    echo"
+                    </div>
                 <div class='card-block px-3 col-5'>
                 <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
                 <h4>$today</h4>

@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $("#active-btn").trigger("click");
     refreshDashboard();
-
 });
 
 var state = "Active";

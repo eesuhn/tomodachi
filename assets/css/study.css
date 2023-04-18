@@ -72,8 +72,3 @@ h3 {
   background-color: rgba(0, 0, 0, 0.3);
   transform: scale(0.95);
 }
-
-#counter-box .button#startpauseCounter.pause-is-active .pause,
-#counter-box .button#startpauseCounter.start-is-active .start {
-  display: none;
-}

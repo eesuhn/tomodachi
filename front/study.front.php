@@ -1,8 +1,8 @@
 <?php
-include 'toast.inc.php';
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+    // start session if not started
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,6 @@ if (session_status() == PHP_SESSION_NONE) {
     <script src="../assets/js/data/shop.data.js"></script>
     <script src="../assets/js/action/shop.action.js"></script>
     <script src="../assets/js/toast.js"></script>
-
 </head>
 
 <div class="sidebar">
@@ -39,36 +38,36 @@ if (session_status() == PHP_SESSION_NONE) {
         <a href="#logout" data-bs-target="#logout" data-bs-toggle="modal">Logout</a>
     </div>
 </div>
+
 <div style="background-image: url('../assets/images/bg2.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
 
-<div class="content vh-100">
-
-<center><img src="../assets/images/studying.png" width="400"  style="margin-top: 150px; margin-right: 80px;"></center>
-<div id="wrapper">
-		<div id="main-panel">
-			<div id="pomodoro-box">
-				<h1 style="font-size: 45px">Pomodoro Studying</h1>
-				<h4 class="text-muted">Earn currencies for each session you complete!</h4>
-				<div class="time" id="timer">00:00</div>
-				<!-- <div class="time-strip"></div> -->
-				<div class="controls" id="pomodoro-controls">
-					<div class="button-container">
-						<button class="btn btn-primary btn-lg" id="workButton">Work</button>
-						<div class="button-time">25:00</div>
-					</div>
-					<div class="button-container">
-                    <button class="btn btn-dark btn-lg" id="restButton">Rest</button>
-						<div class="button-time">5:00</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
+    <div class="content vh-100">
+        <center><img src="../assets/images/studying.png" width="400" style="margin-top: 150px; margin-right: 80px;"></center>
+        <div id="wrapper">
+            <div id="main-panel">
+                <div id="pomodoro-box">
+                    <h1 style="font-size: 45px">Pomodoro Studying</h1>
+                    <h4 class="text-muted">Earn currencies for each session you complete!</h4>
+                    <div class="time" id="timer">00:00</div>
+                    <!-- <div class="time-strip"></div> -->
+                    <div class="controls" id="pomodoro-controls">
+                        <div class="button-container">
+                            <button class="btn btn-primary btn-lg" id="workButton">Work</button>
+                            <div class="button-time">25:00</div>
+                        </div>
+                        <div class="button-container">
+                            <button class="btn btn-dark btn-lg" id="restButton">Rest</button>
+                            <div class="button-time">5:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="../assets/js/study.js"></script>
+
 <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
     <div class="toast toast-study" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
@@ -78,9 +77,9 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="toast-body">
             <p>You just completed a session and earned some gold.</p>
             <center>
-            <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
-                Close
-            </button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
+                    Close
+                </button>
             </center>
         </div>
     </div>
@@ -95,9 +94,9 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="toast-body">
             <p>Your 5 minutes break has completed</p>
             <center>
-            <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
-                Close
-            </button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
+                    Close
+                </button>
             </center>
         </div>
     </div>
@@ -106,3 +105,5 @@ if (session_status() == PHP_SESSION_NONE) {
 <audio id="toast-level">
     <source src="../assets/audio/level.mp3" type="audio/mpeg">
 </audio>
+
+</html>

@@ -30,8 +30,10 @@
       <img src="assets/images/logo1.png" style="width: 40%; height: auto;">
     </div>
     <div class="col-12 d-flex justify-content-center">
-      <p class="h1" style="text-align: center; width: 75%;">Tomodachi is a direct translation from the Japanese word, Friend. It serves as a personal companion for students
-        and are equipped with functionalities that aid in daily productivity, with the primary focus on being a habit tracker.</p>
+      <p class="h1" style="text-align: center; width: 75%;">
+        Tomodachi is a direct translation from the Japanese word, Friend. It serves as a personal companion for students
+        and are equipped with functionalities that aid in daily productivity, with the primary focus on being a habit tracker.
+      </p>
     </div>
 
     <div class="row py-4 px-4" style="width: 75%; margin: auto;">

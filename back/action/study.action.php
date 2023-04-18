@@ -1,6 +1,7 @@
 <?php
     include '../connection.back.php';
     include '../currency.back.php';
+    
     // start session if not started
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -26,5 +27,6 @@
         
         $currencyData = new Currency();
 
-        $currencyData->increaseCurrency($userID,$amount);
+        $currencyData->increaseCurrency($userID, $amount);
     }
+?>

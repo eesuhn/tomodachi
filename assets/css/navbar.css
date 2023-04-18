@@ -25,11 +25,12 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+
 .navbar a.active {
   color: chartreuse;
 }
+
 .navbar a:hover {
   color: chartreuse;
 
 }
-

@@ -155,7 +155,7 @@ include '../include/toast.inc.php';
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-40'>
-                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top: 15px;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Meadow</h5>
                             <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>
@@ -169,7 +169,7 @@ include '../include/toast.inc.php';
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-40'>
-                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top: 15px;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Meadow</h5>
                             <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>
@@ -183,7 +183,7 @@ include '../include/toast.inc.php';
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-40'>
-                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top: 15px;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Meadow</h5>
                             <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>
@@ -197,7 +197,7 @@ include '../include/toast.inc.php';
 
                 <div class='col-md-3 px-3 py-3'>
                     <div class='card h-40'>
-                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top:15px;'></center>
+                        <center><img src='../assets/wallpapers/meadow.png' class='card-img-top' alt='Food Image' style='max-width: 70%; margin-top: 15px;'></center>
                         <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>Meadow</h5>
                             <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 2px;'>10</h4>

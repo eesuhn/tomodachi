@@ -79,15 +79,14 @@
         $level = new Level();
         $level->checkHappReset($userID, $petData['petID']);
 
-        echo 
-        "
+        echo "
         <style>
-        /* hide the pet image on screens smaller than 768 pixels */
-        @media (max-width: 980px) {
-            .card-header{
-                display: none;
+            /* hide the pet image on screens smaller than 768 pixels */
+            @media (max-width: 980px) {
+                .card-header {
+                    display: none;
+                }
             }
-        }
         </style>
         <div class='row py-4'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
@@ -120,19 +119,19 @@
                     <h3>$petName</h3>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'>
                     <span style='font-size: 20px;'>Level: $petLevel</span><br>
-                        <div class='progress' style='height:5px;'>
+                        <div class='progress' style='height: 5px;'>
                         <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
                     </div>
 
                     <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>
                     <span style='font-size: 20px;'>Health: $petHealthCur/$petHealthTol</span><br>
-                    <div class='progress' style='height:5px;'>
+                    <div class='progress' style='height: 5px;'>
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
                     <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>
                     <span style='font-size: 20px;'>Happy: $petHappCur/$petHappTol</span><br>
-                    <div class='progress' style='height:5px;'>
+                    <div class='progress' style='height: 5px;'>
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
                     </div>
                 </div>
@@ -196,7 +195,8 @@
         $stmt = $petData->showPetInventory($userID);
         $stmt2 = $wallpaperData->getUserWallpapers($userID);
 
-        echo "<div class='row'>
+        echo "
+            <div class='row'>
                 <div clas='col-12 d-flex justify content center'>
                     <h3>Owned Pets</h3>
                 </div>";
@@ -215,12 +215,11 @@
                             <button class='btn btn-primary' onclick='equipPet({$userID}, {$row['petID']})' style='border: none; " .($isEquipped ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
                         </div>
                     </div>
-                </div>
-            ";
+                </div>";
         }
-        echo "</div>";
-
-        echo "<div class='row'>
+        echo "
+            </div>
+            <div class='row'>
                 <div clas='col-12 d-flex justify content center'>
                     <h3>Owned Wallpapers</h3>
                 </div>";
@@ -239,8 +238,7 @@
                             <button class='btn btn-primary' onclick='equipWallpaper({$userID}, {$row2['wallpaperID']})' style='border: none; " .($isEquipped2 ? "background-color: black;' disabled>Equipped" : "'>Equip"). "</button>
                         </div>
                     </div>
-                </div>
-            ";
+                </div>";
         }
         echo "</div>";
     }
@@ -253,10 +251,10 @@
         $petImg = $petData['petImg'];
 
         if (checkPetLevel()<=0){
-            echo ' <img src="../assets/images/dead.png" style="width: auto; height: 200px;">';
+            echo '<img src="../assets/images/dead.png" style="width: auto; height: 200px;">';
 
         }else{
-            echo ' <img src="' .$petImg. '" style="width: auto; height: 200px;">';
+            echo '<img src="' .$petImg. '" style="width: auto; height: 200px;">';
         }
     }
     
@@ -325,7 +323,7 @@
                 </div>";
         }
 
-        echo "
+            echo "
                 <div class='btn-group justify-content-end task-nav-btn' style='margin-top: 10px;'>
                     <button type='button' id='active-btn' class='btn btn-secondary $btnFlag1'>Active</button>
                     <button type='button' id='completed-btn' class='btn btn-secondary $btnFlag2'>Completed</button>
@@ -462,12 +460,12 @@
             }
         } else {
             echo "
-                    <center>
-                        <i class='fa-sharp fa-solid fa-check-to-slot fa-xl' style='color: #e9e9e9; padding-top: 150px; margin: 5px;'></i>
-                        <p style='font-size: 24px; font-weight: 400; color: #e9e9e9;'>Your To Do's will appear here.</p>
-                        <p style='font-size 18px;  color: #e9e9e9;'>To Do's need to be completed once, get rewarded for each task you complete.</p>
-                     </center>
-                </div>";
+                <center>
+                    <i class='fa-sharp fa-solid fa-check-to-slot fa-xl' style='color: #e9e9e9; padding-top: 150px; margin: 5px;'></i>
+                    <p style='font-size: 24px; font-weight: 400; color: #e9e9e9;'>Your To Do's will appear here.</p>
+                    <p style='font-size 18px;  color: #e9e9e9;'>To Do's need to be completed once, get rewarded for each task you complete.</p>
+                </center>
+            </div>";
         }
         echo "
             <div style='margin-top: 10px;'></div>
@@ -804,8 +802,7 @@
                 <i class='fa-solid fa-bicycle fa-xl' style='color: #e9e9e9; padding-top: 200px; margin: 5px;'></i>
                 <p style='font-size: 24px; font-weight: 400; color: #e9e9e9;'>Your Habits will appear here.</p>
                 <p style='font-size 18px;  color: #e9e9e9;'>Check them off multiple times per day at your own pace.</p>
-            </center>
-         ";
+            </center>";
         }
     }
 

@@ -17,7 +17,6 @@
 
 <body style="background-color: #f2f2f2;">
 
-
   <nav class="navbar">
     <ul>
       <li><a href="../index.php">Home</a></li>
@@ -54,7 +53,7 @@
     </div>
   </div>
 
-  <footer class="bg-dark text-center text-lg-start text-white" style="font-size:19px">
+  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px">
     <div class="container p-4">
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">

@@ -1,6 +1,6 @@
 <?php
-include '../include/dashboard.inc.php';
-include '../include/toast.inc.php';
+  include '../include/dashboard.inc.php';
+  include '../include/toast.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ include '../include/toast.inc.php';
 
 </head>
 
-<body  style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;opacity: 92%;">
+<body style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; opacity: 92%;">
 
   <div class="sidebar">
     <div class="logo">
@@ -70,8 +70,10 @@ include '../include/toast.inc.php';
               margin: 5px; 
               background: rgba(0, 0, 0, 0.5); 
               padding: 5px;" class="inventory">
-            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()"><img src="../assets/images/inventory.png" style="width: auto; height:40px; margin-bottom: 5px;">
-              <span style="margin-left: 10px; color: white; font-size: 24px;">Inventory</span></a>
+            <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()">
+              <img src="../assets/images/inventory.png" style="width: auto; height: 40px; margin-bottom: 5px;">
+              <span style="margin-left: 10px; color: white; font-size: 24px;">Inventory</span>
+            </a>
           </div>
           <div class="pet" id="petImg">
             <!-- display petImage with AJAX -->
@@ -154,7 +156,9 @@ include '../include/toast.inc.php';
   </div>
 
   <script>
-    var habitTitle = document.getElementById('habitTitle') ?? {textContent: ''};
+    var habitTitle = document.getElementById('habitTitle') ?? {
+      textContent: ''
+    };
 
     if (habitTitle && habitTitle.tagName === 'INPUT') {
       habitTitle.addEventListener('keypress', function(event) {

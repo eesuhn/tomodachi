@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  text-align: center;
+  padding: 20px;
+  border-radius: 25px;
+  background-color: #f2f2f2;
+  position: relative;
+}
+
+button {
+  background-color: #fbfbfb;
+  border: 2px solid #aaa;
+}
+
+h2 {
+  font-size: 17px;
+  opacity: 0.4;
+}
+
+h3 {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+#timer {
+  color: #1D304A;
+  font-size: 75px;
+}
+
+.time {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 75px;
+}
+
+.controls {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+#pomodoro-controls .button-container {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+#pomodoro-controls .button-container + .button-container {
+  margin-left: 30px;
+}
+
+#pomodoro-controls .button-container .button-time {
+  margin-top: 6px;
+  font-size: 25px;
+  color:#aaa;
+}
+
+#counter-controls .button {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+#counter-controls .button + .button {
+  margin-left: 30px;
+}
+
+.button:active {
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: scale(0.95);
+}
+
+#counter-box .button#startpauseCounter.pause-is-active .pause,
+#counter-box .button#startpauseCounter.start-is-active .start {
+  display: none;
+}

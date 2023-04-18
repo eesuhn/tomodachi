@@ -143,7 +143,7 @@
     <div class="modal fade" id="foodShop" aria-hidden="true" aria-labelledby="foodShopTitle" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
-          <div class="modal-body" id="foodShopData">
+          <div class="modal-body" id="">
             <!-- display food shop with AJAX -->
           </div>
 
@@ -192,7 +192,7 @@
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
 
-          <div class="modal-body" style="color: black" id="wallpaperShopData">
+          <div class="modal-body" style="color: black" id="">
             <!-- display wallpaper shop with AJAX -->
           </div>
 

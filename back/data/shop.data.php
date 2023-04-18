@@ -156,41 +156,20 @@
         if ($ownedPets || $currencyNum < 1000) {
             $flag = "disabled"; 
         };
-
+        
         echo 
-        "<div class='text-muted'>Partner up with new pets from different rarities using your earned coins!</div>
+        "<button type='button' class='btn btn-primary $flag' data-bs-target='#petScout' data-bs-toggle='modal' onclick='petScout($userID)' style='padding: 6px -10px; width: 25%; font-size: 30px; border: none; ";
+        if ($ownedPets) {
+            echo " background-color: black; opacity: 0.9;' disabled>You owned all the pets!"; 
 
-        <div class='row'>
-          <div class='col-3'></div>
-
-          <div class='col-6 d-flex justify-content-center'>
-            <img src='../assets/images/petscout.png' width='150'>
-          </div>
-          <div class='col-3'></div>
-
-          <div class='col-12 d-flex justify-content-center'>
-            <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
-          </div>
-
-          <div class='col-12 d-flex justify-content-center'>
-            <button type='button' onclick='petScout($userID)' class='btn btn-primary ".$flag; 
+        } else if ($currencyNum < 1000) {
+            echo " background-color: red; opacity: 0.9;' disabled>Not enough coins!";
             
-        echo 
-            "' data-bs-target='#petScout' data-bs-toggle='modal' style='border: none;";
-            
-            if ($ownedPets) {
-                echo " background-color: black;' disabled>You owned all the pets!"; 
-
-            } else if ($currencyNum < 1000) {
-                echo " background-color: red;' disabled>Not enough coins!";
-                
-            } else {
-                echo " width: 15%;'>Go!";
-            }
+        } else {
+            echo "'>Scout!";
+        }
         echo
-            "</button>
-          </div>
-        </div>";
+        "</button>";
     }
 
     function refreshWallpaperShop(){

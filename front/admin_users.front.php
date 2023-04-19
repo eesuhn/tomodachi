@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>Tomodachi || Admin</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +20,7 @@
 
     <script src="../assets/js/data/admin_users.data.js"></script>
     <script src="../assets/js/action/admin_users.action.js"></script>
-    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
 <body style="background-color: #f1f1f1;">

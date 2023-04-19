@@ -22,7 +22,7 @@ workButton.addEventListener("click", function () {
 		if (timeTheRest < 0) {
 			timeTheRest = 0;
 			resetPomodoroTimer();
-			addCurrency(20);
+			addCurrency(200);
 		}
 		renderTimerText(timeTheRest);
 		}, 100);

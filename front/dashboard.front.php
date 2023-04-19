@@ -112,6 +112,10 @@ include '../include/tutorial.inc.php';
         </div>
       </div>
 
+      <div class="row">
+        <a href="" data-bs-target="#tutorial1" data-bs-toggle="modal" class="link-secondary" style="text-align: right; padding: 10px; font-size: 21px;">Tutorial?</a>
+      </div>
+
     </div>
   </div>
 

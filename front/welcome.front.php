@@ -51,7 +51,7 @@
         <div class="col-3"></div>
 
         <div class="col-6 justify-content-center d-flex">
-          <h5>Before you embark on your journey, </h5>
+          <h5>Before you embark on your journey, please scroll down</h5>
         </div>
         
         <div class="col-3"></div>
@@ -62,8 +62,8 @@
       <div class="row d-flex py-4 px-4 justify-content-center">
         <div class="col-3"></div>
 
-        <div class="col-6 justify-content-center d-flex">
-          <h1>Please select your starting companion!</h1>
+        <div class="col-6 justify-content-centexwr d-flex">
+          <h1 style="text-align: center;">and select your starting companion!</h1>
         </div>
 
         <div class="col-3"></div>

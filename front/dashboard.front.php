@@ -1,6 +1,7 @@
 <?php
-  include '../include/dashboard.inc.php';
-  include '../include/toast.inc.php';
+include '../include/dashboard.inc.php';
+include '../include/toast.inc.php';
+include '../include/tutorial.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +31,7 @@
 
 </head>
 
-<body style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; opacity: 92%;">
+<body style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: repeat; background-position: center center; opacity: 92%;">
 
   <div class="sidebar">
     <div class="logo">
@@ -113,7 +114,7 @@
     </div>
   </div>
 
-
+  <!-- modals used in dashboard -->
   <div class="modal fade" id="inventory" aria-hidden="true" aria-labelledby="inventoryTitle" tabindex="-1">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
@@ -150,6 +151,23 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="levelModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="color: black" id="inventoryData">
+          <center>
+            <img src="../assets/images/levelup.png" width="100">
+            <h3 style="margin: 20px;">Your pet has leveled up!</h3>
+            <h5 style="margin: 20px;" class="text-muted">Keep up the great work.</h5>
+          </center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

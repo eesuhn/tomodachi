@@ -28,7 +28,7 @@
   <div class="container-fluid p-0">
     <div class="row no-gutters" style="margin-top: -40px;">
       <div class="col-md-6 d-none d-md-block">
-        <img src="../assets/images/registerbg.png" alt="Login image" class="w-100" style="object-fit: cover; height: 105vh;">
+        <img src="../assets/images/registerbg.png" alt="Register image" class="w-100" style="object-fit: cover; height: 120vh;">
       </div>
       <div class="col-md-6 d-flex align-items-center">
         <div class="container p-5">
@@ -48,7 +48,7 @@
               </div>
               <div class="form-group" style="width: 66%; margin-top: 20px; margin-bottom: 10px;">
                 <label for="password" style="font-size: 24px;">Password</label>
-                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter a secure password" required style="margin-bottom: 6px;"/>
+                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter a secure password" required style="margin-bottom: 6px;" />
                 <input type="password" id="confirm_password" name="confirm_password" class="form-control form-control-lg" placeholder="Retype your password" required />
                 <div id="passwordHelp" class="form-text" style="font-size: 18px;">Keep your account protected!</div>
               </div>
@@ -110,7 +110,7 @@
 
     const errorMessage = document.createElement('div');
     errorMessage.classList.add('text-danger');
-    
+
     const emailErrorMessage = document.createElement('div');
     emailErrorMessage.classList.add('text-danger');
     const submitButton = form.querySelector('button[type="submit"]');
@@ -141,8 +141,18 @@
       }
     }
 
+    function checkPasswordMatch() {
+      if (passwordInput.value !== confirmPasswordInput.value) {
+        errorMessage.textContent = 'Passwords do not match';
+        return false;
+      } else {
+        errorMessage.textContent = '';
+        return true;
+      }
+    }
+
     form.addEventListener('submit', (event) => {
-      if (passwordInput.value !== confirmPasswordInput.value || !checkPasswordStrength() || !validateEmail()) {
+      if (!checkPasswordMatch() || !checkPasswordStrength() || !validateEmail()) {
         event.preventDefault();
         if (!form.contains(errorMessage)) {
           confirmPasswordInput.insertAdjacentElement('afterend', errorMessage);
@@ -159,6 +169,7 @@
         errorMessage.remove();
       }
       checkPasswordStrength();
+      checkPasswordMatch();
       validateEmail();
       submitButton.disabled = false;
     });
@@ -168,6 +179,7 @@
         errorMessage.remove();
       }
       checkPasswordStrength();
+      checkPasswordMatch();
       validateEmail();
       submitButton.disabled = false;
     });
@@ -177,9 +189,12 @@
         emailErrorMessage.remove();
       }
       validateEmail();
+      checkPasswordMatch();
+      checkPasswordStrength();
       submitButton.disabled = false;
     });
   </script>
+
 
 </body>
 

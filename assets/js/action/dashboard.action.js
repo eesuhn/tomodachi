@@ -237,3 +237,13 @@ function revivePet(userID, petID) {
         }
     });
 }
+
+function setTutModal(){
+    $.ajax({
+        url: "../back/action/dashboard.action.php?action=setTutModal",
+        type: "GET",
+        success: function() {
+            refreshDashboard();
+        }
+    }); 
+}

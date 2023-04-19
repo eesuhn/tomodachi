@@ -3,7 +3,8 @@ CREATE TABLE `user` (
     `userID` int(11) NOT NULL,
     `userName` varchar(255) NOT NULL,
     `userEmail` varchar(255) NOT NULL,
-    `userPwd` varchar(255) NOT NULL
+    `userPwd` varchar(255) NOT NULL,
+    `tutModal` tinyint(1) NOT NULL DEFAULT '0'
 );
 
 -- currency table

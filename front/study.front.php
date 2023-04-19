@@ -9,6 +9,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <html>
 
 <head>
+    <title>Tomodachi || Habit Tracker</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <script src="../assets/js/data/shop.data.js"></script>
     <script src="../assets/js/action/shop.action.js"></script>
     <script src="../assets/js/toast.js"></script>
-    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
 <div class="sidebar">
@@ -107,7 +108,8 @@ if (session_status() == PHP_SESSION_NONE) {
         font-size: 16px;
         font-weight: 500;
         letter-spacing: 0.4px;
-        margin-bottom: 6px;
+        margin-bottom: 16px;
+        margin-top: -6px;
     }
 </style>
 
@@ -118,7 +120,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <strong>&nbsp Tomodachi</strong>
         </div>
         <div class="toast-body">
-            <p>You just completed a session and earned some coins.</p>
+            <p>You just completed a session and earned <b>200</b> coins.</p>
             <center>
                 <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
                     Close

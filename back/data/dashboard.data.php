@@ -180,7 +180,7 @@
         $foodCount = 0;
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            if ($row['foodNum'] != 0) {
+            if ($row['foodNum'] > 0) {
                 echo 
                 "<div class='col-2 col-lg-2'>
                     <div class='count-data text-center' style='font-size: 20px;'>
@@ -197,7 +197,7 @@
             }
             $foodCount += $row['foodNum'];
         }
-        if ($foodCount == 0) {
+        if ($foodCount <= 0) {
             echo "
             <div style='height: 60px;'>
                 <p style='font-size: 22px; margin-left: 20px; font-weight: 400; margin-top: 10px;'>Your food storage is empty :(</p>

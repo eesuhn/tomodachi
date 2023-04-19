@@ -9,12 +9,18 @@
 ?>
 <style>
     .toast-body p {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 400;
     }
 
     .toast-body {
         margin-bottom: -12px;
+    }
+
+    .toast-header strong {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
     }
 </style>
 

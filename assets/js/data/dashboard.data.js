@@ -6,7 +6,6 @@ $(document).ready(function () {
 var state = "Active";
 
 // refresh dashboard data
-// refresh dashboard data
 function refreshDashboard() {
     setTimeout(function () {
         refreshStatsHeader();
@@ -16,22 +15,25 @@ function refreshDashboard() {
         refreshWallpaper();
         refreshTask(state);
         refreshHabit();
-        $.ajax({
-            url: "../back/data/dashboard.data.php?action=getTutorialModalFlag",
-            type: "POST",
-            dataType: "json",
-            success: function (data) {
-                if (data.tutorialModal === "0") {
-                    $('#tutorial1').modal('show');
-                }
-            },
-            error: function () {
-                console.log("Error: unable to get tutorial modal flag");
-            }
-        });
+        showTutorial();
     }, 100);
 }
 
+function showTutorial() {
+    $.ajax({
+        url: "../back/data/dashboard.data.php?action=getTutorialModalFlag",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            if (data.tutorialModal == "0") {
+                $('#tutorial1').modal('show');
+            }
+        },
+        error: function () {
+            console.log("Error: unable to get tutorial modal flag");
+        }
+    });
+}
 
 // refresh stats header 
 function refreshStatsHeader() {

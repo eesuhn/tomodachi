@@ -1,8 +1,8 @@
 var pomodoro = {
   	task: null,
   	isPaused: true,
-  	workTime: new Date(0.05 * 60 * 1000),
-  	restTime: new Date(0.05 * 60 * 1000),
+  	workTime: new Date(0.1 * 60 * 1000),
+  	restTime: new Date(0.1 * 60 * 1000),
   	timer: {},
   	timeAwait: 0,
   	intervals: [],
@@ -52,11 +52,14 @@ restButton.addEventListener("click", function () {
 });
 
 function handlePomodoroControlButtonPress() {
+	var workButton = document.getElementById("workButton");
+
 	if (pomodoro.isPaused) {
 		pomodoro.intervals.push([new Date()]);
-
+		workButton.innerHTML = "Pause";
 	} else {
 		pomodoro.intervals[pomodoro.intervals.length - 1].push(new Date());
+		workButton.innerHTML = "Start";
 	}
 	pomodoro.isPaused = !pomodoro.isPaused;
 }

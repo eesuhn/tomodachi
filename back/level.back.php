@@ -149,6 +149,8 @@
                     ':userID' => $userID,
                     ':petID' => $petID));
             }
+
+            // work in progress
             echo "
             <script>
                 $('#levelModal').modal('show');

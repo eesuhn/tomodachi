@@ -108,7 +108,7 @@
             $foodNum = ($row['foodNum'] == 0) ? "0" : $row['foodNum'];
 
             echo "
-            <div class='col-md-3 px-3 py-3' style='max-width: 24.6%;'>
+            <div class='col-md-3 px-3 py-3'>
                 <div class='card h-40'>
                     <center><img src='{$row['foodImg']}' class='card-img-top' alt='Food Image' style='max-width: 40%;'></center>
                     <div class='card-body d-flex flex-column'>

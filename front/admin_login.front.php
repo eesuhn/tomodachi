@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
 </head>
 
 <div class="col-12 d-flex align-items-center vh-100" style="background-image: url('../assets/images/bg.png'); background-size: cover;" ;>

@@ -28,6 +28,7 @@
 
     <script defer src="../assets/js/welcome.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
   </head>
 
   <body>

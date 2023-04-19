@@ -25,6 +25,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <script src="../assets/js/data/shop.data.js"></script>
     <script src="../assets/js/action/shop.action.js"></script>
     <script src="../assets/js/toast.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
 </head>
 
 <div class="sidebar">

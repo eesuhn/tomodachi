@@ -19,6 +19,7 @@
 
     <script src="../assets/js/data/admin_users.data.js"></script>
     <script src="../assets/js/action/admin_users.action.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
 </head>
 
 <body style="background-color: #f1f1f1;">

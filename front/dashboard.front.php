@@ -28,6 +28,7 @@ include '../include/tutorial.inc.php';
   <script src="../assets/js/data/dashboard.data.js"></script>
   <script src="../assets/js/action/dashboard.action.js"></script>
   <script src="../assets/js/toast.js"></script>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
 
 </head>
 

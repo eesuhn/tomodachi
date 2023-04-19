@@ -22,6 +22,7 @@
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
     <script src="../assets/js/data/admin_dashboard.data.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">;
 </head>
 
 <body style="background-color: #f1f1f1;">

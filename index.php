@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="assets/css/navbar.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="shortcut icon" type="image/png" href="assets/images/logo3.png">;
 </head>
 
 <body style="background-image: url(assets/images/bg.png); background-size: cover;">

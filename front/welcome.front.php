@@ -60,13 +60,9 @@
 
     <section class="hidden">
       <div class="row d-flex py-4 px-4 justify-content-center">
-        <div class="col-3"></div>
-
-        <div class="col-6 justify-content-centexwr d-flex">
+        <div class="col-12 justify-content-center d-flex">
           <h1 style="text-align: center;">and select your starting companion!</h1>
         </div>
-
-        <div class="col-3"></div>
       </div>
 
       <div class="col-3"></div>

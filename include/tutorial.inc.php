@@ -6,7 +6,7 @@
                     <img src="../assets/images/logo1.png" width="120px">
                     <h2>Welcome abroad, we are very excited to have you here with us.</h2>
                     <h5 class="text-muted">Before you get started, let's kick off with a bit of a tutorial to demonstrate how you should be using our app.</h5>
-                    <a href="" data-bs-target="#skip" data-bs-toggle="modal" class="link-danger" style="font-size: 20px;">Do not show this again.</a>
+                    <a data-bs-target="#skip" data-bs-toggle="modal" class="link-danger" style="font-size: 20px;">Do not show this again.</a>
                 </center>
             </div>
             <div class="modal-footer">
@@ -51,7 +51,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="modal fade" id="tutorial3" aria-hidden="true" tabindex="-1" data-bs-keyboard="false" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-lg">

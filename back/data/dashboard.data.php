@@ -109,22 +109,22 @@
 
         if (checkPetLevel()<=0){
             echo "
-                    <img src='../assets/images/dead.png' style='margin: 20px -10px 0px; width: 80px; aspect-ratio: 1/1;'>
+                    <img src='../assets/images/dead.png' style='margin: 30px -4px 8px; width: 100px; aspect-ratio: 1/1;'>
                 </div>
                 <div class='card-block px-3 col-5'>
                     <h2>$petName</h2>
                     <h4>Your Pet has Died!</h4>
                     <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px 4px 5px 0px;'><span style='font-size: 20px; margin-right: 4px;'>200</span>";
                     if ($currencyNum < 200) {
-                        echo "<button class='btn btn-danger' disabled style='margin-bottom: 5px; height: fit-content; font-size: 16px; margin-left: 10px;'>Not enough coins!</button>";
+                        echo "<button class='btn btn-danger' disabled style='margin-left: 10px; margin-bottom: 5px; height: fit-content; font-size: 16px; margin-left: 10px;'>Not enough coins!</button>";
                     } else {
-                        echo "<button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>";
+                        echo "<button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-left: 10px; margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>";
                     }
                     echo "
                     </div>
                 <div class='card-block px-3 col-5'>
-                <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
-                <h4>$today</h4>
+                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
+                    <h4 style='letter-spacing: 0.6px; padding-left: 10px;'>$today</h4>
                 </div>
             </div>
         </div>";
@@ -136,19 +136,19 @@
                 <div class='card-block px-3 col-5'>
 
                     <h3>$petName</h3>
-                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin-bottom: 4px; margin-right: 4px;'>
                     <span style='font-size: 20px;'>Level: $petLevel</span><br>
-                        <div class='progress' style='height: 5px;'>
+                    <div class='progress' style='height: 5px; margin-bottom: 4px;'>
                         <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
                     </div>
 
-                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin-bottom: 4px; margin-right: 4px;'>
                     <span style='font-size: 20px;'>Health: $petHealthCur/$petHealthTol</span><br>
-                    <div class='progress' style='height: 5px;'>
+                    <div class='progress' style='height: 5px; margin-bottom: 4px;'>
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
-                    <img src='../assets/images/happy.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <img src='../assets/images/happy.png' style='height: 13px; width: 13px; margin-bottom: 4px; margin-right: 4px;'>
                     <span style='font-size: 20px;'>Happy: $petHappCur/$petHappTol</span><br>
                     <div class='progress' style='height: 5px;'>
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
@@ -157,7 +157,7 @@
             
                 <div class='card-block px-3 col-5'>
                     <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
-                    <h4>$today</h4>
+                    <h4 style='letter-spacing: 0.6px; padding-left: 10px;'>$today</h4>
                 </div>
             </div>
         </div>";

@@ -10,6 +10,8 @@ var pomodoro = {
 };
 
 workButton.addEventListener("click", function () {
+	var workButton = document.getElementById("workButton");
+
 	if (pomodoro.task != "work") {
 		resetPomodoroTimer();
 		pomodoro.task = "work";
@@ -22,15 +24,18 @@ workButton.addEventListener("click", function () {
 		if (timeTheRest < 0) {
 			timeTheRest = 0;
 			resetPomodoroTimer();
+			workButton.innerHTML = "Start";
 			addCurrency(200);
 		}
 		renderTimerText(timeTheRest);
 		}, 100);
 	}
-	handlePomodoroControlButtonPress();
+	handlePomodoroControlButtonPressWork();
 });
 
 restButton.addEventListener("click", function () {
+	var restButton = document.getElementById("restButton");
+	
 	if (pomodoro.task != "rest") {
 		resetPomodoroTimer();
 		pomodoro.task = "rest";
@@ -43,23 +48,41 @@ restButton.addEventListener("click", function () {
 		if (timeTheRest < 0) {
 			timeTheRest = 0;
 			resetPomodoroTimer();
+			restButton.innerHTML = "Rest";
 			showBreakToast();
 		}
 		renderTimerText(timeTheRest);
 		}, 100);
 	}
-	handlePomodoroControlButtonPress();
+	handlePomodoroControlButtonPressRest();
 });
 
-function handlePomodoroControlButtonPress() {
+function handlePomodoroControlButtonPressWork() {
 	var workButton = document.getElementById("workButton");
+	var restButton = document.getElementById("restButton");
 
 	if (pomodoro.isPaused) {
 		pomodoro.intervals.push([new Date()]);
 		workButton.innerHTML = "Pause";
+		restButton.innerHTML = "Rest";
 	} else {
 		pomodoro.intervals[pomodoro.intervals.length - 1].push(new Date());
 		workButton.innerHTML = "Start";
+	}
+	pomodoro.isPaused = !pomodoro.isPaused;
+}
+
+function handlePomodoroControlButtonPressRest() {
+	var workButton = document.getElementById("workButton");
+	var restButton = document.getElementById("restButton");
+
+	if (pomodoro.isPaused) {
+		pomodoro.intervals.push([new Date()]);
+		restButton.innerHTML = "Pause";
+		workButton.innerHTML = "Start";
+	} else {
+		pomodoro.intervals[pomodoro.intervals.length - 1].push(new Date());
+		restButton.innerHTML = "Rest";
 	}
 	pomodoro.isPaused = !pomodoro.isPaused;
 }
@@ -134,7 +157,7 @@ function addCurrency(amount) {
 			showStudyToast();
 		},
 		error: function () {
-			console.log("Error adding currency.");
+			console.log("Error: Unable to add currency");
 		},
 	});
 }

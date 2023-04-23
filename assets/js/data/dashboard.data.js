@@ -30,7 +30,7 @@ function showTutorial() {
             }
         },
         error: function () {
-            console.log("Error: unable to get tutorial modal flag");
+            console.log("Error: Unable to get tutorial modal flag");
         }
     });
 }

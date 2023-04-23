@@ -43,7 +43,7 @@
   </div>
 
   <div class="content">
-    <div class="container" id="statsHeader" style="margin-bottom: -10px;">
+    <div class="container" id="statsHeader">
       <!-- display stats header with AJAX -->
     </div>
 
@@ -92,7 +92,7 @@
       </div>
 
       <div class="row">
-        <a href="" data-bs-target="#tutorial1" data-bs-toggle="modal" class="link-secondary" style="text-align: right; padding: 10px; font-size: 21px;">Tutorial?</a>
+        <a data-bs-target="#tutorial1" data-bs-toggle="modal" class="link-secondary" style="text-align: right; margin: 10px 8px -10px; font-size: 22px; color: #313539;">Tutorial?</a>
       </div>
 
     </div>

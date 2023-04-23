@@ -182,8 +182,6 @@
         $currencyNum = $userCurrency->getCurrency($userID);
 
         $stmt = $wallpaperData->getAllWallpapers();
-
-        echo '<div class="row">';
         
         foreach ($stmt as $row) {
 

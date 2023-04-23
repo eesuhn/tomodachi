@@ -148,7 +148,7 @@
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
-                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <img src='../assets/images/happy.png' style='height: 13px; width: 13px; margin: 5px;'>
                     <span style='font-size: 20px;'>Happy: $petHappCur/$petHappTol</span><br>
                     <div class='progress' style='height: 5px;'>
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
@@ -184,13 +184,9 @@
                 echo 
                 "<div class='col-2 col-lg-2'>
                     <div class='count-data text-center' style='font-size: 20px;'>
-                        <button class='foodCounter' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
-                            <img src='"
-                            .$row['foodImg'] . 
-                            "' width='30px'>
-                            <p class='m-0px font-w-300'>".$row['foodName']. 
-                            " x "
-                            .$row['foodNum']."</p>
+                        <button class='foodCounter' style='margin-top: 6px;' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
+                            <img src='".$row['foodImg'] ."' width='30px' style='margin-bottom: -2px;'>
+                            <p style='letter-spacing: 0.2px; font-weight: 400;'>".$row['foodName']." x ".$row['foodNum']."</p>
                         </button>
                     </div>
                 </div>";
@@ -199,8 +195,8 @@
         }
         if ($foodCount <= 0) {
             echo "
-            <div style='height: 60px;'>
-                <p style='font-size: 22px; margin-left: 20px; font-weight: 400; margin-top: 10px;'>Your food storage is empty :(</p>
+            <div style='height: 66px;'>
+                <p style='font-size: 22px; margin-left: 20px; font-weight: 400; margin-top: 14px; letter-spacing: 0.4px;'>Your food storage is empty. Shop <a href='shop.front.php' style='color: white;'>here</a></p>
             </div>";
         }
     }

@@ -1,11 +1,9 @@
-<?php
-include '../include/dashboard.inc.php';
-include '../include/toast.inc.php';
-include '../include/tutorial.inc.php';
-?>
-
 <!DOCTYPE html>
 <html>
+
+<?php
+  include '../include/dashboard.inc.php';
+?>
 
 <head>
   <title>Tomodachi | Habit Tracker</title>
@@ -21,13 +19,11 @@ include '../include/tutorial.inc.php';
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/pet_animation.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
-  <script src="../assets/js/data/dashboard.data.js"></script>
-  <script src="../assets/js/action/dashboard.action.js"></script>
-  <script src="../assets/js/toast.js"></script>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 
 </head>
@@ -53,25 +49,8 @@ include '../include/tutorial.inc.php';
 
     <div class="row px-4 py-2">
       <div class="col-md-4">
-        <div id="wallpaper" style="
-            height: 550px; 
-            width: auto; 
-            border: 5px solid black; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            position: relative; 
-            background-size: cover; 
-            background-position: center;">
-          <div style="
-              position: absolute; 
-              bottom: 0; 
-              left: 0; 
-              display: flex; 
-              align-items: center; 
-              margin: 5px; 
-              background: rgba(0, 0, 0, 0.8); 
-              padding: 2px 8px 2px;" class="inventory">
+        <div id="wallpaper" class="pet-wallpaper">
+          <div class="inventory dashboard-inventory">
             <a data-bs-target="#inventory" data-bs-toggle="modal" onclick="refreshInventory()">
               <img src="../assets/images/inventory.png" style="width: auto; height: 40px; margin-bottom: 5px;">
               <span style="margin-left: 10px; color: white; font-size: 24px;">Inventory</span>
@@ -81,10 +60,10 @@ include '../include/tutorial.inc.php';
             <!-- display petImage with AJAX -->
           </div>
         </div>
-      </div></a>
+      </div>
 
       <div class="col-md-4 py-1">
-        <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px" ;>Habits</h3>
+        <h3><img src="../assets/images/habit.png" width="30" style="margin-right: 10px">Habits</h3>
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #5C6C7D; border-radius: 6px;">
           <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 16px; font-size: 20px;" autocomplete="off">
 
@@ -161,6 +140,7 @@ include '../include/tutorial.inc.php';
     </div>
   </div>
 
+  <!-- work in progress -->
   <div class="modal fade" id="levelModal" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -195,6 +175,10 @@ include '../include/tutorial.inc.php';
       });
     }
   </script>
+
+  <script src="../assets/js/data/dashboard.data.js"></script>
+  <script src="../assets/js/action/dashboard.action.js"></script>
+  <script src="../assets/js/toast.js"></script>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>

@@ -22,7 +22,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
-    <script src="../assets/js/data/admin_dashboard.data.js"></script>
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
@@ -471,6 +470,7 @@
         </div>
     </div>
 
+    <script src="../assets/js/data/admin_dashboard.data.js"></script>
     <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 

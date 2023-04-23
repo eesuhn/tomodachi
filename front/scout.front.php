@@ -1,10 +1,9 @@
-<?php
-include '../include/shop.inc.php';
-include '../include/toast.inc.php';
-?>
-
 <!DOCTYPE html>
 <html>
+
+<?php
+  include '../include/shop.inc.php';
+?>
 
 <head>
   <title>Tomodachi | Habit Tracker</title>
@@ -22,9 +21,6 @@ include '../include/toast.inc.php';
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <script src="../assets/js/data/shop.data.js"></script>
-  <script src="../assets/js/action/shop.action.js"></script>
-  <script src="../assets/js/toast.js"></script>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
@@ -64,7 +60,7 @@ include '../include/toast.inc.php';
 
       <center>
         <img src="../assets/images/petscout.png" style="margin: auto; width: 420px;">
-        <h1>1000<img src='../assets/images/coin.png' width='15'></h1>
+        <h1>1000 <img src='../assets/images/coin.png' width='20' style="margin-top: -8px;"></h1>
 
         <div id="gachaButton">
           <!-- display Gacha button with AJAX -->
@@ -166,12 +162,16 @@ include '../include/toast.inc.php';
             <?php } ?>
           </div>
 
-          <div class="row" style="margin-top: 10px;">
-            <div class="col-2"></div>
-            <div class="col-8 d-flex justify-content-center">
-              <p class="text-muted" style="text-align: center;">Looking for that special pet to add to your collection? Take a chance and try our gacha system, where legendaries appear with a 5% chance, rares with a 35% chance, and commons with a 60% chance. With a variety of pets to collect, each with their own unique rarity and value, you'll never know what you might get! So why not try your luck today and see if you can obtain the pet of your dreams?</p>
+          <div class="row" style="margin-top: 16px;">
+            <div class="col-1"></div>
+            <div class="col-10 d-flex justify-content-center">
+              <p class="text-muted" style="text-align: center; font-size: 18px; line-height: 20px;">
+              Looking for that special pet to add to your collection? Take a chance and try our gacha system! 
+              <br><span style="color: red;">Legendaries</span> appear with a 5% chance, <span style="color: orange;">Rares</span> with a 35% chance, and <span style="color: green;">Commons</span> with a 60% chance. 
+              <br>With a variety of pets to collect, you'll never know what you might get!
+            </p>
             </div>
-            <div class="col-2"></div>
+            <div class="col-1"></div>
           </div>
         </div>
 
@@ -181,6 +181,10 @@ include '../include/toast.inc.php';
       </div>
     </div>
   </div>
+
+  <script src="../assets/js/data/shop.data.js"></script>
+  <script src="../assets/js/action/shop.action.js"></script>
+  <script src="../assets/js/toast.js"></script>
 
   <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

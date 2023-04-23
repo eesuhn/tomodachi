@@ -8,11 +8,12 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
+    $userID = $_SESSION['userID'];
+
     include '../back/connection.back.php';
     include '../back/pet.back.php';
     include '../back/currency.back.php';
-
-    $userID = $_SESSION['userID'];
+    include '../include/toast.inc.php';
 
     $petData = new Pet();
 

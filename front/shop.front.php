@@ -1,10 +1,9 @@
-<?php
-include '../include/shop.inc.php';
-include '../include/toast.inc.php';
-?>
-
 <!DOCTYPE html>
 <html>
+
+<?php
+    include '../include/shop.inc.php';
+?>
 
 <head>
     <title>Tomodachi | Habit Tracker</title>
@@ -22,9 +21,6 @@ include '../include/toast.inc.php';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="../assets/js/data/shop.data.js"></script>
-    <script src="../assets/js/action/shop.action.js"></script>
-    <script src="../assets/js/toast.js"></script>
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
@@ -57,7 +53,7 @@ include '../include/toast.inc.php';
         <section style="background-image: url('../assets/images/bg3.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; color: white; opacity: 92%;">
             <center>
                 <div style="padding-top: 20px;">
-                    <h2 style="color: black; padding: 10px">FOOD SHOP</h2>
+                    <h2 style="color: black; padding: 10px; letter-spacing: 1px;">PET FOOD</h2>
                 </div>
             </center>
 
@@ -66,11 +62,7 @@ include '../include/toast.inc.php';
             </div>
 
             <center>
-                <hr style="width: 90%; height: 10px; color: black;">
-            </center>
-
-            <center>
-                <h2 style="color: black; padding: 20px">WALLPAPER SHOP</h2>
+                <h2 style="color: black; padding: 20px; letter-spacing: 1px;">WALLPAPER</h2>
             </center>
 
             <div class="row" style="margin: -32px 10px 10px 10px;" id="wallpaperShopData">
@@ -79,6 +71,7 @@ include '../include/toast.inc.php';
         </section>
     </div>
 
+    <!-- modals used in shop -->
     <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -92,6 +85,10 @@ include '../include/toast.inc.php';
             </div>
         </div>
     </div>
+
+    <script src="../assets/js/data/shop.data.js"></script>
+    <script src="../assets/js/action/shop.action.js"></script>
+    <script src="../assets/js/toast.js"></script>
 
     <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

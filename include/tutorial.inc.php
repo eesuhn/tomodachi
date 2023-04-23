@@ -60,7 +60,7 @@
                 <center>
                     <img src="../assets/images/tutimg2.png" width="90%">
                     <h3>This is the stat header, where information of your equipped pet will be displayed.</h3>
-                    <h5 class="text-muted">The <img src="../assets/images/level.png" width="10">Level indicates the level of your pet. The <img src="../assets/images/health.png" width="10"> health indicates the health points of your pet <br>and the <img src="../assets/images/hunger.png" width="10"> happy indicates the happiness of your pet. <br>Lastly, the <img src="../assets/images/coin.png" width="10"> represents the amount of coins you have gained. </h5>
+                    <h5 class="text-muted">The <img src="../assets/images/level.png" width="10">Level indicates the level of your pet. The <img src="../assets/images/health.png" width="10"> health indicates the health points of your pet <br>and the <img src="../assets/images/happy.png" width="10"> happy indicates the happiness of your pet. <br>Lastly, the <img src="../assets/images/coin.png" width="10"> represents the amount of coins you have gained. </h5>
                     <h5 class="text-muted"> Earn coins & experience points by completing habits & tasks, <br>keep your pet happy by feeding it food you purchased. </h5>
                     <h5 class="text-muted"> At maximum happiness, your rewards received will gain a<span style="color: green"> massive</span> boost, so try making it your daily goal. </h5>
                     <h5 class="text-muted"> Please remember to <span style="color: red">take extra care</span> of your pet by avoiding bad habits as it could bring consequences. </h5>

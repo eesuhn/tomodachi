@@ -1,10 +1,9 @@
 <?php
     include '../back/level.back.php';
-
-    $level = new Level();
-
+    
     $userID = $_SESSION['userID'];
 
+    $level = new Level();
     $petAlive = $level->checkAlive($userID);
 ?>
 <style>
@@ -127,7 +126,7 @@
             <strong>&nbsp Tomodachi</strong>
         </div>
         <div class="toast-body">
-            <p>You can't feed your dead pet.</p>
+            <p>Revive to continue feeding.</p>
         </div>
     </div>
 </div>

@@ -54,7 +54,7 @@
                         <h4 class='card-title' style='font-weight: 400;'>{$row['petName']}</h4>
                         <p class='card-text pet-stats'>
                             <img src='../assets/images/health.png' width='20'>{$row['petHealthIn']}
-                            <img src='../assets/images/hunger.png' width='20'>{$row['petHappIn']}
+                            <img src='../assets/images/happy.png' width='20'>{$row['petHappIn']}
                         </p>
                         <div style='margin: -10px -4px -2px;'>
                             <h4 class='card-text'><img src='$petRarityImg' width='80px' alt='Pet Rarity'></h4>
@@ -106,7 +106,7 @@
                         <h5 class='card-title'>{$row["foodName"]}</h5>
                         <p class='card-text food-stats'>
                             <img src='../assets/images/health.png' width='20'>{$row["foodHealth"]}
-                            <img src='../assets/images/hunger.png' width='20'>{$row["foodHapp"]}
+                            <img src='../assets/images/happy.png' width='20'>{$row["foodHapp"]}
                             <img src='../assets/images/coin.png' width='20'>{$row["foodPrice"]}
                         </p>
                         <p class='card-text'>{$row["foodDesc"]}</p>

@@ -22,11 +22,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0fa65bfd04.js" crossorigin="anonymous"></script>
 
-    <script src="../assets/js/data/admin_dashboard.data.js"></script>
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
-<body style="background-color: #f1f1f1;">
+<body style="background-color: #f1f1f1; cursor: context-menu;">
 
     <div class="sidebar">
         <div class="logo">
@@ -45,10 +44,16 @@
                 font-size: 20px;
                 font-weight: 500;
             }
+
+            .admin-text-card a {
+                cursor: pointer;
+            }
+
             .d-flex span {
                 font-size: 20px;
                 font-weight: 500;
             }
+
             .col-12 label {
                 font-size: 20px;
                 font-weight: 500;
@@ -471,6 +476,7 @@
         </div>
     </div>
 
+    <script src="../assets/js/data/admin_dashboard.data.js"></script>
     <script src="../assets/js/bootstrap-js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 

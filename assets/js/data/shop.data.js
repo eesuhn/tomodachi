@@ -1,15 +1,13 @@
 $(document).ready(function() {
-    refreshShop();
+    showShop();
 });
 
-// refresh shop data
-function refreshShop() {
-    setTimeout(function() {
-        refreshFoodShop();
-        refreshWallpaperShop();
-        refreshCurrency();
-        refreshGachaButton();
-    }, 100);
+// show shop data
+function showShop() {
+    refreshFoodShop();
+    refreshWallpaperShop();
+    refreshCurrency();
+    refreshGachaButton();
 }
 
 function refreshCurrency() {

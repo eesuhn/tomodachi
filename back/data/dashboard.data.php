@@ -103,28 +103,28 @@
                 }
             }
         </style>
-        <div class='row py-4'>
+        <div class='row py-4' style='cursor: context-menu;'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
                 <div class='card-header border-0'>";
 
         if (checkPetLevel()<=0){
             echo "
-                    <img src='../assets/images/dead.png' style='margin: 20px -10px 0px; width: 80px; aspect-ratio: 1/1;'>
+                    <img src='../assets/images/dead.png' style='margin: 30px -4px 8px; width: 100px; aspect-ratio: 1/1;'>
                 </div>
                 <div class='card-block px-3 col-5'>
-                    <h2>$petName</h2>
-                    <h4>Your Pet has Died!</h4>
+                    <h3 style='margin-top: 10px;'>$petName</h3>
+                    <h5>Revive your Pet!</h5>
                     <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px 4px 5px 0px;'><span style='font-size: 20px; margin-right: 4px;'>200</span>";
                     if ($currencyNum < 200) {
-                        echo "<button class='btn btn-danger' disabled style='margin-bottom: 5px; height: fit-content; font-size: 16px; margin-left: 10px;'>Not enough coins!</button>";
+                        echo "<button class='btn btn-danger' disabled style='margin-left: 10px; margin-bottom: 5px; height: fit-content; font-size: 16px; margin-left: 10px;'>Not enough coins!</button>";
                     } else {
-                        echo "<button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>";
+                        echo "<button class='btn btn-danger' onclick='revivePet({$userID}, {$petID})' style='margin-left: 10px; margin-bottom: 5px; height: fit-content; font-size: 16px;'>Revive Pet</button>";
                     }
                     echo "
                     </div>
                 <div class='card-block px-3 col-5'>
-                <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
-                <h4>$today</h4>
+                    <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
+                    <h4 style='letter-spacing: 0.6px; padding-left: 10px;'>$today</h4>
                 </div>
             </div>
         </div>";
@@ -134,21 +134,20 @@
                     <img src='$petImg' style='margin: 30px -10px 0px; width: 120px;'>
                 </div>
                 <div class='card-block px-3 col-5'>
-
-                    <h3>$petName</h3>
-                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <h3 style='margin-top: 10px; margin-bottom: -2px;'>$petName</h3>
+                    <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin-bottom: 4px; margin-right: 4px;'>
                     <span style='font-size: 20px;'>Level: $petLevel</span><br>
-                        <div class='progress' style='height: 5px;'>
+                    <div class='progress' style='height: 5px; margin-bottom: 4px;'>
                         <div class='progress-bar bg-info' role='progressbar' style='width: $petXP%' aria-valuemin='0' aria-valuemax='100'></div>
                     </div>
 
-                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <img src='../assets/images/health.png' style='height: 13px; width: 13px; margin-bottom: 4px; margin-right: 4px;'>
                     <span style='font-size: 20px;'>Health: $petHealthCur/$petHealthTol</span><br>
-                    <div class='progress' style='height: 5px;'>
+                    <div class='progress' style='height: 5px; margin-bottom: 4px;'>
                         <div class='progress-bar bg-danger' role='progressbar' style='width: $healthBar%' aria-valuemin='0' aria-valuemax='$petHealthTol'></div>
                     </div>
 
-                    <img src='../assets/images/hunger.png' style='height: 13px; width: 13px; margin: 5px;'>
+                    <img src='../assets/images/happy.png' style='height: 13px; width: 13px; margin-bottom: 4px; margin-right: 4px;'>
                     <span style='font-size: 20px;'>Happy: $petHappCur/$petHappTol</span><br>
                     <div class='progress' style='height: 5px;'>
                         <div class='progress-bar bg-warning' role='progressbar' style='width: $happBar%' aria-valuemin='0' aria-valuemax='$petHappTol'></div>
@@ -157,7 +156,7 @@
             
                 <div class='card-block px-3 col-5'>
                     <img src='../assets/images/coin.png' style='width: 28px; margin: 10px; margin-bottom: 20px;'><span style='font-size: 30px;'>$currencyNum</span>
-                    <h4>$today</h4>
+                    <h4 style='letter-spacing: 0.6px; padding-left: 10px;'>$today</h4>
                 </div>
             </div>
         </div>";
@@ -184,13 +183,9 @@
                 echo 
                 "<div class='col-2 col-lg-2'>
                     <div class='count-data text-center' style='font-size: 20px;'>
-                        <button class='foodCounter' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
-                            <img src='"
-                            .$row['foodImg'] . 
-                            "' width='30px'>
-                            <p class='m-0px font-w-300'>".$row['foodName']. 
-                            " x "
-                            .$row['foodNum']."</p>
+                        <button class='foodCounter' style='margin-top: 2px; margin-bottom: 4px;' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
+                            <img src='".$row['foodImg'] ."' width='30px' style='margin-bottom: -2px;'>
+                            <p style='letter-spacing: 0.2px; font-weight: 400;'>".$row['foodName']." x ".$row['foodNum']."</p>
                         </button>
                     </div>
                 </div>";
@@ -199,8 +194,8 @@
         }
         if ($foodCount <= 0) {
             echo "
-            <div style='height: 60px;'>
-                <p style='font-size: 22px; margin-left: 20px; font-weight: 400; margin-top: 10px;'>Your food storage is empty :(</p>
+            <div style='height: 66px;'>
+                <p style='font-size: 22px; margin-left: 20px; font-weight: 400; margin-top: 14px; letter-spacing: 0.4px;'>Your food storage is empty. Shop <a href='shop.front.php' style='color: white;'>here</a></p>
             </div>";
         }
     }
@@ -215,9 +210,9 @@
         $stmt2 = $wallpaperData->getUserWallpapers($userID);
 
         echo "
-            <div class='row'>
-                <div clas='col-12 d-flex justify content center'>
-                    <h3>Owned Pets</h3>
+            <div class='row' style='cursor: context-menu;'>
+                <div style='margin-bottom: -14px; margin-top: 10px;'>
+                    <h3 style='padding-left: 6px;'>Owned Pets</h3>
                 </div>";
         foreach ($stmt as $row) { 
 
@@ -238,9 +233,12 @@
         }
         echo "
             </div>
-            <div class='row'>
-                <div clas='col-12 d-flex justify content center'>
-                    <h3>Owned Wallpapers</h3>
+
+            <center><hr style='width: 100%;'></center>
+
+            <div class='row' style='cursor: context-menu;'>
+                <div style='margin-bottom: -14px; margin-top: 10px;'>
+                    <h3 style='padding-left: 6px;'>Owned Wallpapers</h3>
                 </div>";
         foreach ($stmt2 as $row2) {
 
@@ -561,7 +559,6 @@
                 transition: 0.2s ease;
                 border-radius: 4px;
                 opacity: 0.6;
-                font-weight: 500;
             }
 
             .nature-btn:focus {
@@ -587,7 +584,19 @@
 
             .nature-btn.disabled {
                 opacity: 1;
-                cursor: default;
+                cursor: select;
+            }
+
+            .nature-btn:not(.disabled):hover {
+                opacity: 0.8;
+                transition: 0.2s ease;
+                transform: translateY(-2px);
+            }
+
+            .nature-btn.disabled:hover {
+                opacity: 0.8;
+                transition: 0.2s ease;
+                transform: translateY(2px);
             }
 
             .nature-btn.positive {
@@ -595,16 +604,16 @@
                 border: 2px solid #009f65;
                 background-color: transparent;
                 margin-right: 18px;
-                font-weight: 600;
                 letter-spacing: 1px;
+                opacity: 0.9;
             }
 
             .nature-btn.negative {
                 color: #f60b0b;
                 border: 2px solid #f60b0b;
                 background-color: transparent;
-                font-weight: 600;
                 letter-spacing: 1px;
+                opacity: 0.9;
             }
 
             .option-menu a:hover {

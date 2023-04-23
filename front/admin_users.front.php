@@ -47,7 +47,7 @@
 
     <div class="modal fade" id="logout" aria-hidden="true" aria-labelledby="logoutTitle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content" style="padding: 0px;">
                 <div class="modal-body" style="color: black">
                     <h4>Are you sure you want to log out?</h4>
                 </div>

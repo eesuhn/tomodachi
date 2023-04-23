@@ -1,22 +1,18 @@
 $(document).ready(function () {
     $("#active-btn").trigger("click");
-    refreshDashboard();
+    showDashboard();
 });
 
-var state = "Active";
-
-// refresh dashboard data
-function refreshDashboard() {
-    setTimeout(function () {
-        refreshStatsHeader();
-        refreshFood();
-        refreshInventory();
-        refreshPetImg();
-        refreshWallpaper();
-        refreshTask(state);
-        refreshHabit();
-        showTutorial();
-    }, 100);
+// show dashboard data
+function showDashboard() {
+    refreshStatsHeader();
+    refreshFood();
+    refreshInventory();
+    refreshPetImg();
+    refreshWallpaper();
+    refreshTask("Active");
+    refreshHabit();
+    showTutorial();
 }
 
 function showTutorial() {
@@ -30,7 +26,7 @@ function showTutorial() {
             }
         },
         error: function () {
-            console.log("Error: unable to get tutorial modal flag");
+            console.log("Error: Unable to get tutorial modal flag");
         }
     });
 }

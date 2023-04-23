@@ -1,12 +1,12 @@
-<?php
-// start session if not started
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-?>
-
 <!DOCTYPE html>
 <html>
+
+<?php
+    // start session if not started
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
 
 <head>
     <title>Tomodachi | Habit Tracker</title>
@@ -20,12 +20,10 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/study.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="../assets/js/data/shop.data.js"></script>
-    <script src="../assets/js/action/shop.action.js"></script>
-    <script src="../assets/js/toast.js"></script>
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
@@ -47,7 +45,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <center>
             <img src="../assets/images/studying.png" width="400" style="margin-top: 150px; margin-right: 80px;">
         </center>
-        <div id="wrapper">
+        <div id="wrapper" style="cursor: context-menu;">
             <div id="main-panel" style="margin-bottom: -30px;">
                 <div id="pomodoro-box" style="margin-bottom: -10px;">
                     <h1 style="font-size: 45px;">Pomodoro Studying</h1>
@@ -86,88 +84,91 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
 </div>
 
-<script src="../assets/js/study.js"></script>
+    <style>
+        .toast-body p {
+            font-size: 20px;
+            font-weight: 400;
+        }
 
-<style>
-    .toast-body p {
-        font-size: 20px;
-        font-weight: 400;
-    }
+        .toast-body {
+            margin-bottom: -12px;
+        }
 
-    .toast-body {
-        margin-bottom: -12px;
-    }
+        .toast-header strong {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+        }
 
-    .toast-header strong {
-        font-size: 20px;
-        font-weight: 600;
-        letter-spacing: 0.4px;
-    }
+        .toast-body button {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            margin-bottom: 16px;
+            margin-top: -6px;
+        }
+    </style>
 
-    .toast-body button {
-        font-size: 16px;
-        font-weight: 500;
-        letter-spacing: 0.4px;
-        margin-bottom: 16px;
-        margin-top: -6px;
-    }
-</style>
-
-<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
-    <div class="toast toast-study" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <img src="../assets/images/logo3.png" width="20">
-            <strong>&nbsp Tomodachi</strong>
-        </div>
-        <div class="toast-body">
-            <p>You just completed a session and earned <b>200</b> coins.</p>
-            <center>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
-                    Close
-                </button>
-            </center>
-        </div>
-    </div>
-</div>
-
-<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
-    <div class="toast toast-break" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <img src="../assets/images/logo3.png" width="20">
-            <strong>&nbsp Tomodachi</strong>
-        </div>
-        <div class="toast-body">
-            <p>Your 5 minutes break has completed</p>
-            <center>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
-                    Close
-                </button>
-            </center>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="pomodoro" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
+    <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
+        <div class="toast toast-study" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="../assets/images/logo3.png" width="20">
+                <strong>&nbsp Tomodachi</strong>
+            </div>
+            <div class="toast-body">
+                <p>You just completed a session and earned <b>200</b> coins.</p>
                 <center>
-                    <img src="../assets/images/studying.png" width="65%" style="margin-right: 80px;">
-                    <h4 class="text-muted">Pomodoro studying is a time management technique that involves breaking up study sessions into shorter intervals with breaks in between to improve productivity and focus. It's named after a tomato-shaped kitchen timer used by its creator, Francesco Cirillo.</h4>
-                    <h5 class="text-muted">For each studying session you complete, you will earn some some <img src="../assets/images/coin.png" width="10"> coins to contribute to your total funds for spending in the shop.</h5>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
+                        Close
+                    </button>
                 </center>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 26px; right: 20px; z-index: 1060;">
+        <div class="toast toast-break" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="../assets/images/logo3.png" width="20">
+                <strong>&nbsp Tomodachi</strong>
+            </div>
+            <div class="toast-body">
+                <p>Your 5 minutes break has completed</p>
+                <center>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast" aria-label="Close">
+                        Close
+                    </button>
+                </center>
             </div>
         </div>
     </div>
-</div>
 
+    <div class="modal fade" id="pomodoro" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body" style="cursor: context-menu;">
+                    <center>
+                        <img src="../assets/images/studying.png" width="50%" style="margin-right: 60px;">
+                        <h4 class="text-muted">Pomodoro studying is a time management technique that involves breaking up study sessions 
+                            <br>into shorter intervals with breaks in between to improve productivity and focus. 
+                            <br>It's named after a tomato-shaped kitchen timer used by its creator, <span style="color: orange;">Francesco Cirillo</span>.</h4>
+                        <h5 class="text-muted">For each studying session you complete, 
+                            <br>you will earn some some <img src="../assets/images/coin.png" width="10"> coins to spend in the shop.</h5>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <audio id="toast-level">
+        <source src="../assets/audio/level.mp3" type="audio/mpeg">
+    </audio>
 
-<audio id="toast-level">
-    <source src="../assets/audio/level.mp3" type="audio/mpeg">
-</audio>
-
+    <script src="../assets/js/data/shop.data.js"></script>
+    <script src="../assets/js/action/shop.action.js"></script>
+    <script src="../assets/js/toast.js"></script>
+    <script src="../assets/js/study.js"></script>
 </html>

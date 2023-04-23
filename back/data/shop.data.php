@@ -115,7 +115,7 @@
                         <h5 class='card-title' style='font-size: 24px;'>{$row['foodName']}</h5>
                         <p class='card-text food-stats'>
                             <img src='../assets/images/health.png' width='20'><span style='font-size: 18px;'>{$row['foodHealth']}</span>
-                            <img src='../assets/images/hunger.png' width='20'><span style='font-size: 18px;'>{$row['foodHapp']}</span>
+                            <img src='../assets/images/happy.png' width='20'><span style='font-size: 18px;'>{$row['foodHapp']}</span>
                         </p>
                         <p class='card-text' style='margin: -6px 0px -2px; font-size: 18px;'>In Inventory: &nbsp$foodNum</p>
 
@@ -182,8 +182,6 @@
         $currencyNum = $userCurrency->getCurrency($userID);
 
         $stmt = $wallpaperData->getAllWallpapers();
-
-        echo '<div class="row">';
         
         foreach ($stmt as $row) {
 

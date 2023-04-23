@@ -8,11 +8,11 @@ function petScout(userID) {
         },
         success: function() {
             showPetScout();
+            refreshCurrency();
+            refreshGachaButton();
             showPurchaseToast();
         }
     });
-    
-    refreshShop();
 }
 
 function purchaseFood(userID, foodID, foodPrice) {
@@ -25,12 +25,11 @@ function purchaseFood(userID, foodID, foodPrice) {
             foodPrice: foodPrice
         },
         success: function() {
+            refreshCurrency();
             refreshFoodShop();
             showPurchaseToast();
         }
     });
-    
-    refreshShop();
 }
 
 function purchaseWallpaper(userID, wallpaperID, wallpaperPrice) {
@@ -43,9 +42,9 @@ function purchaseWallpaper(userID, wallpaperID, wallpaperPrice) {
             wallpaperPrice: wallpaperPrice
         },
         success: function() {
+            refreshCurrency();
             refreshWallpaperShop();
             showPurchaseToast();
         }
     });
-    refreshShop();
 }

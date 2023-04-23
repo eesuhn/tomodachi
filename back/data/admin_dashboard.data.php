@@ -47,7 +47,7 @@
             $petRarityImg = getPetRarityImg($row['petRarity']);
 
             echo "
-            <div class='col-md-4 px-3 py-3'>
+            <div class='col-md-3 px-3 py-3'>
                 <div class='card h-100'>
                     <center><img src='{$row['petImg']}' class='card-img-top' alt='Pet Image' style='max-width: 50%;'></center>
                     <div class='card-body d-flex flex-column'>
@@ -99,7 +99,7 @@
         foreach ($stmt as $row) {
 
             echo
-            "<div class='col-md-4 px-3 py-3'>
+            "<div class='col-md-3 px-3 py-3'>
                 <div class='card h-100'>
                     <center><img src='{$row["foodImg"]}' class='card-img-top' alt='Food Image' style='max-width: 30%;'></center>
                     <div class='card-body d-flex flex-column'>
@@ -137,9 +137,9 @@
         foreach ($stmt as $row) {
 
             echo
-            "<div class='col-md-4 px-3 py-3'>
+            "<div class='col-md-3 px-3 py-3'>
                 <div class='card h-100'>
-                    <center><img src='{$row["wallpaperImg"]}' class='card-img-top' alt='Wallpaper Image' style='max-width: 70%;'></center>
+                    <center><img src='{$row["wallpaperImg"]}' class='card-img-top' alt='Wallpaper Image' style='max-width: 80%; border-radius: 0; padding-top: 12px; margin-bottom: -6px;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title'>{$row["wallpaperName"]}</h5>
                         <p class='card-text wallpaper-stats'>

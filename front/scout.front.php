@@ -94,7 +94,7 @@
 
         <div class="modal-body" style="color: black">
           <div class="row">
-            <div class="col-12 d-flex justify-content-center" style="margin-bottom: -10px;">
+            <div class="col-12 d-flex justify-content-center" style="margin-bottom: 0px; margin-top: -10px;">
               <img src="../assets/images/legendary.png" width="150">
             </div>
 
@@ -108,7 +108,7 @@
               </div>
 
               <div class="col-3"></div>
-              <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+              <div class="col-6 d-flex justify-content-center" style="text-align: center; margin-bottom: 16px;">
                 <h6><?= $pet_legendary['petDesc'] ?></h6>
               </div>
 
@@ -116,8 +116,12 @@
             <?php } ?>
           </div>
 
+          <center>
+            <hr style="color: black; width: 100%; margin-top: 0px;">
+          </center>
+
           <div class="row">
-            <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
+            <div class="col-12 d-flex justify-content-center" style="margin-bottom: -2px; margin-top: -10px;">
               <img src="../assets/images/rare.png" width="150">
             </div>
 
@@ -131,7 +135,7 @@
               </div>
 
               <div class="col-3"></div>
-              <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+              <div class="col-6 d-flex justify-content-center" style="text-align: center; margin-bottom: 16px;">
                 <h6><?= $pet_rare['petDesc'] ?></h6>
               </div>
 
@@ -139,8 +143,12 @@
             <?php } ?>
           </div>
 
+          <center>
+            <hr style="color: black; width: 100% ;margin-top: 0px;">
+          </center>
+
           <div class="row">
-            <div class="col-12 d-flex justify-content-center" style="margin-top: 30px; margin-bottom: -10px;">
+            <div class="col-12 d-flex justify-content-center" style="margin-bottom: 4px; margin-top: -10px;">
               <img src="../assets/images/common.png" width="150">
             </div>
 
@@ -154,7 +162,7 @@
               </div>
 
               <div class="col-3"></div>
-              <div class="col-6 d-flex justify-content-center" style="text-align: center;">
+              <div class="col-6 d-flex justify-content-center" style="text-align: center; margin-bottom: 16px;">
                 <h6><?= $pet_common['petDesc'] ?></h6>
               </div>
 
@@ -162,7 +170,11 @@
             <?php } ?>
           </div>
 
-          <div class="row" style="margin-top: 16px;">
+          <center>
+            <hr style="color: black; width: 100%; margin-top: -8px;">
+          </center>
+
+          <div class="row">
             <div class="col-1"></div>
             <div class="col-10 d-flex justify-content-center">
               <p class="text-muted" style="text-align: center; font-size: 18px; line-height: 20px;">

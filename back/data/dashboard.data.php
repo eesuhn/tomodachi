@@ -212,8 +212,8 @@
 
         echo "
             <div class='row'>
-                <div clas='col-12 d-flex justify content center'>
-                    <h3>Owned Pets</h3>
+                <div style='margin-bottom: -14px; margin-top: 10px;'>
+                    <h3 style='padding-left: 6px;'>Owned Pets</h3>
                 </div>";
         foreach ($stmt as $row) { 
 
@@ -234,9 +234,12 @@
         }
         echo "
             </div>
+
+            <center><hr style='width: 100%;'></center>
+
             <div class='row'>
-                <div clas='col-12 d-flex justify content center'>
-                    <h3>Owned Wallpapers</h3>
+                <div style='margin-bottom: -14px; margin-top: 10px;'>
+                    <h3 style='padding-left: 6px;'>Owned Wallpapers</h3>
                 </div>";
         foreach ($stmt2 as $row2) {
 
@@ -557,7 +560,6 @@
                 transition: 0.2s ease;
                 border-radius: 4px;
                 opacity: 0.6;
-                font-weight: 500;
             }
 
             .nature-btn:focus {
@@ -583,7 +585,19 @@
 
             .nature-btn.disabled {
                 opacity: 1;
-                cursor: default;
+                cursor: select;
+            }
+
+            .nature-btn:not(.disabled):hover {
+                opacity: 0.8;
+                transition: 0.2s ease;
+                transform: translateY(-2px);
+            }
+
+            .nature-btn.disabled:hover {
+                opacity: 0.8;
+                transition: 0.2s ease;
+                transform: translateY(2px);
             }
 
             .nature-btn.positive {
@@ -591,16 +605,16 @@
                 border: 2px solid #009f65;
                 background-color: transparent;
                 margin-right: 18px;
-                font-weight: 600;
                 letter-spacing: 1px;
+                opacity: 0.9;
             }
 
             .nature-btn.negative {
                 color: #f60b0b;
                 border: 2px solid #f60b0b;
                 background-color: transparent;
-                font-weight: 600;
                 letter-spacing: 1px;
+                opacity: 0.9;
             }
 
             .option-menu a:hover {

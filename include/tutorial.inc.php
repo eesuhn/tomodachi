@@ -138,7 +138,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <center>
-                    <img src="../assets/images/tutimg7.png" width="90%">
+                    <img src="../assets/images/tutimg6.png" width="90%">
                     <h3>As previously mentioned, there is a happiness indicator in the stats header <br>& the way you can build this meter up is by <span style="color: green">feeding </span> your pet!</h3>
                     <h5 class="text-muted">Again, food can be purchased from the <span style="color: #FFD700;">shop</span>.</h5>
                 </center>
@@ -157,7 +157,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <center>
-                    <img src="../assets/images/tutimg8.png" width="90%">
+                    <img src="../assets/images/tutimg7.png" width="90%">
                     <h3>A studying feature is also included. </h3>
                     <h5 class="text-muted">It is recommended to start each session by setting a timer, and to take a break once the session is complete. <br>You can then repeat this cycle to enhance your productivity and focus</h5>
                     <h6 class="text-muted">Everytime you <span style="color: green">complete</span> a studying session, you will be rewarded with some <img src="../assets/images/coin.png" width="10"> coins to use at the shop.</h6>

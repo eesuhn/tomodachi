@@ -92,7 +92,7 @@
       </div>
 
       <div class="row">
-        <a data-bs-target="#tutorial1" data-bs-toggle="modal" class="link-secondary" style="text-align: right; margin: 10px 8px -10px; font-size: 22px; color: #313539;">Tutorial?</a>
+        <a data-bs-target="#tutorial1" data-bs-toggle="modal" class="link-secondary" style="text-align: right; margin: 8px; font-size: 22px; color: #313539;">Tutorial?</a>
       </div>
 
     </div>

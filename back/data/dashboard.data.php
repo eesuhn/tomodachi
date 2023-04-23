@@ -184,7 +184,7 @@
                 echo 
                 "<div class='col-2 col-lg-2'>
                     <div class='count-data text-center' style='font-size: 20px;'>
-                        <button class='foodCounter' style='margin-top: 6px;' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
+                        <button class='foodCounter' style='margin-top: 2px; margin-bottom: 4px;' onclick='decreaseFood_one(".$row['userID'].", ".$row['foodID'].", $petID)'>
                             <img src='".$row['foodImg'] ."' width='30px' style='margin-bottom: -2px;'>
                             <p style='letter-spacing: 0.2px; font-weight: 400;'>".$row['foodName']." x ".$row['foodNum']."</p>
                         </button>

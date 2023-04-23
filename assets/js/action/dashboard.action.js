@@ -14,8 +14,6 @@ function decreaseFood_one(userID, foodID, petID) {
             feedReward(foodID);
         }
     });
-    refreshDashboard();
-    showFeedToast();
 }
 
 // equip pet
@@ -27,10 +25,15 @@ function equipPet(userID, petID) {
         data: {
             userID: userID,
             petID: petID
+        },
+
+        success: function() {
+            refreshInventory();
+            refreshStatsHeader();
+            refreshPetImg();
+            showEquippedToast();
         }
     });
-    refreshDashboard();
-    showEquippedToast();
 }
 
 // equip wallpaper
@@ -41,10 +44,14 @@ function equipWallpaper(userID, wallpaperID) {
         data: {
             userID: userID,
             wallpaperID: wallpaperID
+        },
+
+        success: function() {
+            refreshInventory();
+            refreshWallpaper();
+            showEquippedToast();
         }
     });
-    refreshDashboard();
-    showEquippedToast();
 }
 
 function updateTask(taskID){    
@@ -60,9 +67,12 @@ function updateTask(taskID){
             taskTitle: taskTitle,
             taskDesc: taskDesc,
             taskDue: taskDue
+        },
+
+        success: function() {
+            refreshTask("Active");
         }
     });
-    refreshDashboard();
 }
 
 function addTask() {
@@ -77,7 +87,7 @@ function addTask() {
                 taskTitle: taskTitle
             },
             success: function(){
-                refreshDashboard();
+                refreshTask("Active");
                 taskInput.value = '';
             }
         });
@@ -90,10 +100,13 @@ function deleteTask(taskID){
         type: "GET",
         data: {
             taskID: taskID,
+        },
+
+        success: function() {
+            refreshTask("Active");
+            document.getElementById('toast-delete').play();
         }
     });
-    refreshDashboard();
-    document.getElementById('toast-delete').play();
 }
 
 function updateTaskStatus(taskID, taskStatus) {
@@ -105,8 +118,7 @@ function updateTaskStatus(taskID, taskStatus) {
             taskStatus: taskStatus
         },
         success: function() {
-            refreshDashboard();
-            showTaskToast();
+            taskReward();
         }
     });
 }
@@ -121,9 +133,9 @@ function deleteCompletedTasks(userID) {
 
         success: function() {
             refreshTask('Completed');
+            document.getElementById('toast-delete').play();
         }
     });
-    document.getElementById('toast-delete').play();
 }
 
 function addHabit() {
@@ -138,7 +150,7 @@ function addHabit() {
                 habitTitle: habitTitle
             },
             success: function(){
-                refreshDashboard();
+                refreshHabit();
                 habitInput.value = '';
             }
         });
@@ -162,9 +174,12 @@ function updateHabit(habitID) {
             habitDesc: habitDesc,
             habitPositive: habitPositive,
             habitNegative: habitNegative,
+        },
+
+        success: function() {
+            refreshHabit();
         }
     });
-    refreshDashboard();
 }
 
 function deleteHabit(habitID) {
@@ -173,10 +188,13 @@ function deleteHabit(habitID) {
         type: "GET",
         data: {
             habitID: habitID,
+        },
+
+        success: function() {
+            refreshHabit();
+            document.getElementById('toast-delete').play();
         }
     });
-    refreshDashboard();
-    document.getElementById('toast-delete').play();
 }
 
 function habitReward(difficultyID) {
@@ -185,10 +203,14 @@ function habitReward(difficultyID) {
         type: "GET",
         data: {
             difficultyID: difficultyID,
+        },
+
+        success: function() {
+            refreshStatsHeader();
+            refreshHabit();
+            showPositiveToast();
         }
     });
-    refreshDashboard();
-    showPositiveToast();
 }
 
 function habitPenalize(difficultyID) {
@@ -197,10 +219,15 @@ function habitPenalize(difficultyID) {
         type: "GET",
         data: {
             difficultyID: difficultyID,
+        },
+
+        success: function() {
+            refreshStatsHeader();
+            refreshPetImg();
+            refreshHabit();
+            showNegativeToast();
         }
     });
-    refreshDashboard();
-    showNegativeToast();
 }
 
 function feedReward(foodID) {
@@ -209,17 +236,27 @@ function feedReward(foodID) {
         type: "GET",
         data: {
             foodID: foodID,
+        },
+
+        success: function() {
+            refreshStatsHeader();
+            refreshFood();
+            showFeedToast();
         }
     });
-    refreshDashboard();
 }
 
 function taskReward() {
     $.ajax({
         url: "../back/action/dashboard.action.php?action=taskReward",
         type: "GET",
+
+        success: function() {
+            refreshTask("Active");
+            refreshStatsHeader();
+            showTaskToast();
+        }
     });
-    refreshDashboard();
 }
 
 function revivePet(userID, petID) {
@@ -232,7 +269,8 @@ function revivePet(userID, petID) {
         }, 
 
         success: function() {
-            refreshDashboard();
+            refreshStatsHeader();
+            refreshPetImg();
             showReviveToast();
         }
     });
@@ -241,9 +279,6 @@ function revivePet(userID, petID) {
 function setTutModal(){
     $.ajax({
         url: "../back/action/dashboard.action.php?action=setTutModal",
-        type: "GET",
-        success: function() {
-            refreshDashboard();
-        }
-    }); 
+        type: "GET"
+    });
 }

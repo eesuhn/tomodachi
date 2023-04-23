@@ -34,7 +34,7 @@
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
   </head>
 
-  <body>
+  <body style="cursor: context-menu;">
     <section class="hidden">
       <div class="row d-flex py-4 px-4 justify-content-center">
         <div class="col-3"></div>

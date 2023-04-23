@@ -37,7 +37,7 @@
           <center>
             <img src="../assets/images/logo1.png" width="195">
           </center>
-          <h1 class="text-center mb-5">Create an account</h1>
+          <h1 class="text-center mb-5" style="cursor: context-menu;">Create an account</h1>
           <form id="register_user" method="POST" action="../include/register.inc.php">
             <center>
               <div class="form-group" style="width: 66%; margin-top: -20px;">
@@ -52,20 +52,20 @@
                 <label for="password" style="font-size: 24px;">Password</label>
                 <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter a secure password" required style="margin-bottom: 6px;" />
                 <input type="password" id="confirm_password" name="confirm_password" class="form-control form-control-lg" placeholder="Retype your password" required />
-                <div id="passwordHelp" class="form-text" style="font-size: 18px;">Keep your account protected!</div>
+                <div id="passwordHelp" class="form-text" style="font-size: 18px; cursor: context-menu;">Keep your account protected!</div>
               </div>
             </center>
             <div class="text-center">
               <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 30%; margin-top: 15px; letter-spacing: 1px;">Create Account</button>
             </div>
-            <p class="text-center mt-3 mb-0" style="font-size: 20px;">Already have an account? <a href="login.front.php">Login here</a></p>
+            <p class="text-center mt-3 mb-0" style="font-size: 20px; cursor: context-menu;">Already have an account? <a href="login.front.php">Login here</a></p>
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px">
+  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px; cursor: context-menu;">
     <div class="container p-4">
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">

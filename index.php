@@ -31,7 +31,7 @@
       <img src="assets/images/logo1.png" style="width: 40%; height: auto;">
     </div>
     <div class="col-12 d-flex justify-content-center">
-      <p class="h1" style="text-align: center; width: 75%;">
+      <p class="h1" style="text-align: center; width: 75%; cursor: context-menu;">
         Tomodachi is a direct translation from the Japanese word, Friend. It serves as a personal companion for students
         and are equipped with functionalities that aid in daily productivity, with the primary focus on being a habit tracker.
       </p>
@@ -42,7 +42,7 @@
         <div class="card">
           <img src="assets/images/collect.png" class="card-img-top" width="300">
           <div class="card-body" style="background-color: black; color: white">
-            <p class="card-text" style="font-size: 24px;">Collect a variety of your own companions as you progress on this journey.</p>
+            <p class="card-text" style="font-size: 24px; cursor: context-menu;">Collect a variety of your own companions as you progress on this journey.</p>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <div class="card">
           <img src="assets/images/refine.png" class="card-img-top">
           <div class="card-body" style="background-color: black; color: white">
-            <p class="card-text" style="font-size: 24px;">Take on this initiative to refine yourself and become more productive.</p>
+            <p class="card-text" style="font-size: 24px; cursor: context-menu;">Take on this initiative to refine yourself and become more productive.</p>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
         <div class="card">
           <img src="assets/images/care.png" class="card-img-top" width="300">
           <div class="card-body" style="background-color: black; color: white">
-            <p class="card-text" style="font-size: 24px;">Earn rewards and care for your companions as you achieve your goals.</p>
+            <p class="card-text" style="font-size: 24px; cursor: context-menu;">Earn rewards and care for your companions as you achieve your goals.</p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@
     </div>
   </div>
 
-  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px">
+  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px; cursor: context-menu;">
     <div class="container p-4">
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">

@@ -34,7 +34,7 @@
           <center>
             <img src="../assets/images/logo1.png" width="195">
           </center>
-          <h1 class="text-center mb-5">Sign into your account</h1>
+          <h1 class="text-center mb-5" style="cursor: context-menu;">Sign into your account</h1>
           <form id="login_user" method="POST" action="../include/login.inc.php">
             <center>
               <div class="form-group" style="width: 70%; margin-top: -30px;">
@@ -49,7 +49,7 @@
             <div class="text-center">
               <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 30%; margin-top: 15px; letter-spacing: 1px;">Login</button>
             </div>
-            <p class="text-center mt-3 mb-0" style="font-size: 20px">Don't have an account? <a href="register.front.php">Register here</a></p>
+            <p class="text-center mt-3 mb-0" style="font-size: 20px; cursor: context-menu;">Don't have an account? <a href="register.front.php">Register here</a></p>
           </form>
         </div>
       </div>
@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px">
+  <footer class="bg-dark text-center text-lg-start text-white" style="font-size: 19px; cursor: context-menu;">
     <div class="container p-4">
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">

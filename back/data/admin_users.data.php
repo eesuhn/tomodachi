@@ -48,7 +48,7 @@
             
             <table class='table mx-4 my-4'>
                 <thead class='thead-primary'>
-                    <tr>
+                    <tr style='cursor: context-menu;'>
                         <th scope='col'>ID</th>
                         <th scope='col'>Username</th>
                         <th scope='col'>Email</th>

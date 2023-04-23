@@ -67,24 +67,24 @@
         <div class="container" style="height: 500px; width: 100%; overflow-y: scroll; position: relative; background-color: #5C6C7D; border-radius: 6px;">
           <input type="text" class="form-control" id="habitTitle" name="habitTitle" placeholder="Add a new habit" style="margin-top: 16px; font-size: 20px;" autocomplete="off">
 
-          <div id="habitTracker">
+          <div id="habitTracker" style="cursor: context-menu;">
             <!-- display habit tracker with AJAX -->
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 py-1" id="taskTracker">
+      <div class="col-md-4 py-1" id="taskTracker" style="cursor: context-menu;">
         <!-- display task tracker with AJAX -->
       </div>
 
       <div class="card shadow text-white bg-dark" style="margin-top: 20px;">
         <div class="card-header">
-          <h4 style="font-size: 24px; padding-top: 6px; padding-left: 2px;">Foods</h4>
+          <h4 style="font-size: 24px; padding-top: 6px; padding-left: 2px; cursor: context-menu;">Foods</h4>
         </div>
         <div class="row no-gutters">
           <div class="col-md-12"></div>
           <div class="counter">
-            <div class="row" id="foodCounter">
+            <div class="row" id="foodCounter" style="cursor: context-menu;">
               <!-- display food with AJAX -->
             </div>
           </div>
@@ -92,7 +92,9 @@
       </div>
 
       <div class="row">
-        <a data-bs-target="#tutorial1" data-bs-toggle="modal" class="link-secondary" style="text-align: right; margin: 8px; font-size: 22px; color: #313539;">Tutorial?</a>
+        <div class="col text-end" style="margin-top: 6px;">
+          <a data-bs-target="#tutorial1" data-bs-toggle="modal" class="link-secondary" style="text-align: right; font-size: 22px; color: #313539; cursor: pointer; font-weight: 600; letter-spacing: 0.4px;">Tutorial?</a>
+        </div>
       </div>
 
     </div>

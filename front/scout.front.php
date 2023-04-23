@@ -36,7 +36,7 @@
   </div>
 </div>
 
-<body style='background-color: #f2f2f2f2;'>
+<body style='background-color: #f2f2f2f2; cursor: context-menu;'>
   <div class="content vh-100 p-0">
 
     <div class="coin-indicator" id="currencyData">

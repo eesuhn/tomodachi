@@ -119,7 +119,7 @@ CREATE TABLE `admin` (
     `adminPwd` varchar(255) NOT NULL
 );
 
-
+------------------------------------------------------------
 
 -- Primary key
 ALTER TABLE `user`
@@ -161,7 +161,7 @@ ALTER TABLE `habit`
 ALTER TABLE `admin`
     ADD PRIMARY KEY (`adminID`);
 
-
+------------------------------------------------------------
 
 -- Auto increment
 ALTER TABLE `user`
@@ -191,7 +191,7 @@ ALTER TABLE `habit`
 ALTER TABLE `admin`
     MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT;
 
-
+------------------------------------------------------------
 
 -- Foreign key
 ALTER TABLE `currency`

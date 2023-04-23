@@ -45,7 +45,7 @@
         <center>
             <img src="../assets/images/studying.png" width="400" style="margin-top: 150px; margin-right: 80px;">
         </center>
-        <div id="wrapper">
+        <div id="wrapper" style="cursor: context-menu;">
             <div id="main-panel" style="margin-bottom: -30px;">
                 <div id="pomodoro-box" style="margin-bottom: -10px;">
                     <h1 style="font-size: 45px;">Pomodoro Studying</h1>
@@ -146,7 +146,7 @@
     <div class="modal fade" id="pomodoro" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body" style="cursor: context-menu;">
                     <center>
                         <img src="../assets/images/studying.png" width="50%" style="margin-right: 60px;">
                         <h4 class="text-muted">Pomodoro studying is a time management technique that involves breaking up study sessions 

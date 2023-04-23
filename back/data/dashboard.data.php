@@ -103,7 +103,7 @@
                 }
             }
         </style>
-        <div class='row py-4'>
+        <div class='row py-4' style='cursor: context-menu;'>
             <div class='card flex-row flex-wrap' style='padding: 10px; background-color: white; color: black;'>
                 <div class='card-header border-0'>";
 
@@ -112,8 +112,8 @@
                     <img src='../assets/images/dead.png' style='margin: 30px -4px 8px; width: 100px; aspect-ratio: 1/1;'>
                 </div>
                 <div class='card-block px-3 col-5'>
-                    <h2>$petName</h2>
-                    <h4>Your Pet has Died!</h4>
+                    <h3 style='margin-top: 10px;'>$petName</h3>
+                    <h5>Revive your Pet!</h5>
                     <img src='../assets/images/coin.png' style='width: 28px; margin-bottom: 5px; padding: 5px 4px 5px 0px;'><span style='font-size: 20px; margin-right: 4px;'>200</span>";
                     if ($currencyNum < 200) {
                         echo "<button class='btn btn-danger' disabled style='margin-left: 10px; margin-bottom: 5px; height: fit-content; font-size: 16px; margin-left: 10px;'>Not enough coins!</button>";
@@ -134,8 +134,7 @@
                     <img src='$petImg' style='margin: 30px -10px 0px; width: 120px;'>
                 </div>
                 <div class='card-block px-3 col-5'>
-
-                    <h3>$petName</h3>
+                    <h3 style='margin-top: 10px; margin-bottom: -2px;'>$petName</h3>
                     <img src='../assets/images/level.png' style='height: 13px; width: 13px; margin-bottom: 4px; margin-right: 4px;'>
                     <span style='font-size: 20px;'>Level: $petLevel</span><br>
                     <div class='progress' style='height: 5px; margin-bottom: 4px;'>
@@ -211,7 +210,7 @@
         $stmt2 = $wallpaperData->getUserWallpapers($userID);
 
         echo "
-            <div class='row'>
+            <div class='row' style='cursor: context-menu;'>
                 <div style='margin-bottom: -14px; margin-top: 10px;'>
                     <h3 style='padding-left: 6px;'>Owned Pets</h3>
                 </div>";
@@ -237,7 +236,7 @@
 
             <center><hr style='width: 100%;'></center>
 
-            <div class='row'>
+            <div class='row' style='cursor: context-menu;'>
                 <div style='margin-bottom: -14px; margin-top: 10px;'>
                     <h3 style='padding-left: 6px;'>Owned Wallpapers</h3>
                 </div>";

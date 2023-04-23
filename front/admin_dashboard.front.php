@@ -25,7 +25,7 @@
     <link rel="shortcut icon" type="image/png" href="../assets/images/logo3.png">
 </head>
 
-<body style="background-color: #f1f1f1;">
+<body style="background-color: #f1f1f1; cursor: context-menu;">
 
     <div class="sidebar">
         <div class="logo">
@@ -44,10 +44,16 @@
                 font-size: 20px;
                 font-weight: 500;
             }
+
+            .admin-text-card a {
+                cursor: pointer;
+            }
+
             .d-flex span {
                 font-size: 20px;
                 font-weight: 500;
             }
+
             .col-12 label {
                 font-size: 20px;
                 font-weight: 500;

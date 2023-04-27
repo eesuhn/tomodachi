@@ -200,13 +200,22 @@
                 $flag = 'owned';
             }
 
+            $wallpaperPrice = $row['wallpaperPrice'];
+
             echo "
             <div class='col-md-3 px-3 py-3'>
                 <div class='card h-40'>
                     <center><img src='{$row['wallpaperImg']}' class='card-img-top' alt='Wallpaper Image' style='max-width: 90%; padding: 15px 10px 0px 10px;'></center>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title' style='font-size: 24px;'>{$row['wallpaperName']}</h5>
-                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 0px;'>{$row['wallpaperPrice']}</h4>
+                        <h4 class='card-text'><img src='../assets/images/coin.png' width='25' style='margin: -2px 6px 2px 0px;'>";
+                        if ($wallpaperPrice == 0){
+                            echo "Free!";
+                        } else {
+                            echo "{$row['wallpaperPrice']}";
+                        }
+            echo
+                        "</h4>
                         <p class='card-text' style='font-size: 18px;'>{$row['wallpaperDesc']}</p>
                         <div class='mt-auto'>
                             <button class='btn btn-primary' $disableBtn onclick='purchaseWallpaper({$userID}, {$row['wallpaperID']}, {$row['wallpaperPrice']})' 

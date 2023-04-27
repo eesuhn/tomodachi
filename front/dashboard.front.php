@@ -79,7 +79,7 @@
 
       <div class="card shadow text-white bg-dark" style="margin-top: 20px;">
         <div class="card-header">
-          <h4 style="font-size: 24px; padding-top: 6px; padding-left: 2px; cursor: context-menu;">Foods</h4>
+          <h4 style="font-size: 24px; padding-top: 6px; padding-left: 2px; cursor: context-menu; letter-spacing: 0.4px;">Foods Storage</h4>
         </div>
         <div class="row no-gutters">
           <div class="col-md-12"></div>

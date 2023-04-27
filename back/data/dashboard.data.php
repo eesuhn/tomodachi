@@ -49,17 +49,17 @@
         case 'refreshHabit':
             refreshHabit();
             break;
-        case 'getTutorialModalFlag':
-            getTutorialModalFlag();
+        case 'getTutFlag':
+            getTutFlag();
             break;
     }
 
-    function getTutorialModalFlag() {
+    function getTutFlag() {
         $userID = $_SESSION['userID'];
     
         $user = new User();
     
-        $response = array('tutorialModal' => $user->getTutorialModalFlag($userID));
+        $response = array('tutorialModal' => $user->getTutFlag($userID));
 
         echo json_encode($response);
     }
@@ -368,12 +368,12 @@
                                     <h3 class='card-title' style='margin-bottom: -4px; font-size: 25px;'>{$row['taskTitle']}</h3>";
                                     if ($row['taskDesc'] != "") {
                                         echo "
-                                        <div style='margin-bottom: 2px;'>
-                                            <p class='card-text text-muted' style='font-size: 20px;'>{$row['taskDesc']}</p>
+                                        <div style='margin-bottom: 4px; margin-top: 8px;'>
+                                            <p class='card-text text-muted' style='font-size: 20px; line-height: 18px;'>{$row['taskDesc']}</p>
                                         </div>";
                                     } else {
                                         echo "
-                                        <div style='margin-top: 6px;'>";
+                                        <div style='margin-top: 4px;'>";
                                     }
                                     echo "
                                     <p class='card-text' style='font-size: 18px;'>Due on: &nbsp; &nbsp;<span class='card-text text-muted'>$formattedDate</span></p>";
@@ -685,12 +685,12 @@
                                         <h3 class='card-title' style='margin-bottom: -4px; font-size: 25px;'>{$row['habitTitle']}</h3>";
                                         if ($row['habitDesc'] != "") {
                                             echo "
-                                            <div style='margin-bottom: 2px;'>
-                                                <p class='card-text text-muted' style='font-size: 20px;'>{$row['habitDesc']}</p>
+                                            <div style='margin-bottom: 4px; margin-top: 8px;'>
+                                                <p class='card-text text-muted' style='font-size: 20px; line-height: 18px;'>{$row['habitDesc']}</p>
                                             </div>";
                                         } else {
                                             echo "
-                                            <div style='margin-top: 6px;'>";
+                                            <div style='margin-top: 4px;'>";
                                         }
                                         echo "
                                         <p class='card-text' style='font-size: 18px;'>Difficulty: &nbsp; &nbsp;<span class='card-text text-muted'>$difficultyTitle</span></p>";

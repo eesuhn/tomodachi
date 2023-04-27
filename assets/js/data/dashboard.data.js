@@ -17,7 +17,7 @@ function showDashboard() {
 
 function showTutorial() {
     $.ajax({
-        url: "../back/data/dashboard.data.php?action=getTutorialModalFlag",
+        url: "../back/data/dashboard.data.php?action=getTutFlag",
         type: "POST",
         dataType: "json",
         success: function (data) {

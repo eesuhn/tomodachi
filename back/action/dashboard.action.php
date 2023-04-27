@@ -252,6 +252,6 @@
     function setTutModal() {
         $userID = $_SESSION['userID'];
         $user = new User();
-        $user->updateTutorialModalFlag($userID);
+        $user->updateTutFlag($userID);
     }
 ?>

@@ -1,9 +1,9 @@
+<!DOCTYPE html>
+<html>
+
 <?php
     include '../include/admin_dashboard.inc.php';
 ?>
-
-<!DOCTYPE html>
-<html>
 
 <head>
     <title>Tomodachi | Admin</title>

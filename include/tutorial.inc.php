@@ -10,7 +10,7 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#tutorial2" data-bs-toggle="modal">Proceed</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial2')">Proceed</button>
                 <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger" data-bs-dismiss="modal" onclick="setTutModal()" style="padding-left: 20px; padding-right: 20px;">Yes</button>
-                <button class="btn btn-primary" data-bs-target="#tutorial1" data-bs-toggle="modal">No, bring me back</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial1')">No, bring me back</button>
             </div>
         </div>
     </div>
@@ -45,8 +45,8 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#tutorial3" data-bs-toggle="modal">Next</button>
-                <button class="btn btn-dark" data-bs-target="#tutorial1" data-bs-toggle="modal">Back</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial3')">Next</button>
+                <button class="btn btn-dark" onclick="showNextModal('#tutorial1')">Back</button>
             </div>
         </div>
     </div>
@@ -66,9 +66,9 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#tutorial1" data-bs-toggle="modal" style="left: 10px; position: absolute;">Back to first</button>
-                <button class="btn btn-primary" data-bs-target="#tutorial4" data-bs-toggle="modal">Next</button>
-                <button class="btn btn-dark" data-bs-target="#tutorial2" data-bs-toggle="modal">Back</button>
+                <button class="btn btn-secondary" onclick="showNextModal('#tutorial1')" style="left: 10px; position: absolute;">Back to first</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial4')">Next</button>
+                <button class="btn btn-dark" onclick="showNextModal('#tutorial2')">Back</button>
             </div>
         </div>
     </div>
@@ -87,9 +87,9 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#tutorial1" data-bs-toggle="modal" style="left: 10px; position: absolute;">Back to first</button>
-                <button class="btn btn-primary" data-bs-target="#tutorial5" data-bs-toggle="modal">Next</button>
-                <button class="btn btn-dark" data-bs-target="#tutorial3" data-bs-toggle="modal">Back</button>
+                <button class="btn btn-secondary" onclick="showNextModal('#tutorial1')" style="left: 10px; position: absolute;">Back to first</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial5')">Next</button>
+                <button class="btn btn-dark" onclick="showNextModal('#tutorial3')">Back</button>
             </div>
         </div>
     </div>
@@ -106,9 +106,9 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#tutorial1" data-bs-toggle="modal" style="left: 10px; position: absolute;">Back to first</button>
-                <button class="btn btn-primary" data-bs-target="#tutorial6" data-bs-toggle="modal">Next</button>
-                <button class="btn btn-dark" data-bs-target="#tutorial4" data-bs-toggle="modal">Back</button>
+                <button class="btn btn-secondary" onclick="showNextModal('#tutorial1')" style="left: 10px; position: absolute;">Back to first</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial6')">Next</button>
+                <button class="btn btn-dark" onclick="showNextModal('#tutorial4')">Back</button>
             </div>
         </div>
     </div>
@@ -125,9 +125,9 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#tutorial1" data-bs-toggle="modal" style="left: 10px; position: absolute;">Back to first</button>
-                <button class="btn btn-primary" data-bs-target="#tutorial7" data-bs-toggle="modal">Next</button>
-                <button class="btn btn-dark" data-bs-target="#tutorial5" data-bs-toggle="modal">Back</button>
+                <button class="btn btn-secondary" onclick="showNextModal('#tutorial1')" style="left: 10px; position: absolute;">Back to first</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial7')">Next</button>
+                <button class="btn btn-dark" onclick="showNextModal('#tutorial5')">Back</button>
             </div>
         </div>
     </div>
@@ -144,9 +144,9 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#tutorial1" data-bs-toggle="modal" style="left: 10px; position: absolute;">Back to first</button>
-                <button class="btn btn-primary" data-bs-target="#tutorial8" data-bs-toggle="modal">Next</button>
-                <button class="btn btn-dark" data-bs-target="#tutorial6" data-bs-toggle="modal">Back</button>
+                <button class="btn btn-secondary" onclick="showNextModal('#tutorial1')" style="left: 10px; position: absolute;">Back to first</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial8')">Next</button>
+                <button class="btn btn-dark" onclick="showNextModal('#tutorial6')">Back</button>
             </div>
         </div>
     </div>
@@ -164,9 +164,9 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#tutorial1" data-bs-toggle="modal" style="left: 10px; position: absolute;">Back to first</button>
-                <button class="btn btn-primary" data-bs-target="#tutorial9" data-bs-toggle="modal">Next</button>
-                <button class="btn btn-dark" data-bs-target="#tutorial7" data-bs-toggle="modal">Back</button>
+                <button class="btn btn-secondary" onclick="showNextModal('#tutorial1')" style="left: 10px; position: absolute;">Back to first</button>
+                <button class="btn btn-primary" onclick="showNextModal('#tutorial9')">Next</button>
+                <button class="btn btn-dark" onclick="showNextModal('#tutorial7')">Back</button>
             </div>
         </div>
     </div>
@@ -185,9 +185,16 @@
                 </center>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#tutorial1" data-bs-toggle="modal" style="left: 10px; position: absolute;">Back to first</button>
+                <button class="btn btn-secondary" onclick="showNextModal('#tutorial1')" style="left: 10px; position: absolute;">Back to first</button>
                 <button class="btn btn-primary" data-bs-dismiss="modal" onclick="setTutModal()">Done</button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function showNextModal(nextModal) {
+    $('.modal').modal('hide'); // hide the current modal
+    $(nextModal).modal('show'); // show the next modal
+}
+</script>

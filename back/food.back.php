@@ -134,16 +134,16 @@
 
         // decrease foodNum by 1
         public function decreaseFood_one ($userID, $foodID) {
-            $sql = "UPDATE food_inventory SET foodNum = foodNum - 1 WHERE userID = :value1 AND foodID = :value2";
-
+            $sql = "UPDATE food_inventory SET foodNum = CASE WHEN foodNum > 0 THEN foodNum - 1 ELSE 0 END WHERE userID = :value1 AND foodID = :value2";
+        
             $stmt = $this->db->connect()->prepare($sql);
-
+        
             $stmt->bindParam(':value1', $userID);
             $stmt->bindParam(':value2', $foodID);
-
+        
             $stmt->execute(array(
-                    ':value1' => $userID,
-                    ':value2' => $foodID));
+                ':value1' => $userID,
+                ':value2' => $foodID));
         }
 
         public function getShopFoods($userID) {

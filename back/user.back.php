@@ -65,7 +65,7 @@
                 $error = $stmt->errorInfo();
                 echo "Error: " . $error[2];
             }
-        }        
+        }
 
         public function loginUser($userEmail, $userPwd) {
             $sql = "SELECT * FROM user WHERE userEmail = :email";
@@ -109,7 +109,7 @@
                 echo "<script>alert('No account has been found'); 
                       window.location.href='../front/login.front.php'</script>";
             }
-        }        
+        }
         
         // get userID based on userEmail
         public function getUserID($userEmail) {

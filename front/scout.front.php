@@ -109,7 +109,7 @@
 
               <div class="col-3"></div>
               <div class="col-6 d-flex justify-content-center" style="text-align: center; margin-bottom: 16px;">
-                <h6><?= $pet_legendary['petDesc'] ?></h6>
+                <h6 style="font-size: 20px;"><?= $pet_legendary['petDesc'] ?></h6>
               </div>
 
               <div class="col-3"></div>
@@ -136,7 +136,7 @@
 
               <div class="col-3"></div>
               <div class="col-6 d-flex justify-content-center" style="text-align: center; margin-bottom: 16px;">
-                <h6><?= $pet_rare['petDesc'] ?></h6>
+                <h6 style="font-size: 20px;"><?= $pet_rare['petDesc'] ?></h6>
               </div>
 
               <div class="col-3"></div>
@@ -163,7 +163,7 @@
 
               <div class="col-3"></div>
               <div class="col-6 d-flex justify-content-center" style="text-align: center; margin-bottom: 16px;">
-                <h6><?= $pet_common['petDesc'] ?></h6>
+                <h6 style="font-size: 20px;"><?= $pet_common['petDesc'] ?></h6>
               </div>
 
               <div class="col-3"></div>

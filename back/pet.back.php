@@ -22,9 +22,9 @@
                             <div class="logo hidden">
                                 <img src="' . $row["petImg"] . '" width="200">
                                 <br>
-                                <strong>' . $row["petName"] . '</strong>
-                                <p>' . $row["petDesc"] . '</p>
-                                <a href="../include/pet_selection.inc.php?petID=' . $row["petID"] . '" class="btn btn-light">Select</a>
+                                <strong><p style="font-size: 26px; letter-spacing: 1px;">' . $row["petName"] . '</p></strong>
+                                <p style="font-size: 22px; letter-spacing: 0.2px;">' . $row["petDesc"] . '</p>
+                                <a href="../include/pet_selection.inc.php?petID=' . $row["petID"] . '" class="btn btn-light" style="font-size: 20px; padding: 6px 14px;">Select</a>
                             </div>
                         </div>';
                 }

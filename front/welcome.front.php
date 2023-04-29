@@ -40,21 +40,21 @@
         <div class="col-3"></div>
 
         <div class="col-6 justify-content-center d-flex">
-          <img src="../assets/images/logo2.png" width="200" alt="logo">
+          <img src="../assets/images/logo2.png" width="200" alt="logo" style="margin-top: -100px;">
         </div>
 
         <div class="col-3"></div>
         <div class="col-3"></div>
 
         <div class="col-6 justify-content-center d-flex">
-          <h1>Welcome to Tomodachi</h1>
+          <h1 style="font-size: 56px;">Welcome to Tomodachi</h1>
         </div>
 
         <div class="col-3"></div>
         <div class="col-3"></div>
 
         <div class="col-6 justify-content-center d-flex">
-          <h5>Before you embark on your journey, please scroll down</h5>
+          <h5 style="font-size: 26px; letter-spacing: 0.4px;">Before you embark on your journey, please scroll down</h5>
         </div>
         
         <div class="col-3"></div>
@@ -64,14 +64,17 @@
     <section class="hidden">
       <div class="row d-flex py-4 px-4 justify-content-center">
         <div class="col-12 justify-content-center d-flex">
-          <h1 style="text-align: center;">and select your starting companion!</h1>
+          <h1 style="text-align: center;">And select your starting companion!</h1>
         </div>
       </div>
 
       <div class="col-3"></div>
 
       <div class="col-6 justify-content-center d-flex">
-        <h5>Choose carefully, you can only select one of them, however, don't worry as you can always collect more companions as you progress!</h5>
+        <center>
+          <h5 style="font-size: 26px; letter-spacing: 0.4px;">Alrighty, it's decision time! You get to pick just one companion for now
+          <br>but don't fret, you'll have plenty of chances to collect more pals as you go on your adventure</h5>
+        </center>
       </div>
 
       <div class="col-3"></div>

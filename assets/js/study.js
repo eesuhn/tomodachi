@@ -1,8 +1,8 @@
 var pomodoro = {
   	task: null,
   	isPaused: true,
-  	workTime: new Date(0.1 * 60 * 1000),
-  	restTime: new Date(0.1 * 60 * 1000),
+  	workTime: new Date(25.01 * 60 * 1000),
+  	restTime: new Date(5.01 * 60 * 1000),
   	timer: {},
   	timeAwait: 0,
   	intervals: [],

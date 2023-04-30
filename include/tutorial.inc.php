@@ -1,3 +1,10 @@
+<section style="cursor: context-menu;">
+<style>
+    a.do-not-show:hover {
+        cursor: pointer;
+    }
+</style>
+
 <div class="modal fade" id="tutorial1" aria-hidden="true" tabindex="-1" data-bs-keyboard="false" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -6,7 +13,7 @@
                     <img src="../assets/images/logo1.png" width="120px">
                     <h2>Welcome abroad, we are very excited to have you here with us.</h2>
                     <h5 class="text-muted">Before you get started, let's kick off with a bit of a tutorial to demonstrate how you should be using our app.</h5>
-                    <a data-bs-target="#skip" data-bs-toggle="modal" class="link-danger" style="font-size: 20px;">Do not show this again.</a>
+                    <a onclick="showNextModal('#skip')" class="link-danger do-not-show" style="font-size: 20px;">Do not show this again.</a>
                 </center>
             </div>
             <div class="modal-footer">
@@ -23,7 +30,7 @@
             <div class="modal-body">
                 <center>
                     <img src="../assets/images/logo1.png" width="120px">
-                    <h2>Are you sure you want to stop seeing this tutorial?</h2>
+                    <h3>Are you sure you want to stop seeing this tutorial?</h3>
                 </center>
             </div>
             <div class="modal-footer">
@@ -191,6 +198,7 @@
         </div>
     </div>
 </div>
+</section>
 
 <script>
 function showNextModal(nextModal) {

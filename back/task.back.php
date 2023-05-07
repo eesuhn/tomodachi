@@ -6,17 +6,6 @@ class Task {
         $this->db = new Database();
     }
 
-    public function submitTask($userID, $taskTitle) {
-        $sql = "INSERT INTO task (userID, taskTitle) VALUES (:userID, :taskTitle)";
-
-        $stmt = $this->db->connect()->prepare($sql);
-
-        $stmt->bindParam(':userID', $userID);
-        $stmt->bindParam(':taskTitle', $taskTitle);
-
-        $stmt->execute();
-    }
-
     public function getUserTasks($userID, $taskStatus) {
         $sql = "SELECT * FROM task WHERE userID = :userID AND taskStatus = :taskStatus";
 

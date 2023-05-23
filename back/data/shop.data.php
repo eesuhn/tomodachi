@@ -83,7 +83,7 @@
         echo"
             <h4>$petName</h4>
             <img src='$petImg' alt='$petName' style='width: 150px;'>
-            <p>$petDesc</p>
+            <p style='font-size: 20px; letter-spacing: 0.4px; line-height: 20px;'>$petDesc</p>
             <p>Check your inventory to see your new pet!</p>
         </div>";
     }

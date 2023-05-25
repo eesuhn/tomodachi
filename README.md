@@ -37,7 +37,7 @@ In `phpMyAdmin`:
         // add port if needed
         // private $port = ;
 
-        protected function connect () {
+        public function connect () {
             try{
                 // remove comment block when added port
                 $dsn = 'mysql:host=' .$this->host .';dbname=' .$this->dbName /*.';port=' .$this->port*/;

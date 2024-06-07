@@ -1,6 +1,3 @@
-# database connection
-back/connection.back.php
-
-
-# outliers
+# cache
+.vscode
 .DS_Store

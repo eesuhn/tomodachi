@@ -17,8 +17,6 @@ Sign up for <b>Tomodachi</b> today and start building habits the fun way! :heart
     <img src="https://user-images.githubusercontent.com/102596628/235130881-a6de0d6c-0c58-4d50-a2e4-bb9e352e6c5d.png" alt="banner" width="400" />
 </p>
 
----
-
-#### Setting up...
+### Setting up...
 1. In `phpMyAdmin`, create database named `tomodachi`, and import `db.sql`, and then `data.sql`
 2. Configure `back/connection.back.php` with your database credentials
